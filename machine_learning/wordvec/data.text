@@ -1,0 +1,22 @@
+The data lake foundation on Amazon Web Services (AWS)
+solution enables organizations to store and analyze any type
+of data (structured or unstructured) in a single, centralized
+repository. Data can easily be monitored, stored, and
+analyzed without the need to convert it beforehand.
+This data lake solution integrates with a variety of diverse
+AWS services including Amazon Simple Storage Service (S3),
+Amazon RedShift, and Amazon Kinesis to provide a fully
+functional data lake (see figure). The data lake foundation
+is designed to provide you with a single source of truth,
+with additional features including data submission, ingest
+processing, aggregation, analysis, and searching capabilities.
+A data lake foundation on AWS enables you to easily
+collect and ingest data, storing it in a cost-effective facility.
+A portfolio of descriptive, predictive, and teal-time agile
+analytics built on this data lake foundation can help you
+answer your most important business questions. Additionally, you gain quick and easy access to the ecosystem of AWS services
+and APN partner services that enhance and complement your big
+data solutions.
+Once the foundational layer of your data lake has been deployed,
+you can leverage various AWS services to complement your data
+lake with big data solutions.
