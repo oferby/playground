@@ -4,20 +4,17 @@ import pygame
 
 import pomdp.pygame.world as W
 
-pygame.init()
 size = width, height = 600, 400
-speed = [2, 2]
 black = 0, 0, 0
 green = 0, 255, 0
 red = 255, 0, 0
 blue = 0, 0, 255
 
-screen = pygame.display.set_mode(size)
-
 # ball = pygame.image.load("intro_ball.gif")
 # ballrect = ball.get_rect()
 
-
+pygame.init()
+screen = pygame.display.set_mode(size)
 world = W.World(pygame.surfarray.pixels2d(screen))
 
 while 1:
