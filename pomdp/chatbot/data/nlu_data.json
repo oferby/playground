@@ -186,7 +186,7 @@
         ]
       },
       {
-        "text": "I want list of all my ecs machines",
+        "text": "I want a list of all my ecs machines",
         "intent": "show_ecs",
         "entities": []
       },

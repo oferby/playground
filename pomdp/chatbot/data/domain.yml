@@ -7,6 +7,8 @@ slots:
       type:   text
     name:
       type: text
+    isInvalidEntry:
+      type: bool
 
 entities:
 - num_of_cpus
@@ -71,14 +73,8 @@ templates:
     - "understand create bms"
   utter_show_bms:
     - "understand show bms"
-  utter_state_1:
-    - "state 1"
-  utter_state_2:
-    - "state 2"
-  utter_state_3:
-    - "state 3"
-  utter_state_4:
-    - "state 4"
+  utter_invalid_server_name:
+    - "I didn't get that server name... Please re-enter."
 
 actions:
   - utter_greet
@@ -106,3 +102,5 @@ actions:
   - action_say_ok
   - action_show_ecs
   - action_change_server_state
+  - action_clear_invalid_entry
+  - utter_invalid_server_name

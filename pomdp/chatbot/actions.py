@@ -26,5 +26,18 @@ class ActionChangeServerState(Action):
 
     def run(self, dispatcher, tracker, domain):
         server_name = tracker.get_slot('name')
-        dispatcher.utter_message("Server {} state changed".format(server_name))
-        return []
+        if server_name:
+
+            print('got server name')
+            dispatcher.utter_message("Server {} state changed".format(server_name))
+            return []
+        print('no server name')
+        return [SlotSet("isInvalidEntry", "True")]
+
+
+class ActionClearInvalidEntry(Action):
+    def name(self):
+        return 'action_clear_invalid_entry'
+
+    def run(self, dispatcher, tracker, domain):
+        return [SlotSet("isInvalidEntry", "False")]

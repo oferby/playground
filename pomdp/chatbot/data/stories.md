@@ -24,7 +24,23 @@
     - utter_is_there_anything_else
 * deny
     - utter_goodbye
-    
-    
-     
+
+## change ECS state path
+* greeting
+    - utter_greet
+* ecs_change_state{"vm_state":"stop"}
+    -utter_get_server_name
+* inform
+    - action_change_server_state
+    - slot{"isInvalidEntry": "True"}
+    - utter_invalid_server_name
+
+## change ECS state path
+* greeting
+    - utter_greet
+* ecs_change_state{"vm_state":"start", "name":"server1"}
+    - action_change_server_state
+    - utter_is_there_anything_else
+* deny
+    - utter_goodbye
  

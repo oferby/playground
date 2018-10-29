@@ -24,6 +24,8 @@ actions:
 - action_say_ok
 - action_show_ecs
 - action_change_server_state
+- action_clear_invalid_entry
+- utter_invalid_server_name
 config:
   store_entities_as_slots: true
 entities:
@@ -55,6 +57,9 @@ slots:
   image_type:
     initial_value: null
     type: rasa_core.slots.TextSlot
+  isInvalidEntry:
+    initial_value: null
+    type: rasa_core.slots.BooleanSlot
   memory_size:
     initial_value: null
     type: rasa_core.slots.TextSlot
@@ -98,6 +103,8 @@ templates:
   utter_greet:
   - text: Hello, what can I do for you today?
   - text: Hello, how can I help you?
+  utter_invalid_server_name:
+  - text: I didn't get that server name... Please re-enter.
   utter_is_there_anything_else:
   - text: Is there anything else?
   - text: Can I help you with another request?
@@ -108,11 +115,3 @@ templates:
   - text: understand show bms
   utter_show_ecs:
   - text: understand show ecs
-  utter_state_1:
-  - text: state 1
-  utter_state_2:
-  - text: state 2
-  utter_state_3:
-  - text: state 3
-  utter_state_4:
-  - text: state 4

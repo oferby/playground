@@ -16,12 +16,20 @@
     "utter_goodbye": {
       "slots": []
     }, 
+    "action_change_server_state": {
+      "slots": [
+        "isInvalidEntry"
+      ]
+    }, 
     "action_listen": {
       "slots": [
         "name"
       ]
     }, 
     "action_say_ok": {
+      "slots": []
+    }, 
+    "utter_invalid_server_name": {
       "slots": []
     }
   }

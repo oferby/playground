@@ -15,6 +15,7 @@
     "entity_vm_state", 
     "entity_name", 
     "slot_image_type_0", 
+    "slot_isInvalidEntry_0", 
     "slot_memory_size_0", 
     "slot_name_0", 
     "slot_num_of_cpus_0", 
@@ -45,6 +46,8 @@
     "prev_utter_state_4", 
     "prev_action_say_ok", 
     "prev_action_show_ecs", 
-    "prev_action_change_server_state"
+    "prev_action_change_server_state", 
+    "prev_action_clear_invalid_entry", 
+    "prev_utter_invalid_server_name"
   ]
 }
