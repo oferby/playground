@@ -1,0 +1,118 @@
+actions:
+- utter_greet
+- utter_goodbye
+- utter_let_me_check
+- utter_done
+- utter_is_there_anything_else
+- utter_ask_image_type
+- utter_ask_num_of_cpus
+- utter_ask_memory_size
+- utter_ask_confirm_create_ecs
+- utter_get_server_name
+- utter_bye
+- actions.ActionShowEcs
+- actions.ActionCreateEcs
+- actions.ActionCheckConfirmation
+- utter_show_ecs
+- utter_create_bms
+- utter_show_bms
+- utter_ecs_change_state
+- utter_state_1
+- utter_state_2
+- utter_state_3
+- utter_state_4
+- action_say_ok
+- action_show_ecs
+- action_change_server_state
+config:
+  store_entities_as_slots: true
+entities:
+- num_of_cpus
+- image_type
+- memory_size
+- vm_state
+- name
+intents:
+- ecs_change_state:
+    use_entities: true
+- deny:
+    use_entities: true
+- create_ecs:
+    use_entities: true
+- create_bms:
+    use_entities: true
+- confirm:
+    use_entities: true
+- show_ecs:
+    use_entities: true
+- bye:
+    use_entities: true
+- show_bms:
+    use_entities: true
+- greeting:
+    use_entities: true
+slots:
+  image_type:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  memory_size:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  name:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  num_of_cpus:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+templates:
+  utter_ask_confirm_create_ecs:
+  - text: Please confirm creating ECS
+  utter_ask_image_type:
+  - buttons:
+    - payload: fedora
+      title: Fedora
+    - payload: ubuntu
+      title: Ubuntu
+    - payload: windows
+      title: Windows
+    text: What image would you like?
+  utter_ask_memory_size:
+  - text: How much memory do you need?
+  utter_ask_num_of_cpus:
+  - text: How many CPUs would you like?
+  utter_bye:
+  - text: Bye
+  - text: See you later
+  utter_create_bms:
+  - text: understand create bms
+  utter_done:
+  - text: Done.
+  utter_ecs_change_state:
+  - text: understand ecs change state
+  utter_get_server_name:
+  - text: what is the name of the server?
+  utter_goodbye:
+  - text: OK, see you next time
+  - text: Bye, see you.
+  - text: Goodbye. Come back soon.
+  utter_greet:
+  - text: Hello, what can I do for you today?
+  - text: Hello, how can I help you?
+  utter_is_there_anything_else:
+  - text: Is there anything else?
+  - text: Can I help you with another request?
+  utter_let_me_check:
+  - text: Give me a minute to check
+  - text: Checking... will be back in a sec.
+  utter_show_bms:
+  - text: understand show bms
+  utter_show_ecs:
+  - text: understand show ecs
+  utter_state_1:
+  - text: state 1
+  utter_state_2:
+  - text: state 2
+  utter_state_3:
+  - text: state 3
+  utter_state_4:
+  - text: state 4

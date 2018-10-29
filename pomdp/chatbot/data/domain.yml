@@ -1,0 +1,108 @@
+slots:
+    num_of_cpus:
+      type:   text
+    image_type:
+      type:   text
+    memory_size:
+      type:   text
+    name:
+      type: text
+
+entities:
+- num_of_cpus
+- image_type
+- memory_size
+- vm_state
+- name
+
+
+intents:
+  - greeting
+  - create_ecs
+  - show_ecs
+  - create_bms
+  - show_bms
+  - ecs_change_state
+  - confirm
+  - deny
+  - bye
+
+templates:
+  utter_greet:
+    - "Hello, what can I do for you today?"
+    - "Hello, how can I help you?"
+  utter_goodbye:
+    - "OK, see you next time"
+    - "Bye, see you."
+    - "Goodbye. Come back soon."
+  utter_let_me_check:
+    - "Give me a minute to check"
+    - "Checking... will be back in a sec."
+  utter_done:
+    - "Done."
+  utter_is_there_anything_else:
+    - "Is there anything else?"
+    - "Can I help you with another request?"
+  utter_ask_image_type:
+    - text: "What image would you like?"
+      buttons:
+      - title:  "Fedora"
+        payload: "fedora"
+      - title:  "Ubuntu"
+        payload:  "ubuntu"
+      - title: "Windows"
+        payload: "windows"
+  utter_ask_num_of_cpus:
+    - "How many CPUs would you like?"
+  utter_ask_memory_size:
+    - "How much memory do you need?"
+  utter_ask_confirm_create_ecs:
+    - "Please confirm creating ECS"
+  utter_bye:
+    - "Bye"
+    - "See you later"
+  utter_show_ecs:
+    - "understand show ecs"
+  utter_ecs_change_state:
+    - "understand ecs change state"
+  utter_get_server_name:
+    - "what is the name of the server?"
+  utter_create_bms:
+    - "understand create bms"
+  utter_show_bms:
+    - "understand show bms"
+  utter_state_1:
+    - "state 1"
+  utter_state_2:
+    - "state 2"
+  utter_state_3:
+    - "state 3"
+  utter_state_4:
+    - "state 4"
+
+actions:
+  - utter_greet
+  - utter_goodbye
+  - utter_let_me_check
+  - utter_done
+  - utter_is_there_anything_else
+  - utter_ask_image_type
+  - utter_ask_num_of_cpus
+  - utter_ask_memory_size
+  - utter_ask_confirm_create_ecs
+  - utter_get_server_name
+  - utter_bye
+  - actions.ActionShowEcs
+  - actions.ActionCreateEcs
+  - actions.ActionCheckConfirmation
+  - utter_show_ecs
+  - utter_create_bms
+  - utter_show_bms
+  - utter_ecs_change_state
+  - utter_state_1
+  - utter_state_2
+  - utter_state_3
+  - utter_state_4
+  - action_say_ok
+  - action_show_ecs
+  - action_change_server_state
