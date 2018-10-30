@@ -1,5 +1,5 @@
-from keras.models import Sequential
-from keras.layers import Dense
+from keras_tests.models import Sequential
+from keras_tests.layers import Dense
 
 
 def get_model(n_actions, n_obs):

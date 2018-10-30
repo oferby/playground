@@ -5,5 +5,5 @@ from scipy.stats import norm
 import gzip
 import os
 
-from keras.datasets import fashion_mnist, mnist
+from keras_tests.datasets import fashion_mnist, mnist
 
