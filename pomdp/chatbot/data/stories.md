@@ -55,14 +55,14 @@
 ## request information 1
 * request_information
     - action_request_info
-    - slot{"isInvalidEntry": "True"}
+    - slot{"isInvalidEntry": true}
     - utter_solution_unknown
     - action_restart
 
 ## request information 2
 * request_information{'component':'oss'}
     - action_request_info
-    - slot{"slot_action_info_ok": "True"}
+    - slot{"slot_action_info_ok": true}
     - utter_is_there_anything_else
     - action_restart         
     
