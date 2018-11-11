@@ -3,8 +3,8 @@ from collections import deque
 
 import gym
 import numpy as np
-from keras.models import load_model
-from keras.utils import to_categorical
+from keras_tests.models import load_model
+from keras_tests.utils import to_categorical
 
 import Reinforcement_Learning.gym.rl.net as nn
 

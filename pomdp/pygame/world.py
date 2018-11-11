@@ -17,7 +17,9 @@ class World:
 
         if self.check_valid_action(new_pos, a):
             self.agent_location = new_pos
-            return self.agent_location
+
+        reward, done = self.get_reward()
+        return self.agent_location, reward, done
 
     def check_valid_action(self, new_location, a):
         if not all([True if x > 1 else False for x in new_location]):
@@ -32,12 +34,12 @@ class World:
         if a == 0:
             print(new_location[0], new_location[0] + 30, new_location[1])
             s = self.surface[new_location[0]: new_location[0] + 30, new_location[1]]
-            print(s)
+            # print(s)
 
         if a == 1:
             s = self.surface[new_location[0] + 30, new_location[1]: new_location[1] + 30]
-            print(new_location[0] + 30, new_location[1], new_location[1] + 30)
-            print(s)
+            # print(new_location[0] + 30, new_location[1], new_location[1] + 30)
+            # print(s)
 
         if self.check_surface(s):
             return False
@@ -51,3 +53,8 @@ class World:
 
     def set_surface(self, surface):
         self.surface = surface
+
+    def get_reward(self):
+        if self.agent_location[0] == self.target_location[0] and self.target_location[1] == self.agent_location[1]:
+            return 100, True
+        return -1, False
