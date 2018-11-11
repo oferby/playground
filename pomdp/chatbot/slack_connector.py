@@ -14,9 +14,9 @@ from rasa_core.training import online
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.DEBUG)
 
-TOKEN = 'xoxp-331933815733-331258863217-466205375601-9d7740532ac8563ba3305fa2969b8b08'
-BOT_TOKEN = 'xoxb-331933815733-467511538663-dEYz2uECXrHqjMf1XlJ7tIiw'
-VERIFICATION_TOKEN = 'Z0qtCWe8FPf8NLeuH12UiqZz'
+TOKEN = 'xoxp-'
+BOT_TOKEN = 'xoxb-'
+VERIFICATION_TOKEN = 'Z0'
 
 inter = RasaNLUInterpreter("./models/current/nlu", "../data/nlu_config.yml")
 agent = Agent.load('models/dialogue', interpreter=inter,
