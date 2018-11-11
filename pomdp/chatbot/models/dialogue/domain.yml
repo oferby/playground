@@ -1,3 +1,5 @@
+%YAML 1.1
+---
 actions:
 - utter_greet
 - utter_goodbye
@@ -26,6 +28,14 @@ actions:
 - action_change_server_state
 - action_clear_invalid_entry
 - utter_invalid_server_name
+- utter_s6_ecs
+- utter_ask_learn_more
+- utter_offer_s3_ecs
+- utter_ok
+- utter_solution_unknown
+- action_request_solution
+- action_request_info
+- action_restart
 config:
   store_entities_as_slots: true
 entities:
@@ -34,26 +44,42 @@ entities:
 - memory_size
 - vm_state
 - name
+- application
+- component
+- feature
 intents:
-- ecs_change_state:
-    use_entities: true
-- deny:
+- greeting:
     use_entities: true
 - create_ecs:
     use_entities: true
-- create_bms:
-    use_entities: true
-- confirm:
-    use_entities: true
 - show_ecs:
     use_entities: true
-- bye:
+- create_bms:
     use_entities: true
 - show_bms:
     use_entities: true
-- greeting:
+- ecs_change_state:
+    use_entities: true
+- confirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- bye:
+    use_entities: true
+- request_solution:
+    use_entities: true
+- request_information:
     use_entities: true
 slots:
+  application:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  component:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  feature:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
   image_type:
     initial_value: null
     type: rasa_core.slots.TextSlot
@@ -69,6 +95,18 @@ slots:
   num_of_cpus:
     initial_value: null
     type: rasa_core.slots.TextSlot
+  slot_action_info_ecs:
+    initial_value: null
+    type: rasa_core.slots.BooleanSlot
+  slot_action_info_ok:
+    initial_value: null
+    type: rasa_core.slots.BooleanSlot
+  slot_action_info_oss:
+    initial_value: null
+    type: rasa_core.slots.BooleanSlot
+  vm_state:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
 templates:
   utter_ask_confirm_create_ecs:
   - text: Please confirm creating ECS
@@ -81,6 +119,8 @@ templates:
     - payload: windows
       title: Windows
     text: What image would you like?
+  utter_ask_learn_more:
+  - text: Are you interasted to learn more?
   utter_ask_memory_size:
   - text: How much memory do you need?
   utter_ask_num_of_cpus:
@@ -88,6 +128,13 @@ templates:
   utter_bye:
   - text: Bye
   - text: See you later
+  utter_confirm_button:
+  - buttons:
+    - payload: confirm
+      title: 'Yes'
+    - payload: deny
+      title: 'No'
+    text: Are you sure?
   utter_create_bms:
   - text: understand create bms
   utter_done:
@@ -107,11 +154,22 @@ templates:
   - text: I didn't get that server name... Please re-enter.
   utter_is_there_anything_else:
   - text: Is there anything else?
-  - text: Can I help you with another request?
   utter_let_me_check:
   - text: Give me a minute to check
   - text: Checking... will be back in a sec.
+  utter_offer_s3_ecs:
+  - text: S3 ECS is a good fit for websites and web applications, small-scale databases
+      and cache servers, and small- and medium-load enterprise applications
+  utter_ok:
+  - text: OK
+  utter_s6_ecs:
+  - text: S6 ECS is good for generalized websites and web applications, including
+      microservices; low-latency interactive applications; small- and medium-sized
+      databases; virtual desktops; development, build and stage environments; code
+      repositories; product prototypes
   utter_show_bms:
   - text: understand show bms
   utter_show_ecs:
   - text: understand show ecs
+  utter_solution_unknown:
+  - text: I don't understand what you are looking for...

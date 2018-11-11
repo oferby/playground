@@ -5,10 +5,25 @@ slots:
       type:   text
     memory_size:
       type:   text
+    vm_state:
+      type: text
     name:
       type: text
     isInvalidEntry:
       type: bool
+    application:
+      type: text
+    feature:
+      type: text
+    component:
+      type: text
+    slot_action_info_ok:
+      type: bool
+    slot_action_info_oss:
+      type: bool
+    slot_action_info_ecs:
+      type: bool
+
 
 entities:
 - num_of_cpus
@@ -16,7 +31,9 @@ entities:
 - memory_size
 - vm_state
 - name
-
+- application
+- component
+- feature
 
 intents:
   - greeting
@@ -28,6 +45,8 @@ intents:
   - confirm
   - deny
   - bye
+  - request_solution
+  - request_information
 
 templates:
   utter_greet:
@@ -43,8 +62,16 @@ templates:
   utter_done:
     - "Done."
   utter_is_there_anything_else:
-    - "Is there anything else?"
-    - "Can I help you with another request?"
+  - text: "Is there anything else?"
+
+  utter_confirm_button:
+  - text: "Are you sure?"
+    buttons:
+      - title: "Yes"
+        payload: "confirm"
+      - title: "No"
+        payload: "deny"
+
   utter_ask_image_type:
     - text: "What image would you like?"
       buttons:
@@ -75,6 +102,16 @@ templates:
     - "understand show bms"
   utter_invalid_server_name:
     - "I didn't get that server name... Please re-enter."
+  utter_offer_s3_ecs:
+    - "S3 ECS is a good fit for websites and web applications, small-scale databases and cache servers, and small- and medium-load enterprise applications"
+  utter_ask_learn_more:
+    - "Are you interasted to learn more?"
+  utter_s6_ecs:
+    - "S6 ECS is good for generalized websites and web applications, including microservices; low-latency interactive applications; small- and medium-sized databases; virtual desktops; development, build and stage environments; code repositories; product prototypes"
+  utter_ok:
+    - "OK"
+  utter_solution_unknown:
+    - "I don't understand what you are looking for..."
 
 actions:
   - utter_greet
@@ -104,3 +141,12 @@ actions:
   - action_change_server_state
   - action_clear_invalid_entry
   - utter_invalid_server_name
+  - utter_s6_ecs
+  - utter_ask_learn_more
+  - utter_offer_s3_ecs
+  - utter_ok
+  - utter_solution_unknown
+  - action_request_solution
+  - action_request_info
+  - action_restart
+  - action_reset_all_slots

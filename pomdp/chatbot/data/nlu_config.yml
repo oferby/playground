@@ -1,9 +1,10 @@
 language: "en"
-
+project: "anan"
 pipeline:
 - name: "tokenizer_whitespace"
 - name: "ner_crf"
 - name: "ner_synonyms"
+- name: "nlp_spacy"
 - name: "intent_featurizer_count_vectors"
 - name: "intent_classifier_tensorflow_embedding"
 

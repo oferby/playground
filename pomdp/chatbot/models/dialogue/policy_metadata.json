@@ -1,36 +1,38 @@
 {
-  "max_histories": [
-    null, 
-    3, 
-    3
-  ], 
-  "python": "2.7.12", 
-  "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble", 
-  "rasa_core": "0.11.12", 
-  "policy_names": [
-    "rasa_core.policies.fallback.FallbackPolicy", 
-    "rasa_core.policies.memoization.MemoizationPolicy", 
-    "rasa_core.policies.keras_policy.KerasPolicy"
-  ], 
   "action_fingerprints": {
-    "utter_goodbye": {
+    "action_listen": {
+      "slots": [
+        "application",
+        "name",
+        "vm_state"
+      ]
+    },
+    "action_restart": {
       "slots": []
-    }, 
+    },
+    "action_request_info": {
+      "slots": [
+        "slot_action_info_ok",
+        "isInvalidEntry"
+      ]
+    },
     "action_change_server_state": {
       "slots": [
         "isInvalidEntry"
       ]
-    }, 
-    "action_listen": {
-      "slots": [
-        "name"
-      ]
-    }, 
-    "action_say_ok": {
-      "slots": []
-    }, 
-    "utter_invalid_server_name": {
-      "slots": []
     }
-  }
+  },
+  "rasa_core": "0.11.12",
+  "python": "3.6.7",
+  "max_histories": [
+    null,
+    3,
+    3
+  ],
+  "ensemble_name": "rasa_core.policies.ensemble.SimplePolicyEnsemble",
+  "policy_names": [
+    "rasa_core.policies.fallback.FallbackPolicy",
+    "rasa_core.policies.memoization.MemoizationPolicy",
+    "rasa_core.policies.keras_policy.KerasPolicy"
+  ]
 }

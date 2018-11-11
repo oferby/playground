@@ -2,14 +2,21 @@
 
 To start the on-line trainer, go to the data directory and run:
 
-rasa-nlu-trainer
+    rasa-nlu-trainer
 
 
 ## Train the model
 
-run
-
     python3.6 -m rasa_nlu.train -c data/nlu_config.yml --data data/nlu_data.json -o models --fixed_model_name nlu --project current --verbose
+
+## run NLU as standalone server
+
+    python3.6 -m rasa_nlu.server --path models/current
+
+
+## send query to stand alone server
+
+
 
 ## Train dialogue manager
 
@@ -36,7 +43,14 @@ This has a bug. use the code instead
 
 ## Test the code
     
-run
-
     python3.6 nlu_test.py
     
+
+
+## Send message in Slack to me (Ofer)
+    curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
+
+## Send a message to Anan in Slack
+    curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}'  https://hooks.slack.com/services/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
+
+ 

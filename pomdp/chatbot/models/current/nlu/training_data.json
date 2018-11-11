@@ -29,6 +29,12 @@
             "end": 10,
             "value": "ubuntu",
             "entity": "image_type"
+          },
+          {
+            "start": 11,
+            "end": 13,
+            "value": "16",
+            "entity": "@number"
           }
         ],
         "text": "add ubuntu 16 server"
@@ -473,6 +479,210 @@
       {
         "intent": "show_ecs",
         "text": "show me my servers"
+      },
+      {
+        "intent": "request_solution",
+        "entities": [
+          {
+            "start": 29,
+            "end": 45,
+            "value": "web_applications",
+            "entity": "application"
+          }
+        ],
+        "text": "what type of ecs is good for web applications?"
+      },
+      {
+        "intent": "request_ecs_type",
+        "entities": [
+          {
+            "start": 30,
+            "end": 50,
+            "value": "business",
+            "entity": "application"
+          }
+        ],
+        "text": "which ecs should I choose for business application"
+      },
+      {
+        "intent": "request_solution",
+        "entities": [
+          {
+            "start": 7,
+            "end": 23,
+            "value": "high performance",
+            "entity": "feature"
+          },
+          {
+            "start": 24,
+            "end": 39,
+            "value": "ecs",
+            "entity": "component"
+          }
+        ],
+        "text": "I need high performance virtual machine"
+      },
+      {
+        "intent": "request_solution",
+        "entities": [
+          {
+            "start": 18,
+            "end": 33,
+            "value": "video streaming",
+            "entity": "application"
+          },
+          {
+            "start": 7,
+            "end": 13,
+            "value": "ecs",
+            "entity": "component"
+          }
+        ],
+        "text": "I need server for video streaming"
+      },
+      {
+        "intent": "request_solution",
+        "entities": [
+          {
+            "start": 38,
+            "end": 45,
+            "value": "web_applications",
+            "entity": "application"
+          },
+          {
+            "start": 16,
+            "end": 30,
+            "value": "ecs",
+            "entity": "component"
+          }
+        ],
+        "text": "I'm looking for virtual server for my website"
+      },
+      {
+        "intent": "request_solution",
+        "entities": [
+          {
+            "start": 31,
+            "end": 51,
+            "value": "small_db",
+            "entity": "application"
+          },
+          {
+            "start": 13,
+            "end": 16,
+            "value": "ecs",
+            "entity": "component"
+          }
+        ],
+        "text": "what type of ecs can I use for small scale database?"
+      },
+      {
+        "intent": "request_solution",
+        "entities": [
+          {
+            "start": 34,
+            "end": 43,
+            "value": "web store",
+            "entity": "application"
+          }
+        ],
+        "text": "I'm looking for a solution for my web store"
+      },
+      {
+        "intent": "request_solution",
+        "entities": [
+          {
+            "start": 27,
+            "end": 35,
+            "value": "webstore",
+            "entity": "application"
+          }
+        ],
+        "text": "do you have a solution for webstore?"
+      },
+      {
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 8,
+            "end": 28,
+            "value": "ecs",
+            "entity": "component"
+          }
+        ],
+        "text": "What is Elastic Cloud Server?"
+      },
+      {
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 8,
+            "end": 30,
+            "value": "oss",
+            "entity": "component"
+          }
+        ],
+        "text": "What is Object Storage Service?"
+      },
+      {
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 8,
+            "end": 11,
+            "value": "oss",
+            "entity": "component"
+          }
+        ],
+        "text": "What is OSS?"
+      },
+      {
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 8,
+            "end": 22,
+            "value": "ecs",
+            "entity": "component"
+          }
+        ],
+        "text": "what is elastic server?"
+      },
+      {
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 22,
+            "end": 25,
+            "value": "oss",
+            "entity": "component"
+          }
+        ],
+        "text": "i want information on oss"
+      },
+      {
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 21,
+            "end": 24,
+            "value": "oss",
+            "entity": "component"
+          }
+        ],
+        "text": "i want to know about oss"
+      },
+      {
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 8,
+            "end": 11,
+            "value": "ecs",
+            "entity": "component"
+          }
+        ],
+        "text": "what is ecs?"
       }
     ],
     "regex_features": [],

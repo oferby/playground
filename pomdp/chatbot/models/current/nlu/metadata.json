@@ -45,6 +45,12 @@
             "class": "rasa_nlu.extractors.entity_synonyms.EntitySynonymMapper"
         },
         {
+            "model": "en",
+            "case_sensitive": false,
+            "name": "nlp_spacy",
+            "class": "rasa_nlu.utils.spacy_utils.SpacyNLP"
+        },
+        {
             "token_pattern": "(?u)\\b\\w\\w+\\b",
             "strip_accents": null,
             "stop_words": null,
@@ -92,6 +98,6 @@
         }
     ],
     "training_data": "training_data.json",
-    "trained_at": "20181029-091333",
+    "trained_at": "20181111-100123",
     "rasa_nlu_version": "0.13.7"
 }

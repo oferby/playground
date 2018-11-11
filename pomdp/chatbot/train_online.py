@@ -10,15 +10,13 @@ from rasa_core.agent import Agent
 from rasa_core.interpreter import RasaNLUInterpreter, EndpointConfig
 from rasa_core.training import online
 
-
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)
 
 TOKEN = 'xoxp-331933815733-331258863217-466205375601-9d7740532ac8563ba3305fa2969b8b08'
 BOT_TOKEN = 'xoxb-331933815733-467511538663-dEYz2uECXrHqjMf1XlJ7tIiw'
 VERIFICATION_TOKEN = 'Z0qtCWe8FPf8NLeuH12UiqZz'
 
-inter = RasaNLUInterpreter("./models/current/nlu", "../data/nlu_config.yml")
+inter = RasaNLUInterpreter("./models/current/nlu")
 agent = Agent.load('models/dialogue', interpreter=inter,
                    action_endpoint=EndpointConfig("http://localhost:5055/webhook"))
 
@@ -27,5 +25,4 @@ if __name__ == '__main__':
         'slack_token': BOT_TOKEN,
         'slack_channel': 'DDQDG62BU'
     })
-    logger.debug('starting channel....')
-    agent.handle_channels([slack_input], 5051)
+    online.run_online_learning(agent)
