@@ -62,7 +62,7 @@
 ## request information 2
 * request_information{'component':'oss'}
     - action_request_info
-    - slot{"slot_action_info_ok": true}
+    - slot{"info_ok": true}
     - utter_is_there_anything_else
     - action_restart         
     

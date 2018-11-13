@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.huawei.ibcs.actions";
+option java_outer_classname = "ActionProto";
+option objc_class_prefix = "HLW";
+
+package actions;
+
+service CloudActionService {
+    rpc getAction (CloudActionRequest) returns (CloudActionResponse) {
+    }
+}
+
+message CloudActionRequest {
+    string action = 1;
+    map <string, string> params = 2;
+}
+
+message CloudActionResponse {
+    repeated string response = 1;
+}
+

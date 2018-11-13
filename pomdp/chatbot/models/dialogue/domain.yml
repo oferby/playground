@@ -36,6 +36,7 @@ actions:
 - action_request_solution
 - action_request_info
 - action_restart
+- action_reset_all_slots
 config:
   store_entities_as_slots: true
 entities:
@@ -83,6 +84,15 @@ slots:
   image_type:
     initial_value: null
     type: rasa_core.slots.TextSlot
+  info_ecs:
+    initial_value: null
+    type: rasa_core.slots.BooleanSlot
+  info_ok:
+    initial_value: null
+    type: rasa_core.slots.BooleanSlot
+  info_oss:
+    initial_value: null
+    type: rasa_core.slots.BooleanSlot
   isInvalidEntry:
     initial_value: null
     type: rasa_core.slots.BooleanSlot
@@ -95,15 +105,6 @@ slots:
   num_of_cpus:
     initial_value: null
     type: rasa_core.slots.TextSlot
-  slot_action_info_ecs:
-    initial_value: null
-    type: rasa_core.slots.BooleanSlot
-  slot_action_info_ok:
-    initial_value: null
-    type: rasa_core.slots.BooleanSlot
-  slot_action_info_oss:
-    initial_value: null
-    type: rasa_core.slots.BooleanSlot
   vm_state:
     initial_value: null
     type: rasa_core.slots.TextSlot

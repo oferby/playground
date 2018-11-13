@@ -654,19 +654,19 @@
           {
             "start": 8,
             "end": 30,
-            "value": "oss",
+            "value": "obs",
             "entity": "component"
           }
         ]
       },
       {
-        "text": "What is OSS?",
+        "text": "What is OBS?",
         "intent": "request_information",
         "entities": [
           {
             "start": 8,
             "end": 11,
-            "value": "oss",
+            "value": "obs",
             "entity": "component"
           }
         ]
@@ -684,25 +684,25 @@
         ]
       },
       {
-        "text": "i want information on oss",
+        "text": "i want information on obs",
         "intent": "request_information",
         "entities": [
           {
             "start": 22,
             "end": 25,
-            "value": "oss",
+            "value": "obs",
             "entity": "component"
           }
         ]
       },
       {
-        "text": "i want to know about oss",
+        "text": "i want to know about obs",
         "intent": "request_information",
         "entities": [
           {
             "start": 21,
             "end": 24,
-            "value": "oss",
+            "value": "obs",
             "entity": "component"
           }
         ]

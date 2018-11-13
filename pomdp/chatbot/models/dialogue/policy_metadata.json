@@ -2,23 +2,23 @@
   "action_fingerprints": {
     "action_listen": {
       "slots": [
+        "vm_state",
         "application",
-        "name",
-        "vm_state"
+        "name"
       ]
     },
     "action_restart": {
       "slots": []
     },
-    "action_request_info": {
-      "slots": [
-        "slot_action_info_ok",
-        "isInvalidEntry"
-      ]
-    },
     "action_change_server_state": {
       "slots": [
         "isInvalidEntry"
+      ]
+    },
+    "action_request_info": {
+      "slots": [
+        "isInvalidEntry",
+        "info_ok"
       ]
     }
   },

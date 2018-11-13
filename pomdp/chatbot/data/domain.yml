@@ -17,11 +17,11 @@ slots:
       type: text
     component:
       type: text
-    slot_action_info_ok:
+    info_ok:
       type: bool
-    slot_action_info_oss:
+    info_oss:
       type: bool
-    slot_action_info_ecs:
+    info_ecs:
       type: bool
 
 

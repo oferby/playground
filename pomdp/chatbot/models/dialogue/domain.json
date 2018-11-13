@@ -23,13 +23,13 @@
     "slot_component_0",
     "slot_feature_0",
     "slot_image_type_0",
+    "slot_info_ecs_0",
+    "slot_info_ok_0",
+    "slot_info_oss_0",
     "slot_isInvalidEntry_0",
     "slot_memory_size_0",
     "slot_name_0",
     "slot_num_of_cpus_0",
-    "slot_slot_action_info_ecs_0",
-    "slot_slot_action_info_ok_0",
-    "slot_slot_action_info_oss_0",
     "slot_vm_state_0",
     "prev_action_listen",
     "prev_action_restart",
@@ -67,6 +67,7 @@
     "prev_utter_ok",
     "prev_utter_solution_unknown",
     "prev_action_request_solution",
-    "prev_action_request_info"
+    "prev_action_request_info",
+    "prev_action_reset_all_slots"
   ]
 }
