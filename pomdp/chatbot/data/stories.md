@@ -60,9 +60,23 @@
     - action_restart
 
 ## request information 2
-* request_information{'component':'oss'}
+* request_information{"component":"oss"}
     - action_request_info
     - slot{"info_ok": true}
     - utter_is_there_anything_else
     - action_restart         
     
+## request info sent to db
+* request_information{"component":"oss", "q_type":"what-is"}
+    - action_query_db
+    - slot{"dbQuerySuccessful": true}
+    - action_restart
+    
+## request info sent to db and not found
+* request_information{"component":"oss", "q_type":"what-is"}
+    - action_query_db
+    - slot{"isInvalidEntry": true}
+    - utter_dont_have_answer
+    - action_restart
+
+

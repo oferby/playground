@@ -37,6 +37,8 @@ actions:
 - action_request_info
 - action_restart
 - action_reset_all_slots
+- action_query_db
+- utter_dont_have_answer
 config:
   store_entities_as_slots: true
 entities:
@@ -48,6 +50,7 @@ entities:
 - application
 - component
 - feature
+- q_type
 intents:
 - greeting:
     use_entities: true
@@ -78,6 +81,9 @@ slots:
   component:
     initial_value: null
     type: rasa_core.slots.TextSlot
+  dbQuerySuccessful:
+    initial_value: null
+    type: rasa_core.slots.BooleanSlot
   feature:
     initial_value: null
     type: rasa_core.slots.TextSlot
@@ -103,6 +109,9 @@ slots:
     initial_value: null
     type: rasa_core.slots.TextSlot
   num_of_cpus:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
+  q_type:
     initial_value: null
     type: rasa_core.slots.TextSlot
   vm_state:
@@ -140,6 +149,8 @@ templates:
   - text: understand create bms
   utter_done:
   - text: Done.
+  utter_dont_have_answer:
+  - text: Sorry but I don't have answer to this question.
   utter_ecs_change_state:
   - text: understand ecs change state
   utter_get_server_name:

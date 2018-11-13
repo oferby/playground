@@ -683,6 +683,60 @@
           }
         ],
         "text": "what is ecs?"
+      },
+      {
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "what-is",
+            "entity": "q_type"
+          },
+          {
+            "start": 8,
+            "end": 11,
+            "value": "rds",
+            "entity": "component"
+          }
+        ],
+        "text": "what is rds?"
+      },
+      {
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "what-is",
+            "entity": "q_type"
+          },
+          {
+            "start": 8,
+            "end": 13,
+            "value": "mysql",
+            "entity": "component"
+          }
+        ],
+        "text": "what is mysql?"
+      },
+      {
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "what is",
+            "entity": "q_type"
+          },
+          {
+            "start": 8,
+            "end": 16,
+            "value": "postgres",
+            "entity": "component"
+          }
+        ],
+        "text": "what is postgres?"
       }
     ],
     "regex_features": [],

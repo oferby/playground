@@ -2,9 +2,11 @@
   "action_fingerprints": {
     "action_listen": {
       "slots": [
+        "component",
         "vm_state",
+        "name",
         "application",
-        "name"
+        "q_type"
       ]
     },
     "action_restart": {
@@ -15,10 +17,16 @@
         "isInvalidEntry"
       ]
     },
+    "action_query_db": {
+      "slots": [
+        "dbQuerySuccessful",
+        "isInvalidEntry"
+      ]
+    },
     "action_request_info": {
       "slots": [
-        "isInvalidEntry",
-        "info_ok"
+        "info_ok",
+        "isInvalidEntry"
       ]
     }
   },

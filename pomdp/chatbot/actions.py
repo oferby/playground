@@ -1,8 +1,29 @@
 from rasa_core_sdk import Action
 from rasa_core_sdk.events import SlotSet, BotUttered, AllSlotsReset, Restarted
 import logging
+import pymongo
 
 logger = logging.getLogger(__name__)
+
+
+def get_client_collection(collection="info"):
+    client = pymongo.MongoClient()
+    db = client.vca
+    return db.get_collection(collection)
+
+
+def find_all_from_info(type, topic):
+    collection = get_client_collection()
+    results = collection.find({"type": type, "topic": topic})
+    result = []
+    for r in results:
+        result.append(r)
+    return result
+
+
+def find_one_from_info(type, topic):
+    collection = get_client_collection()
+    return collection.find_one({"type": type, "topic": topic})
 
 
 def say(text, dispatcher):
@@ -97,3 +118,19 @@ class ActionResetSlots(Action):
 
     def run(self, dispatcher, tracker, domain):
         return [AllSlotsReset()]
+
+
+class ActionGetInfoFromDb(Action):
+    def name(self):
+        return "action_query_db"
+
+    def run(self, dispatcher, tracker, domain):
+        slots = tracker.current_slot_values()
+        logger.debug("slots: {}".format(slots))
+        if slots['q_type'] and slots["component"]:
+            result = find_one_from_info(slots['q_type'], slots["component"])
+            if result:
+                say(result['text'], dispatcher)
+                return [SlotSet("dbQuerySuccessful", True)]
+
+        return [SlotSet("isInvalidEntry", True)]

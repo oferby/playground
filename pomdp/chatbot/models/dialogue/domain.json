@@ -19,8 +19,10 @@
     "entity_application",
     "entity_component",
     "entity_feature",
+    "entity_q_type",
     "slot_application_0",
     "slot_component_0",
+    "slot_dbQuerySuccessful_0",
     "slot_feature_0",
     "slot_image_type_0",
     "slot_info_ecs_0",
@@ -30,6 +32,7 @@
     "slot_memory_size_0",
     "slot_name_0",
     "slot_num_of_cpus_0",
+    "slot_q_type_0",
     "slot_vm_state_0",
     "prev_action_listen",
     "prev_action_restart",
@@ -68,6 +71,8 @@
     "prev_utter_solution_unknown",
     "prev_action_request_solution",
     "prev_action_request_info",
-    "prev_action_reset_all_slots"
+    "prev_action_reset_all_slots",
+    "prev_action_query_db",
+    "prev_utter_dont_have_answer"
   ]
 }

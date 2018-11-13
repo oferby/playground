@@ -23,6 +23,10 @@ slots:
       type: bool
     info_ecs:
       type: bool
+    q_type:
+      type: text
+    dbQuerySuccessful:
+      type: bool
 
 
 entities:
@@ -34,6 +38,7 @@ entities:
 - application
 - component
 - feature
+- q_type
 
 intents:
   - greeting
@@ -112,6 +117,8 @@ templates:
     - "OK"
   utter_solution_unknown:
     - "I don't understand what you are looking for..."
+  utter_dont_have_answer:
+    - "Sorry but I don't have answer to this question."
 
 actions:
   - utter_greet
@@ -150,3 +157,5 @@ actions:
   - action_request_info
   - action_restart
   - action_reset_all_slots
+  - action_query_db
+  - utter_dont_have_answer
