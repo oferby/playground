@@ -1,0 +1,90 @@
+##
+user: What Is RDS?
+	- do you have relational database solution?
+
+bot: HUAWEI CLOUD Relational Database Service (RDS) is a cloud-based web service that is reliable,
+scalable, easy to manage, and immediately ready for use.
+HUAWEI CLOUD RDS provides a comprehensive performance monitoring system,
+multi-level security protection measures, and a professional database management platform,
+allowing you to easily set up and scale a relational database.
+On the RDS console, you can perform almost all necessary tasks and no programming is required.
+The console simplifies operation procedures and reduces routine O&M workloads,
+so that you can focus on your application and service development.
+
+
+##
+user: do you have a database solution?
+	- can I have information on database solutions?
+	- I need information about databases
+	- I would like to get information on database solutions
+	- I'm looking for database solution
+	- what kind of databases do you have?
+
+bot:
+	inform: Sure.
+	inform: inform: You can use one of our several database solutions. Some of them are self-managed and some of them are a complete solution that we manage for you.
+	inform: We have a database solutions if you are only looking for database. We also have end-to-end solutions that can help you get a complete solution that will fulfill all your computations needs.
+	ask: Which of these option would you like?
+user: I would like database only
+	- I need just the database
+bot:
+	ask: Are you looking for self managed or a SaaS solution (we manage the database for you)?
+user: I'm looking for a managed solution.
+bot:
+	inform: We have solutions for Relashional databases (MySQL, Postgres or MS-SQL ), document database (MongoDB compatible) or Key-Value database (Redis).
+	ask: Which one of these interest you?
+user: I would like self-managed database
+	- I want database to manage by myself
+	- I want to manage it by myself
+bot:
+	inform: We have several self-managed databases.
+	ask: Which one of them would you like, MySQL, Postgres or MS-SQL?
+user: I want MySQL
+
+bot:
+	inform: OK. I'm ready to setup MySQL for you.
+	ask: Do you need anything else before I will do that? ( don't warry, I will ask for confirmation before running the setup ;-) )
+
+user: no. this is it.
+
+bot:
+	ask: Please confirm setting up MySQL. Should I proceed with the setup?
+
+user: yes. go ahead.
+
+bot:
+	inform: Done. This is how you should use the service:
+	inform: Your MySQL IP address is 1.1.1.1 and the port number is 3306. You can use any MySQL client to connect to it.
+
+##
+user: what is MySQL database?
+    - tell me more about MySQL
+    - can you give me more information about MySQL?
+
+bot:
+    inform: MySQL is one of the world's most popular open-source relational databases.
+    It works with the Linux, Apache, and Perl/PHP/Python (LAMP) model to provide efficient web solutions.
+    RDS for MySQL is reliable, scalable, inexpensive, easy to manage, and immediately ready for use.
+    RDS for MySQL uses mature architecture and applies to various web applications.
+    It is cost-effective and suitable for small- and medium-sized enterprises.
+    Visualized and controllable: The console provides comprehensive monitoring information and is easy to use.
+    You can flexibly adjust the required resources based on your service requirements and pay for only what you use.
+    For details about the versions supported by RDS for MySQL, see section DB Engines and Versions.
+
+##
+user: what is PostgreSQL?
+    - can you give me more information on PostgreSQL?
+bot:
+    inform: PostgreSQL is an open-source object-relational database management system with
+    an emphasis on extensibility and standards compliance.
+    It is known as the most advanced open-source database.
+    It applies to business-oriented online transaction processing (OLTP) scenarios and supports
+    NoSQL (JSON, XML, or hstore) and geographic information system (GIS) data types.
+    It has earned a reputation for reliability and data integrity, and applies to Internet websites,
+    location-based applications, and complex data object processing.
+    The postgis plugin is supported. Its space application is excellent and meets the international standards.
+    PostgreSQL offers functions similar to those of Oracle database systems, but is less expensive.
+    PostgreSQL applies to various scenarios and is cost-effective.
+    You can flexibly scale resources based on your service requirements and pay for only what you use.
+
+
