@@ -5,7 +5,9 @@
 
 ## create ecs path 
 * create_ecs
-    - action_say_ok
+    - utter_ask_image_type
+* create_ecs{"image_type":"ubuntu"}
+    - utter_ok
     - action_restart
 
 ## show ecs path
@@ -44,39 +46,20 @@
     - utter_goodbye
     - action_restart
  
- ## Generated Story -439388227201137117
-* request_solution{"application": "web application"}
-    - action_request_solution
-    - utter_ask_learn_more
-* confirm
-    - utter_ok
+## restart command from client
+* system_restart
     - action_restart
-
-## request information 1
-* request_information
-    - action_request_info
-    - slot{"isInvalidEntry": true}
-    - utter_solution_unknown
-    - action_restart
-
-## request information 2
-* request_information{"component":"oss"}
-    - action_request_info
-    - slot{"info_ok": true}
-    - utter_is_there_anything_else
-    - action_restart         
     
 ## request info sent to db
-* request_information{"component":"oss", "q_type":"what-is"}
+* request_information{"component":"obs", "q_type":"what-is"}
     - action_query_db
     - slot{"dbQuerySuccessful": true}
     - action_restart
     
 ## request info sent to db and not found
-* request_information{"component":"oss", "q_type":"what-is"}
+* request_information{"component":"obs", "q_type":"what-is"}
     - action_query_db
     - slot{"isInvalidEntry": true}
     - utter_dont_have_answer
     - action_restart
-
 

@@ -27,6 +27,8 @@ slots:
       type: text
     dbQuerySuccessful:
       type: bool
+    solution:
+      type: text
 
 
 entities:
@@ -39,6 +41,7 @@ entities:
 - component
 - feature
 - q_type
+- solution
 
 intents:
   - greeting
@@ -52,6 +55,7 @@ intents:
   - bye
   - request_solution
   - request_information
+  - system_restart
 
 templates:
   utter_greet:
@@ -78,7 +82,7 @@ templates:
         payload: "deny"
 
   utter_ask_image_type:
-    - text: "What image would you like?"
+    - text: "What image (Operating System) would you like?"
       buttons:
       - title:  "Fedora"
         payload: "fedora"
@@ -139,10 +143,6 @@ actions:
   - utter_create_bms
   - utter_show_bms
   - utter_ecs_change_state
-  - utter_state_1
-  - utter_state_2
-  - utter_state_3
-  - utter_state_4
   - action_say_ok
   - action_show_ecs
   - action_change_server_state
@@ -154,7 +154,6 @@ actions:
   - utter_ok
   - utter_solution_unknown
   - action_request_solution
-  - action_request_info
   - action_restart
   - action_reset_all_slots
   - action_query_db

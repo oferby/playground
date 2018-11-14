@@ -19,10 +19,6 @@ actions:
 - utter_create_bms
 - utter_show_bms
 - utter_ecs_change_state
-- utter_state_1
-- utter_state_2
-- utter_state_3
-- utter_state_4
 - action_say_ok
 - action_show_ecs
 - action_change_server_state
@@ -34,7 +30,6 @@ actions:
 - utter_ok
 - utter_solution_unknown
 - action_request_solution
-- action_request_info
 - action_restart
 - action_reset_all_slots
 - action_query_db
@@ -51,6 +46,7 @@ entities:
 - component
 - feature
 - q_type
+- solution
 intents:
 - greeting:
     use_entities: true
@@ -73,6 +69,8 @@ intents:
 - request_solution:
     use_entities: true
 - request_information:
+    use_entities: true
+- system_restart:
     use_entities: true
 slots:
   application:
@@ -114,6 +112,9 @@ slots:
   q_type:
     initial_value: null
     type: rasa_core.slots.TextSlot
+  solution:
+    initial_value: null
+    type: rasa_core.slots.TextSlot
   vm_state:
     initial_value: null
     type: rasa_core.slots.TextSlot
@@ -128,7 +129,7 @@ templates:
       title: Ubuntu
     - payload: windows
       title: Windows
-    text: What image would you like?
+    text: What image (Operating System) would you like?
   utter_ask_learn_more:
   - text: Are you interasted to learn more?
   utter_ask_memory_size:

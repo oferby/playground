@@ -80,30 +80,6 @@ class ActionRequestSolution(Action):
         return []
 
 
-class ActionRequestInformation(Action):
-    def name(self):
-        return 'action_request_info'
-
-    def run(self, dispatcher, tracker, domain):
-        logger.debug('current state: {}'.format(tracker.current_state()))
-        slots = tracker.current_slot_values()
-        # logger.debug('slots: {}'.format(slots))
-        if slots['component']:
-            if slots['component'] == 'oss':
-                logger.debug("got request for oss information")
-                say(
-                    "Object Storage Service (OBS) is a stable, secure, efficient, and easy-to-use cloud storage service. With Representational State Transfer Application Programming Interfaces (REST APIs), OBS is able to store unstructured data of any amount and form at 99.999999999% reliability (11 nines).",
-                    dispatcher)
-                return [SlotSet("info_ok", True)]
-            if slots["component"] == "ecs":
-                logger.debug("got request for ecs information")
-                say(
-                    "An Elastic Cloud Server (ECS) is a computing server consisting of vCPUs, memory, image, and Elastic Volume Service (EVS) disks that allow on-demand allocation and elastic scaling. ECSs integrate Virtual Private Cloud (VPC), virtual firewalls, and multi-data-copy capabilities to create an efficient, reliable, and secure computing environment. This ensures stable and uninterrupted operation of services. After creating an ECS, you can use it like using your local computer or physical server. ECSs support self-service creation, modification, and operation. You can create ECSs by specifying the vCPU, memory, image specifications, and login authentication. After creating an ECS, you can modify its specifications as required.",
-                    dispatcher)
-                return [SlotSet("info_ok", True)]
-        return [SlotSet("isInvalidEntry", True)]
-
-
 class ActionRestart(Action):
     def name(self):
         return "action_restart"

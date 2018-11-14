@@ -88,3 +88,8 @@ bot:
     You can flexibly scale resources based on your service requirements and pay for only what you use.
 
 
+
+user: why do I need GPU?
+    - what is GPU good for?
+bot:
+    GPU-accelerated Cloud Server (GACS) provides outstanding floating-point computing capabilities. They are suitable for scenarios that require real-time, highly concurrent massive computing, such as deep learning, scientific computing, CAE, 3D animation rendering, and CAD.
