@@ -47,6 +47,7 @@ entities:
 - feature
 - q_type
 - solution
+forms: []
 intents:
 - greeting:
     use_entities: true
@@ -74,48 +75,63 @@ intents:
     use_entities: true
 slots:
   application:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
   component:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
   dbQuerySuccessful:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.BooleanSlot
   feature:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
   image_type:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
   info_ecs:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.BooleanSlot
   info_ok:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.BooleanSlot
   info_oss:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.BooleanSlot
   isInvalidEntry:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.BooleanSlot
   memory_size:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
   name:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
   num_of_cpus:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
   q_type:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
   solution:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
   vm_state:
+    auto_fill: true
     initial_value: null
     type: rasa_core.slots.TextSlot
 templates:

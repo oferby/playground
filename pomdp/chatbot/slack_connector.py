@@ -8,7 +8,6 @@ import logging
 from rasa_core.channels.slack import SlackInput
 from rasa_core.agent import Agent
 from rasa_core.interpreter import RasaNLUInterpreter, EndpointConfig
-from rasa_core.training import online
 
 
 logger = logging.getLogger(__name__)
@@ -20,7 +19,8 @@ VERIFICATION_TOKEN = 'Z0'
 
 inter = RasaNLUInterpreter("./models/current/nlu", "../data/nlu_config.yml")
 agent = Agent.load('models/dialogue', interpreter=inter,
-                   action_endpoint=EndpointConfig("http://localhost:5055/webhook"))
+                   action_endpoint=EndpointConfig("http://localhost:5055/webhook"),
+                   )
 
 if __name__ == '__main__':
     slack_input = SlackInput.from_credentials({
