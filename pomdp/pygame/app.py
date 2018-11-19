@@ -33,11 +33,14 @@ world = W.World(pygame.surfarray.pixels2d(screen))
 
 obs = world.reset()
 done = False
+reward = 0
 while 1:
     action = agent.get_action(obs)
     if action is not None:
         obs, reward, done = world.take_action(action)
+        print("action: ", action, "obs: ", obs, "reward: ", reward)
     draw()
     world.set_surface(pygame.surfarray.pixels2d(screen))
     if done:
+        print("reward: ", reward)
         break

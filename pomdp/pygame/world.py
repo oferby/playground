@@ -1,6 +1,6 @@
 import numpy as np
 
-GREEN = 0, 255, 0
+GREEN = 65280
 
 
 class World:
@@ -22,10 +22,6 @@ class World:
         self.target_location = [550, 350]
 
     def take_action(self, a):
-        self.turn += 1
-        if self.turn > self.max_turns:
-            print('Max turns reached')
-            return None, None, True
 
         new_pos = [self.agent_location[0], self.agent_location[1]]
         if a == 0:
@@ -39,6 +35,11 @@ class World:
 
         if self.check_valid_action(new_pos, a):
             self.agent_location = new_pos
+
+        self.turn += 1
+        if self.turn > self.max_turns:
+            print('Max turns reached')
+            return self.get_obs(), -100, True
 
         reward, done = self.get_reward()
         return self.get_obs(), reward, done
@@ -54,7 +55,7 @@ class World:
 
         s = []
         if a == 0:
-            print(new_location[0], new_location[0] + 30, new_location[1])
+            # print(new_location[0], new_location[0] + 30, new_location[1])
             s = self.surface[new_location[0]: new_location[0] + 30, new_location[1]]
             # print(s)
 
@@ -78,11 +79,8 @@ class World:
     def check_surface(self, s):
         s = np.reshape(s, (30,))
         if any(x == 65280 for x in s):
-            print("found green")
+            # print("found green")
             return True
-        # if any(x == 16711680 for x in s):
-        #     print("found red")
-        #     return True
 
     def set_surface(self, surface):
         self.surface = surface
@@ -96,15 +94,33 @@ class World:
         sensors = [0, 0, 0, 0]
         x = self.agent_location[0] + 15
         y = self.agent_location[1] + 15
+
         _x = x
+        while _x != 0:
+            _x -= 1
+            if self.surface[_x, y] == GREEN:
+                sensors[3] = x - _x
+                break
+
+        _x = x
+        while _x != 599:
+            _x += 1
+            if self.surface[_x, y] == GREEN:
+                sensors[1] = _x - x
+                break
+
         _y = y
+        while _y != 0:
+            _y -= 1
+            if self.surface[x, _y] == GREEN:
+                sensors[0] = y - _y
+                break
 
-        # while _y != 0:
-
-        # while _x != 0:
-        #     if self.surface[_x, y] == GREEN:
-        #         sensors[1] = x - _x
-        #         break
-        #     _x -= 1
+        _y = y
+        while _y != 399:
+            _y += 1
+            if self.surface[x, _y] == GREEN:
+                sensors[2] = _y - y
+                break
 
         return sensors
