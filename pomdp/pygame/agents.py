@@ -14,6 +14,15 @@ class Agent:
         pass
 
 
+class RandomAgent(Agent):
+    def __init__(self):
+        self.actions = [0, 1, 2, 3]
+
+    def get_action(self, obs):
+        r = np.random.random_integers(0, 3)
+        return r
+
+
 class SimpleAgent(Agent):
 
     def get_action(self, obs):
@@ -33,7 +42,12 @@ class SimpleAgent(Agent):
         return
 
 
-class DrqnAgent(Agent):
+class QmdpAgent(Agent):
+    def __init__(self):
+        pass
+
+
+class QpomdpAgent(Agent):
 
     def __init__(self):
         self.model = Sequential()
