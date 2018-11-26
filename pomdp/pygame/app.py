@@ -29,7 +29,7 @@ def draw():
 
 pygame.init()
 screen = pygame.display.set_mode(size)
-world = W.World(pygame.surfarray.pixels2d(screen))
+world = W.World(pygame.surfarray.pixels2d(screen), is_mdp=True)
 
 obs = world.reset()
 done = False

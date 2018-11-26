@@ -4,8 +4,8 @@ GREEN = 65280
 
 
 class World:
-    def __init__(self, surface):
-
+    def __init__(self, surface, is_mdp=False):
+        self.is_mdp = is_mdp
         self.agent_location = [50, 50]
         self.target_location = [550, 350]
         self.surface = surface
@@ -91,6 +91,11 @@ class World:
         return -1, False
 
     def get_obs(self):
+        if self.is_mdp:
+            return self.surface
+        return self.get_partial_obs()
+
+    def get_partial_obs(self):
         sensors = [0, 0, 0, 0]
         x = self.agent_location[0] + 15
         y = self.agent_location[1] + 15

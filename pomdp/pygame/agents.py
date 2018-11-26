@@ -42,7 +42,12 @@ class SimpleAgent(Agent):
         return
 
 
-class DrqnAgent(Agent):
+class QmdpAgent(Agent):
+    def __init__(self):
+        pass
+
+
+class QpomdpAgent(Agent):
 
     def __init__(self):
         self.model = Sequential()
