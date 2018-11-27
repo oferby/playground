@@ -38,25 +38,27 @@ def draw():
 
     pygame.display.flip()
 
-
-pygame.init()
-screen = pygame.display.set_mode(W.WORLD_SIZE)
-world = W.World(pygame.surfarray.pixels2d(screen), is_mdp=False)
-obs = world.reset()
-done = False
-reward = 0
-draw()
-agent = agents.SelfGoingAgent(world)
-# agent = agents.ParticleFilteringAgent(world)
-draw()
-
 while 1:
-    action = agent.get_action(obs)
-    if action is not None:
-        # print('action:', action)
-        obs, reward, done = world.take_action(action)
-        agent.get_feedback(obs, action, reward, done)
+    pygame.init()
+    screen = pygame.display.set_mode(W.WORLD_SIZE)
+    world = W.World(pygame.surfarray.pixels2d(screen), is_mdp=False)
+    obs = world.reset()
+    done = False
+    reward = 0
     draw()
-    world.set_surface(pygame.surfarray.pixels2d(screen))
-    if done:
-        break
+    # agent = agents.SelfGoingAgent(world)
+    agent = agents.ParticleFilteringAgent(world)
+    draw()
+
+    while 1:
+        action = agent.get_action(obs)
+        if action is not None:
+            # print('action:', action)
+            if action == 99:
+                break
+            obs, reward, done = world.take_action(action)
+            agent.get_feedback(obs, action, reward, done)
+        draw()
+        world.set_surface(pygame.surfarray.pixels2d(screen))
+        if done:
+            break

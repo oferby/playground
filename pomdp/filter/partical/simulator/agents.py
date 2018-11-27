@@ -52,12 +52,13 @@ class ParticleFilteringAgent(Agent):
         self.world = world
         self.particles = []
         self.init_particles(world)
+        self.state = None
         print('done creating particles')
 
     def init_particles(self, word):
         width, height = W.WORLD_SIZE
         size = W.ROBOT_SIZE
-        num_of_particles = 100
+        num_of_particles = 1000
         for i in range(num_of_particles):
             while True:
                 x = np.random.randint(0, width)
@@ -83,6 +84,11 @@ class ParticleFilteringAgent(Agent):
                 sys.exit()
             elif event.type == pygame.KEYUP:
                 k = event.key
+                # print('key:', k)
+                # q
+                if k == 113:
+                    sys.exit()
+
                 if k == 273:
                     return 0
                 elif k == 274:
@@ -91,9 +97,15 @@ class ParticleFilteringAgent(Agent):
                     return 1
                 elif k == 276:
                     return 3
+                # r
+                elif k == 114:
+                    return 99
         return
 
     def get_feedback(self, obs, action, reward, done):
+        if obs == self.state:
+            return
+        self.state = obs
         self.update_belief(obs, action)
 
     def update_belief(self, obs, action):
@@ -138,8 +150,7 @@ class ParticleFilteringAgent(Agent):
             all_prob.append(prob)
 
         # normalize Z likelihood
-        max_prob_index = np.argmax(all_prob)
-        max_prob = all_prob[max_prob_index]
+        max_prob = max(all_prob)
         # print(obs, self.particles[max_prob_index].sensors, max_prob)
 
         for i in range(len(self.particles)):

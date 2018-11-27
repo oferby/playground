@@ -7,6 +7,27 @@ STEP_SIZE = 10
 WORLD_SIZE = width, height = 600, 400
 
 
+def add_walls():
+    # r = np.random.randint(0,2)
+    r = 1
+    walls = []
+    if r == 0:
+        walls.append([0, 100, 300, 5])
+        walls.append([450, 0, 5, 300])
+        return walls
+
+    elif r == 1:
+        walls.append([0, 100, 150, 5])
+        walls.append([150, 150, 150, 5])
+        walls.append([250, 200, 150, 5])
+        walls.append([350, 250, 150, 5])
+        for i in range(50):
+            x = np.random.randint(10, 560)
+            y = np.random.randint(10, 350)
+            walls.append([x, y, 20, 20])
+        return walls
+
+
 class World:
     def __init__(self, surface, is_mdp=False):
         self.is_mdp = is_mdp
@@ -15,12 +36,7 @@ class World:
         self.surface = surface
         self.turn = 0
         self.max_turns = 2000
-        self.walls = []
-        self.add_walls()
-
-    def add_walls(self):
-        self.walls.append([0, 100, 300, 5])
-        self.walls.append([450, 0, 5, 300])
+        self.walls = add_walls()
 
     def get_walls(self):
         return self.walls
