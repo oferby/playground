@@ -9,9 +9,12 @@ green = 0, 255, 0
 red = 255, 0, 0
 blue = 0, 0, 255
 
-# agent = agents.DrqnAgent()
+agent = agents.QpomdpAgent()
+
+
 # agent = agents.SimpleAgent()
-agent = agents.RandomAgent()
+# agent = agents.RandomAgent()
+# agent = agents.LineAgent()
 
 
 def draw():
@@ -29,7 +32,7 @@ def draw():
 
 pygame.init()
 screen = pygame.display.set_mode(size)
-world = W.World(pygame.surfarray.pixels2d(screen), is_mdp=True)
+world = W.World(pygame.surfarray.pixels2d(screen), is_mdp=False)
 
 obs = world.reset()
 done = False
@@ -38,6 +41,7 @@ while 1:
     action = agent.get_action(obs)
     if action is not None:
         obs, reward, done = world.take_action(action)
+        agent.get_feedback(obs, action, reward, done)
         print("action: ", action, "obs: ", obs, "reward: ", reward)
     draw()
     world.set_surface(pygame.surfarray.pixels2d(screen))

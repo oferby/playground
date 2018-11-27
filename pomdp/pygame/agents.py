@@ -4,7 +4,7 @@ from collections import deque
 
 import numpy as np
 import pygame
-from keras.layers import Dense, LSTM, TimeDistributed
+from keras.layers import Dense, TimeDistributed
 from keras.models import Sequential
 
 
@@ -13,14 +13,32 @@ class Agent:
     def get_action(self, obs):
         pass
 
+    def get_feedback(self, obs, action, reward, done):
+        pass
+
 
 class RandomAgent(Agent):
-    def __init__(self):
-        self.actions = [0, 1, 2, 3]
 
     def get_action(self, obs):
         r = np.random.random_integers(0, 3)
         return r
+
+
+class LineAgent(Agent):
+    def __init__(self):
+        self.last_action = self.get_random_action()
+        self.last_obs = [0, 0, 0, 0]
+
+    def get_action(self, obs):
+        if np.array_equal(obs, self.last_obs):
+            self.last_action = self.get_random_action()
+            return self.last_action
+        else:
+            self.last_obs = obs
+            return self.last_action
+
+    def get_random_action(self):
+        return np.random.random_integers(0, 3)
 
 
 class SimpleAgent(Agent):
@@ -53,17 +71,35 @@ class QpomdpAgent(Agent):
         self.model = Sequential()
         self.model.add(TimeDistributed(Dense(32), input_shape=(4, 1)))
         self.model.add(TimeDistributed(Dense(8)))
-        self.model.add(LSTM(100))
+        # self.model.add(LSTM(100))
         self.model.add(Dense(4))
         self.model.compile('RMSProp', 'mse')
-
         self.memory = deque(maxlen=20000)
+        self.count_to_training = 0
+        self.epsilon = 1.
+        self.decay = 0.9999
+        self.threshold = 0.1
 
     def get_action(self, obs):
+
+        self.count_to_training += 1
+        if self.count_to_training == 200:
+            self.train()
+            self.count_to_training = 0
+
+        r = np.random.random()
+        if 1 - self.epsilon < r:
+            if self.epsilon > self.threshold:
+                self.epsilon *= self.decay
+            return self.get_random_action()
+
         a, _ = self.predit(obs)
         return a
 
-    def remember(self, obs, action, reward, done):
+    def get_random_action(self):
+        return np.random.random_integers(0, 3)
+
+    def get_feedback(self, obs, action, reward, done):
         self.memory.append((obs, action, reward, done))
 
     def predit(self, obs):
