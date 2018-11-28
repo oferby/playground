@@ -7,7 +7,7 @@ import pygame
 
 import pomdp.filter.partical.simulator.world as W
 
-SENSOR_NOISE = 10.0
+SENSOR_NOISE = 20.0
 
 
 class Agent:
@@ -100,6 +100,9 @@ class ParticleFilteringAgent(Agent):
                 # r
                 elif k == 114:
                     return 99
+                # s
+                elif k == 115:
+                    return 98
         return
 
     def get_feedback(self, obs, action, reward, done):
@@ -111,30 +114,31 @@ class ParticleFilteringAgent(Agent):
     def update_belief(self, obs, action):
 
         # update move
+        MOVE_SIGMA = 2.0
         s = set(self.particles)
         for i in range(len(self.particles)):
             p = self.particles[i]
             # up
             if action == 0:
-                step = int(np.random.normal(W.STEP_SIZE, 1))
+                step = int(np.random.normal(W.STEP_SIZE, MOVE_SIGMA))
                 new_location = (p.y - step) % W.height
                 p.y = new_location
 
             # right
             elif action == 1:
-                step = int(np.random.normal(W.STEP_SIZE, 1))
+                step = int(np.random.normal(W.STEP_SIZE, MOVE_SIGMA))
                 new_location = (p.x + step) % W.width
                 p.x = new_location
 
             # down
             elif action == 2:
-                step = int(np.random.normal(W.STEP_SIZE, 1))
+                step = int(np.random.normal(W.STEP_SIZE, MOVE_SIGMA))
                 new_location = (self.particles[i].y + step) % W.height
                 self.particles[i].y = new_location
 
             # left
             elif action == 3:
-                step = int(np.random.normal(W.STEP_SIZE, 1))
+                step = int(np.random.normal(W.STEP_SIZE, MOVE_SIGMA))
                 new_location = (p.x - step) % W.width
                 p.x = new_location
 

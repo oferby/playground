@@ -8,12 +8,14 @@ green = 0, 255, 0
 red = 255, 0, 0
 blue = 0, 0, 255
 agent = None
+show_agent = False
 
 
 def draw():
     screen.fill(black)
     # pygame.draw.rect(screen, red, pygame.Rect(world.target_location[0], world.target_location[1], 20, 20))
-    pygame.draw.rect(screen, blue, pygame.Rect(world.agent_location[0], world.agent_location[1], 20, 20))
+    if show_agent:
+        pygame.draw.rect(screen, blue, pygame.Rect(world.agent_location[0], world.agent_location[1], 20, 20))
     pygame.draw.rect(screen, green, pygame.Rect(0, 0, 600, 400), 3)
 
     walls = world.get_walls()
@@ -38,6 +40,7 @@ def draw():
 
     pygame.display.flip()
 
+
 while 1:
     pygame.init()
     screen = pygame.display.set_mode(W.WORLD_SIZE)
@@ -56,8 +59,11 @@ while 1:
             # print('action:', action)
             if action == 99:
                 break
-            obs, reward, done = world.take_action(action)
-            agent.get_feedback(obs, action, reward, done)
+            elif action == 98:
+                show_agent = not show_agent
+            else:
+                obs, reward, done = world.take_action(action)
+                agent.get_feedback(obs, action, reward, done)
         draw()
         world.set_surface(pygame.surfarray.pixels2d(screen))
         if done:
