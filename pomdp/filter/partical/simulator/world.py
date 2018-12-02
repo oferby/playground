@@ -1,4 +1,5 @@
 import numpy as np
+import pygame
 
 GREEN = 65280
 
@@ -7,9 +8,9 @@ STEP_SIZE = 10
 WORLD_SIZE = width, height = 600, 400
 
 
-def add_walls():
+def add_walls(screen):
     # r = np.random.randint(0,2)
-    r = 3
+    r = 1
     walls = []
     if r == 0:
         walls.append([0, 100, 300, 5])
@@ -17,14 +18,10 @@ def add_walls():
         return walls
 
     elif r == 1:
-        walls.append([0, 100, 150, 5])
-        walls.append([150, 150, 150, 5])
-        walls.append([250, 200, 150, 5])
-        walls.append([350, 250, 150, 5])
-        for i in range(100):
-            x = np.random.randint(10, 560)
-            y = np.random.randint(10, 350)
-            walls.append([x, y, 10, 10])
+        walls.append([0, 100, 150, ROBOT_SIZE + 10])
+        walls.append([150, 150, 150, ROBOT_SIZE + 10])
+        walls.append([250, 200, 150, ROBOT_SIZE + 10])
+        walls.append([350, 250, 150, ROBOT_SIZE + 10])
         return walls
 
     elif r == 2:
@@ -48,17 +45,18 @@ def add_walls():
             y = np.random.randint(0, 380)
             y_ = np.random.randint(5, 20)
             walls.append([x, y, x_, y_])
+            pygame.draw.rect(screen, GREEN, pygame.Rect(x, x, ROBOT_SIZE, ROBOT_SIZE))
         return walls
 
 
 class World:
-    def __init__(self, surface, is_mdp=False):
+    def __init__(self, screen, is_mdp=False):
         self.is_mdp = is_mdp
         self.target_location = [550, 350]
-        self.surface = surface
+        self.surface = pygame.surfarray.pixels2d(screen)
         self.turn = 0
         self.max_turns = 2000
-        self.walls = add_walls()
+        self.walls = add_walls(screen)
 
         while True:
             x = np.random.randint(10, 550)
@@ -71,8 +69,6 @@ class World:
         return self.walls
 
     def reset(self):
-        self.agent_location = [50, 50]
-        self.target_location = [550, 350]
         return [0, 0, 0, 0]
 
     def take_action(self, a):

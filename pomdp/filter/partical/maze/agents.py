@@ -4,8 +4,7 @@ from math import *
 
 import numpy as np
 import pygame
-
-import pomdp.filter.partical.simulator.world as W
+import pomdp.filter.partical.maze.world as W
 
 SENSOR_NOISE = 20.0
 
@@ -70,11 +69,11 @@ class ParticleFilteringAgent(Agent):
     def __init__(self, world):
         self.world = world
         self.particles = []
-        self.init_particles(world)
+        self.init_particles()
         self.state = None
         print('done creating particles')
 
-    def init_particles(self, word):
+    def init_particles(self):
         width, height = W.WORLD_SIZE
         size = W.ROBOT_SIZE
         num_of_particles = 500
@@ -84,10 +83,10 @@ class ParticleFilteringAgent(Agent):
                 y = np.random.randint(0, height)
                 if x + size > width or y + size > height:
                     continue
-                isNotValidPlace = word.check_surface_for_position(x, y, size)
+                isNotValidPlace = self.world.check_surface_for_position(x, y, size)
                 if not isNotValidPlace:
                     break
-            sensors = word.get_partial_obs(x, y)
+            sensors = self.world.get_partial_obs(x, y)
             self.particles.append(RobotParticle(x, y, sensors, 1 / num_of_particles))
 
     def get_particles(self):
