@@ -1,8 +1,7 @@
 import matplotlib.pyplot as plt
-import pygame
 
 import pomdp.filter.partical.maze.agents as agents
-import pomdp.filter.partical.maze.world as world
+import pomdp.filter.partical.maze.world as W
 
 WHITE = (255, 255, 255)
 GREY = (20, 20, 20)
@@ -27,21 +26,25 @@ def plot():
 
 
 def draw():
-    pass
+    particles = agent.get_particles()
+    for i in range(len(particles)):
+        p = particles[i]
+        size = 2
+        world.draw_rec(p[0], p[1], size)
 
 
 done = False
 while 1:
 
-    world = world.World()
+    world = W.World()
 
     done = False
     reward = 0
     # agent = agents.SelfGoingAgent(world)
-    # agent = agents.ParticleFilteringAgent(world)
-    agent = agents.SimpleAgent()
-    obs = world.get_observation()
-
+    agent = agents.ParticleFilteringAgent(world)
+    # agent = agents.SimpleAgent()
+    obs = None
+    draw()
     while 1:
         action = agent.get_action(obs)
         if action is not None:
@@ -49,12 +52,12 @@ while 1:
             if action == 99:
                 break
             elif action == 98:
-                show_agent = not show_agent
+                world.flip_show_agent()
             elif action == 97:
                 plot()
             else:
                 obs, reward, done = world.take_action(action)
                 agent.get_feedback(obs, action, reward, done)
-        draw()
+            draw()
         if done:
             break

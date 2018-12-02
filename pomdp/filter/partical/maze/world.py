@@ -109,22 +109,27 @@ class Cell:
 class World:
 
     def __init__(self):
+        self.show_agent = False
         self.agent_location = []
         self.create()
         self.surface = pygame.surfarray.pixels2d(screen)
+        self.init_agent_location()
+        self.background = np.copy(self.surface)
         self.target_location = [660, 660]
         self.turn = 0
         self.max_turns = 2000
         self.is_mdp = False
+        self.draw()
 
-    def get_observation(self):
-        pass
-
-    def draw(self, old_location=None):
-        if old_location:
-            pygame.draw.rect(screen, WHITE, (old_location[0], old_location[1], ROBOT_SIZE, ROBOT_SIZE))
-        pygame.draw.rect(screen, BLUE, (self.agent_location[0], self.agent_location[1], ROBOT_SIZE, ROBOT_SIZE))
+    def draw(self):
+        pygame.surfarray.blit_array(pygame.display.get_surface(), self.background)
+        if self.show_agent:
+            pygame.draw.rect(screen, BLUE, (self.agent_location[0], self.agent_location[1], ROBOT_SIZE, ROBOT_SIZE))
         pygame.display.flip()
+
+    def flip_show_agent(self):
+        self.show_agent = not self.show_agent
+        self.draw()
 
     def take_action(self, a):
 
@@ -144,9 +149,8 @@ class World:
             new_pos[0] = new_pos[0] - STEP_SIZE
 
         if self.check_valid_action(new_pos, a):
-            old_location = self.agent_location
             self.agent_location = new_pos
-            self.draw(old_location)
+            self.draw()
 
         self.turn += 1
         if self.turn > self.max_turns:
@@ -155,6 +159,10 @@ class World:
 
         reward, done = self.get_reward()
         return self.get_obs(), reward, done
+
+    def draw_rec(self, x, y, size):
+        pygame.draw.rect(screen, RED, pygame.Rect(x, y, size, size))
+        pygame.display.update()
 
     def get_obs(self):
         if self.is_mdp:
@@ -193,7 +201,7 @@ class World:
             # print(s)
 
         elif a == 3:
-            s = self.surface[new_location[0] :new_location[0] + STEP_SIZE, new_location[1]: new_location[1] + ROBOT_SIZE]
+            s = self.surface[new_location[0]:new_location[0] + STEP_SIZE, new_location[1]: new_location[1] + ROBOT_SIZE]
             # print(s)
 
         if self.check_surface(s, np.size(s)):
@@ -203,12 +211,12 @@ class World:
 
     def check_surface_for_position(self, x, y, size):
         s = self.surface[x: x + size, y: y + size]
-        return self.check_surface(s, size ** 2)
+        return self.check_surface(s, np.size(s))
 
     @staticmethod
     def check_surface(s, size):
         s = np.reshape(s, (size,))
-        if any(x != WHITE_INT for x in s):
+        if any(x == BLACK_INT for x in s):
             # print("found black")
             return True
 
@@ -309,8 +317,9 @@ class World:
             elif len(stack) == 0:
                 break
 
-        self.init_agent_location()
-        self.draw()
-
     def init_agent_location(self):
-        self.agent_location = [5, 5]
+        while True:
+            y = np.random.randint(10, 700)
+            if not self.check_surface_for_position(5, y, ROBOT_SIZE):
+                self.agent_location = [5, y]
+                break

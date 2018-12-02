@@ -115,25 +115,25 @@ class ParticleFilteringAgent(Agent):
             # up
             if action == 0:
                 step = int(np.random.normal(W.STEP_SIZE, MOVE_SIGMA))
-                new_location = (p.y - step) % W.height
+                new_location = (p.y - step) % W.WORLD_SIZE[0]
                 p.y = new_location
 
             # right
             elif action == 1:
                 step = int(np.random.normal(W.STEP_SIZE, MOVE_SIGMA))
-                new_location = (p.x + step) % W.width
+                new_location = (p.x + step) % W.WORLD_SIZE[1]
                 p.x = new_location
 
             # down
             elif action == 2:
                 step = int(np.random.normal(W.STEP_SIZE, MOVE_SIGMA))
-                new_location = (self.particles[i].y + step) % W.height
+                new_location = (self.particles[i].y + step) % W.WORLD_SIZE[0]
                 self.particles[i].y = new_location
 
             # left
             elif action == 3:
                 step = int(np.random.normal(W.STEP_SIZE, MOVE_SIGMA))
-                new_location = (p.x - step) % W.width
+                new_location = (p.x - step) % W.WORLD_SIZE[1]
                 p.x = new_location
 
         # update measurement likelihood
