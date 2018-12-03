@@ -139,8 +139,9 @@ class ParticleFilteringAgent(Agent):
         # update measurement likelihood
         all_prob = []
         for i in range(len(self.particles)):
-            prob = 1.0
+            # prob = 1.0
             p = self.particles[i]
+            prob = p.prob
             sensors = self.particles[i].sensors = self.world.get_partial_obs(p.x, p.y)
             for j in range(len(obs)):
                 prob *= self.Gaussian(sensors[j], SENSOR_NOISE, obs[j])

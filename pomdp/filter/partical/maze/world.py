@@ -20,10 +20,9 @@ STEP_SIZE = 10
 WORLD_SIZE = (701, 701)
 screen = pygame.display.set_mode(WORLD_SIZE)
 
-pygame.display.set_caption("Maze Generator")
+pygame.display.set_caption("POMDP Simulator")
 
 done = False
-show_agent = False
 
 width = 50
 cols = int(WORLD_SIZE[0] / width)
@@ -108,8 +107,8 @@ class Cell:
 
 class World:
 
-    def __init__(self):
-        self.show_agent = False
+    def __init__(self, show_agent):
+        self.show_agent = show_agent
         self.agent_location = []
         self.create()
         self.surface = pygame.surfarray.pixels2d(screen)
@@ -235,7 +234,7 @@ class World:
                 break
 
         _x = x
-        while _x != 599:
+        while _x != WORLD_SIZE[0] - 1:
             _x += 1
             if self.surface[_x, y] == BLACK_INT:
                 sensors[1] = _x - x
@@ -249,7 +248,7 @@ class World:
                 break
 
         _y = y
-        while _y != 399:
+        while _y != WORLD_SIZE[1] - 1:
             _y += 1
             if self.surface[x, _y] == BLACK_INT:
                 sensors[2] = _y - y
@@ -319,7 +318,14 @@ class World:
 
     def init_agent_location(self):
         while True:
-            y = np.random.randint(10, 700)
-            if not self.check_surface_for_position(5, y, ROBOT_SIZE):
-                self.agent_location = [5, y]
-                break
+            i = np.random.randint(0, 4)
+            if i == 0:
+                y = np.random.randint(10, 700)
+                if not self.check_surface_for_position(5, y, ROBOT_SIZE):
+                    self.agent_location = [5, y]
+                    break
+            elif i == 1:
+                y = np.random.randint(10, 700)
+                if not self.check_surface_for_position(5, y, ROBOT_SIZE):
+                    self.agent_location = [WORLD_SIZE[0] - ROBOT_SIZE - 2, y]
+                    break

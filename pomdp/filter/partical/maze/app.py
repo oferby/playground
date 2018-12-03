@@ -10,7 +10,7 @@ PURPLE = (100, 0, 100)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
-show_agent = False
+show_agent = True
 
 
 def plot():
@@ -36,7 +36,7 @@ def draw():
 done = False
 while 1:
 
-    world = W.World()
+    world = W.World(show_agent)
 
     done = False
     reward = 0
@@ -53,6 +53,7 @@ while 1:
                 break
             elif action == 98:
                 world.flip_show_agent()
+                show_agent = not show_agent
             elif action == 97:
                 plot()
             else:
