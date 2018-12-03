@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
-
+import numpy as np
+import scipy.stats as sts
 import pomdp.filter.partical.maze.agents as agents
 import pomdp.filter.partical.maze.world as W
 
@@ -13,24 +14,25 @@ BLUE = (0, 0, 255)
 show_agent = True
 
 
-def plot():
-    particles = agent.get_particles()
-    x = range(len(particles))
-    y = []
-    for i in x:
-        y.append(particles[i][2])
-    plt.plot(x, y)
-    plt.ylabel('probability')
-    plt.xlabel('particle')
-    plt.show()
-
-
 def draw():
     particles = agent.get_particles()
+    max_prob = 0
+    all_prob = []
     for i in range(len(particles)):
         p = particles[i]
         size = 2
         world.draw_rec(p[0], p[1], size)
+        all_prob.append(p[2])
+        if p[2] > max_prob:
+            max_prob = p[2]
+    world.draw_text('Max Prob: {0:.4f}'.format(max_prob), (710, 10))
+    mean = np.mean(all_prob)
+    median = np.median(all_prob)
+    entropy = sts.entropy(all_prob)
+    world.draw_text('Mean: {0:.4f}'.format(mean), (710, 25))
+    world.draw_text('Median: {:.4f}'.format(median), (710, 40))
+    world.draw_text('Entropy: {0:.4f}'.format(entropy), (710, 55))
+    world.update_display()
 
 
 done = False
@@ -55,7 +57,8 @@ while 1:
                 world.flip_show_agent()
                 show_agent = not show_agent
             elif action == 97:
-                plot()
+                pass
+            #     plot()
             else:
                 obs, reward, done = world.take_action(action)
                 agent.get_feedback(obs, action, reward, done)

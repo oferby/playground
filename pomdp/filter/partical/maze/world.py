@@ -18,7 +18,7 @@ ROBOT_SIZE = 20
 STEP_SIZE = 10
 
 WORLD_SIZE = (701, 701)
-screen = pygame.display.set_mode(WORLD_SIZE)
+screen = pygame.display.set_mode((1000, WORLD_SIZE[1]))
 
 pygame.display.set_caption("POMDP Simulator")
 
@@ -111,14 +111,19 @@ class World:
         self.show_agent = show_agent
         self.agent_location = []
         self.create()
-        self.surface = pygame.surfarray.pixels2d(screen)
         self.init_agent_location()
-        self.background = np.copy(self.surface)
+        self.background = np.copy(self.get_surface())
         self.target_location = [660, 660]
         self.turn = 0
         self.max_turns = 2000
         self.is_mdp = False
         self.draw()
+        pygame.font.init()
+        self.font = pygame.font.SysFont('David', 20)
+
+    @staticmethod
+    def get_surface():
+        return pygame.surfarray.pixels2d(screen)
 
     def draw(self):
         pygame.surfarray.blit_array(pygame.display.get_surface(), self.background)
@@ -161,11 +166,17 @@ class World:
 
     def draw_rec(self, x, y, size):
         pygame.draw.rect(screen, RED, pygame.Rect(x, y, size, size))
+
+    def draw_text(self, text, position):
+        txt = self.font.render(text, True, RED)
+        screen.blit(txt, position)
+
+    def update_display(self):
         pygame.display.update()
 
     def get_obs(self):
         if self.is_mdp:
-            return self.surface
+            return self.get_surface().copy()
         return self.get_partial_obs_for_agent()
 
     def get_reward(self):
@@ -174,6 +185,7 @@ class World:
         return -1, False
 
     def check_valid_action(self, new_location, a):
+        surface = self.get_surface()
         if not all([True if x > 1 else False for x in new_location]):
             return False
 
@@ -185,22 +197,22 @@ class World:
         s = []
         if a == 0:
             # print(new_location[0], new_location[0] + ROBOT_SIZE, new_location[1])
-            s = self.surface[new_location[0]: new_location[0] + ROBOT_SIZE,
+            s = surface[new_location[0]: new_location[0] + ROBOT_SIZE,
                 new_location[1]: new_location[1] + STEP_SIZE]
             # print(s)
 
         elif a == 1:
-            s = self.surface[new_location[0] + ROBOT_SIZE - STEP_SIZE:new_location[0] + ROBOT_SIZE,
+            s = surface[new_location[0] + ROBOT_SIZE - STEP_SIZE:new_location[0] + ROBOT_SIZE,
                 new_location[1]: new_location[1] + ROBOT_SIZE]
             # print(s)
 
         elif a == 2:
-            s = self.surface[new_location[0]:new_location[0] + ROBOT_SIZE,
+            s = surface[new_location[0]:new_location[0] + ROBOT_SIZE,
                 new_location[1] + ROBOT_SIZE - STEP_SIZE: new_location[1] + ROBOT_SIZE]
             # print(s)
 
         elif a == 3:
-            s = self.surface[new_location[0]:new_location[0] + STEP_SIZE, new_location[1]: new_location[1] + ROBOT_SIZE]
+            s = surface[new_location[0]:new_location[0] + STEP_SIZE, new_location[1]: new_location[1] + ROBOT_SIZE]
             # print(s)
 
         if self.check_surface(s, np.size(s)):
@@ -209,7 +221,7 @@ class World:
         return True
 
     def check_surface_for_position(self, x, y, size):
-        s = self.surface[x: x + size, y: y + size]
+        s = self.get_surface()[x: x + size, y: y + size]
         return self.check_surface(s, np.size(s))
 
     @staticmethod
@@ -225,32 +237,33 @@ class World:
         return self.get_partial_obs(x, y)
 
     def get_partial_obs(self, x, y):
+        surface = self.get_surface()
         sensors = [0, 0, 0, 0]
         _x = x
         while _x != 0:
             _x -= 1
-            if self.surface[_x, y] == BLACK_INT:
+            if surface[_x, y] == BLACK_INT:
                 sensors[3] = x - _x
                 break
 
         _x = x
         while _x != WORLD_SIZE[0] - 1:
             _x += 1
-            if self.surface[_x, y] == BLACK_INT:
+            if surface[_x, y] == BLACK_INT:
                 sensors[1] = _x - x
                 break
 
         _y = y
         while _y != 0:
             _y -= 1
-            if self.surface[x, _y] == BLACK_INT:
+            if surface[x, _y] == BLACK_INT:
                 sensors[0] = y - _y
                 break
 
         _y = y
         while _y != WORLD_SIZE[1] - 1:
             _y += 1
-            if self.surface[x, _y] == BLACK_INT:
+            if surface[x, _y] == BLACK_INT:
                 sensors[2] = _y - y
                 break
 

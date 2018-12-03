@@ -106,10 +106,16 @@ class ParticleFilteringAgent(Agent):
         self.update_belief(obs, action)
 
     def update_belief(self, obs, action):
+        self.update_move(action)
+        self.update_measurement(obs)
 
+    def Gaussian(self, mu, sigma, x):
+        # calculates the probability of x for 1-dim Gaussian with mean mu and var. sigma
+        return exp(- ((mu - x) ** 2) / (sigma ** 2) / 2.0) / sqrt(2.0 * pi * (sigma ** 2))
+
+    def update_move(self, action):
         # update move
         MOVE_SIGMA = 2.0
-        s = set(self.particles)
         for i in range(len(self.particles)):
             p = self.particles[i]
             # up
@@ -136,30 +142,37 @@ class ParticleFilteringAgent(Agent):
                 new_location = (p.x - step) % W.WORLD_SIZE[1]
                 p.x = new_location
 
+    def update_measurement(self, obs):
         # update measurement likelihood
+        max_prob = 0
         all_prob = []
         for i in range(len(self.particles)):
-            # prob = 1.0
+            prob = 1.0
             p = self.particles[i]
-            prob = p.prob
+            # prob = p.prob
             sensors = self.particles[i].sensors = self.world.get_partial_obs(p.x, p.y)
             for j in range(len(obs)):
                 prob *= self.Gaussian(sensors[j], SENSOR_NOISE, obs[j])
             p.prob = prob
             all_prob.append(prob)
+            if prob > max_prob:
+                max_prob = prob
 
         # normalize Z likelihood
-        max_prob = max(all_prob)
-        sum_prob = sum(all_prob)
         # print(obs, self.particles[max_prob_index].sensors, max_prob)
+
+        sum_prob = self.choose_particles(all_prob, max_prob)
+
         for i in range(len(self.particles)):
             n = all_prob[i] / sum_prob
             self.particles[i].prob = n
 
+    def choose_particles(self, all_prob, max_prob):
         new_particles = []
         N = len(self.particles)
         index = np.random.randint(0, N)
         beta = 0
+        sum_prob = 0
         for i in range(N):
             beta += np.random.uniform(0, max_prob * 2)
             while all_prob[index] < beta:
@@ -170,13 +183,34 @@ class ParticleFilteringAgent(Agent):
             p_prob = self.particles[index].prob
             p_sensors = self.particles[index].sensors
             new_particles.append(RobotParticle(p_x, p_y, p_sensors, p_prob))
+            sum_prob+=p_prob
 
         self.particles = new_particles
+        return sum_prob
         # print('done measurement update. particles left: ', len(self.particles))
 
-    def Gaussian(self, mu, sigma, x):
-        # calculates the probability of x for 1-dim Gaussian with mean mu and var. sigma
-        return exp(- ((mu - x) ** 2) / (sigma ** 2) / 2.0) / sqrt(2.0 * pi * (sigma ** 2))
+    def choose_particles_with_keep(self, all_prob, max_prob):
+        new_particles = []
+        N = len(all_prob)
+        median = np.median(all_prob)
+        for i in range(N):
+            p = self.particles[i]
+            if p.prob > median:
+                new_particles.append(RobotParticle(p.x, p.y, p.sensors, p.prob))
+
+        left = N - len(new_particles)
+        index = np.random.randint(0, N)
+        beta = 0
+        for i in range(left):
+            beta += np.random.uniform(0, max_prob * 2)
+            while all_prob[index] < beta:
+                beta -= all_prob[index]
+                index = (index + 1) % N
+            p_x = self.particles[index].x
+            p_y = self.particles[index].y
+            p_prob = self.particles[index].prob
+            p_sensors = self.particles[index].sensors
+            new_particles.append(RobotParticle(p_x, p_y, p_sensors, p_prob))
 
 
 class SelfGoingAgent(ParticleFilteringAgent):
