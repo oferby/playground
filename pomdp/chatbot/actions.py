@@ -30,6 +30,22 @@ def say(text, dispatcher):
     dispatcher.utter_message(text)
 
 
+class ActionRestart(Action):
+    def name(self):
+        return "action_restart"
+
+    def run(self, dispatcher, tracker, domain):
+        return [Restarted()]
+
+
+class ActionResetSlots(Action):
+    def name(self):
+        return "action_reset_all_slots"
+
+    def run(self, dispatcher, tracker, domain):
+        return [AllSlotsReset()]
+
+
 class ActionSayOk(Action):
     def name(self):
         return "action_say_ok"
@@ -70,32 +86,6 @@ class ActionClearInvalidEntry(Action):
         return [SlotSet("isInvalidEntry", "False")]
 
 
-class ActionRequestSolution(Action):
-    def name(self):
-        return 'action_request_solution'
-
-    def run(self, dispatcher, tracker, domain):
-        logger.debug('slots: {}'.format(tracker.current_slot_values()))
-        say("Let me check for a solution for your needs", dispatcher)
-        return []
-
-
-class ActionRestart(Action):
-    def name(self):
-        return "action_restart"
-
-    def run(self, dispatcher, tracker, domain):
-        return [Restarted()]
-
-
-class ActionResetSlots(Action):
-    def name(self):
-        return "action_reset_all_slots"
-
-    def run(self, dispatcher, tracker, domain):
-        return [AllSlotsReset()]
-
-
 class ActionGetInfoFromDb(Action):
     def name(self):
         return "action_query_db"
@@ -110,3 +100,33 @@ class ActionGetInfoFromDb(Action):
                 return [SlotSet("dbQuerySuccessful", True)]
 
         return [SlotSet("isInvalidEntry", True)]
+
+
+class ActionRequestSolution(Action):
+    def name(self):
+        return 'action_request_solution'
+
+    def run(self, dispatcher, tracker, domain):
+        logger.debug('slots: {}'.format(tracker.current_slot_values()))
+        say("Let me check for a solution for your needs", dispatcher)
+        return []
+
+
+class ActionCreateEcs(Action):
+    def name(self):
+        return "action_create_ecs"
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        slots = tracker.current_slot_values()
+        logger.debug("got request for new ecs: {}".format(slots))
+
+        if slots["context_create_ecs"]:
+            if slots['image_type']:
+                return [SlotSet("context_create_ecs", None), SlotSet("context_create_ecs_done", "5")]
+            return [SlotSet("context_create_ecs", str(int(slots["context_create_ecs"]) - 1))]
+        say("What image type would you like?", dispatcher)
+        return [SlotSet("context_create_ecs", "5")]
