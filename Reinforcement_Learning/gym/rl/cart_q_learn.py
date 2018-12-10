@@ -66,7 +66,7 @@ def train():
 
 total = 0
 while True:
-    observation = env.reset()
+    observation = env.get_observation()
     obs = observation.reshape((1, 4))
     turns = 0
     while True:

@@ -20,6 +20,7 @@ class World:
     def reset(self):
         self.agent_location = [50, 50]
         self.target_location = [550, 350]
+        return [0,0,0,0]
 
     def take_action(self, a):
 
@@ -39,7 +40,7 @@ class World:
         self.turn += 1
         if self.turn > self.max_turns:
             print('Max turns reached')
-            return self.get_obs(), -100, True
+            return self.get_obs(), -1, True
 
         reward, done = self.get_reward()
         return self.get_obs(), reward, done
