@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_client_collection(collection="info"):
-    client = pymongo.MongoClient()
+    client = pymongo.MongoClient(host='10.10.11.136')
     db = client.vca
     return db.get_collection(collection)
 

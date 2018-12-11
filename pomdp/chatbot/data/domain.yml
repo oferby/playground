@@ -118,7 +118,9 @@ templates:
   utter_s6_ecs:
     - "S6 ECS is good for generalized websites and web applications, including microservices; low-latency interactive applications; small- and medium-sized databases; virtual desktops; development, build and stage environments; code repositories; product prototypes"
   utter_ok:
-    - "OK"
+    - text: "OK"
+      image: "https://www.milanocard.it/wp-content/uploads/2017/08/smile-ok.jpg"
+
   utter_solution_unknown:
     - "I don't understand what you are looking for..."
   utter_dont_have_answer:

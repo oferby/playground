@@ -1,2 +1,0 @@
-model_checkpoint_path: "/home/stack/PycharmProjects/playground/pomdp/chatbot/models/current/nlu/intent_classifier_tensorflow_embedding.ckpt"
-all_model_checkpoint_paths: "/home/stack/PycharmProjects/playground/pomdp/chatbot/models/current/nlu/intent_classifier_tensorflow_embedding.ckpt"

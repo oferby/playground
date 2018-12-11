@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 
 pygame.camera.init()
-pygame.camera.list_cameras()
+print(pygame.camera.list_cameras())
 cam = pygame.camera.Camera('/dev/video0', (640,480))
 cam.start()
 
