@@ -487,6 +487,18 @@
         ]
       },
       {
+        "text": "ubuntu",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "ubuntu",
+            "entity": "image_type"
+          }
+        ]
+      },
+      {
         "text": "server1",
         "intent": "inform",
         "entities": [

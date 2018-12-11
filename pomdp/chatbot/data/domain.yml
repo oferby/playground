@@ -56,6 +56,7 @@ intents:
   - request_solution
   - request_information
   - system_restart
+  - inform
 
 templates:
   utter_greet:
@@ -125,6 +126,8 @@ templates:
     - "I don't understand what you are looking for..."
   utter_dont_have_answer:
     - "Sorry but I don't have answer to this question."
+  utter_not_support:
+    - "Sorry but we do not support this feature at present."
 
 actions:
   - utter_greet
@@ -138,25 +141,29 @@ actions:
   - utter_ask_confirm_create_ecs
   - utter_get_server_name
   - utter_bye
-  - actions.ActionShowEcs
-  - actions.ActionCreateEcs
-  - actions.ActionCheckConfirmation
   - utter_show_ecs
   - utter_create_bms
   - utter_show_bms
   - utter_ecs_change_state
-  - action_say_ok
-  - action_show_ecs
-  - action_change_server_state
-  - action_clear_invalid_entry
+  - utter_not_support
   - utter_invalid_server_name
   - utter_s6_ecs
   - utter_ask_learn_more
   - utter_offer_s3_ecs
   - utter_ok
   - utter_solution_unknown
+  - utter_dont_have_answer
   - action_request_solution
   - action_restart
   - action_reset_all_slots
   - action_query_db
-  - utter_dont_have_answer
+  - action_say_ok
+  - action_show_ecs
+  - action_change_server_state
+  - action_clear_invalid_entry
+  - actions.ActionShowEcs
+  - actions.ActionCreateEcs
+  - actions.ActionCheckConfirmation
+
+
+

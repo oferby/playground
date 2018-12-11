@@ -6,8 +6,20 @@
 ## create ecs path 
 * create_ecs
     - utter_ask_image_type
-* create_ecs{"image_type":"ubuntu"}
+> check_os_type
+
+## user wants ubuntu
+> check_os_type
+* inform{"image_type":"ubuntu"}
+    - slot{"image_type":"ubuntu"}
     - utter_ok
+    - action_restart
+    
+## user wants windows
+> check_os_type
+* inform{"image_type":"windows"}
+    - slot{"image_type":"windows"}
+    - utter_not_support
     - action_restart
 
 ## show ecs path
