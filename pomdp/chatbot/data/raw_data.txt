@@ -93,3 +93,55 @@ user: why do I need GPU?
     - what is GPU good for?
 bot:
     GPU-accelerated Cloud Server (GACS) provides outstanding floating-point computing capabilities. They are suitable for scenarios that require real-time, highly concurrent massive computing, such as deep learning, scientific computing, CAE, 3D animation rendering, and CAD.
+
+
+happy path:
+u - user b - bot
+
+#
+u: i need new ecs
+b: do you have a specific ECS in mind or you would like me to help you find one?
+( buttons: I know what I want, I need help )
+> create_ecs_choose_help
+
+
+#
+> create_ecs_choose_help (need help)
+b: Sure. To help you with that I need few things. First,
+what is the area of your interest?
+(this could be: web application, database,  data analysis, video, gaming, general perpose )
+u: I need it for web application
+b: Nice. Do you have an estimation on the number of users that will use your application at the same time?
+u: I think arround 100
+b: To be able to find you the best solution, can you let me know what do you care most?
+( buttons: price , performance )
+b: OK. I have several option for you. Just few more questions. How much memory do you need?
+( buttons: few, moderate, a lot )
+u: few
+b: Got you. How much computation power do you need?
+( buttons: not much, medium, super charged )
+u: Right. These are the options suitable for you. You can see the monthly price next to each one of them.
+Please choose one or choose 'see details' if you want to checkout the technical differences.
+(buttons:  s2.medium.2 $30 s2.medium.4 $50, s3.medium.2 $52 , see details))
+u: s2.medium.2
+b: One last thing... What operating system (OS) would you like?
+(buttons: Windows, Ubuntu, CentOS, Fedora )
+u: ubuntu
+b: Choose 'Current Version' or write the OS version you want.
+( buttons: Current Version)
+b: OK. I'm have all the information I need. Please confirm starting the new server
+(buttons: confirm, cancel)
+u: confirm
+b: I started the server. I will take it few seconds to run. Meanwhile, I'vew sent you email with details on
+how to login to the server. Is there anything else I can help you with?
+u: no that's it
+b: OK. See you next time.
+
+
+# ????
+u: i need new ecs
+b: Sure. To help you with that I need few things. First,
+I need to know what do you care for most, CPU, memory, storage, GPU acceleration or just general perpose?
+(buttons)
+u: cpu
+b: I understand. We have great high performance ECS options.
