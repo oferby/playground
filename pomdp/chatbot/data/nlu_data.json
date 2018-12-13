@@ -1,4 +1,4 @@
-{
+﻿{
   "rasa_nlu_data": {
     "regex_features": [],
     "entity_synonyms": [],
@@ -1050,6 +1050,208 @@
       {
         "text": "sure",
         "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "i_know",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 6,
+            "value": "i_know",
+            "entity": "q_need_help"
+          }
+        ]
+      },
+      {
+        "text": "need_help",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 9,
+            "value": "need_help",
+            "entity": "q_need_help"
+          }
+        ]
+      },
+      {
+        "text": "q_price",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "q_price",
+            "entity": "q_care_most"
+          }
+        ]
+      },
+      {
+        "text": "q_performance",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 13,
+            "value": "q_performance",
+            "entity": "q_care_most"
+          }
+        ]
+      },
+      {
+        "text": "q_few",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 5,
+            "value": "q_few",
+            "entity": "q_amount"
+          }
+        ]
+      },
+      {
+        "text": "q_moderate",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 10,
+            "value": "q_moderate",
+            "entity": "q_amount"
+          }
+        ]
+      },
+      {
+        "text": "q_a_lot",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "q_a_lot",
+            "entity": "q_amount"
+          }
+        ]
+      },
+      {
+        "text": "q_power_not_much",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 16,
+            "value": "q_power_not_much",
+            "entity": "q_power"
+          }
+        ]
+      },
+      {
+        "text": "q_power_medium",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 14,
+            "value": "q_power_medium",
+            "entity": "q_power"
+          }
+        ]
+      },
+      {
+        "text": "q_power_super_charged",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 21,
+            "value": "q_power_super_charged",
+            "entity": "q_power"
+          }
+        ]
+      },
+      {
+        "text": "s2.medium.2",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 11,
+            "value": "s2.medium.2",
+            "entity": "q_ecs_type"
+          }
+        ]
+      },
+      {
+        "text": "s2.medium.4",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 11,
+            "value": "s2.medium.4",
+            "entity": "q_ecs_type"
+          }
+        ]
+      },
+      {
+        "text": "s3.medium.2",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 11,
+            "value": "s3.medium.2",
+            "entity": "q_ecs_type"
+          }
+        ]
+      },
+      {
+        "text": "req_details",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 11,
+            "value": "req_details",
+            "entity": "q_options"
+          }
+        ]
+      },
+      {
+        "text": "what is the best ecs type for web hosting?",
+        "intent": "request_ecs_type",
+        "entities": [
+          {
+            "start": 30,
+            "end": 41,
+            "value": "web_hosting",
+            "entity": "component"
+          }
+        ]
+      },
+      {
+        "text": "latest_version",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 14,
+            "value": "latest_version",
+            "entity": "q_options"
+          }
+        ]
+      },
+      {
+        "text": "#restart",
+        "intent": "system_restart",
+        "entities": []
+      },
+      {
+        "text": "#reset",
+        "intent": "system_restart",
         "entities": []
       }
     ]

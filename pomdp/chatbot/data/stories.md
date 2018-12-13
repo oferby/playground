@@ -3,24 +3,89 @@
     - utter_greet
     - action_restart
 
-## create ecs path 
-* create_ecs
-    - utter_ask_image_type
-> check_os_type
-
-## user wants ubuntu
-> check_os_type
-* inform{"image_type":"ubuntu"}
-    - slot{"image_type":"ubuntu"}
-    - utter_ok
+## request info sent to db
+* request_information{"component":"obs", "q_type":"what-is"}
+    - action_query_db
+    - slot{"dbQuerySuccessful": true}
     - action_restart
     
-## user wants windows
-> check_os_type
-* inform{"image_type":"windows"}
-    - slot{"image_type":"windows"}
-    - utter_not_support
+## request info sent to db and not found
+* request_information{"component":"obs", "q_type":"what-is"}
+    - action_query_db
+    - slot{"isInvalidEntry": true}
+    - utter_dont_have_answer
     - action_restart
+
+
+## create ecs path
+* create_ecs
+    - utter_acknowledge
+    - utter_ask_if_specific_ecs
+> ask_if_specific_ecs
+
+
+
+## create ecs with help
+> ask_if_specific_ecs
+* inform{"q_need_help":"need_help"}
+    - slot{"q_need_help":"need_help"}
+    - utter_acknowledge
+    - utter_need_few_things
+    - utter_ask_interest    
+* inform{"application":"web_applications"}
+    - utter_acknowledge
+    - utter_ask_number_of_users
+* inform{"number":"100"}
+    - utter_ask_care_most
+* inform{"q_care_most":"q_price"}
+    - slot{"q_care_most":"q_price"}
+    - utter_acknowledge
+    - utter_have_options
+    - utter_just_few_things
+    - utter_ask_memory_size
+* inform{"q_amount":"q_few"}
+    - utter_ask_compute_power
+* inform{"q_power":"q_power_not_much"}
+    - utter_acknowledge
+    - utter_show_options
+    - utter_show_options_price
+    - utter_choose_or_select_details
+* inform{"q_ecs_type":"s2.medium.2"}
+    - utter_last_thing
+    - utter_ask_image_type
+* inform{"image_type":"ubuntu"}
+    - utter_os_version
+* inform{"number":"16"} or inform{"q_options":"latest_version"}
+    - utter_have_everything
+    - utter_ask_confirm_create_ecs
+> create_esc_final_confirm
+
+## create ecs without help
+> ask_if_specific_ecs
+* inform{"q_need_help":"i_know"}
+    - slot{"q_need_help":"i_know"}
+    - utter_goodbye
+    - action_restart  
+
+## create ecs final confirmed
+> create_esc_final_confirm
+* confirm
+    - utter_infom_server_started
+    - utter_sent_login_to_email
+    - utter_ask_anything_else
+    - action_restart
+
+## create ecs final deny
+> create_esc_final_confirm
+* deny
+    - utter_goodbye
+    - action_restart
+
+
+
+  
+
+
 
 ## show ecs path
 * show_ecs
@@ -62,16 +127,5 @@
 * system_restart
     - action_restart
     
-## request info sent to db
-* request_information{"component":"obs", "q_type":"what-is"}
-    - action_query_db
-    - slot{"dbQuerySuccessful": true}
-    - action_restart
-    
-## request info sent to db and not found
-* request_information{"component":"obs", "q_type":"what-is"}
-    - action_query_db
-    - slot{"isInvalidEntry": true}
-    - utter_dont_have_answer
-    - action_restart
+
 

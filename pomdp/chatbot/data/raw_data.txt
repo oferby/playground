@@ -100,16 +100,15 @@ u - user b - bot
 
 #
 u: i need new ecs
-b: do you have a specific ECS in mind or you would like me to help you find one?
-( buttons: I know what I want, I need help )
+b: Do you have a specific ECS in mind or you would like me to help you find one?
+( buttons: I know what I want, Help me choose)
 > create_ecs_choose_help
 
 
 #
 > create_ecs_choose_help (need help)
-b: Sure. To help you with that I need few things. First,
-what is the area of your interest?
-(this could be: web application, database,  data analysis, video, gaming, general perpose )
+b: Sure. To help you with that I need few things. What is the area of your interest?
+(this could be: web application, database,  data analysis, video, gaming, general purpose )
 u: I need it for web application
 b: Nice. Do you have an estimation on the number of users that will use your application at the same time?
 u: I think arround 100
@@ -120,7 +119,8 @@ b: OK. I have several option for you. Just few more questions. How much memory d
 u: few
 b: Got you. How much computation power do you need?
 ( buttons: not much, medium, super charged )
-u: Right. These are the options suitable for you. You can see the monthly price next to each one of them.
+u: not much
+b: Right. These are the options suitable for you. You can see the monthly price next to each one of them.
 Please choose one or choose 'see details' if you want to checkout the technical differences.
 (buttons:  s2.medium.2 $30 s2.medium.4 $50, s3.medium.2 $52 , see details))
 u: s2.medium.2
@@ -129,10 +129,10 @@ b: One last thing... What operating system (OS) would you like?
 u: ubuntu
 b: Choose 'Current Version' or write the OS version you want.
 ( buttons: Current Version)
-b: OK. I'm have all the information I need. Please confirm starting the new server
+b: OK. I have all the information I need. Please confirm starting the new server
 (buttons: confirm, cancel)
 u: confirm
-b: I started the server. I will take it few seconds to run. Meanwhile, I'vew sent you email with details on
+b: I started the server. I will take it few seconds to run. Meanwhile, I've sent you email with details on
 how to login to the server. Is there anything else I can help you with?
 u: no that's it
 b: OK. See you next time.
