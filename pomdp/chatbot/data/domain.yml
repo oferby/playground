@@ -85,11 +85,15 @@ intents:
   - request_information
   - system_restart
   - inform
+  - how_are_you
 
 templates:
   utter_greet:
     - text: "Hello, what can I do for you today?"
     - text: "Hello, how can I help you?"
+  utter_im_fine:
+    - text: "I'm great, thanks for asking."
+    - text: "All is good, nice of you to ask."
   utter_say_name:
     - text: "My name is Anan and I'm here to help you start and manage your cloud services."
   utter_what_i_do:
@@ -135,8 +139,8 @@ templates:
     - text: "See you later"
   utter_ask_anything_else:
     - text: "Is there anything else I can help you with?"
-
-
+  utter_why_come_to_me:
+    - text: "If you know what you want, why do you come to me?!"
 
 
   utter_show_ecs:
@@ -274,6 +278,7 @@ actions:
   - utter_solution_unknown
   - utter_dont_have_answer
   - utter_ask_anything_else
+  - utter_im_fine
 
   - utter_get_server_name
   - utter_bye
@@ -299,6 +304,7 @@ actions:
   - actions.ActionCreateEcs
   - actions.ActionCheckConfirmation
   - action_unknown_input
+  - action_admin_restart
 
   - utter_need_few_things
   - utter_ask_interest
@@ -320,3 +326,4 @@ actions:
   - utter_ask_image_type
   - utter_ask_num_of_cpus
   - utter_ask_confirm_create_ecs
+  - utter_why_come_to_me

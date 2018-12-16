@@ -145,3 +145,7 @@ I need to know what do you care for most, CPU, memory, storage, GPU acceleration
 (buttons)
 u: cpu
 b: I understand. We have great high performance ECS options.
+
+
+# complex scenario - looking for solution
+u: I'm looking for a solution for

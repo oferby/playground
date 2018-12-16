@@ -3,9 +3,15 @@
     - utter_greet
     - action_restart
     
-## My Name
+
+## Ask My Name
 * my_name
     - utter_say_name
+    - action_restart
+
+## How are you
+* how_are_you
+    - utter_im_fine
     - action_restart
 
 ## What can I do
@@ -19,6 +25,7 @@
     - slot{"dbQuerySuccessful": true}
     - action_restart
     
+
 ## request info sent to db and not found
 * request_information{"component":"obs", "q_type":"what-is"}
     - action_query_db
@@ -32,8 +39,6 @@
     - utter_acknowledge
     - utter_ask_if_specific_ecs
 > ask_if_specific_ecs
-
-
 
 ## create ecs with help
 > ask_if_specific_ecs
@@ -86,8 +91,8 @@
 > ask_if_specific_ecs
 * inform{"q_need_help":"i_know"}
     - slot{"q_need_help":"i_know"}
-    - utter_goodbye
-    - action_restart  
+    - utter_why_come_to_me
+    - action_restart
 
 ## create ecs final confirmed
 > create_esc_final_confirm
@@ -102,6 +107,14 @@
 * deny
     - utter_goodbye
     - action_restart
+
+
+
+
+
+
+
+
 
 
 
@@ -144,10 +157,12 @@
 * deny
     - utter_goodbye
     - action_restart
+  
  
+
 ## restart command from client
 * system_restart
-    - action_restart
+    - action_admin_restart
     
 
 

@@ -2,6 +2,7 @@ from rasa_core_sdk import Action
 from rasa_core_sdk.events import *
 import logging
 import pymongo
+import json
 
 logger = logging.getLogger(__name__)
 
@@ -46,8 +47,10 @@ class ActionUnknownInput(Action):
         #     'text': tracker.latest_message['text']
         # }
         # collection.insert_one(doc)
+        # + json.dumps(tracker.current_state()) + ' , '
         f = open("/tmp/unknown.txt", "a+")
-        f.write(tracker.latest_message['text'] + '\n')
+        f.write(tracker.sender_id + ' , ' + tracker.latest_message[
+            'text'] + '\n')
         dispatcher.utter_template('utter_default', tracker)
         return [UserUtteranceReverted()]
 
@@ -57,6 +60,16 @@ class ActionRestart(Action):
         return "action_restart"
 
     def run(self, dispatcher, tracker, domain):
+        return [Restarted()]
+
+
+class ActionAdminRestart(Action):
+    def name(self):
+        return "action_admin_restart"
+
+    def run(self, dispatcher, tracker, domain):
+        logger.debug("**** got restart action request. **** ")
+        dispatcher.utter_message("session restarted.")
         return [Restarted()]
 
 

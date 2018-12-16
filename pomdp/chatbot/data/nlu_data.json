@@ -1273,6 +1273,21 @@
         "text": "what do you do?",
         "intent": "what_i_do",
         "entities": []
+      },
+      {
+        "text": "how are you?",
+        "intent": "how_are_you",
+        "entities": []
+      },
+      {
+        "text": "how r u?",
+        "intent": "how_are_you",
+        "entities": []
+      },
+      {
+        "text": "what's up?",
+        "intent": "how_are_you",
+        "entities": []
       }
     ]
   }
