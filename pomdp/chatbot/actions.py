@@ -1,5 +1,5 @@
 from rasa_core_sdk import Action
-from rasa_core_sdk.events import SlotSet, BotUttered, AllSlotsReset, Restarted
+from rasa_core_sdk.events import *
 import logging
 import pymongo
 
@@ -28,6 +28,28 @@ def find_one_from_info(type, topic):
 
 def say(text, dispatcher):
     dispatcher.utter_message(text)
+
+
+class ActionUnknownInput(Action):
+    def name(self):
+        return "action_unknown_input"
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        logger.debug("writing unknown message to db: {}".format(tracker.latest_message['text']))
+        # collection = get_client_collection('unknown_input')
+        # doc = {
+        #     'user': tracker.sender_id,
+        #     'text': tracker.latest_message['text']
+        # }
+        # collection.insert_one(doc)
+        f = open("/tmp/unknown.txt", "a+")
+        f.write(tracker.latest_message['text'] + '\n')
+        dispatcher.utter_template('utter_default', tracker)
+        return [UserUtteranceReverted()]
 
 
 class ActionRestart(Action):

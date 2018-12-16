@@ -1253,6 +1253,26 @@
         "text": "#reset",
         "intent": "system_restart",
         "entities": []
+      },
+      {
+        "text": "What is you name?",
+        "intent": "my_name",
+        "entities": []
+      },
+      {
+        "text": "what's you name?",
+        "intent": "my_name",
+        "entities": []
+      },
+      {
+        "text": "What can you do?",
+        "intent": "what_i_do",
+        "entities": []
+      },
+      {
+        "text": "what do you do?",
+        "intent": "what_i_do",
+        "entities": []
       }
     ]
   }

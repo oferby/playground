@@ -3,7 +3,7 @@ policies:
     epochs: 100
     max_history: 5
   - name: FallbackPolicy
-    fallback_action_name: 'action_default_fallback'
+    fallback_action_name: 'action_unknown_input'
   - name: MemoizationPolicy
     max_history: 5
   - name: FormPolicy

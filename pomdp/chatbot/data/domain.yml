@@ -71,6 +71,8 @@ entities:
 
 intents:
   - greeting
+  - my_name
+  - what_i_do
   - create_ecs
   - show_ecs
   - create_bms
@@ -88,10 +90,16 @@ templates:
   utter_greet:
     - text: "Hello, what can I do for you today?"
     - text: "Hello, how can I help you?"
+  utter_say_name:
+    - text: "My name is Anan and I'm here to help you start and manage your cloud services."
+  utter_what_i_do:
+    - text: "For now I can help you start new ECS (Virtual Server). Soon I will cover all cloud services."
   utter_goodbye:
     - text: "OK, see you next time"
     - text: "Bye, see you."
     - text: "Goodbye. Come back soon."
+  utter_default:
+    - text: "I'm sorry but I did not understand what you've said. Please rephrase."
   utter_let_me_check:
     - text: "Give me a minute to check"
     - text: "Checking... will be back in a sec."
@@ -255,11 +263,17 @@ templates:
 actions:
   - utter_greet
   - utter_goodbye
+  - utter_say_name
+  - utter_what_i_do
   - utter_let_me_check
   - utter_done
   - utter_is_there_anything_else
   - utter_acknowledge
   - utter_confirm_button
+  - utter_ok
+  - utter_solution_unknown
+  - utter_dont_have_answer
+  - utter_ask_anything_else
 
   - utter_get_server_name
   - utter_bye
@@ -272,10 +286,7 @@ actions:
   - utter_s6_ecs
   - utter_ask_learn_more
   - utter_offer_s3_ecs
-  - utter_ok
-  - utter_solution_unknown
-  - utter_dont_have_answer
-  - utter_ask_anything_else
+
   - action_request_solution
   - action_restart
   - action_reset_all_slots
@@ -287,6 +298,7 @@ actions:
   - actions.ActionShowEcs
   - actions.ActionCreateEcs
   - actions.ActionCheckConfirmation
+  - action_unknown_input
 
   - utter_need_few_things
   - utter_ask_interest

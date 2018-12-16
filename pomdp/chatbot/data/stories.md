@@ -2,6 +2,16 @@
 * greeting
     - utter_greet
     - action_restart
+    
+## My Name
+* my_name
+    - utter_say_name
+    - action_restart
+
+## What can I do
+* what_i_do
+    - utter_what_i_do
+    - action_restart
 
 ## request info sent to db
 * request_information{"component":"obs", "q_type":"what-is"}
@@ -55,10 +65,22 @@
     - utter_ask_image_type
 * inform{"image_type":"ubuntu"}
     - utter_os_version
-* inform{"number":"16"} or inform{"q_options":"latest_version"}
+> create_ecs_check_version
+
+## choose number 
+> create_ecs_check_version
+* inform{"number":"16"}
     - utter_have_everything
     - utter_ask_confirm_create_ecs
 > create_esc_final_confirm
+
+## choose latest version
+> create_ecs_check_version
+* inform{"q_options":"latest_version"}
+    - utter_have_everything
+    - utter_ask_confirm_create_ecs
+> create_esc_final_confirm
+
 
 ## create ecs without help
 > ask_if_specific_ecs
