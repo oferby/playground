@@ -11,7 +11,7 @@ from rasa_core.interpreter import RasaNLUInterpreter, EndpointConfig
 
 
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG, filename='anan.log')
 
 TOKEN = 'xoxp-'
 BOT_TOKEN = 'xoxb-'

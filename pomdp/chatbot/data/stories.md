@@ -9,6 +9,27 @@
     - utter_say_name
     - action_restart
 
+## Are you human 
+* what_are_you{"q_are_you":"human"}
+    - slot{"q_are_you":"human"}
+    - utter_am_i_human
+    - action_restart
+    
+
+## Are you a bot
+* what_are_you{"q_are_you":"bot"}
+    - slot{"q_are_you":"bot"}
+    - utter_am_i_bot
+    - action_restart
+    
+
+## What are you
+* what_are_you
+    - utter_i_am
+    - action_restart
+
+    
+
 ## How are you
 * how_are_you
     - utter_im_fine
@@ -72,19 +93,19 @@
     - utter_os_version
 > create_ecs_check_version
 
-## choose number 
+## choose OS version number 
 > create_ecs_check_version
 * inform{"number":"16"}
     - utter_have_everything
     - utter_ask_confirm_create_ecs
 > create_esc_final_confirm
 
-## choose latest version
+## choose OS latest version
 > create_ecs_check_version
 * inform{"q_options":"latest_version"}
     - utter_have_everything
     - utter_ask_confirm_create_ecs
-> create_esc_final_confirm
+> create_esc_check_final_confirm
 
 
 ## create ecs without help
@@ -95,7 +116,7 @@
     - action_restart
 
 ## create ecs final confirmed
-> create_esc_final_confirm
+> create_esc_check_final_confirm
 * confirm
     - utter_infom_server_started
     - utter_sent_login_to_email
@@ -103,7 +124,7 @@
     - action_restart
 
 ## create ecs final deny
-> create_esc_final_confirm
+> create_esc_check_final_confirm
 * deny
     - utter_goodbye
     - action_restart
@@ -120,6 +141,23 @@
 
   
 
+## move to cloud
+* move_to_cloud
+    - utter_what_i_do
+    - action_restart
+
+
+## architecture request
+* req_architecture{"application":"gaming"}
+    - slot{"application":"gaming"}
+    - utter_game_architecture
+    - action_restart
+
+## architecture 2 request
+* req_architecture{"application":"gaming"}
+    - slot{"application":"gaming-business"}
+    - utter_game_architecture_business
+    - action_restart
 
 
 ## show ecs path

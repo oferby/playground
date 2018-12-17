@@ -2,13 +2,12 @@ from rasa_core_sdk import Action
 from rasa_core_sdk.events import *
 import logging
 import pymongo
-import json
 
 logger = logging.getLogger(__name__)
 
 
 def get_client_collection(collection="info"):
-    client = pymongo.MongoClient(host='10.10.11.136')
+    client = pymongo.MongoClient('10.10.11.136')
     db = client.vca
     return db.get_collection(collection)
 
@@ -131,9 +130,10 @@ class ActionGetInfoFromDb(Action):
         if slots['q_type'] and slots["component"]:
             result = find_one_from_info(slots['q_type'], slots["component"])
             if result:
+                logger.debug("found an answer to: {} {}".format(slots['q_type'], slots["component"]))
                 say(result['text'], dispatcher)
                 return [SlotSet("dbQuerySuccessful", True)]
-
+        logger.debug("did not find an answer to: {} {}".format(slots['q_type'], slots["component"]))
         return [SlotSet("isInvalidEntry", True)]
 
 
@@ -165,3 +165,15 @@ class ActionCreateEcs(Action):
             return [SlotSet("context_create_ecs", str(int(slots["context_create_ecs"]) - 1))]
         say("What image type would you like?", dispatcher)
         return [SlotSet("context_create_ecs", "5")]
+
+
+class ActionCreateEcsFinalConfirm(Action):
+    def name(self):
+        return 'action_create_ecs_final_confirm'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        slots = tracker.current_slot_values()

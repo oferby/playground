@@ -148,4 +148,6 @@ b: I understand. We have great high performance ECS options.
 
 
 # complex scenario - looking for solution
-u: I'm looking for a solution for
+u: I'm looking for a solution for predictive maintenance
+b: OK. We have several solutions for predictive maintenance. Let's go over some options.
+

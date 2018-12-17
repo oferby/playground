@@ -1,6 +1,23 @@
 ﻿{
   "rasa_nlu_data": {
-    "regex_features": [],
+    "regex_features": [
+      {
+        "name": "greet",
+        "pattern": "hey[^\\s]*"
+      },
+      {
+        "name": "email",
+        "pattern": "\b[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
+      },
+      {
+        "name": "image_type",
+        "pattern": "Windows|windows|ubuntu|fedora|Fedora|centos|CentOS|debian"
+      },
+      {
+        "name": "application",
+        "pattern": "web app|web application[s]|gaming|video streaming|data analysis|database"
+      }
+    ],
     "entity_synonyms": [],
     "common_examples": [
       {
@@ -534,7 +551,7 @@
           {
             "start": 29,
             "end": 45,
-            "value": "web_applications",
+            "value": "web_app",
             "entity": "application"
           }
         ]
@@ -546,7 +563,7 @@
           {
             "start": 30,
             "end": 50,
-            "value": "business",
+            "value": "business_app",
             "entity": "application"
           }
         ]
@@ -576,7 +593,7 @@
           {
             "start": 18,
             "end": 33,
-            "value": "video streaming",
+            "value": "video_streaming",
             "entity": "application"
           },
           {
@@ -594,7 +611,7 @@
           {
             "start": 38,
             "end": 45,
-            "value": "web_applications",
+            "value": "web_app",
             "entity": "application"
           },
           {
@@ -630,7 +647,7 @@
           {
             "start": 34,
             "end": 43,
-            "value": "web store",
+            "value": "webstore",
             "entity": "application"
           }
         ]
@@ -1288,6 +1305,129 @@
         "text": "what's up?",
         "intent": "how_are_you",
         "entities": []
+      },
+      {
+        "text": "are you human?",
+        "intent": "what_are_you",
+        "entities": [
+          {
+            "start": 8,
+            "end": 13,
+            "value": "human",
+            "entity": "q_are_you"
+          }
+        ]
+      },
+      {
+        "text": "are you a bot?",
+        "intent": "what_are_you",
+        "entities": [
+          {
+            "start": 10,
+            "end": 13,
+            "value": "bot",
+            "entity": "q_are_you"
+          }
+        ]
+      },
+      {
+        "text": "What are you?",
+        "intent": "what_are_you",
+        "entities": []
+      },
+      {
+        "text": "I need to move to cloud",
+        "intent": "move_to_cloud",
+        "entities": []
+      },
+      {
+        "text": "I want to cloudify my app",
+        "intent": "move_to_cloud",
+        "entities": []
+      },
+      {
+        "text": "I need web server on the cloud",
+        "intent": "create_ecs",
+        "entities": [
+          {
+            "start": 7,
+            "end": 18,
+            "value": "web_app",
+            "entity": "application"
+          }
+        ]
+      },
+      {
+        "text": "I want new web server",
+        "intent": "create_ecs",
+        "entities": [
+          {
+            "start": 11,
+            "end": 21,
+            "value": "web_app",
+            "entity": "application"
+          }
+        ]
+      },
+      {
+        "text": "show me gaming architecture",
+        "intent": "req_architecture",
+        "entities": [
+          {
+            "start": 8,
+            "end": 14,
+            "value": "gaming",
+            "entity": "application"
+          }
+        ]
+      },
+      {
+        "text": "show gaming setup",
+        "intent": "req_architecture",
+        "entities": [
+          {
+            "start": 5,
+            "end": 11,
+            "value": "gaming",
+            "entity": "application"
+          }
+        ]
+      },
+      {
+        "text": "what is waf?",
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "what_is",
+            "entity": "q_type"
+          },
+          {
+            "start": 8,
+            "end": 11,
+            "value": "waf",
+            "entity": "component"
+          }
+        ]
+      },
+      {
+        "text": "what is web application firewall?",
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 0,
+            "end": 7,
+            "value": "what_is",
+            "entity": "q_type"
+          },
+          {
+            "start": 8,
+            "end": 32,
+            "value": "waf",
+            "entity": "component"
+          }
+        ]
       }
     ]
   }
