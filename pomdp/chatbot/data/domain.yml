@@ -1,47 +1,73 @@
 slots:
-    num_of_cpus:
-      type:   text
-    image_type:
-      type:   text
-    memory_size:
-      type:   text
-    vm_state:
-      type: text
-    name:
-      type: text
-    isInvalidEntry:
-      type: bool
-    application:
-      type: text
-    feature:
-      type: text
-    component:
-      type: text
-    info_ok:
-      type: bool
-    info_oss:
-      type: bool
-    info_ecs:
-      type: bool
-    q_type:
-      type: text
-    dbQuerySuccessful:
-      type: bool
-    solution:
-      type: text
+  num_of_cpus:
+    type:   text
+  image_type:
+    type:   text
+  memory_size:
+    type:   text
+  vm_state:
+    type: text
+  name:
+    type: text
+  isInvalidEntry:
+    type: bool
+  application:
+    type: text
+  feature:
+    type: text
+  component:
+    type: text
+  info_ok:
+    type: bool
+  info_oss:
+    type: bool
+  info_ecs:
+    type: bool
+  q_type:
+    type: text
+  dbQuerySuccessful:
+    type: bool
+  solution:
+    type: text
+  q_need_help:
+    type: categorical
+    values:
+      - need_help
+      - i_know
+  q_care_most:
+    type: text
+  q_amount:
+    type: text
+  q_power:
+    type: text
+  q_ecs_type:
+    type: text
+  q_req_details:
+    type: text
+  q_options:
+    type: text
+
 
 
 entities:
-- num_of_cpus
-- image_type
-- memory_size
-- vm_state
-- name
-- application
-- component
-- feature
-- q_type
-- solution
+  - num_of_cpus
+  - image_type
+  - memory_size
+  - vm_state
+  - name
+  - application
+  - component
+  - feature
+  - q_type
+  - solution
+  - number
+  - q_need_help
+  - q_care_most
+  - q_amount
+  - q_power
+  - q_req_details
+  - q_options
+
 
 intents:
   - greeting
@@ -56,75 +82,175 @@ intents:
   - request_solution
   - request_information
   - system_restart
+  - inform
 
 templates:
   utter_greet:
-    - "Hello, what can I do for you today?"
-    - "Hello, how can I help you?"
+    - text: "Hello, what can I do for you today?"
+    - text: "Hello, how can I help you?"
   utter_goodbye:
-    - "OK, see you next time"
-    - "Bye, see you."
-    - "Goodbye. Come back soon."
+    - text: "OK, see you next time"
+    - text: "Bye, see you."
+    - text: "Goodbye. Come back soon."
   utter_let_me_check:
-    - "Give me a minute to check"
-    - "Checking... will be back in a sec."
+    - text: "Give me a minute to check"
+    - text: "Checking... will be back in a sec."
   utter_done:
     - "Done."
   utter_is_there_anything_else:
-  - text: "Is there anything else?"
-
+    - text: "Is there anything else?"
   utter_confirm_button:
-  - text: "Are you sure?"
-    buttons:
-      - title: "Yes"
-        payload: "confirm"
-      - title: "No"
-        payload: "deny"
-
-  utter_ask_image_type:
-    - text: "What image (Operating System) would you like?"
+    - text: "Are you sure?"
       buttons:
-      - title:  "Fedora"
-        payload: "fedora"
-      - title:  "Ubuntu"
-        payload:  "ubuntu"
-      - title: "Windows"
-        payload: "windows"
-  utter_ask_num_of_cpus:
-    - "How many CPUs would you like?"
-  utter_ask_memory_size:
-    - "How much memory do you need?"
-  utter_ask_confirm_create_ecs:
-    - "Please confirm creating ECS"
-  utter_bye:
-    - "Bye"
-    - "See you later"
-  utter_show_ecs:
-    - "understand show ecs"
-  utter_ecs_change_state:
-    - "understand ecs change state"
-  utter_get_server_name:
-    - "what is the name of the server?"
-  utter_create_bms:
-    - "understand create bms"
-  utter_show_bms:
-    - "understand show bms"
-  utter_invalid_server_name:
-    - "I didn't get that server name... Please re-enter."
-  utter_offer_s3_ecs:
-    - "S3 ECS is a good fit for websites and web applications, small-scale databases and cache servers, and small- and medium-load enterprise applications"
-  utter_ask_learn_more:
-    - "Are you interasted to learn more?"
-  utter_s6_ecs:
-    - "S6 ECS is good for generalized websites and web applications, including microservices; low-latency interactive applications; small- and medium-sized databases; virtual desktops; development, build and stage environments; code repositories; product prototypes"
+        - title: "Yes"
+          payload: "confirm"
+        - title: "No"
+          payload: "deny"
   utter_ok:
     - text: "OK"
       image: "https://www.milanocard.it/wp-content/uploads/2017/08/smile-ok.jpg"
-
+  utter_acknowledge:
+    - text: "OK."
+    - text: "Right."
+    - text: "Got you."
+    - text: "Sure."
+    - text: "Nice."
+    - text: "All right."
   utter_solution_unknown:
-    - "I don't understand what you are looking for..."
+    - text: "I don't understand what you are looking for..."
   utter_dont_have_answer:
-    - "Sorry but I don't have answer to this question."
+    - text: "Sorry but I don't have answer to this question."
+  utter_not_support:
+    - text: "Sorry but we do not support this feature at present."
+  utter_bye:
+    - text: "Bye"
+    - text: "See you later"
+  utter_ask_anything_else:
+    - text: "Is there anything else I can help you with?"
+
+
+
+
+  utter_show_ecs:
+    - text: "understand show ecs"
+  utter_ecs_change_state:
+    - text: "understand ecs change state"
+  utter_get_server_name:
+    - text: "what is the name of the server?"
+  utter_create_bms:
+    - text: "understand create bms"
+  utter_show_bms:
+    - text: "understand show bms"
+  utter_invalid_server_name:
+    - text: "I didn't get that server name... Please re-enter."
+  utter_offer_s3_ecs:
+    - text: "S3 ECS is a good fit for websites and web applications, small-scale databases and cache servers, and small- and medium-load enterprise applications"
+  utter_ask_learn_more:
+    - text: "Are you interested to learn more?"
+      buttons:
+        - title: "Sure"
+          payload: "yes"
+        - title: "No need"
+          payload: "no"
+  utter_s6_ecs:
+    - text: "S6 ECS is good for generalized websites and web applications, including microservices; low-latency interactive applications; small- and medium-sized databases; virtual desktops; development, build and stage environments; code repositories; product prototypes"
+
+  utter_ask_if_specific_ecs:
+    - text: "Do you have a specific ECS in mind or you would like me to help you find one?"
+      buttons:
+        - title: "I know what I want"
+          payload: "i_know"
+        - title: "Help me choose"
+          payload: "need_help"
+  utter_need_few_things:
+    - text: "To help you with that I need few things."
+  utter_ask_interest:
+    - text: "What is the area of your interest? This could be: web application, database, data analysis, video, gaming, general purpose."
+  utter_ask_number_of_users:
+    - text: "Do you have an estimation on the number of users that will use your application at the same time?"
+  utter_ask_care_most:
+    - text: "To be able to find you the best solution, can you let me know what do you care most?"
+      buttons:
+        - title: "Price"
+          payload: "q_price"
+        - title: "Performance"
+          payload: "q_performance"
+  utter_have_options:
+    - text: "I have several option for you."
+  utter_just_few_things:
+    - text: "Just few questions."
+    - text: "Just few things."
+  utter_ask_memory_size:
+    - text: "How much memory do you need?"
+      buttons:
+        - title: "Few"
+          payload: "q_few"
+        - title:  "Moderate"
+          payload: "q_moderate"
+        - title: "A lot"
+          payload: "q_a_lot"
+  utter_ask_compute_power:
+    - text: "How much computation power do you need?"
+      buttons:
+        - title: "Not much"
+          payload: "q_power_not_much"
+        - title: "Medium"
+          payload: "q_power_medium"
+        - title: "Super Charged"
+          payload: "q_power_super_charged"
+  utter_show_options:
+    - text: "These are the options suitable for you."
+  utter_show_options_price:
+    - text: "You can see the monthly price next to each one of them."
+  utter_choose_or_select_details:
+    - text: "Please choose one or choose 'see details' if you want to checkout the technical differences."
+      buttons:
+        - title: "s2 medium 2: $30"
+          payload: "s2.medium.2"
+        - title: "s2 medium 4: $50"
+          payload: "s2.medium.4"
+        - title: "s3 medium 2: $52"
+          payload: "s3.medium.2"
+        - title: "See details"
+          payload: "req_details"
+
+  utter_last_thing:
+    - text: "One last thing... "
+  utter_ask_image_type:
+    - text: "What image (Operating System) would you like?"
+      buttons:
+        - title:  "Fedora"
+          payload: "fedora"
+        - title:  "Ubuntu"
+          payload:  "ubuntu"
+        - title: "Windows"
+          payload: "windows"
+  utter_os_version:
+    - text: "Choose 'Latest Version' or write the OS version you want."
+      buttons:
+        - title: "Latest Version"
+          payload: "latest_version"
+
+  utter_have_everything:
+    - text: "I have all the information I need."
+
+  utter_ask_confirm_create_ecs:
+    - text: "Please confirm creating ECS"
+      buttons:
+        - title: "Confirm"
+          payload: "confirm"
+        - title: "Deny"
+          payload: "deny"
+  utter_infom_server_started:
+    - text: "I started the server. I will take it few seconds to run."
+  utter_sent_login_to_email:
+    - text: "I've sent you email with details on how to login to the server."
+
+  utter_ask_num_of_cpus:
+    - text: "How many CPUs would you like?"
+
+
+
 
 actions:
   - utter_greet
@@ -132,31 +258,53 @@ actions:
   - utter_let_me_check
   - utter_done
   - utter_is_there_anything_else
-  - utter_ask_image_type
-  - utter_ask_num_of_cpus
-  - utter_ask_memory_size
-  - utter_ask_confirm_create_ecs
+  - utter_acknowledge
+  - utter_confirm_button
+
   - utter_get_server_name
   - utter_bye
-  - actions.ActionShowEcs
-  - actions.ActionCreateEcs
-  - actions.ActionCheckConfirmation
   - utter_show_ecs
   - utter_create_bms
   - utter_show_bms
   - utter_ecs_change_state
-  - action_say_ok
-  - action_show_ecs
-  - action_change_server_state
-  - action_clear_invalid_entry
+  - utter_not_support
   - utter_invalid_server_name
   - utter_s6_ecs
   - utter_ask_learn_more
   - utter_offer_s3_ecs
   - utter_ok
   - utter_solution_unknown
+  - utter_dont_have_answer
+  - utter_ask_anything_else
   - action_request_solution
   - action_restart
   - action_reset_all_slots
   - action_query_db
-  - utter_dont_have_answer
+  - action_say_ok
+  - action_show_ecs
+  - action_change_server_state
+  - action_clear_invalid_entry
+  - actions.ActionShowEcs
+  - actions.ActionCreateEcs
+  - actions.ActionCheckConfirmation
+
+  - utter_need_few_things
+  - utter_ask_interest
+  - utter_ask_number_of_users
+  - utter_ask_care_most
+  - utter_have_options
+  - utter_just_few_things
+  - utter_ask_memory_size
+  - utter_ask_compute_power
+  - utter_show_options
+  - utter_show_options_price
+  - utter_choose_or_select_details
+  - utter_last_thing
+  - utter_os_version
+  - utter_have_everything
+  - utter_infom_server_started
+  - utter_sent_login_to_email
+  - utter_ask_if_specific_ecs
+  - utter_ask_image_type
+  - utter_ask_num_of_cpus
+  - utter_ask_confirm_create_ecs
