@@ -1,6 +1,6 @@
-import matplotlib.pyplot as plt
 import numpy as np
 import scipy.stats as sts
+
 import pomdp.filter.partical.maze.agents as agents
 import pomdp.filter.partical.maze.world as W
 
@@ -32,6 +32,7 @@ def draw():
     world.draw_text('Mean: {0:.4f}'.format(mean), (710, 25))
     world.draw_text('Median: {:.4f}'.format(median), (710, 40))
     world.draw_text('Entropy: {0:.4f}'.format(entropy), (710, 55))
+    world.draw_text('Effective: {0:.2f}'.format(agent.n_effective), (710, 70))
     world.update_display()
 
 

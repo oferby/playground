@@ -4,6 +4,7 @@ from math import *
 
 import numpy as np
 import pygame
+
 import pomdp.filter.partical.maze.world as W
 
 SENSOR_NOISE = 20.0
@@ -71,6 +72,7 @@ class ParticleFilteringAgent(Agent):
         self.particles = []
         self.init_particles()
         self.state = None
+        self.n_effective = 0
         print('done creating particles')
 
     def init_particles(self):
@@ -146,6 +148,7 @@ class ParticleFilteringAgent(Agent):
         # update measurement likelihood
         max_prob = 0
         all_prob = []
+        sum1 = 0
         for i in range(len(self.particles)):
             prob = 1.0
             p = self.particles[i]
@@ -153,19 +156,26 @@ class ParticleFilteringAgent(Agent):
             sensors = self.particles[i].sensors = self.world.get_partial_obs(p.x, p.y)
             for j in range(len(obs)):
                 prob *= self.Gaussian(sensors[j], SENSOR_NOISE, obs[j])
-            p.prob = prob
-            all_prob.append(prob)
-            if prob > max_prob:
-                max_prob = prob
+            p.prob = prob * p.prob
+            all_prob.append(p.prob)
+            sum1 += p.prob
+
+            if p.prob > max_prob:
+                max_prob = p.prob
+
+        sum2 = 0
+        for i in range(len(self.particles)):
+            self.particles[i].prob = self.particles[i].prob / sum1
+            sum2 += self.particles[i].prob ** 2
+        self.n_effective = 1 / sum2
 
         # normalize Z likelihood
         # print(obs, self.particles[max_prob_index].sensors, max_prob)
 
-        sum_prob = self.choose_particles(all_prob, max_prob)
-
-        for i in range(len(self.particles)):
-            n = all_prob[i] / sum_prob
-            self.particles[i].prob = n
+        if self.n_effective < 350:
+            self.choose_particles(all_prob, max_prob)
+            for i in range(len(self.particles)):
+                self.particles[i].prob = 1 / len(self.particles)
 
     def choose_particles(self, all_prob, max_prob):
         new_particles = []
@@ -183,7 +193,7 @@ class ParticleFilteringAgent(Agent):
             p_prob = self.particles[index].prob
             p_sensors = self.particles[index].sensors
             new_particles.append(RobotParticle(p_x, p_y, p_sensors, p_prob))
-            sum_prob+=p_prob
+            sum_prob += p_prob
 
         self.particles = new_particles
         return sum_prob
