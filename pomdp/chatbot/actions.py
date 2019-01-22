@@ -177,3 +177,4 @@ class ActionCreateEcsFinalConfirm(Action):
             domain  # type:  Dict[Text, Any]
             ):
         slots = tracker.current_slot_values()
+

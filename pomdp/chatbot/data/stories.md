@@ -121,7 +121,7 @@
     - utter_infom_server_started
     - utter_sent_login_to_email
     - utter_ask_anything_else
-    - action_restart
+> after_confirm_create_ecs
 
 ## create ecs final deny
 > create_esc_check_final_confirm
@@ -130,16 +130,18 @@
     - action_restart
 
 
+## is there anything else?
+> after_confirm_create_ecs
+* deny
+    - utter_goodbye
+    - action_restart
 
+## is there anything else?
+> after_confirm_create_ecs
+* confim
+    - utter_what_i_do
+    - action_restart
 
-
-
-
-
-
-
-
-  
 
 ## move to cloud
 * move_to_cloud

@@ -1,4 +1,5 @@
 policies:
+  - name: vca.policy.PomdpPolicy
   - name: KerasPolicy
     epochs: 100
     max_history: 5

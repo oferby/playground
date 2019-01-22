@@ -16,11 +16,16 @@ To start the on-line trainer, go to the data directory and run:
 
 ## send query to stand alone server
 
+    curl -X POST localhost:5000/parse -d '{"q":"hi","project":"current"}'
 
 
 ## Train dialogue manager
 
     python3.6 -m rasa_core.train -d data/domain.yml -s data/stories.md -o models/dialogue --epochs 500
+
+## start Slack Connector (Server)
+
+    python3 slack_connector.py
 
 
 ## Custom Action Server
@@ -53,4 +58,17 @@ This has a bug. use the code instead
 ## Send a message to Anan in Slack
     curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}'  https://hooks.slack.com/services/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
 
+
+# Slack integration
+
+We use ngrok to as an HTTP proxy. 
+After starting ngrok
  
+    get the address of the server
+    - go to Slack API web site
+    - click on Your App
+    - choose Virtual Cloud Assistant
+    - change the address of ngrok in
+        - Event Subscription
+        - Interactive Components
+
