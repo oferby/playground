@@ -51,7 +51,10 @@ slots:
     values:
       - bot
       - human
-
+  q_num_of_users:
+    type: text
+  CARDINAL:
+    type: text
 
 entities:
   - num_of_cpus
@@ -72,7 +75,9 @@ entities:
   - q_req_details
   - q_options
   - q_are_you
+  - q_ecs_type
   - email
+  - CARDINAL
 
 
 intents:
@@ -94,6 +99,9 @@ intents:
   - how_are_you
   - what_are_you
   - move_to_cloud
+  - req_architecture
+  - can_i_ask_somethig
+
 
 templates:
   utter_greet:
@@ -105,7 +113,7 @@ templates:
   utter_say_name:
     - text: "My name is Anan and I'm here to help you start and manage your cloud services."
   utter_what_i_do:
-    - text: "For now I can help you start new ECS (Virtual Server). Soon I will cover all cloud services."
+    - text: "I can help you setup and use Huawei cloud services."
   utter_am_i_human:
     - text: "I'm not Human, I'm a Virtual Cloud Assistant."
   utter_am_i_bot:
@@ -117,7 +125,7 @@ templates:
     - text: "Bye, see you."
     - text: "Goodbye. Come back soon."
   utter_default:
-    - text: "I'm sorry but I did not understand what you've said. Please rephrase."
+    - text: ":thinking_face: I'm sorry but I did not understand what you've said. Please rephrase."
   utter_let_me_check:
     - text: "Give me a minute to check"
     - text: "Checking... will be back in a sec."
@@ -155,6 +163,8 @@ templates:
     - text: "Is there anything else I can help you with?"
   utter_why_come_to_me:
     - text: "If you know what you want, why do you come to me?!"
+  utter_go_ahead:
+    - text: "Sure, go ahead"
 
 
   utter_show_ecs:
@@ -317,20 +327,6 @@ actions:
   - utter_ask_learn_more
   - utter_offer_s3_ecs
 
-  - action_request_solution
-  - action_restart
-  - action_reset_all_slots
-  - action_query_db
-  - action_say_ok
-  - action_show_ecs
-  - action_change_server_state
-  - action_clear_invalid_entry
-  - actions.ActionShowEcs
-  - actions.ActionCreateEcs
-  - actions.ActionCheckConfirmation
-  - action_unknown_input
-  - action_admin_restart
-
   - utter_need_few_things
   - utter_ask_interest
   - utter_ask_number_of_users
@@ -355,3 +351,19 @@ actions:
   - utter_game_architecture
   - utter_game_architecture_business
   - utter_wap_firewall_link
+  - utter_go_ahead
+
+  - action_request_solution
+  - action_restart
+  - action_reset_all_slots
+  - action_query_db
+  - action_say_ok
+  - action_show_ecs
+  - action_change_server_state
+  - action_clear_invalid_entry
+  - actions.ActionShowEcs
+  - actions.ActionCreateEcs
+  - actions.ActionCheckConfirmation
+  - action_unknown_input
+  - action_admin_restart
+  - action_extract_num_of_users

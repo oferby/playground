@@ -178,3 +178,16 @@ class ActionCreateEcsFinalConfirm(Action):
             ):
         slots = tracker.current_slot_values()
 
+
+class ActionExtractNumOfUsers(Action):
+    def name(self):
+        return 'action_extract_num_of_users'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        slots = tracker.current_slot_values()
+        num_of_users = slots['CARDINAL']
+        return [SlotSet("q_num_of_users", num_of_users), SlotSet("CARDINAL")]

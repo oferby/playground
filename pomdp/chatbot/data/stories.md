@@ -71,7 +71,8 @@
 * inform{"application":"web_applications"}
     - utter_acknowledge
     - utter_ask_number_of_users
-* inform{"number":"100"}
+* inform{"CARDINAL":"100"}
+    - action_extract_num_of_users
     - utter_ask_care_most
 * inform{"q_care_most":"q_price"}
     - slot{"q_care_most":"q_price"}
@@ -98,7 +99,7 @@
 * inform{"number":"16"}
     - utter_have_everything
     - utter_ask_confirm_create_ecs
-> create_esc_final_confirm
+> create_esc_check_final_confirm
 
 ## choose OS latest version
 > create_ecs_check_version
@@ -138,7 +139,7 @@
 
 ## is there anything else?
 > after_confirm_create_ecs
-* confim
+* confirm
     - utter_what_i_do
     - action_restart
 
@@ -203,6 +204,6 @@
 ## restart command from client
 * system_restart
     - action_admin_restart
-    
+
 
 

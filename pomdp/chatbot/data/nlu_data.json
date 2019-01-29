@@ -1,23 +1,6 @@
 ﻿{
   "rasa_nlu_data": {
-    "regex_features": [
-      {
-        "name": "greet",
-        "pattern": "hey[^\\s]*"
-      },
-      {
-        "name": "email",
-        "pattern": "\b[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$"
-      },
-      {
-        "name": "image_type",
-        "pattern": "Windows|windows|ubuntu|fedora|Fedora|centos|CentOS|debian"
-      },
-      {
-        "name": "application",
-        "pattern": "web app|web application[s]|gaming|video streaming|data analysis|database"
-      }
-    ],
+    "regex_features": [],
     "entity_synonyms": [],
     "common_examples": [
       {
@@ -563,7 +546,7 @@
           {
             "start": 30,
             "end": 50,
-            "value": "business_app",
+            "value": "business",
             "entity": "application"
           }
         ]
@@ -647,7 +630,7 @@
           {
             "start": 34,
             "end": 43,
-            "value": "webstore",
+            "value": "web store",
             "entity": "application"
           }
         ]
@@ -1346,13 +1329,37 @@
         "entities": []
       },
       {
+        "text": "I want architecture for web app",
+        "intent": "req_architecture",
+        "entities": [
+          {
+            "start": 24,
+            "end": 31,
+            "value": "web_app",
+            "entity": "component"
+          }
+        ]
+      },
+      {
+        "text": "I want architecture for web applications",
+        "intent": "req_architecture",
+        "entities": [
+          {
+            "start": 24,
+            "end": 40,
+            "value": "web_app",
+            "entity": ""
+          }
+        ]
+      },
+      {
         "text": "I need web server on the cloud",
         "intent": "create_ecs",
         "entities": [
           {
             "start": 7,
             "end": 18,
-            "value": "web_app",
+            "value": "web_app ",
             "entity": "application"
           }
         ]
@@ -1416,18 +1423,46 @@
         "intent": "request_information",
         "entities": [
           {
-            "start": 0,
-            "end": 7,
-            "value": "what_is",
-            "entity": "q_type"
-          },
-          {
             "start": 8,
             "end": 32,
             "value": "waf",
             "entity": "component"
           }
         ]
+      },
+      {
+        "text": "i like your help",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 0,
+            "end": 16,
+            "value": "i like your help",
+            "entity": "q_need_help"
+          }
+        ]
+      },
+      {
+        "text": "can i ask you something",
+        "intent": "can_i_ask_somethig",
+        "entities": []
+      },
+      {
+        "text": "ok help me choose",
+        "intent": "inform",
+        "entities": [
+          {
+            "start": 3,
+            "end": 17,
+            "value": "help me choose",
+            "entity": "q_need_help"
+          }
+        ]
+      },
+      {
+        "text": "what can u do?",
+        "intent": "what_i_do",
+        "entities": []
       }
     ]
   }
