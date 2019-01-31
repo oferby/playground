@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 
 
 def get_client_collection(collection="info"):
-    client = pymongo.MongoClient('10.10.11.136')
+    client = pymongo.MongoClient('10.100.99.85')
     db = client.vca
     return db.get_collection(collection)
 
@@ -24,6 +24,18 @@ def find_all_from_info(type, topic):
 def find_one_from_info(type, topic):
     collection = get_client_collection()
     return collection.find_one({"type": type, "topic": topic})
+
+
+def add_one(value, collection):
+    if collection is not None:
+        collection = get_client_collection(collection)
+        collection.insert_one(value)
+
+
+def remove_all(collection):
+    if collection is not None:
+        collection = get_client_collection(collection)
+        collection.remove({})
 
 
 def say(text, dispatcher):
@@ -191,3 +203,66 @@ class ActionExtractNumOfUsers(Action):
         slots = tracker.current_slot_values()
         num_of_users = slots['CARDINAL']
         return [SlotSet("q_num_of_users", num_of_users), SlotSet("CARDINAL")]
+
+
+class ActionTrainingHelp(Action):
+    def name(self):
+        return 'action_get_training_help'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        mgs = 'You can do the following:\n' \
+              '* intent list | intents\n' \
+              '* '
+
+        say(mgs, dispatcher)
+        return [Restarted()]
+
+
+class ActionGetIntentList(Action):
+    def name(self):
+        return 'action_get_intents'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        logger.debug('getting intent list')
+        collection = 'intents'
+        collection = get_client_collection(collection)
+        intents = collection.find()
+        if not intents:
+            say('There are no intents to list.', dispatcher)
+        else:
+            result = []
+            for intent in intents:
+                result.append(intent['intent'])
+            say("intents:\n{}".format(result), dispatcher)
+        return [Restarted()]
+
+
+class ActionAddIntent(Action):
+    def name(self):
+        return 'action_add_intent'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        text = tracker.latest_message['text']
+        command = '* addint'
+
+        if text.find(command) == -1:
+            say('the command is: * addint', dispatcher)
+        else:
+            intent = text[len(command) + 1:]
+            collection = 'intents'
+            collection = get_client_collection(collection)
+            collection.insert_one({'intent': intent})
+            say('intent added', dispatcher)
+        return [Restarted()]

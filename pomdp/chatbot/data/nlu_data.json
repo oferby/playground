@@ -630,7 +630,7 @@
           {
             "start": 34,
             "end": 43,
-            "value": "web store",
+            "value": "webstore",
             "entity": "application"
           }
         ]
@@ -1053,28 +1053,9 @@
         "entities": []
       },
       {
-        "text": "i_know",
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 6,
-            "value": "i_know",
-            "entity": "q_need_help"
-          }
-        ]
-      },
-      {
-        "text": "need_help",
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 9,
-            "value": "need_help",
-            "entity": "q_need_help"
-          }
-        ]
+        "text": "need help",
+        "intent": "request_help",
+        "entities": []
       },
       {
         "text": "q_price",
@@ -1336,7 +1317,7 @@
             "start": 24,
             "end": 31,
             "value": "web_app",
-            "entity": "component"
+            "entity": "application"
           }
         ]
       },
@@ -1348,7 +1329,7 @@
             "start": 24,
             "end": 40,
             "value": "web_app",
-            "entity": ""
+            "entity": "application"
           }
         ]
       },
@@ -1359,7 +1340,7 @@
           {
             "start": 7,
             "end": 18,
-            "value": "web_app ",
+            "value": "web_app",
             "entity": "application"
           }
         ]
@@ -1432,30 +1413,23 @@
       },
       {
         "text": "i like your help",
-        "intent": "inform",
-        "entities": [
-          {
-            "start": 0,
-            "end": 16,
-            "value": "i like your help",
-            "entity": "q_need_help"
-          }
-        ]
+        "intent": "request_help",
+        "entities": []
       },
       {
         "text": "can i ask you something",
-        "intent": "can_i_ask_somethig",
+        "intent": "chitchat",
         "entities": []
       },
       {
         "text": "ok help me choose",
-        "intent": "inform",
+        "intent": "request_help",
         "entities": [
           {
-            "start": 3,
+            "start": 11,
             "end": 17,
-            "value": "help me choose",
-            "entity": "q_need_help"
+            "value": "select",
+            "entity": "help_type"
           }
         ]
       },
@@ -1463,6 +1437,153 @@
         "text": "what can u do?",
         "intent": "what_i_do",
         "entities": []
+      },
+      {
+        "text": "what is Huawei cloud?",
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 8,
+            "end": 20,
+            "value": "hec",
+            "entity": "component"
+          },
+          {
+            "start": 0,
+            "end": 7,
+            "value": "what is",
+            "entity": "q_type"
+          }
+        ]
+      },
+      {
+        "text": "Good morning",
+        "intent": "greeting",
+        "entities": []
+      },
+      {
+        "text": "ok",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "help me get started",
+        "intent": "request_solution",
+        "entities": []
+      },
+      {
+        "text": "Sounds great",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "help",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "you already said it",
+        "intent": "already_said_that",
+        "entities": []
+      },
+      {
+        "text": "help me setup and use Huawei cloud services",
+        "intent": "request_help",
+        "entities": [
+          {
+            "start": 8,
+            "end": 13,
+            "value": "setup",
+            "entity": "help_type"
+          },
+          {
+            "start": 18,
+            "end": 21,
+            "value": "use",
+            "entity": "help_type"
+          }
+        ]
+      },
+      {
+        "text": "ok continue",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "goodbye",
+        "intent": "bye",
+        "entities": []
+      },
+      {
+        "text": "ok bye",
+        "intent": "bye",
+        "entities": []
+      },
+      {
+        "text": "Can you help me today?",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "i need you to help me setup and use Huawei cloud services",
+        "intent": "request_help",
+        "entities": [
+          {
+            "start": 36,
+            "end": 57,
+            "value": "cloud_service",
+            "entity": "application"
+          }
+        ]
+      },
+      {
+        "text": "I need a virtual machine",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "I hate you",
+        "intent": "i_hate_you",
+        "entities": []
+      },
+      {
+        "text": "shalom",
+        "intent": "greeting",
+        "entities": []
+      },
+      {
+        "text": "What services do you have ?",
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 0,
+            "end": 13,
+            "value": "list",
+            "entity": "component"
+          }
+        ]
+      },
+      {
+        "text": "good",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "Not ye",
+        "intent": "soft_deny",
+        "entities": []
+      },
+      {
+        "text": "What type of ECS do you have ?",
+        "intent": "request_information",
+        "entities": [
+          {
+            "start": 5,
+            "end": 16,
+            "value": "ecs",
+            "entity": "component"
+          }
+        ]
       }
     ]
   }

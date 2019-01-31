@@ -2,7 +2,7 @@ import pymongo
 
 
 def get_client_collection(collection="info"):
-    client = pymongo.MongoClient('10.10.11.136')
+    client = pymongo.MongoClient('10.100.99.85')
     db = client.vca
     return db.get_collection(collection)
 

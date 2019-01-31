@@ -1,0 +1,99 @@
+*
+An Elastic Cloud Server (ECS) is a computing server consisting of vCPUs, memory, image,
+and Elastic Volume Service (EVS) disks that allow on-demand allocation and elastic scaling.
+
+- what is ecs
+- what is elastic cloud server
+- what is elastic server
+- what service can i use for virtual machine
+
+*
+With the Virtual Private Cloud (VPC) service, you can build a dedicated network, set the subnet and security group,
+and allow the VPC to communicate with the external network through an EIP (bandwidth support required).
+- i need virtual network
+- what is vpc
+
+*
+With the Image Management Service (IMS), you can install images on ECSs, or create ECSs using private images and
+deploy services quickly.
+- how can i install image in my virtual machine
+
+
+The Elastic Volume Service (EVS) provides storage and Volume Backup Service (VBS) provides data backup and recovery
+functions.
+
+- how can i get storage to my vm
+- how do I backup my volume
+
+*
+
+Cloud Container Engine (CCE) is a highly reliable and high-performance service that allows enterprises to manage
+containerized applications.
+
+- what is cce
+- what is cloud container engine
+- what is cloud container
+- how do i manage my containers
+
+*
+A Bare Metal Server (BMS) is a physical server dedicated for individual tenants.
+- tell me about bare metal servers
+- how can i get bare metar server
+
+*
+Auto Scaling (AS) is a service that automatically adjusts resources based on your service requirements and
+configured AS policies.
+- can i have auto scale
+- do you have auto scale service
+
+*
+An image is an Elastic Cloud Server (ECS) or a Bare Metal Server (BMS) template that contains an operating
+system (OS) or service data, necessary applications, such as database software, and some private software.
+- what is an image
+
+*
+Dedicated Host (DeH) is a service that provides dedicated physical hosts.
+- can i have physical host
+- do you have a service for dedicated physical host
+
+*
+Cloud Container Instance (CCI) provides a serverless container engine, eliminating the need to manage clusters
+or servers.
+- can i have serverless container
+- do you have serverless service
+- what is cloud container
+
+*
+Distributed Message Service (DMS) is a message middleware service based on distributed, high-availability
+clustering technology.
+- do you have queue service
+- can i have messaging service
+- what service can i use for message queue
+
+*
+Simple Message Notification (SMN) is a reliable and flexible large-scale message notification service.
+- how can i send email message
+- do you have a service to send emails
+- can i send message to phone number
+- do you have notification service
+
+*
+Cloud Service Engine (CSE) provides enterprises with a high-performance microservice framework, including
+a microservice software development kit (SDK) and service registration, configuration, and governance centers.
+- do you have microservice registration
+- i need service registration for my microservices
+
+*
+Huawei Application Performance Management (APM) is a cloud service that monitors and manages cloud application
+performance and faults in real time.
+- how can i monitor my application performance
+- how can i get real-time application performance
+
+*
+Application Operations Management (AOM) is a one-stop, three-dimensional O&M management platform for cloud
+applications. It monitors your applications and related cloud resources in real time, collects and associates
+the data of resource metrics, logs, and events to analyze application health statuses, and provides flexible
+alarms and abundant data visualization functions. This helps you detect faults timely and master the real-time
+running statuses of applications, resources, and services.
+- how do i manage my cloud application
+- i need to monitor my cloud application

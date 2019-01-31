@@ -40,6 +40,11 @@
     - utter_what_i_do
     - action_restart
 
+## can you help
+* request_help
+    - utter_i_will_do_my_best
+
+
 ## request info sent to db
 * request_information{"component":"obs", "q_type":"what-is"}
     - action_query_db
@@ -163,43 +168,17 @@
     - action_restart
 
 
-## show ecs path
-* show_ecs
-    - utter_let_me_check
-    - action_show_ecs
-    - utter_is_there_anything_else
-* deny
-    - utter_goodbye
-    - action_restart
+## I hate you
+* i_hate_you
+    - utter_im_sorry_to_hear_that
+    
+    
 
-## change ECS state path
-* ecs_change_state{"vm_state":"stop"}
-    -utter_get_server_name
-* inform{"name":"server1"}
-    - action_change_server_state
-    - utter_is_there_anything_else
-* deny
+    
+    
+## bye
+* bye
     - utter_goodbye
-    - action_restart
-
-## change ECS state path
-* ecs_change_state{"vm_state":"stop"}
-    -utter_get_server_name
-* inform
-    - action_change_server_state
-    - slot{"isInvalidEntry": "True"}
-    - utter_invalid_server_name
-    - action_restart
-
-## change ECS state path
-* ecs_change_state{"vm_state":"start", "name":"server1"}
-    - action_change_server_state
-    - utter_is_there_anything_else
-* deny
-    - utter_goodbye
-    - action_restart
-  
- 
 
 ## restart command from client
 * system_restart

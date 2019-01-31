@@ -55,6 +55,9 @@ slots:
     type: text
   CARDINAL:
     type: text
+  DATE:
+    type: text
+
 
 entities:
   - num_of_cpus
@@ -78,7 +81,23 @@ entities:
   - q_ecs_type
   - email
   - CARDINAL
-
+  - DATE
+  - PERSON
+  - NORP
+  - FAC
+  - ORG
+  - GPE
+  - LOC
+  - PRODUCT
+  - EVENT
+  - WORK_OF_ART
+  - LAW
+  - LANGUAGE
+  - TIME
+  - PERCENT
+  - MONEY
+  - QUANTITY
+  - ORDINAL
 
 intents:
   - greeting
@@ -91,6 +110,7 @@ intents:
   - ecs_change_state
   - confirm
   - deny
+  - soft_deny
   - bye
   - request_solution
   - request_information
@@ -100,7 +120,10 @@ intents:
   - what_are_you
   - move_to_cloud
   - req_architecture
-  - can_i_ask_somethig
+  - chitchat
+  - already_said_that
+  - i_hate_you
+  - request_help
 
 
 templates:
@@ -131,6 +154,8 @@ templates:
     - text: "Checking... will be back in a sec."
   utter_done:
     - "Done."
+  utter_i_will_do_my_best:
+    - "I'll do my best to help you"
   utter_is_there_anything_else:
     - text: "Is there anything else?"
   utter_confirm_button:
@@ -153,7 +178,7 @@ templates:
   utter_solution_unknown:
     - text: "I don't understand what you are looking for..."
   utter_dont_have_answer:
-    - text: "Sorry but I don't have answer to this question."
+    - text: "Sorry but I don't have an answer to this question."
   utter_not_support:
     - text: "Sorry but we do not support this feature at present."
   utter_bye:
@@ -285,6 +310,9 @@ templates:
   utter_ask_num_of_cpus:
     - text: "How many CPUs would you like?"
 
+  utter_im_sorry_to_hear_that:
+    - text: ":disappointed: I'm sorry to hear that"
+
   utter_game_architecture:
     - text: Cloud Services for Concurrent Access
       image: https://res-img1.huaweicloud.com/content/dam/cloudbu-site/archive/china/pageimage/solution/gamecloud/en-us/view-img_1.svg
@@ -352,6 +380,8 @@ actions:
   - utter_game_architecture_business
   - utter_wap_firewall_link
   - utter_go_ahead
+  - utter_im_sorry_to_hear_that
+  - utter_i_will_do_my_best
 
   - action_request_solution
   - action_restart
@@ -367,3 +397,6 @@ actions:
   - action_unknown_input
   - action_admin_restart
   - action_extract_num_of_users
+  - action_get_intents
+  - action_get_training_help
+  - action_add_intent
