@@ -1,13 +1,15 @@
 from rasa_core_sdk import Action
-from rasa_core_sdk.events import SlotSet, BotUttered, AllSlotsReset, Restarted
+from rasa_core_sdk.events import *
 import logging
 import pymongo
+from bson.objectid import ObjectId
+import numpy as np
 
 logger = logging.getLogger(__name__)
 
 
 def get_client_collection(collection="info"):
-    client = pymongo.MongoClient(host='10.10.11.136')
+    client = pymongo.MongoClient('10.100.99.85')
     db = client.vca
     return db.get_collection(collection)
 
@@ -26,8 +28,53 @@ def find_one_from_info(type, topic):
     return collection.find_one({"type": type, "topic": topic})
 
 
+def add_one(value, collection):
+    if collection is not None:
+        collection = get_client_collection(collection)
+        collection.insert_one(value)
+
+
+def remove_all(collection):
+    if collection is not None:
+        collection = get_client_collection(collection)
+        collection.remove({})
+
+
 def say(text, dispatcher):
     dispatcher.utter_message(text)
+
+
+class ActionUnknownInput(Action):
+    def name(self):
+        return "action_unknown_input"
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        logger.debug("writing unknown message to db: {}".format(tracker.latest_message['text']))
+        # collection = get_client_collection('unknown_input')
+        # doc = {
+        #     'user': tracker.sender_id,
+        #     'text': tracker.latest_message['text']
+        # }
+        # collection.insert_one(doc)
+        # + json.dumps(tracker.current_state()) + ' , '
+        f = open("/tmp/unknown.txt", "a+")
+        f.write(tracker.sender_id + ' , ' + tracker.latest_message[
+            'text'] + '\n')
+        dispatcher.utter_template('utter_default', tracker)
+        return [UserUtteranceReverted()]
+
+
+class ActionUserGoodbye(Action):
+    def name(self):
+        return "action_user_goodbye"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_template('utter_goodbye', tracker)
+        return [Restarted()]
 
 
 class ActionRestart(Action):
@@ -35,6 +82,16 @@ class ActionRestart(Action):
         return "action_restart"
 
     def run(self, dispatcher, tracker, domain):
+        return [Restarted()]
+
+
+class ActionAdminRestart(Action):
+    def name(self):
+        return "action_admin_restart"
+
+    def run(self, dispatcher, tracker, domain):
+        logger.debug("**** got restart action request. **** ")
+        dispatcher.utter_message("session restarted.")
         return [Restarted()]
 
 
@@ -96,9 +153,10 @@ class ActionGetInfoFromDb(Action):
         if slots['q_type'] and slots["component"]:
             result = find_one_from_info(slots['q_type'], slots["component"])
             if result:
+                logger.debug("found an answer to: {} {}".format(slots['q_type'], slots["component"]))
                 say(result['text'], dispatcher)
                 return [SlotSet("dbQuerySuccessful", True)]
-
+        logger.debug("did not find an answer to: {} {}".format(slots['q_type'], slots["component"]))
         return [SlotSet("isInvalidEntry", True)]
 
 
@@ -130,3 +188,165 @@ class ActionCreateEcs(Action):
             return [SlotSet("context_create_ecs", str(int(slots["context_create_ecs"]) - 1))]
         say("What image type would you like?", dispatcher)
         return [SlotSet("context_create_ecs", "5")]
+
+
+class ActionCreateEcsFinalConfirm(Action):
+    def name(self):
+        return 'action_create_ecs_final_confirm'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        slots = tracker.current_slot_values()
+
+
+class ActionExtractNumOfUsers(Action):
+    def name(self):
+        return 'action_extract_num_of_users'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        slots = tracker.current_slot_values()
+        num_of_users = slots['CARDINAL']
+        return [SlotSet("q_num_of_users", num_of_users), SlotSet("CARDINAL")]
+
+
+class ActionTrainingHelp(Action):
+    def name(self):
+        return 'action_get_training_help'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        mgs = 'You can do the following:\n' \
+              '* intent list | intents\n' \
+              '* '
+
+        say(mgs, dispatcher)
+        return [Restarted()]
+
+
+class ActionGetIntentList(Action):
+    def name(self):
+        return 'action_get_intents'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        logger.debug('getting intent list')
+        collection = 'intents'
+        collection = get_client_collection(collection)
+        intents = collection.find()
+        if not intents:
+            say('There are no intents to list.', dispatcher)
+        else:
+            result = []
+            for intent in intents:
+                result.append(intent['intent'])
+            say("intents:\n{}".format(result), dispatcher)
+        return [Restarted()]
+
+
+class ActionAddIntent(Action):
+    def name(self):
+        return 'action_add_intent'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        text = tracker.latest_message['text']
+        command = '* addint'
+
+        if text.find(command) == -1:
+            say('the command is: * addint', dispatcher)
+        else:
+            intent = text[len(command) + 1:]
+            collection = 'intents'
+            collection = get_client_collection(collection)
+            collection.insert_one({'intent': intent})
+            say('intent added', dispatcher)
+        return [Restarted()]
+
+
+class ActionAskMeSomething(Action):
+    def name(self):
+        return 'action_ask_me_something'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+
+        say("Write a question for the following paragraph.\n"
+            "Use '* askme' again to get another question or 'restart' to leave Q&A",
+            dispatcher)
+        collection = get_client_collection('qanda')
+        qanda_list = collection.find()
+
+        ids = []
+        text_list = []
+        questions = []
+        for q in qanda_list:
+            text_list.append(q['text'])
+            ids.append(q['_id'])
+            if 'questions' in q:
+                questions.append(q['questions'])
+            else:
+                questions.append([])
+
+        index = np.random.randint(0, len(ids))
+        text = text_list[index]
+        id = str(ids[index])
+        say(text, dispatcher)
+
+        q_list = questions[index]
+        if len(q_list) > 0:
+            text = 'I already have the following questions:\n'
+            for q in q_list:
+                text = text + '\t' + q + '\n'
+            text = text + 'so try to give me different question.'
+            say(text, dispatcher)
+
+        return [Restarted(), SlotSet("ask_me_something", value=id)]
+
+
+class ActionGetTrainingQuestion(Action):
+    def name(self):
+        return 'action_get_training_question'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        q_id = tracker.get_slot('ask_me_something')
+        q_text = tracker.latest_message['text']
+
+        collection = get_client_collection('qanda')
+        qanda = collection.find_one({'_id': ObjectId(q_id)})
+
+        if 'questions' in qanda:
+            qs = set(qanda['questions'])
+            qs.add(q_text)
+            qanda['questions'] = list(qs)
+
+        else:
+            qanda['questions'] = [q_text]
+
+        collection.find_one_and_update({'_id': ObjectId(q_id)}, {"$set": qanda},
+                                       upsert=False)
+
+        say("Thanks!  if you are still in the mood, run '* askme' again :stuck_out_tongue_winking_eye:", dispatcher)
+        return [Restarted()]

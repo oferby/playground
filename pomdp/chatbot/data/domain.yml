@@ -1,4 +1,6 @@
 slots:
+  ask_me_something:
+    type: text
   num_of_cpus:
     type:   text
   image_type:
@@ -46,7 +48,17 @@ slots:
     type: text
   q_options:
     type: text
-
+  q_are_you:
+    type: categorical
+    values:
+      - bot
+      - human
+  q_num_of_users:
+    type: text
+  CARDINAL:
+    type: text
+  DATE:
+    type: text
 
 
 entities:
@@ -67,10 +79,32 @@ entities:
   - q_power
   - q_req_details
   - q_options
-
+  - q_are_you
+  - q_ecs_type
+  - email
+  - CARDINAL
+  - DATE
+  - PERSON
+  - NORP
+  - FAC
+  - ORG
+  - GPE
+  - LOC
+  - PRODUCT
+  - EVENT
+  - WORK_OF_ART
+  - LAW
+  - LANGUAGE
+  - TIME
+  - PERCENT
+  - MONEY
+  - QUANTITY
+  - ORDINAL
 
 intents:
   - greeting
+  - my_name
+  - what_i_do
   - create_ecs
   - show_ecs
   - create_bms
@@ -78,25 +112,52 @@ intents:
   - ecs_change_state
   - confirm
   - deny
+  - soft_deny
   - bye
   - request_solution
   - request_information
   - system_restart
   - inform
+  - how_are_you
+  - what_are_you
+  - move_to_cloud
+  - req_architecture
+  - chitchat
+  - already_said_that
+  - i_hate_you
+  - request_help
+
 
 templates:
   utter_greet:
     - text: "Hello, what can I do for you today?"
     - text: "Hello, how can I help you?"
+  utter_im_fine:
+    - text: "I'm great, thanks for asking."
+    - text: "All is good, nice of you to ask."
+  utter_say_name:
+    - text: "My name is Anan and I'm here to help you start and manage your cloud services."
+  utter_what_i_do:
+    - text: "I can help you setup and use Huawei cloud services."
+  utter_am_i_human:
+    - text: "I'm not Human, I'm a Virtual Cloud Assistant."
+  utter_am_i_bot:
+    - text: "Yes, I'm a Virtual Cloud Assistant."
+  utter_i_am:
+    - text: "I'm a Virtual Cloud Assistant."
   utter_goodbye:
     - text: "OK, see you next time"
     - text: "Bye, see you."
     - text: "Goodbye. Come back soon."
+  utter_default:
+    - text: ":thinking_face: I'm sorry but I did not understand what you've said. Please rephrase."
   utter_let_me_check:
     - text: "Give me a minute to check"
     - text: "Checking... will be back in a sec."
   utter_done:
     - "Done."
+  utter_i_will_do_my_best:
+    - "I'll do my best to help you"
   utter_is_there_anything_else:
     - text: "Is there anything else?"
   utter_confirm_button:
@@ -119,7 +180,7 @@ templates:
   utter_solution_unknown:
     - text: "I don't understand what you are looking for..."
   utter_dont_have_answer:
-    - text: "Sorry but I don't have answer to this question."
+    - text: "Sorry but I don't have an answer to this question."
   utter_not_support:
     - text: "Sorry but we do not support this feature at present."
   utter_bye:
@@ -127,8 +188,10 @@ templates:
     - text: "See you later"
   utter_ask_anything_else:
     - text: "Is there anything else I can help you with?"
-
-
+  utter_why_come_to_me:
+    - text: "If you know what you want, why do you come to me?!"
+  utter_go_ahead:
+    - text: "Sure, go ahead"
 
 
   utter_show_ecs:
@@ -156,7 +219,7 @@ templates:
     - text: "S6 ECS is good for generalized websites and web applications, including microservices; low-latency interactive applications; small- and medium-sized databases; virtual desktops; development, build and stage environments; code repositories; product prototypes"
 
   utter_ask_if_specific_ecs:
-    - text: "Do you have a specific ECS in mind or you would like me to help you find one?"
+    - text: "Do you have a specific ECS (Virtual Server) in mind or you would like me to help you find one?"
       buttons:
         - title: "I know what I want"
           payload: "i_know"
@@ -235,7 +298,7 @@ templates:
     - text: "I have all the information I need."
 
   utter_ask_confirm_create_ecs:
-    - text: "Please confirm creating ECS"
+    - text: "Please confirm creating ECS (Virtual Server)"
       buttons:
         - title: "Confirm"
           payload: "confirm"
@@ -249,17 +312,38 @@ templates:
   utter_ask_num_of_cpus:
     - text: "How many CPUs would you like?"
 
+  utter_im_sorry_to_hear_that:
+    - text: ":disappointed: I'm sorry to hear that"
 
+  utter_game_architecture:
+    - text: Cloud Services for Concurrent Access
+      image: https://res-img1.huaweicloud.com/content/dam/cloudbu-site/archive/china/pageimage/solution/gamecloud/en-us/view-img_1.svg
 
+  utter_game_architecture_business:
+    - text: Enterprise-class Security Protection
+      image: https://res-img1.huaweicloud.com/content/dam/cloudbu-site/archive/china/pageimage/solution/gamecloud/en-us/view-img_2.svg
+
+  utter_wap_firewall_link:
+    - text: See this tutorial on WAF (Web Application Firewall https://www.youtube.com/watch?v=SmF_wQuZ7z4
 
 actions:
   - utter_greet
   - utter_goodbye
+  - utter_say_name
+  - utter_what_i_do
   - utter_let_me_check
   - utter_done
   - utter_is_there_anything_else
   - utter_acknowledge
   - utter_confirm_button
+  - utter_ok
+  - utter_solution_unknown
+  - utter_dont_have_answer
+  - utter_ask_anything_else
+  - utter_im_fine
+  - utter_am_i_human
+  - utter_am_i_bot
+  - utter_i_am
 
   - utter_get_server_name
   - utter_bye
@@ -272,21 +356,6 @@ actions:
   - utter_s6_ecs
   - utter_ask_learn_more
   - utter_offer_s3_ecs
-  - utter_ok
-  - utter_solution_unknown
-  - utter_dont_have_answer
-  - utter_ask_anything_else
-  - action_request_solution
-  - action_restart
-  - action_reset_all_slots
-  - action_query_db
-  - action_say_ok
-  - action_show_ecs
-  - action_change_server_state
-  - action_clear_invalid_entry
-  - actions.ActionShowEcs
-  - actions.ActionCreateEcs
-  - actions.ActionCheckConfirmation
 
   - utter_need_few_things
   - utter_ask_interest
@@ -308,3 +377,31 @@ actions:
   - utter_ask_image_type
   - utter_ask_num_of_cpus
   - utter_ask_confirm_create_ecs
+  - utter_why_come_to_me
+  - utter_game_architecture
+  - utter_game_architecture_business
+  - utter_wap_firewall_link
+  - utter_go_ahead
+  - utter_im_sorry_to_hear_that
+  - utter_i_will_do_my_best
+
+  - action_request_solution
+  - action_restart
+  - action_reset_all_slots
+  - action_query_db
+  - action_say_ok
+  - action_show_ecs
+  - action_change_server_state
+  - action_clear_invalid_entry
+  - actions.ActionShowEcs
+  - actions.ActionCreateEcs
+  - actions.ActionCheckConfirmation
+  - action_unknown_input
+  - action_admin_restart
+  - action_extract_num_of_users
+  - action_get_intents
+  - action_get_training_help
+  - action_add_intent
+  - action_ask_me_something
+  - action_get_training_question
+  - action_user_goodbye

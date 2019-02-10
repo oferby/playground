@@ -1,0 +1,310 @@
+﻿{
+  "intents": [
+    {
+      "intent": "create_ecs",
+      "text": [
+        "add new vm",
+        "create new ecs",
+        "create ubuntu server",
+        "add ubuntu 16 server",
+        "I need new ecs with ubuntu image",
+        "I want ecs with 1 cpu and ubuntu 16.4 image",
+        "create new ecs with 4 cpu and 8gb memory with ubuntu 16.4 image",
+        "please add new ecs with 2 vcpu 4gb memory and Fedora image",
+        "create new server with Fedora 64bit 2 cpu and 8gb memory ",
+        "I want to add new ecs",
+        "create ecs",
+        "I need new ubuntu server",
+        "I would like to have new server",
+        "I want new centos server",
+        "I need web server on the cloud",
+        "I want new web server",
+        "I need a virtual machine"
+      ]
+    },
+    {
+      "intent": "show_ecs",
+      "text": [
+        "show me running ecs",
+        "I want a list of all my ecs machines",
+        "show list of all ecs",
+        "show me all my vms",
+        "show ecs",
+        "show me my servers"
+      ]
+    },
+    {
+      "intent": "create_bms",
+      "text": [
+        "create bms",
+        "add new bare metal server",
+        "create new bare metal server with ubuntu 16.4 image",
+        "new bms with windows image",
+        "create bms"
+      ]
+    },
+    {
+      "intent": "show_bms",
+      "text": [
+        "show me my bare metal servers",
+        "show me a list of my bms",
+        "show bms"
+      ]
+    },
+    {
+      "intent": "ecs_change_state",
+      "text": [
+        "start ecs server1",
+        "stop server3",
+        "restart my server",
+        "delete vm web111",
+        "delete ecs server db100"
+      ]
+    },
+    {
+      "intent": "greeting",
+      "text": [
+        "hello",
+        "hi",
+        "Good morning",
+        "shalom",
+        "good afternoon",
+        "hi there"
+      ]
+    },
+    {
+      "intent": "bye",
+      "text": [
+        "bye",
+        "thanks",
+        "that's all",
+        "goodbye",
+        "ok bye"
+      ]
+    },
+    {
+      "intent": "confirm",
+      "text": [
+        "yes",
+        "yep",
+        "I confirm",
+        "sure",
+        "ok",
+        "Sounds great",
+        "ok continue",
+        "good",
+        "Cool. Let's start.",
+        "Let's start",
+        "Let's start then",
+        "Where should we start?",
+        "excellent"
+
+      ]
+    },
+    {
+      "intent": "deny",
+      "text": [
+        "nop",
+        "no",
+        "cancel"
+      ]
+    },
+    {
+      "intent": "inform",
+      "text": [
+        "5",
+        "45",
+        "6",
+        "fedora",
+        "centos",
+        "windows",
+        "ubuntu",
+        "server1",
+        "server121",
+        "q_price",
+        "q_performance",
+        "q_few",
+        "q_moderate",
+        "q_a_lot",
+        "q_power_not_much",
+        "q_power_medium",
+        "q_power_super_charged",
+        "s2.medium.2",
+        "s2.medium.4",
+        "s3.medium.2",
+        "req_details",
+        "latest_version"
+      ]
+    },
+    {
+      "intent": "system_restart",
+      "text": [
+        "start over",
+        "#restart",
+        "#reset"
+      ]
+    },
+    {
+      "intent": "request_solution",
+      "text": [
+        "what type of ecs is good for web applications?",
+        "I need high performance virtual machine",
+        "I need server for video streaming",
+        "I'm looking for virtual server for my website",
+        "what type of ecs can I use for small scale database?",
+        "I'm looking for a solution for my web store",
+        "do you have a solution for webstore?",
+        "help me get started",
+        "I need to backup my photos",
+        "I need to move to the cloud",
+        "I need to set up VPC and connect it to my home network",
+        "I need your strongest VM",
+        "I want a VM",
+        "i need to launch a vm",
+        "I want to create a virtual machine",
+        "which ecs should I choose for business application",
+        "what is the best ecs type for web hosting?",
+        "I want to setup and use Huawei cloud services",
+        "I want to use cloud services",
+        "can you please help me set up a vm?",
+        "I want a container"
+      ]
+    },
+    {
+      "intent": "request_information",
+      "text": [
+        "What is Elastic Cloud Server?",
+        "What is Object Storage Service?",
+        "What is OBS?",
+        "what is elastic server?",
+        "i want information on obs",
+        "i want to know about obs",
+        "what is ecs?",
+        "what is rds?",
+        "what is mysql?",
+        "what is postgres?",
+        "can you give me more information about MySQL?",
+        "tell me more about MySQL",
+        "what is bms?",
+        "what FPGA googd for?",
+        "what is bms?",
+        "what can I do with bare metal server?",
+        "what can I do with dedicated host?",
+        "what is auto scaling?",
+        "what is autoscaling?",
+        "what can I do with auto scaling?",
+        "what is image management service? ",
+        "what can I do with ims?",
+        "what is waf?",
+        "what is web application firewall?",
+        "what is Huawei cloud?",
+        "What services do you have ?",
+        "What type of ECS do you have ?",
+        "Can you give me more details ?",
+        "Do you have service in China ?",
+        "I want to know the cost",
+        "What OS do you support ?",
+        "What is CloudTable service?",
+        "What is the maximum amount of VMs can I have ?",
+        "What is the pricing model ?",
+        "What services do you have ?",
+        "Where is the nearest data center ?",
+        "do you have container service?"
+      ]
+    },
+    {
+      "intent": "end_signal",
+      "text": [
+        "that's is",
+        "that's all"
+      ]
+    },
+    {
+      "intent": "request_help",
+      "text": [
+        "need help",
+        "i like your help",
+        "ok help me choose",
+        "help",
+        "help me setup and use Huawei cloud services",
+        "Can you help me today?",
+        "i need you to help me setup and use Huawei cloud services",
+        "Can you help me ?",
+        "plesae help me",
+        "I need help with my cloud",
+        "I need help to move to the cloud",
+        "What do you think I should do?",
+        "What does it mean ?"
+      ]
+    },
+    {
+      "intent": "my_name",
+      "text": [
+        "What is your name?",
+        "what's your name?"
+      ]
+    },
+    {
+      "intent": "what_i_do",
+      "text": [
+        "What can you do?",
+        "what can you do for me?",
+        "what can you help me with?",
+        "what do you do?",
+        "what can u do?"
+      ]
+    },
+    {
+      "intent": "how_are_you",
+      "text": [
+        "how are you?",
+        "how r u?",
+        "what's up?"
+      ]
+    },
+    {
+      "intent": "what_are_you",
+      "text": [
+        "are you human?",
+        "are you a bot?",
+        "What are you?"
+      ]
+    },
+    {
+      "intent": "move_to_cloud",
+      "text": [
+        "I need to move to cloud",
+        "I want to cloudify my app"
+      ]
+    },
+    {
+      "intent": "req_architecture",
+      "text": [
+        "I want architecture for web app",
+        "I want architecture for web applications",
+        "show me gaming architecture",
+        "show gaming setup"
+      ]
+    },
+    {
+      "intent": "chitchat",
+      "text": [
+        "can i ask you something",
+        "you already said it",
+        "I hate you"
+      ]
+    },
+    {
+      "intent": "soft_deny",
+      "text": [
+        "Not yet"
+      ]
+    },
+    {
+      "intent": "what_kind",
+      "text": [
+        "Cool! What kind of services?"
+      ]
+    }
+  ]
+}

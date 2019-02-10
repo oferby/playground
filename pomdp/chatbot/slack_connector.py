@@ -9,9 +9,11 @@ from rasa_core.channels.slack import SlackInput
 from rasa_core.agent import Agent
 from rasa_core.interpreter import RasaNLUInterpreter, EndpointConfig
 
-
+from vca.policy import PomdpPolicy
 logger = logging.getLogger(__name__)
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.DEBUG, filename='anan.log',
+                    format='%(asctime)s,%(msecs)d %(levelname)-8s [%(filename)s:%(lineno)d] %(message)s',
+                    datefmt='%Y-%m-%d:%H:%M:%S')
 
 TOKEN = 'xoxp-'
 BOT_TOKEN = 'xoxb-'

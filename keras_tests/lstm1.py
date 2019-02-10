@@ -1,7 +1,6 @@
 import os
 
-from keras.layers import Dense
-from keras.layers import LSTM
+from keras.layers import LSTM, Input, Dense
 from keras.models import Sequential, load_model
 from numpy import array
 
@@ -24,16 +23,21 @@ if os.path.isfile(FILE_NAME):
     model = load_model(FILE_NAME)
 else:
     model = Sequential()
-    model.add(LSTM(n_neurons, input_shape=(1, 1)))
+    encoder_inputs = Input((1,1))
+    encoder_lstm = LSTM(n_neurons, return_state=True, name="encoder_lstm")
+
+    encoder_outputs, encoder_state_h, encoder_state_c = encoder_lstm(encoder_inputs)
+    encoder_states = [encoder_state_h, encoder_state_c]
+
+    model.add(encoder_lstm)
     model.add(Dense(1))
     model.compile(loss='mean_squared_error', optimizer='adam')
     model.fit(X, y, epochs=n_epoch, batch_size=n_batch, verbose=2)
+    model.save(FILE_NAME)
 
 print(model.summary())
-# train LSTM
 
-model.save(FILE_NAME)
 # evaluate
 result = model.predict(X, batch_size=n_batch, verbose=0)
 for i, value in enumerate(result):
-    print('%.1f' % value, X[i][0])
+    print('%.1f' % X[i][0], value)

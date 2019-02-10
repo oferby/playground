@@ -2,7 +2,7 @@ import pymongo
 
 
 def get_client_collection(collection="info"):
-    client = pymongo.MongoClient()
+    client = pymongo.MongoClient('10.100.99.85')
     db = client.vca
     return db.get_collection(collection)
 
@@ -14,6 +14,11 @@ def find_all_from_info(type, topic):
     for r in results:
         result.append(r)
     return result
+
+
+def find_one_from_info(type, topic):
+    collection = get_client_collection()
+    return collection.find_one({"type": type, "topic": topic})
 
 
 def load_to_db():
@@ -29,5 +34,5 @@ def load_to_db():
 
 if __name__ == '__main__':
     load_to_db()
-    r = find_all_from_info("what-is", "rds")
+    r = find_one_from_info("what_is", "waf")
     print(r)

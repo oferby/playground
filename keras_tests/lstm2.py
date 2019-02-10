@@ -16,7 +16,7 @@ y = y.reshape(1, len(y), 1)
 # define LSTM configuration
 n_neurons = length
 n_batch = length
-n_epoch = 1000
+n_epoch = 500
 
 # create LSTM
 if os.path.isfile(FILE_NAME):
@@ -24,14 +24,17 @@ if os.path.isfile(FILE_NAME):
 else:
     model = Sequential()
     model.add(LSTM(n_neurons, input_shape=(length - 1, 1), return_sequences=True))
-    model.add(TimeDistributed(Dense(1)))
+    # model.add(TimeDistributed(Dense(1)))
+    model.add(Dense(1))
     model.compile(loss='mean_squared_error', optimizer='adam')
     # train LSTM
     model.fit(X, y, epochs=n_epoch, batch_size=n_batch, verbose=2)
+    model.save(FILE_NAME)
 
 print(model.summary())
 
 # evaluate
-result = model.predict(X, batch_size=n_batch, verbose=0)
-for i, value in enumerate(result[0, :, 0]):
-    print('%.1f' % value, X[0][i])
+result = model.predict(X[:-1], batch_size=n_batch, verbose=0)
+# for i, value in enumerate(result[0, :, 0]):
+#     print('%.1f' % X[i][0], value)
+print(result)
