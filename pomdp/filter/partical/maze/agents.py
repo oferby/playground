@@ -71,7 +71,7 @@ class ParticleFilteringAgent(Agent):
         self.world = world
         self.particles = []
         self.init_particles()
-        self.state = None
+        self.state = np.zeros(4)
         self.n_effective = 0
         print('done creating particles')
 
@@ -102,8 +102,6 @@ class ParticleFilteringAgent(Agent):
         return kb_action()
 
     def get_feedback(self, obs, action, reward, done):
-        if obs == self.state:
-            return
         self.state = obs
         self.update_belief(obs, action)
 

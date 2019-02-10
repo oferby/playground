@@ -33,6 +33,11 @@ def draw():
     world.draw_text('Median: {:.4f}'.format(median), (710, 40))
     world.draw_text('Entropy: {0:.4f}'.format(entropy), (710, 55))
     world.draw_text('Effective: {0:.2f}'.format(agent.n_effective), (710, 70))
+
+    world.draw_text('^: {0:.0f}'.format(agent.state[0]), (710, 400))
+    world.draw_text('>: {0:.0f}'.format(agent.state[1]), (710, 415))
+    world.draw_text('v: {0:.0f}'.format(agent.state[2]), (710, 430))
+    world.draw_text('<: {0:.0f}'.format(agent.state[3]), (710, 445))
     world.update_display()
 
 
