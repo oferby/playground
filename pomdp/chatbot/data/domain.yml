@@ -1,4 +1,6 @@
 slots:
+  ask_me_something:
+    type: text
   num_of_cpus:
     type:   text
   image_type:
@@ -400,3 +402,6 @@ actions:
   - action_get_intents
   - action_get_training_help
   - action_add_intent
+  - action_ask_me_something
+  - action_get_training_question
+  - action_user_goodbye

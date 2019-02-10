@@ -173,9 +173,6 @@
     - utter_im_sorry_to_hear_that
     
     
-
-    
-    
 ## bye
 * bye
     - utter_goodbye

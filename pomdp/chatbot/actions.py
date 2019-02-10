@@ -2,6 +2,8 @@ from rasa_core_sdk import Action
 from rasa_core_sdk.events import *
 import logging
 import pymongo
+from bson.objectid import ObjectId
+import numpy as np
 
 logger = logging.getLogger(__name__)
 
@@ -64,6 +66,15 @@ class ActionUnknownInput(Action):
             'text'] + '\n')
         dispatcher.utter_template('utter_default', tracker)
         return [UserUtteranceReverted()]
+
+
+class ActionUserGoodbye(Action):
+    def name(self):
+        return "action_user_goodbye"
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_template('utter_goodbye', tracker)
+        return [Restarted()]
 
 
 class ActionRestart(Action):
@@ -265,4 +276,77 @@ class ActionAddIntent(Action):
             collection = get_client_collection(collection)
             collection.insert_one({'intent': intent})
             say('intent added', dispatcher)
+        return [Restarted()]
+
+
+class ActionAskMeSomething(Action):
+    def name(self):
+        return 'action_ask_me_something'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+
+        say("Write a question for the following paragraph.\n"
+            "Use '* askme' again to get another question or 'restart' to leave Q&A",
+            dispatcher)
+        collection = get_client_collection('qanda')
+        qanda_list = collection.find()
+
+        ids = []
+        text_list = []
+        questions = []
+        for q in qanda_list:
+            text_list.append(q['text'])
+            ids.append(q['_id'])
+            if 'questions' in q:
+                questions.append(q['questions'])
+            else:
+                questions.append([])
+
+        index = np.random.randint(0, len(ids))
+        text = text_list[index]
+        id = str(ids[index])
+        say(text, dispatcher)
+
+        q_list = questions[index]
+        if len(q_list) > 0:
+            text = 'I already have the following questions:\n'
+            for q in q_list:
+                text = text + '\t' + q + '\n'
+            text = text + 'so try to give me different question.'
+            say(text, dispatcher)
+
+        return [Restarted(), SlotSet("ask_me_something", value=id)]
+
+
+class ActionGetTrainingQuestion(Action):
+    def name(self):
+        return 'action_get_training_question'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        q_id = tracker.get_slot('ask_me_something')
+        q_text = tracker.latest_message['text']
+
+        collection = get_client_collection('qanda')
+        qanda = collection.find_one({'_id': ObjectId(q_id)})
+
+        if 'questions' in qanda:
+            qs = set(qanda['questions'])
+            qs.add(q_text)
+            qanda['questions'] = list(qs)
+
+        else:
+            qanda['questions'] = [q_text]
+
+        collection.find_one_and_update({'_id': ObjectId(q_id)}, {"$set": qanda},
+                                       upsert=False)
+
+        say("Thanks!  if you are still in the mood, run '* askme' again :stuck_out_tongue_winking_eye:", dispatcher)
         return [Restarted()]
