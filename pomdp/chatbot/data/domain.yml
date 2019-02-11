@@ -34,8 +34,8 @@ slots:
   q_need_help:
     type: categorical
     values:
-      - need_help
-      - i_know
+    - need_help
+    - i_know
   q_care_most:
     type: text
   q_amount:
@@ -51,8 +51,8 @@ slots:
   q_are_you:
     type: categorical
     values:
-      - bot
-      - human
+    - bot
+    - human
   q_num_of_users:
     type: text
   CARDINAL:
@@ -62,346 +62,349 @@ slots:
 
 
 entities:
-  - num_of_cpus
-  - image_type
-  - memory_size
-  - vm_state
-  - name
-  - application
-  - component
-  - feature
-  - q_type
-  - solution
-  - number
-  - q_need_help
-  - q_care_most
-  - q_amount
-  - q_power
-  - q_req_details
-  - q_options
-  - q_are_you
-  - q_ecs_type
-  - email
-  - CARDINAL
-  - DATE
-  - PERSON
-  - NORP
-  - FAC
-  - ORG
-  - GPE
-  - LOC
-  - PRODUCT
-  - EVENT
-  - WORK_OF_ART
-  - LAW
-  - LANGUAGE
-  - TIME
-  - PERCENT
-  - MONEY
-  - QUANTITY
-  - ORDINAL
+- num_of_cpus
+- image_type
+- memory_size
+- vm_state
+- name
+- application
+- component
+- feature
+- q_type
+- solution
+- number
+- q_need_help
+- q_care_most
+- q_amount
+- q_power
+- q_req_details
+- q_options
+- q_are_you
+- q_ecs_type
+- email
+- CARDINAL
+- DATE
+- PERSON
+- NORP
+- FAC
+- ORG
+- GPE
+- LOC
+- PRODUCT
+- EVENT
+- WORK_OF_ART
+- LAW
+- LANGUAGE
+- TIME
+- PERCENT
+- MONEY
+- QUANTITY
+- ORDINAL
 
 intents:
-  - greeting
-  - my_name
-  - what_i_do
-  - create_ecs
-  - show_ecs
-  - create_bms
-  - show_bms
-  - ecs_change_state
-  - confirm
-  - deny
-  - soft_deny
-  - bye
-  - request_solution
-  - request_information
-  - system_restart
-  - inform
-  - how_are_you
-  - what_are_you
-  - move_to_cloud
-  - req_architecture
-  - chitchat
-  - already_said_that
-  - i_hate_you
-  - request_help
+- greeting
+- my_name
+- what_i_do
+- create_ecs
+- show_ecs
+- create_bms
+- show_bms
+- ecs_change_state
+- confirm
+- deny
+- soft_deny
+- bye
+- request_solution
+- request_information
+- system_restart
+- inform
+- how_are_you
+- what_are_you
+- move_to_cloud
+- req_architecture
+- chitchat
+- already_said_that
+- i_hate_you
+- request_help
 
 
 templates:
   utter_greet:
-    - text: "Hello, what can I do for you today?"
-    - text: "Hello, how can I help you?"
+  - text: "Hello, what can I do for you today?"
+  - text: "Hello, how can I help you?"
   utter_im_fine:
-    - text: "I'm great, thanks for asking."
-    - text: "All is good, nice of you to ask."
+  - text: "I'm great, thanks for asking."
+  - text: "All is good, nice of you to ask."
   utter_say_name:
-    - text: "My name is Anan and I'm here to help you start and manage your cloud services."
+  - text: "My name is Anan and I'm here to help you start and manage your cloud services."
   utter_what_i_do:
-    - text: "I can help you setup and use Huawei cloud services."
+  - text: "I can help you setup and use Huawei cloud services."
   utter_am_i_human:
-    - text: "I'm not Human, I'm a Virtual Cloud Assistant."
+  - text: "I'm not Human, I'm a Virtual Cloud Assistant."
   utter_am_i_bot:
-    - text: "Yes, I'm a Virtual Cloud Assistant."
+  - text: "Yes, I'm a Virtual Cloud Assistant."
   utter_i_am:
-    - text: "I'm a Virtual Cloud Assistant."
+  - text: "I'm a Virtual Cloud Assistant."
   utter_goodbye:
-    - text: "OK, see you next time"
-    - text: "Bye, see you."
-    - text: "Goodbye. Come back soon."
+  - text: "OK, see you next time"
+  - text: "Bye, see you."
+  - text: "Goodbye. Come back soon."
+  - text: "See you later"|
   utter_default:
-    - text: ":thinking_face: I'm sorry but I did not understand what you've said. Please rephrase."
+  - text: ":thinking_face: I'm sorry but I did not understand what you've said. Please rephrase."
   utter_let_me_check:
-    - text: "Give me a minute to check"
-    - text: "Checking... will be back in a sec."
+  - text: "Give me a minute to check"
+  - text: "Checking... will be back in a sec."
   utter_done:
-    - "Done."
+  - "Done."
   utter_i_will_do_my_best:
-    - "I'll do my best to help you"
+  - "I'll do my best to help you"
   utter_is_there_anything_else:
-    - text: "Is there anything else?"
+  - text: "Is there anything else?"
   utter_confirm_button:
-    - text: "Are you sure?"
-      buttons:
-        - title: "Yes"
-          payload: "confirm"
-        - title: "No"
-          payload: "deny"
+  - text: "Are you sure?"
+    buttons:
+    - title: "Yes"
+      payload: "confirm"
+    - title: "No"
+      payload: "deny"
   utter_ok:
-    - text: "OK"
-      image: "https://www.milanocard.it/wp-content/uploads/2017/08/smile-ok.jpg"
+  - text: "OK"
   utter_acknowledge:
-    - text: "OK."
-    - text: "Right."
-    - text: "Got you."
-    - text: "Sure."
-    - text: "Nice."
-    - text: "All right."
+  - text: "OK."
+  - text: "Right."
+  - text: "Got you."
+  - text: "Sure."
+  - text: "Nice."
+  - text: "All right."
   utter_solution_unknown:
-    - text: "I don't understand what you are looking for..."
+  - text: "I don't understand what you are looking for..."
   utter_dont_have_answer:
-    - text: "Sorry but I don't have an answer to this question."
+  - text: "Sorry but I don't have an answer to this question."
   utter_not_support:
-    - text: "Sorry but we do not support this feature at present."
-  utter_bye:
-    - text: "Bye"
-    - text: "See you later"
+  - text: "Sorry but we do not support this feature at present."
   utter_ask_anything_else:
-    - text: "Is there anything else I can help you with?"
-  utter_why_come_to_me:
-    - text: "If you know what you want, why do you come to me?!"
+  - text: "Is there anything else I can help you with?"
   utter_go_ahead:
-    - text: "Sure, go ahead"
+  - text: "Sure, go ahead"
 
 
   utter_show_ecs:
-    - text: "understand show ecs"
+  - text: "understand show ecs"
   utter_ecs_change_state:
-    - text: "understand ecs change state"
+  - text: "understand ecs change state"
   utter_get_server_name:
-    - text: "what is the name of the server?"
+  - text: "what is the name of the server?"
   utter_create_bms:
-    - text: "understand create bms"
+  - text: "understand create bms"
   utter_show_bms:
-    - text: "understand show bms"
+  - text: "understand show bms"
   utter_invalid_server_name:
-    - text: "I didn't get that server name... Please re-enter."
+  - text: "I didn't get that server name... Please re-enter."
   utter_offer_s3_ecs:
-    - text: "S3 ECS is a good fit for websites and web applications, small-scale databases and cache servers, and small- and medium-load enterprise applications"
+  - text: "S3 ECS is a good fit for websites and web applications, small-scale databases and cache servers, and small- and medium-load enterprise applications"
   utter_ask_learn_more:
-    - text: "Are you interested to learn more?"
-      buttons:
-        - title: "Sure"
-          payload: "yes"
-        - title: "No need"
-          payload: "no"
+  - text: "Are you interested to learn more?"
+    buttons:
+    - title: "Sure"
+      payload: "yes"
+    - title: "No need"
+      payload: "no"
   utter_s6_ecs:
-    - text: "S6 ECS is good for generalized websites and web applications, including microservices; low-latency interactive applications; small- and medium-sized databases; virtual desktops; development, build and stage environments; code repositories; product prototypes"
+  - text: "S6 ECS is good for generalized websites and web applications, including microservices; low-latency interactive applications; small- and medium-sized databases; virtual desktops; development, build and stage environments; code repositories; product prototypes"
 
   utter_ask_if_specific_ecs:
-    - text: "Do you have a specific ECS (Virtual Server) in mind or you would like me to help you find one?"
-      buttons:
-        - title: "I know what I want"
-          payload: "i_know"
-        - title: "Help me choose"
-          payload: "need_help"
+  - text: "Do you have a specific ECS (Virtual Server) in mind or you would like me to help you find one?"
+    buttons:
+    - title: "I know what I want"
+      payload: "i_know"
+    - title: "Help me choose"
+      payload: "need_help"
   utter_need_few_things:
-    - text: "To help you with that I need few things."
+  - text: "To help you with that I need few things."
   utter_ask_interest:
-    - text: "What is the area of your interest? This could be: web application, database, data analysis, video, gaming, general purpose."
+  - text: "What is the area of your interest? This could be: web application, database, data analysis, video, gaming, general purpose."
   utter_ask_number_of_users:
-    - text: "Do you have an estimation on the number of users that will use your application at the same time?"
+  - text: "Do you have an estimation on the number of users that will use your application at the same time?"
   utter_ask_care_most:
-    - text: "To be able to find you the best solution, can you let me know what do you care most?"
-      buttons:
-        - title: "Price"
-          payload: "q_price"
-        - title: "Performance"
-          payload: "q_performance"
+  - text: "To be able to find you the best solution, can you let me know what do you care most?"
+    buttons:
+    - title: "Price"
+      payload: "q_price"
+    - title: "Performance"
+      payload: "q_performance"
   utter_have_options:
-    - text: "I have several option for you."
+  - text: "I have several option for you."
   utter_just_few_things:
-    - text: "Just few questions."
-    - text: "Just few things."
+  - text: "Just few questions."
+  - text: "Just few things."
   utter_ask_memory_size:
-    - text: "How much memory do you need?"
-      buttons:
-        - title: "Few"
-          payload: "q_few"
-        - title:  "Moderate"
-          payload: "q_moderate"
-        - title: "A lot"
-          payload: "q_a_lot"
+  - text: "How much memory do you need?"
+    buttons:
+    - title: "Few"
+      payload: "q_few"
+    - title:  "Moderate"
+      payload: "q_moderate"
+    - title: "A lot"
+      payload: "q_a_lot"
   utter_ask_compute_power:
-    - text: "How much computation power do you need?"
-      buttons:
-        - title: "Not much"
-          payload: "q_power_not_much"
-        - title: "Medium"
-          payload: "q_power_medium"
-        - title: "Super Charged"
-          payload: "q_power_super_charged"
+  - text: "How much computation power do you need?"
+    buttons:
+    - title: "Not much"
+      payload: "q_power_not_much"
+    - title: "Medium"
+      payload: "q_power_medium"
+    - title: "Super Charged"
+      payload: "q_power_super_charged"
   utter_show_options:
-    - text: "These are the options suitable for you."
+  - text: "These are the options suitable for you."
   utter_show_options_price:
-    - text: "You can see the monthly price next to each one of them."
+  - text: "You can see the monthly price next to each one of them."
   utter_choose_or_select_details:
-    - text: "Please choose one or choose 'see details' if you want to checkout the technical differences."
-      buttons:
-        - title: "s2 medium 2: $30"
-          payload: "s2.medium.2"
-        - title: "s2 medium 4: $50"
-          payload: "s2.medium.4"
-        - title: "s3 medium 2: $52"
-          payload: "s3.medium.2"
-        - title: "See details"
-          payload: "req_details"
+  - text: "Please choose one or choose 'see details' if you want to checkout the technical differences."
+    buttons:
+    - title: "s2 medium 2: $30"
+      payload: "s2.medium.2"
+    - title: "s2 medium 4: $50"
+      payload: "s2.medium.4"
+    - title: "s3 medium 2: $52"
+      payload: "s3.medium.2"
+    - title: "See details"
+      payload: "req_details"
 
   utter_last_thing:
-    - text: "One last thing... "
+  - text: "One last thing... "
   utter_ask_image_type:
-    - text: "What image (Operating System) would you like?"
-      buttons:
-        - title:  "Fedora"
-          payload: "fedora"
-        - title:  "Ubuntu"
-          payload:  "ubuntu"
-        - title: "Windows"
-          payload: "windows"
+  - text: "What image (Operating System) would you like?"
+    buttons:
+    - title:  "Fedora"
+      payload: "fedora"
+    - title:  "Ubuntu"
+      payload:  "ubuntu"
+    - title: "Windows"
+      payload: "windows"
   utter_os_version:
-    - text: "Choose 'Latest Version' or write the OS version you want."
-      buttons:
-        - title: "Latest Version"
-          payload: "latest_version"
+  - text: "Choose 'Latest Version' or write the OS version you want."
+    buttons:
+    - title: "Latest Version"
+      payload: "latest_version"
 
   utter_have_everything:
-    - text: "I have all the information I need."
+  - text: "I have all the information I need."
 
   utter_ask_confirm_create_ecs:
-    - text: "Please confirm creating ECS (Virtual Server)"
-      buttons:
-        - title: "Confirm"
-          payload: "confirm"
-        - title: "Deny"
-          payload: "deny"
+  - text: "Please confirm creating ECS (Virtual Server)"
+    buttons:
+    - title: "Confirm"
+      payload: "confirm"
+    - title: "Deny"
+      payload: "deny"
   utter_infom_server_started:
-    - text: "I started the server. I will take it few seconds to run."
+  - text: "I started the server. I will take it few seconds to run."
   utter_sent_login_to_email:
-    - text: "I've sent you email with details on how to login to the server."
+  - text: "I've sent you email with details on how to login to the server."
 
   utter_ask_num_of_cpus:
-    - text: "How many CPUs would you like?"
+  - text: "How many CPUs would you like?"
 
   utter_im_sorry_to_hear_that:
-    - text: ":disappointed: I'm sorry to hear that"
+  - text: ":disappointed: I'm sorry to hear that"
+
+  utter_why_come_to_me:
+  - text: "If you know what you want, why do you come to me?!"
 
   utter_game_architecture:
-    - text: Cloud Services for Concurrent Access
-      image: https://res-img1.huaweicloud.com/content/dam/cloudbu-site/archive/china/pageimage/solution/gamecloud/en-us/view-img_1.svg
+  - text: Cloud Services for Concurrent Access
+    image: https://res-img1.huaweicloud.com/content/dam/cloudbu-site/archive/china/pageimage/solution/gamecloud/en-us/view-img_1.svg
 
   utter_game_architecture_business:
-    - text: Enterprise-class Security Protection
-      image: https://res-img1.huaweicloud.com/content/dam/cloudbu-site/archive/china/pageimage/solution/gamecloud/en-us/view-img_2.svg
+  - text: Enterprise-class Security Protection
+    image: https://res-img1.huaweicloud.com/content/dam/cloudbu-site/archive/china/pageimage/solution/gamecloud/en-us/view-img_2.svg
 
   utter_wap_firewall_link:
-    - text: See this tutorial on WAF (Web Application Firewall https://www.youtube.com/watch?v=SmF_wQuZ7z4
+  - text: See this tutorial on WAF (Web Application Firewall https://www.youtube.com/watch?v=SmF_wQuZ7z4
+
+
+
 
 actions:
-  - utter_greet
-  - utter_goodbye
-  - utter_say_name
-  - utter_what_i_do
-  - utter_let_me_check
-  - utter_done
-  - utter_is_there_anything_else
-  - utter_acknowledge
-  - utter_confirm_button
-  - utter_ok
-  - utter_solution_unknown
-  - utter_dont_have_answer
-  - utter_ask_anything_else
-  - utter_im_fine
-  - utter_am_i_human
-  - utter_am_i_bot
-  - utter_i_am
+- utter_greet
+- utter_goodbye
+- utter_say_name
+- utter_what_i_do
+- utter_let_me_check
+- utter_done
+- utter_is_there_anything_else
+- utter_acknowledge
+- utter_confirm_button
+- utter_ok
+- utter_solution_unknown
+- utter_dont_have_answer
+- utter_ask_anything_else
+- utter_im_fine
+- utter_am_i_human
+- utter_am_i_bot
+- utter_i_am
+- utter_not_support
+- utter_ask_learn_more
+- utter_need_few_things
 
-  - utter_get_server_name
-  - utter_bye
-  - utter_show_ecs
-  - utter_create_bms
-  - utter_show_bms
-  - utter_ecs_change_state
-  - utter_not_support
-  - utter_invalid_server_name
-  - utter_s6_ecs
-  - utter_ask_learn_more
-  - utter_offer_s3_ecs
+- utter_i_will_do_my_best
+- utter_go_ahead
+- utter_im_sorry_to_hear_that
 
-  - utter_need_few_things
-  - utter_ask_interest
-  - utter_ask_number_of_users
-  - utter_ask_care_most
-  - utter_have_options
-  - utter_just_few_things
-  - utter_ask_memory_size
-  - utter_ask_compute_power
-  - utter_show_options
-  - utter_show_options_price
-  - utter_choose_or_select_details
-  - utter_last_thing
-  - utter_os_version
-  - utter_have_everything
-  - utter_infom_server_started
-  - utter_sent_login_to_email
-  - utter_ask_if_specific_ecs
-  - utter_ask_image_type
-  - utter_ask_num_of_cpus
-  - utter_ask_confirm_create_ecs
-  - utter_why_come_to_me
-  - utter_game_architecture
-  - utter_game_architecture_business
-  - utter_wap_firewall_link
-  - utter_go_ahead
-  - utter_im_sorry_to_hear_that
-  - utter_i_will_do_my_best
+- utter_get_server_name
+- utter_show_ecs
+- utter_create_bms
+- utter_show_bms
+- utter_ecs_change_state
+- utter_invalid_server_name
+- utter_s6_ecs
+- utter_offer_s3_ecs
+- utter_ask_number_of_users
+- utter_ask_care_most
+- utter_have_options
+- utter_just_few_things
+- utter_ask_memory_size
+- utter_ask_compute_power
+- utter_ask_interest
+- utter_show_options
+- utter_show_options_price
+- utter_choose_or_select_details
+- utter_last_thing
+- utter_os_version
+- utter_have_everything
+- utter_infom_server_started
+- utter_sent_login_to_email
+- utter_ask_if_specific_ecs
+- utter_ask_image_type
+- utter_ask_num_of_cpus
+- utter_ask_confirm_create_ecs
+- utter_why_come_to_me
+- utter_game_architecture
+- utter_game_architecture_business
+- utter_wap_firewall_link
 
-  - action_request_solution
-  - action_restart
-  - action_reset_all_slots
-  - action_query_db
-  - action_say_ok
-  - action_show_ecs
-  - action_change_server_state
-  - action_clear_invalid_entry
-  - actions.ActionShowEcs
-  - actions.ActionCreateEcs
-  - actions.ActionCheckConfirmation
-  - action_unknown_input
-  - action_admin_restart
-  - action_extract_num_of_users
-  - action_get_intents
-  - action_get_training_help
-  - action_add_intent
-  - action_ask_me_something
-  - action_get_training_question
-  - action_user_goodbye
+
+
+
+- action_request_solution
+- action_restart
+- action_reset_all_slots
+- action_query_db
+- action_say_ok
+- action_show_ecs
+- action_change_server_state
+- action_clear_invalid_entry
+- actions.ActionShowEcs
+- actions.ActionCreateEcs
+- actions.ActionCheckConfirmation
+- action_unknown_input
+- action_admin_restart
+- action_extract_num_of_users
+- action_get_intents
+- action_get_training_help
+- action_add_intent
+- action_ask_me_something
+- action_get_training_question
+- action_user_goodbye

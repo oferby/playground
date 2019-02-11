@@ -1,6 +1,53 @@
 ﻿{
   "intents": [
     {
+      "intent": "dont_know",
+      "text": [
+        "i dont know"
+      ]
+    },
+    {
+      "intent": "dont_understand",
+      "text": [
+        "what?",
+        "i don't understand"
+      ]
+    },
+    {
+      "intent": "start_signal",
+      "text": [
+        "how can we start?",
+        "let's start then",
+        "where should we start?",
+        "how do i start?",
+        "need help to start",
+        "ok shoot",
+        "help me get started"
+      ]
+    },
+    {
+      "intent": "req_details",
+      "text": [
+        "can you give me more details ?",
+        "tell me more"
+      ]
+    },
+    {
+      "intent": "req_payment_method",
+      "text": [
+        "how can i pay for my cloud ?"
+      ]
+    },
+    {
+      "intent": "req_service_list",
+      "text": [
+        "Cool! What kind of services?",
+        "what service do you have ?",
+        "what services do you have ?",
+        "what cloud services can you help with?"
+      ]
+    },
+    {
       "intent": "create_ecs",
       "text": [
         "add new vm",
@@ -19,7 +66,18 @@
         "I want new centos server",
         "I need web server on the cloud",
         "I want new web server",
+        "I need high performance virtual machine",
         "I need a virtual machine"
+      ]
+    },
+    {
+      "intent": "create_bms",
+      "text": [
+        "create bms",
+        "add new bare metal server",
+        "create new bare metal server with ubuntu 16.4 image",
+        "new bms with windows image",
+        "create bms"
       ]
     },
     {
@@ -31,16 +89,6 @@
         "show me all my vms",
         "show ecs",
         "show me my servers"
-      ]
-    },
-    {
-      "intent": "create_bms",
-      "text": [
-        "create bms",
-        "add new bare metal server",
-        "create new bare metal server with ubuntu 16.4 image",
-        "new bms with windows image",
-        "create bms"
       ]
     },
     {
@@ -67,9 +115,7 @@
         "hello",
         "hi",
         "Good morning",
-        "shalom",
-        "good afternoon",
-        "hi there"
+        "shalom"
       ]
     },
     {
@@ -92,13 +138,7 @@
         "ok",
         "Sounds great",
         "ok continue",
-        "good",
-        "Cool. Let's start.",
-        "Let's start",
-        "Let's start then",
-        "Where should we start?",
-        "excellent"
-
+        "good"
       ]
     },
     {
@@ -112,9 +152,6 @@
     {
       "intent": "inform",
       "text": [
-        "5",
-        "45",
-        "6",
         "fedora",
         "centos",
         "windows",
@@ -147,33 +184,21 @@
     {
       "intent": "request_solution",
       "text": [
-        "what type of ecs is good for web applications?",
-        "I need high performance virtual machine",
         "I need server for video streaming",
         "I'm looking for virtual server for my website",
         "what type of ecs can I use for small scale database?",
         "I'm looking for a solution for my web store",
         "do you have a solution for webstore?",
-        "help me get started",
-        "I need to backup my photos",
-        "I need to move to the cloud",
-        "I need to set up VPC and connect it to my home network",
-        "I need your strongest VM",
-        "I want a VM",
-        "i need to launch a vm",
-        "I want to create a virtual machine",
-        "which ecs should I choose for business application",
-        "what is the best ecs type for web hosting?",
-        "I want to setup and use Huawei cloud services",
-        "I want to use cloud services",
-        "can you please help me set up a vm?",
-        "I want a container"
+        "I would like to move my webstore to the cloud"
       ]
     },
     {
       "intent": "request_information",
       "text": [
+        "which ecs should I choose for business application",
+        "what is the best ecs type for web hosting?",
         "What is Elastic Cloud Server?",
+        "what type of ecs is good for web applications?",
         "What is Object Storage Service?",
         "What is OBS?",
         "what is elastic server?",
@@ -186,12 +211,11 @@
         "can you give me more information about MySQL?",
         "tell me more about MySQL",
         "what is bms?",
-        "what FPGA googd for?",
+        "what FPGA good for?",
         "what is bms?",
         "what can I do with bare metal server?",
         "what can I do with dedicated host?",
         "what is auto scaling?",
-        "what is autoscaling?",
         "what can I do with auto scaling?",
         "what is image management service? ",
         "what can I do with ims?",
@@ -201,15 +225,8 @@
         "What services do you have ?",
         "What type of ECS do you have ?",
         "Can you give me more details ?",
-        "Do you have service in China ?",
-        "I want to know the cost",
-        "What OS do you support ?",
-        "What is CloudTable service?",
-        "What is the maximum amount of VMs can I have ?",
-        "What is the pricing model ?",
-        "What services do you have ?",
-        "Where is the nearest data center ?",
-        "do you have container service?"
+        "what is vpc good for?",
+        "how do I create a new container?"
       ]
     },
     {
@@ -230,28 +247,26 @@
         "Can you help me today?",
         "i need you to help me setup and use Huawei cloud services",
         "Can you help me ?",
-        "plesae help me",
-        "I need help with my cloud",
-        "I need help to move to the cloud",
-        "What do you think I should do?",
-        "What does it mean ?"
+        "Can you help me today ?",
+        "i need help"
       ]
     },
     {
       "intent": "my_name",
       "text": [
-        "What is your name?",
-        "what's your name?"
+        "What is you name?",
+        "what's you name?"
       ]
     },
     {
       "intent": "what_i_do",
       "text": [
         "What can you do?",
+        "what do you do?",
+        "what can u do?",
         "what can you do for me?",
         "what can you help me with?",
-        "what do you do?",
-        "what can u do?"
+        "what kind of things can u do?"
       ]
     },
     {
@@ -289,8 +304,18 @@
     {
       "intent": "chitchat",
       "text": [
-        "can i ask you something",
-        "you already said it",
+        "can i ask you something"
+      ]
+    },
+    {
+      "intent": "already_said_that",
+      "text": [
+        "you already said it"
+      ]
+    },
+    {
+      "intent": "i_hate_you",
+      "text": [
         "I hate you"
       ]
     },
@@ -298,12 +323,6 @@
       "intent": "soft_deny",
       "text": [
         "Not yet"
-      ]
-    },
-    {
-      "intent": "what_kind",
-      "text": [
-        "Cool! What kind of services?"
       ]
     }
   ]

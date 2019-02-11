@@ -27,8 +27,7 @@
 * what_are_you
     - utter_i_am
     - action_restart
-
-    
+ 
 
 ## How are you
 * how_are_you
@@ -44,7 +43,6 @@
 * request_help
     - utter_i_will_do_my_best
 
-
 ## request info sent to db
 * request_information{"component":"obs", "q_type":"what-is"}
     - action_query_db
@@ -58,7 +56,6 @@
     - slot{"isInvalidEntry": true}
     - utter_dont_have_answer
     - action_restart
-
 
 ## create ecs path
 * create_ecs
@@ -113,7 +110,6 @@
     - utter_ask_confirm_create_ecs
 > create_esc_check_final_confirm
 
-
 ## create ecs without help
 > ask_if_specific_ecs
 * inform{"q_need_help":"i_know"}
@@ -135,7 +131,6 @@
     - utter_goodbye
     - action_restart
 
-
 ## is there anything else?
 > after_confirm_create_ecs
 * deny
@@ -148,12 +143,10 @@
     - utter_what_i_do
     - action_restart
 
-
 ## move to cloud
 * move_to_cloud
     - utter_what_i_do
     - action_restart
-
 
 ## architecture request
 * req_architecture{"application":"gaming"}
@@ -167,12 +160,12 @@
     - utter_game_architecture_business
     - action_restart
 
-
 ## I hate you
 * i_hate_you
     - utter_im_sorry_to_hear_that
     
     
+
 ## bye
 * bye
     - utter_goodbye
