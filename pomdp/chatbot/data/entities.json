@@ -1,0 +1,515 @@
+﻿{
+  "entities": [
+    {
+      "entity": "image_type",
+      "values": [
+        {
+          "value": "centos",
+          "text": [
+            "centos"
+          ]
+        },
+        {
+          "value": "windows",
+          "text": [
+            "windows"
+          ]
+        },
+        {
+          "value": "fedora",
+          "text": [
+            "fedora"
+          ]
+        },
+        {
+          "value": "ubuntu",
+          "text": [
+            "ubuntu"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "memory_size",
+      "values": [
+        {
+          "value": "gb",
+          "text": [
+            "4gb",
+            "4 gb",
+            "8gb",
+            "8 gb"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "state",
+      "values": [
+        {
+          "value": "restart",
+          "text": [
+            "restart"
+          ]
+        },
+        {
+          "value": "running",
+          "text": [
+            "running"
+          ]
+        },
+        {
+          "value": "stop",
+          "text": [
+            "stop"
+          ]
+        },
+        {
+          "value": "start",
+          "text": [
+            "start"
+          ]
+        },
+        {
+          "value": "delete",
+          "text": [
+            "delete"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "application",
+      "values": [
+        {
+          "value": "video_streaming",
+          "text": [
+            "video_streaming",
+            "video streaming"
+          ]
+        },
+        {
+          "value": "cloud_service",
+          "text": [
+            "cloud_service",
+            "cloud service"
+          ]
+        },
+        {
+          "value": "gaming",
+          "text": [
+            "gaming"
+          ]
+        },
+        {
+          "value": "business",
+          "text": [
+            "business"
+          ]
+        },
+        {
+          "value": "web_app",
+          "text": [
+            "web_app",
+            "web app",
+            "web application"
+          ]
+        },
+        {
+          "value": "webstore",
+          "text": [
+            "webstore",
+            "web store"
+          ]
+        },
+        {
+          "value": "small_db",
+          "text": [
+            "small_db",
+            "small db",
+            "small database"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "feature",
+      "values": [
+        {
+          "value": "high performance",
+          "text": [
+            "high performance"
+          ]
+        },
+        {
+          "value": "autoscale",
+          "text": [
+            "autoscale",
+            "auto scale",
+            "Auto Scaling",
+            "autoscaling"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "component",
+      "values": [
+        {
+          "value": "aos",
+          "text": [
+            "Application Orchestration Service",
+            "aos"
+          ]
+        },
+        {
+          "value": "api-gateway",
+          "text": [
+            "API Gateway"
+          ]
+        },
+        {
+          "value": "aom",
+          "text": [
+            "Application Operations Management",
+            "aom"
+          ]
+        },
+        {
+          "value": "apm",
+          "text": [
+            "Application Performance Management",
+            "apm"
+          ]
+        },
+        {
+          "value": "cse",
+          "text": [
+            "Cloud Service Engine",
+            "cse"
+          ]
+        },
+        {
+          "value": "smn",
+          "text": [
+            "Simple Message Notification",
+            "smn"
+          ]
+        },
+        {
+          "value": "dms",
+          "text": [
+            "Distributed Message Service",
+            "dms"
+          ]
+        },
+        {
+          "value": "service_stage",
+          "text": [
+            "ServiceStage"
+          ]
+        },
+        {
+          "value": "cci",
+          "text": [
+            "Cloud Container Instance",
+            "cci"
+          ]
+        },
+        {
+          "value": "deh",
+          "text": [
+            "Dedicated Host",
+            "deh"
+          ]
+        },
+        {
+          "value": "cce",
+          "text": [
+            "Cloud Container Engine",
+            "cce"
+          ]
+        },
+        {
+          "value": "vbs",
+          "text": [
+            "Volume Backup Service",
+            "vbs"
+          ]
+        },
+        {
+          "value": "mysql",
+          "text": [
+            "mysql"
+          ]
+        },
+        {
+          "value": "vpc",
+          "text": [
+            "vpc",
+            "Virtual Private Cloud"
+          ]
+        },
+        {
+          "value": "vpc",
+          "text": [
+            "vpc",
+            "Virtual Private Cloud"
+          ]
+        },
+        {
+          "value": "oss",
+          "text": [
+            "oss"
+          ]
+        },
+        {
+          "value": "ecs",
+          "text": [
+            "ecs",
+            "Elastic Cloud Server"
+          ]
+        },
+        {
+          "value": "evs",
+          "text": [
+            "evs",
+            "Elastic Volume Service"
+          ]
+        },
+        {
+          "value": "obs",
+          "text": [
+            "obs"
+          ]
+        },
+        {
+          "value": "postgres",
+          "text": [
+            "postgres"
+          ]
+        },
+        {
+          "value": "waf",
+          "text": [
+            "waf"
+          ]
+        },
+        {
+          "value": "fpga",
+          "text": [
+            "fpga"
+          ]
+        },
+        {
+          "value": "ims",
+          "text": [
+            "ims"
+          ]
+        },
+        {
+          "value": "web_hosting",
+          "text": [
+            "web_hosting",
+            "web hosting"
+          ]
+        },
+        {
+          "value": "rds",
+          "text": [
+            "rds"
+          ]
+        },
+        {
+          "value": "image management service",
+          "text": [
+            "image management service",
+            "ims"
+          ]
+        },
+        {
+          "value": "bms",
+          "text": [
+            "bms",
+            "Bare Metal Server"
+          ]
+        },
+        {
+          "value": "hec",
+          "text": [
+            "hec"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "q_type",
+      "values": [
+        {
+          "value": "what_is",
+          "text": [
+            "what is"
+          ]
+        },
+        {
+          "value": "how_do",
+          "text": [
+            "how do"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "q_care_most",
+      "values": [
+        {
+          "value": "q_price",
+          "text": [
+            "q_price",
+            "price"
+          ]
+        },
+        {
+          "value": "q_performance",
+          "text": [
+            "q_performance",
+            "performance"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "q_amount",
+      "values": [
+        {
+          "value": "q_moderate",
+          "text": [
+            "q_moderate",
+            "moderate"
+          ]
+        },
+        {
+          "value": "q_few",
+          "text": [
+            "q_few",
+            "few"
+          ]
+        },
+        {
+          "value": "q_a_lot",
+          "text": [
+            "q_a_lot",
+            "a lot"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "q_power",
+      "values": [
+        {
+          "value": "q_power_super_charged",
+          "text": [
+            "q_power_super_charged"
+          ]
+        },
+        {
+          "value": "q_power_not_much",
+          "text": [
+            "q_power_not_much"
+          ]
+        },
+        {
+          "value": "q_power_medium",
+          "text": [
+            "q_power_medium"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "q_ecs_type",
+      "values": [
+        {
+          "value": "s2.medium.2",
+          "text": [
+            "s2.medium.2"
+          ]
+        },
+        {
+          "value": "s2.medium.4",
+          "text": [
+            "s2.medium.4"
+          ]
+        },
+        {
+          "value": "s3.medium.2",
+          "text": [
+            "s3.medium.2"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "q_options",
+      "values": [
+        {
+          "value": "latest_version",
+          "text": [
+            "latest_version",
+            "latest version"
+          ]
+        },
+        {
+          "value": "req_details",
+          "text": [
+            "req_details"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "agent_type",
+      "values": [
+        {
+          "value": "bot",
+          "text": [
+            "bot",
+            "chatbot",
+            "virtual agent"
+          ]
+        },
+        {
+          "value": "human",
+          "text": [
+            "human",
+            "real person"
+          ]
+        }
+      ]
+    },
+    {
+      "entity": "help_type",
+      "values": [
+        {
+          "value": "use",
+          "text": [
+            "use"
+          ]
+        },
+        {
+          "value": "select",
+          "text": [
+            "select"
+          ]
+        },
+        {
+          "value": "setup",
+          "text": [
+            "setup"
+          ]
+        }
+      ]
+    }
+  ]
+}

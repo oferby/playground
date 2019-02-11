@@ -1,0 +1,838 @@
+﻿{
+  "rasa_nlu_data": {
+    "regex_features": [],
+    "entity_synonyms": [],
+    "common_examples": [
+      {
+        "text": "how can i pay for my cloud ?",
+        "intent": "req_payment_method",
+        "entities": []
+      },
+      {
+        "text": "add new vm",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "create new ecs",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "create ubuntu server",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "add ubuntu 16 server",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "I need new ecs with ubuntu image",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "I want ecs with 1 cpu and ubuntu 16.4 image",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "create new ecs with 4 cpu and 8gb memory with ubuntu 16.4 image",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "please add new ecs with 2 vcpu 4gb memory and Fedora image",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "create new server with Fedora 64bit 2 cpu and 8gb memory ",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "I want to add new ecs",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "create ecs",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "I need new ubuntu server",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "I would like to have new server",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "I want new centos server",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "I need web server on the cloud",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "I want new web server",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "I need a virtual machine",
+        "intent": "create_ecs",
+        "entities": []
+      },
+      {
+        "text": "create bms",
+        "intent": "create_bms",
+        "entities": []
+      },
+      {
+        "text": "add new bare metal server",
+        "intent": "create_bms",
+        "entities": []
+      },
+      {
+        "text": "create new bare metal server with ubuntu 16.4 image",
+        "intent": "create_bms",
+        "entities": []
+      },
+      {
+        "text": "new bms with windows image",
+        "intent": "create_bms",
+        "entities": []
+      },
+      {
+        "text": "create bms",
+        "intent": "create_bms",
+        "entities": []
+      },
+      {
+        "text": "show me running ecs",
+        "intent": "show_ecs",
+        "entities": []
+      },
+      {
+        "text": "I want a list of all my ecs machines",
+        "intent": "show_ecs",
+        "entities": []
+      },
+      {
+        "text": "show list of all ecs",
+        "intent": "show_ecs",
+        "entities": []
+      },
+      {
+        "text": "show me all my vms",
+        "intent": "show_ecs",
+        "entities": []
+      },
+      {
+        "text": "show ecs",
+        "intent": "show_ecs",
+        "entities": []
+      },
+      {
+        "text": "show me my servers",
+        "intent": "show_ecs",
+        "entities": []
+      },
+      {
+        "text": "show me my bare metal servers",
+        "intent": "show_bms",
+        "entities": []
+      },
+      {
+        "text": "show me a list of my bms",
+        "intent": "show_bms",
+        "entities": []
+      },
+      {
+        "text": "show bms",
+        "intent": "show_bms",
+        "entities": []
+      },
+      {
+        "text": "start ecs server1",
+        "intent": "ecs_change_state",
+        "entities": []
+      },
+      {
+        "text": "stop server3",
+        "intent": "ecs_change_state",
+        "entities": []
+      },
+      {
+        "text": "restart my server",
+        "intent": "ecs_change_state",
+        "entities": []
+      },
+      {
+        "text": "delete vm web111",
+        "intent": "ecs_change_state",
+        "entities": []
+      },
+      {
+        "text": "delete ecs server db100",
+        "intent": "ecs_change_state",
+        "entities": []
+      },
+      {
+        "text": "hello",
+        "intent": "greeting",
+        "entities": []
+      },
+      {
+        "text": "hi",
+        "intent": "greeting",
+        "entities": []
+      },
+      {
+        "text": "Good morning",
+        "intent": "greeting",
+        "entities": []
+      },
+      {
+        "text": "shalom",
+        "intent": "greeting",
+        "entities": []
+      },
+      {
+        "text": "bye",
+        "intent": "bye",
+        "entities": []
+      },
+      {
+        "text": "thanks",
+        "intent": "bye",
+        "entities": []
+      },
+      {
+        "text": "that's all",
+        "intent": "bye",
+        "entities": []
+      },
+      {
+        "text": "goodbye",
+        "intent": "bye",
+        "entities": []
+      },
+      {
+        "text": "ok bye",
+        "intent": "bye",
+        "entities": []
+      },
+      {
+        "text": "yes",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "yep",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "I confirm",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "sure",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "ok",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "Sounds great",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "ok continue",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "good",
+        "intent": "confirm",
+        "entities": []
+      },
+      {
+        "text": "nop",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "no",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "cancel",
+        "intent": "deny",
+        "entities": []
+      },
+      {
+        "text": "fedora",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "centos",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "windows",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "ubuntu",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "server1",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "server121",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "q_price",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "q_performance",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "q_few",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "q_moderate",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "q_a_lot",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "q_power_not_much",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "q_power_medium",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "q_power_super_charged",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "s2.medium.2",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "s2.medium.4",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "s3.medium.2",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "req_details",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "latest_version",
+        "intent": "inform",
+        "entities": []
+      },
+      {
+        "text": "start over",
+        "intent": "system_restart",
+        "entities": []
+      },
+      {
+        "text": "#restart",
+        "intent": "system_restart",
+        "entities": []
+      },
+      {
+        "text": "#reset",
+        "intent": "system_restart",
+        "entities": []
+      },
+      {
+        "text": "what type of ecs is good for web applications?",
+        "intent": "request_solution",
+        "entities": []
+      },
+      {
+        "text": "I need high performance virtual machine",
+        "intent": "request_solution",
+        "entities": []
+      },
+      {
+        "text": "I need server for video streaming",
+        "intent": "request_solution",
+        "entities": []
+      },
+      {
+        "text": "I'm looking for virtual server for my website",
+        "intent": "request_solution",
+        "entities": []
+      },
+      {
+        "text": "what type of ecs can I use for small scale database?",
+        "intent": "request_solution",
+        "entities": []
+      },
+      {
+        "text": "I'm looking for a solution for my web store",
+        "intent": "request_solution",
+        "entities": []
+      },
+      {
+        "text": "do you have a solution for webstore?",
+        "intent": "request_solution",
+        "entities": []
+      },
+      {
+        "text": "which ecs should I choose for business application",
+        "intent": "request_ecs_type",
+        "entities": []
+      },
+      {
+        "text": "what is the best ecs type for web hosting?",
+        "intent": "request_ecs_type",
+        "entities": []
+      },
+      {
+        "text": "What is Elastic Cloud Server?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "What is Object Storage Service?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "What is OBS?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is elastic server?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "i want information on obs",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "i want to know about obs",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is ecs?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is rds?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is mysql?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is postgres?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "can you give me more information about MySQL?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "tell me more about MySQL",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is bms?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what FPGA good for?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is bms?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what can I do with bare metal server?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what can I do with dedicated host?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is auto scaling?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is autoscaling?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what can I do with auto scaling?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is image management service? ",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what can I do with ims?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is waf?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is web application firewall?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "what is Huawei cloud?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "What services do you have ?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "What type of ECS do you have ?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "Can you give me more details ?",
+        "intent": "request_information",
+        "entities": []
+      },
+      {
+        "text": "that's is",
+        "intent": "end_signal",
+        "entities": []
+      },
+      {
+        "text": "that's all",
+        "intent": "end_signal",
+        "entities": []
+      },
+      {
+        "text": "need help",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "i like your help",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "ok help me choose",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "help",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "help me setup and use Huawei cloud services",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "Can you help me today?",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "i need you to help me setup and use Huawei cloud services",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "Can you help me ?",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "Can you help me today ?",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "i need help",
+        "intent": "request_help",
+        "entities": []
+      },
+      {
+        "text": "What is you name?",
+        "intent": "my_name",
+        "entities": []
+      },
+      {
+        "text": "what's you name?",
+        "intent": "my_name",
+        "entities": []
+      },
+      {
+        "text": "What can you do?",
+        "intent": "what_i_do",
+        "entities": []
+      },
+      {
+        "text": "what do you do?",
+        "intent": "what_i_do",
+        "entities": []
+      },
+      {
+        "text": "what can u do?",
+        "intent": "what_i_do",
+        "entities": []
+      },
+      {
+        "text": "what can you do for me?",
+        "intent": "what_i_do",
+        "entities": []
+      },
+      {
+        "text": "what can you help me with?",
+        "intent": "what_i_do",
+        "entities": []
+      },
+      {
+        "text": "how are you?",
+        "intent": "how_are_you",
+        "entities": []
+      },
+      {
+        "text": "how r u?",
+        "intent": "how_are_you",
+        "entities": []
+      },
+      {
+        "text": "what's up?",
+        "intent": "how_are_you",
+        "entities": []
+      },
+      {
+        "text": "are you human?",
+        "intent": "what_are_you",
+        "entities": []
+      },
+      {
+        "text": "are you a bot?",
+        "intent": "what_are_you",
+        "entities": []
+      },
+      {
+        "text": "What are you?",
+        "intent": "what_are_you",
+        "entities": []
+      },
+      {
+        "text": "I need to move to cloud",
+        "intent": "move_to_cloud",
+        "entities": []
+      },
+      {
+        "text": "I want to cloudify my app",
+        "intent": "move_to_cloud",
+        "entities": []
+      },
+      {
+        "text": "I want architecture for web app",
+        "intent": "req_architecture",
+        "entities": []
+      },
+      {
+        "text": "I want architecture for web applications",
+        "intent": "req_architecture",
+        "entities": []
+      },
+      {
+        "text": "show me gaming architecture",
+        "intent": "req_architecture",
+        "entities": []
+      },
+      {
+        "text": "show gaming setup",
+        "intent": "req_architecture",
+        "entities": []
+      },
+      {
+        "text": "can i ask you something",
+        "intent": "chitchat",
+        "entities": []
+      },
+      {
+        "text": "you already said it",
+        "intent": "already_said_that",
+        "entities": []
+      },
+      {
+        "text": "I hate you",
+        "intent": "i_hate_you",
+        "entities": []
+      },
+      {
+        "text": "Not yet",
+        "intent": "soft_deny",
+        "entities": []
+      },
+      {
+        "text": "what?",
+        "intent": "dont_understand",
+        "entities": []
+      },
+      {
+        "text": "i don't understand",
+        "intent": "dont_understand",
+        "entities": []
+      },
+      {
+        "text": "how can we start?",
+        "intent": "start_signal",
+        "entities": []
+      },
+      {
+        "text": "let's start then",
+        "intent": "start_signal",
+        "entities": []
+      },
+      {
+        "text": "where should we start?",
+        "intent": "start_signal",
+        "entities": []
+      },
+      {
+        "text": "how do i start?",
+        "intent": "start_signal",
+        "entities": []
+      },
+      {
+        "text": "need help to start",
+        "intent": "start_signal",
+        "entities": []
+      },
+      {
+        "text": "ok shoot",
+        "intent": "start_signal",
+        "entities": []
+      },
+      {
+        "text": "help me get started",
+        "intent": "start_signal",
+        "entities": []
+      },
+      {
+        "text": "can you give me more details ?",
+        "intent": "req_details",
+        "entities": []
+      },
+      {
+        "text": "tell me more",
+        "intent": "req_details",
+        "entities": []
+      },
+      {
+        "text": "Cool! What kind of services?",
+        "intent": "req_service_list",
+        "entities": []
+      },
+      {
+        "text": "what service do you have ?",
+        "intent": "req_service_list",
+        "entities": []
+      },
+      {
+        "text": "what services do you have ?",
+        "intent": "req_service_list",
+        "entities": []
+      },
+      {
+        "text": "what cloud services can you help with?",
+        "intent": "req_service_list",
+        "entities": []
+      }
+    ]
+  }
+}
