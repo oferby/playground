@@ -7,6 +7,9 @@ from keras.layers import Embedding, Dense, Flatten
 from keras.models import Sequential
 from keras.models import model_from_json
 
+NUMPY_FILE_NAME_PADDED = 'padded_docs_glove.npy'
+NUMPY_FILE_NAME_OTHER = 'padded_other_glove.npy'
+
 # define documents
 docs = ['Well done!',
         'Good work',
@@ -24,10 +27,18 @@ docs = ['Well done!',
 
 more_docs = [
     'bad work',
-    'not bad'
+    'very nice',
+    'good',
+    'poor',
+    'bad',
+    'work',
+    'nice',
+    'not nice'
 ]
 # define class labels
 labels = np.array([1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 1])
+max_length = 4
+
 # prepare tokenizer
 t = T.Tokenizer()
 
@@ -35,19 +46,32 @@ all_docs = np.append(docs, more_docs)
 
 t.fit_on_texts(all_docs)
 vocab_size = len(t.word_index) + 1
-# integer encode the documents
-encoded_docs = t.texts_to_sequences(docs)
-print(encoded_docs)
 
-max_length = 4
 
-encoded_others = t.texts_to_sequences(more_docs)
-padded_other = S.pad_sequences(encoded_others, maxlen=max_length, padding='post')
-print('other docs:', padded_other)
+def create_or_load_docs():
+    if os.path.isfile(NUMPY_FILE_NAME_PADDED):
+        padded_docs = np.load(NUMPY_FILE_NAME_PADDED)
+        padded_other = np.load(NUMPY_FILE_NAME_OTHER)
+    else:
+        # integer encode the documents
+        encoded_docs = t.texts_to_sequences(docs)
+        # print(encoded_docs)
 
-# pad documents to a max length of 4 words
-padded_docs = S.pad_sequences(encoded_docs, maxlen=max_length, padding='post')
-print(padded_docs)
+
+
+        encoded_others = t.texts_to_sequences(more_docs)
+        padded_other = S.pad_sequences(encoded_others, maxlen=max_length, padding='post')
+        print('other docs:\n', padded_other)
+
+        # pad documents to a max length of 4 words
+        padded_docs = S.pad_sequences(encoded_docs, maxlen=max_length, padding='post')
+
+        np.save(NUMPY_FILE_NAME_PADDED, padded_docs)
+        np.save(NUMPY_FILE_NAME_OTHER, padded_other)
+
+        print(padded_docs)
+
+    return padded_docs, padded_other
 
 
 def create_model():
@@ -112,6 +136,7 @@ def create_or_load_model():
     return create_model()
 
 
+padded_docs, padded_other = create_or_load_docs()
 model = create_or_load_model()
 # evaluate
 loss, accuracy = model.evaluate(padded_docs, labels, verbose=0)
@@ -123,4 +148,4 @@ print('y:', y)
 
 # p = np.expand_dims(padded_other[1], 0)
 y = model.predict(padded_other, 1)
-print('y other:', y)
+print('y other:\n', y)
