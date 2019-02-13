@@ -1,7 +1,6 @@
 import pymongo
-from pymongo import ReturnDocument
 from bson.objectid import ObjectId
-import numpy as np
+from pymongo import ReturnDocument
 
 
 def get_client_collection(collection="qanda"):
@@ -11,8 +10,6 @@ def get_client_collection(collection="qanda"):
 
 
 def load_to_db():
-    import json
-
     paragraphs = []
 
     with open('/home/stack/PycharmProjects/playground/pomdp/chatbot/db/qanda.txt') as f:
@@ -33,14 +30,13 @@ def load_to_db():
                 if p is not None:
                     p['text'] = p['text'].lstrip()
                     paragraphs.append(p)
-                    i+=1
+                    i += 1
                 p = {'text': ''}
                 continue
             else:
                 p['text'] = p['text'] + ' ' + line.rstrip()
 
         print(paragraphs)
-
 
 
 def update_one():
@@ -59,9 +55,20 @@ def update_one():
     print('after', qanda)
 
 
+def get_qanda():
+
+    id_array = []
+    questions = []
+
+    collection = get_client_collection()
+    qanda_col = collection.find()
+    for qanda in qanda_col:
+        if 'questions' in qanda:
+            id_array.append(str(qanda['_id']))
+            questions.append(qanda['questions'])
+            print(qanda['_id'],qanda['questions'])
+
+
+
 if __name__ == '__main__':
-    pass
-    # load_to_db()
-
-    # update_one()
-
+    get_qanda()
