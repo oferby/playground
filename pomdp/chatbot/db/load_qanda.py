@@ -9,7 +9,15 @@ def get_client_collection(collection="qanda"):
     return db.get_collection(collection)
 
 
+collection = get_client_collection('qanda')
+
+
+def remove_all():
+    collection.remove({})
+
+
 def load_to_db():
+
     paragraphs = []
 
     with open('/home/stack/PycharmProjects/playground/pomdp/chatbot/db/qanda.txt') as f:
@@ -30,7 +38,7 @@ def load_to_db():
                 if p is not None:
                     p['text'] = p['text'].lstrip()
                     paragraphs.append(p)
-                    i += 1
+                    i+=1
                 p = {'text': ''}
                 continue
             else:

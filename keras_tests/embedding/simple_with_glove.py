@@ -57,8 +57,6 @@ def create_or_load_docs():
         encoded_docs = t.texts_to_sequences(docs)
         # print(encoded_docs)
 
-
-
         encoded_others = t.texts_to_sequences(more_docs)
         padded_other = S.pad_sequences(encoded_others, maxlen=max_length, padding='post')
         print('other docs:\n', padded_other)
@@ -78,7 +76,7 @@ def create_model():
     # load the whole embedding into memory
     print('loading Glove...')
     embeddings_index = dict()
-    f = open('..\data\glove.6B.100d.txt', encoding='utf-8-sig')
+    f = open('../data/glove.6B.100d.txt', encoding='utf-8-sig')
     for line in f:
         values = line.split()
         word = values[0]
