@@ -2,13 +2,15 @@ import os.path
 
 import keras.preprocessing.sequence as S
 import keras.preprocessing.text as T
+import keras.utils as U
 import numpy as np
-from keras.layers import Embedding, Dense, Flatten, LSTM
+from keras.layers import Embedding, Dense, LSTM
 from keras.models import Sequential
 from keras.models import model_from_json
+import json
 
 max_length = 4
-NUMPY_FILE_NAME = 'simple-with-lstm.npy'
+TOKENIZER_FILE_NAME = 'simple-with-lstm-tokenizer.json'
 MODEL_FILENAME = "simple-with-lstm-model.json"
 WEIGHTS_FILENAME = "simple-with-lstm-weights.h5"
 
@@ -26,9 +28,21 @@ def create_or_load_padded_docs():
             'Could have done better.']
 
     labels = np.array([1, 1, 1, 1, 1, 0, 0, 0, 0, 0])
+    labels = U.to_categorical(labels)
 
-    t = T.Tokenizer()
-    t.fit_on_texts(docs)
+    if os.path.isfile(TOKENIZER_FILE_NAME):
+        json_file = open(TOKENIZER_FILE_NAME, 'r')
+        json_data = json_file.read()
+        json_file.close()
+        t = T.text.tokenizer_from_json(json_data)
+    else:
+        t = T.Tokenizer()
+        t.fit_on_texts(docs)
+
+        json_file = open(TOKENIZER_FILE_NAME, 'w')
+        json_file.write(t.to_json())
+        json_file.close()
+
     vocab_size = len(t.word_index) + 1
 
     sec = t.texts_to_sequences(docs)
@@ -44,9 +58,8 @@ def get_padded_vector(text):
 def create_model():
     model = Sequential()
     model.add(Embedding(vocab_size, 8, input_length=max_length))
-    # model.add(Flatten())
     model.add(LSTM(100))
-    model.add(Dense(1, activation='sigmoid'))
+    model.add(Dense(2, activation='sigmoid'))
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
     print(model.summary())
 
