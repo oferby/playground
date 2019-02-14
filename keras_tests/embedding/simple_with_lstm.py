@@ -16,7 +16,9 @@ WEIGHTS_FILENAME = "simple-with-lstm-weights.h5"
 
 
 def create_or_load_padded_docs():
-    docs = ['Well done!',
+    docs = [
+            'it is just fine',
+            'Well done!',
             'Good work',
             'Great effort',
             'nice work',
@@ -25,9 +27,11 @@ def create_or_load_padded_docs():
             'Poor effort!',
             'not good',
             'poor work',
-            'Could have done better.']
+            'Could have done better.',
+            'fine',
+            'ok']
 
-    labels = np.array([1, 1, 1, 1, 1, 0, 0, 0, 0, 0])
+    labels = np.array([2, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 2, 2])
     labels = U.to_categorical(labels)
 
     if os.path.isfile(TOKENIZER_FILE_NAME):
@@ -59,13 +63,13 @@ def create_model():
     model = Sequential()
     model.add(Embedding(vocab_size, 8, input_length=max_length))
     model.add(LSTM(100))
-    model.add(Dense(2, activation='sigmoid'))
+    model.add(Dense(3, activation='sigmoid'))
     model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['acc'])
     print(model.summary())
 
     # fit the model
     print('training the model...')
-    model.fit(padded, labels, epochs=100, verbose=0)
+    model.fit(padded, labels, epochs=200, verbose=0)
 
     # evaluate
     loss, accuracy = model.evaluate(padded, labels, verbose=0)
@@ -103,9 +107,13 @@ else:
     model = create_model()
 
 x = get_padded_vector('weak effort')
-y = model.predict(x)
+y = model.predict_classes(x)
 print('weak:', y)
 
 x = get_padded_vector('nice effort')
-y = model.predict(x)
+y = model.predict_classes(x)
 print('nice:', y)
+
+x = get_padded_vector('fine effort')
+y = model.predict_classes(x)
+print('fine:', y)
