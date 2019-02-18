@@ -3,7 +3,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 print('loading Glove...')
 embeddings_index = dict()
-f = open('../data/glove.6B.100d.txt', encoding='utf-8-sig')
+f = open('../../data/glove.6B.100d.txt', encoding='utf-8-sig')
 for line in f:
     values = line.split()
     word = values[0]

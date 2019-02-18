@@ -76,7 +76,7 @@ def create_model():
     # load the whole embedding into memory
     print('loading Glove...')
     embeddings_index = dict()
-    f = open('../data/glove.6B.100d.txt', encoding='utf-8-sig')
+    f = open('../../data/glove.6B.100d.txt', encoding='utf-8-sig')
     for line in f:
         values = line.split()
         word = values[0]
@@ -103,7 +103,7 @@ def create_model():
     print(model.summary())
 
     # fit the model
-    model.fit(padded_docs, labels, epochs=500, verbose=1)
+    model.fit(padded_docs, labels, epochs=200, verbose=1)
 
     # serialize model to JSON
     model_json = model.to_json()
