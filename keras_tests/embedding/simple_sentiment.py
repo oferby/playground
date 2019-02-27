@@ -3,7 +3,7 @@ import os.path
 import keras.preprocessing.sequence as S
 import keras.preprocessing.text as T
 import numpy as np
-from keras.layers import Embedding, Dense, Flatten
+from keras.layers import Embedding, Dense, Flatten,LSTM,TimeDistributed,RepeatVector
 from keras.models import Sequential
 from keras.models import model_from_json
 
