@@ -4,6 +4,8 @@ import logging
 import pymongo
 from bson.objectid import ObjectId
 import numpy as np
+from allennlp.predictors.predictor import Predictor
+import scipy.stats as sts
 
 logger = logging.getLogger(__name__)
 
@@ -349,4 +351,44 @@ class ActionGetTrainingQuestion(Action):
                                        upsert=False)
 
         say("Thanks!  if you are still in the mood, run '* askme' again :stuck_out_tongue_winking_eye:", dispatcher)
+        return [Restarted()]
+
+
+class ActionQuestionAnswer(Action):
+
+    def __init__(self):
+        self.predictor = Predictor.from_path(
+            "data/bidaf-model-2017.09.15-charpad.tar.gz")
+
+    def name(self):
+        return 'action_question_answer'
+
+    def run(self,
+            dispatcher,  # type: CollectingDispatcher
+            tracker,  # type: Tracker
+            domain  # type:  Dict[Text, Any]
+            ):
+        query = tracker.latest_message['text']
+        logger.debug('looking for an answer to {}'.format(query))
+        collection = get_client_collection('qanda')
+        context_list = collection.find()
+        answer = {
+            "entropy": 20
+        }
+
+        for context in context_list:
+            text = context['text']
+            p = self.predictor.predict(
+                passage=text,
+                question=query
+            )
+            p_str = p['span_start_probs']
+            p_end = p['span_end_probs']
+            p_entropy = (sts.entropy(p_str) + sts.entropy(p_end))/2
+            if p_entropy < answer['entropy']:
+                answer = p
+                answer['entropy'] = p_entropy
+            logger.debug('entropy: {}'.format(p_entropy))
+        logger.debug('best answer: {}'.format(answer))
+        say(answer["best_span_str"], dispatcher)
         return [Restarted()]

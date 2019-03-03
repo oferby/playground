@@ -385,9 +385,6 @@ actions:
   - utter_game_architecture_business
   - utter_wap_firewall_link
 
-
-
-
   - action_request_solution
   - action_restart
   - action_reset_all_slots
@@ -408,3 +405,4 @@ actions:
   - action_ask_me_something
   - action_get_training_question
   - action_user_goodbye
+  - action_question_answer

@@ -1,4 +1,5 @@
 policies:
+  - name: QuestionAnswerPolicy
   - name: ControlPolicy
   - name: TrainingPolicy
   - name: KerasPolicy

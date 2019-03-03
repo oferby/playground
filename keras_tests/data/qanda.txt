@@ -1,99 +1,119 @@
 *
 An Elastic Cloud Server (ECS) is a computing server consisting of vCPUs, memory, image,
 and Elastic Volume Service (EVS) disks that allow on-demand allocation and elastic scaling.
-
-- what is ecs
-- what is elastic cloud server
-- what is elastic server
-- what service can i use for virtual machine
-
+*
+ECSs integrate Virtual Private Cloud (VPC), virtual firewalls, and multi-data-copy capabilities
+to create an efficient, reliable, and secure computing environment. This ensures stable and
+uninterrupted operation of services.
+*
+After creating an ECS, you can use it like using your local
+computer or physical server.
+*
+ECSs support self-service creation, modification, and operation. You can create ECSs by specifying
+the vCPU, memory, image specifications, and login authentication.
+*
+After creating an ECS, you
+can modify its specifications as required.
+*
+ECS works with other products and services to provide computing, storage, network, and image installation functions.
+*
+ECSs are deployed in multiple availability zones (AZs) connected with each other through an internal network.
+*
+If an AZ becomes faulty, other AZs in the same region will not be affected.
 *
 With the Virtual Private Cloud (VPC) service, you can build a dedicated network, set the subnet and security group,
 and allow the VPC to communicate with the external network through an EIP (bandwidth support required).
-- i need virtual network
-- what is vpc
-
 *
 With the Image Management Service (IMS), you can install images on ECSs, or create ECSs using private images and
 deploy services quickly.
-- how can i install image in my virtual machine
-
-
+*
 The Elastic Volume Service (EVS) provides storage and Volume Backup Service (VBS) provides data backup and recovery
 functions.
-
-- how can i get storage to my vm
-- how do I backup my volume
-
 *
-
 Cloud Container Engine (CCE) is a highly reliable and high-performance service that allows enterprises to manage
-containerized applications.
-
-- what is cce
-- what is cloud container engine
-- what is cloud container
-- how do i manage my containers
-
+containerized applications. With support for Kubernetes-native applications and tools, CCE makes it simple to set
+up an environment for running containers on the cloud.
 *
-A Bare Metal Server (BMS) is a physical server dedicated for individual tenants.
-- tell me about bare metal servers
-- how can i get bare metar server
-
+Cloud Container Engine (CCE) provides one-stop application deployment and O&M, customizable DevOps continuous delivery, and auto scaling.
+*
+A Bare Metal Server (BMS) is a physical server dedicated for individual tenants. It provides remarkable
+computing performance and stability for running key applications.
+*
+The Bare Metal Server (BMS) service can be used in conjunction
+with other cloud services, such as Virtual Private Cloud (VPC), so that you can enjoy consistent and stable
+performance of server hosting as well as the high scalability of cloud resources.
 *
 Auto Scaling (AS) is a service that automatically adjusts resources based on your service requirements and
 configured AS policies.
-- can i have auto scale
-- do you have auto scale service
-
+*
+You can specify Auto Scaling (AS) configurations and policies based on service requirements. These
+configurations and policies free you from having to repeatedly adjust resources to keep up with service changes
+and demand spikes, helping you reduce the resources and manpower required.
 *
 An image is an Elastic Cloud Server (ECS) or a Bare Metal Server (BMS) template that contains an operating
 system (OS) or service data, necessary applications, such as database software, and some private software.
-- what is an image
-
 *
-Dedicated Host (DeH) is a service that provides dedicated physical hosts.
-- can i have physical host
-- do you have a service for dedicated physical host
-
+Dedicated Host (DeH) is a service that provides dedicated physical hosts. You can create ECSs on a DeH to
+enhance isolation, security, and performance of your ECSs.
+*
+When you migrate services to a Dedicated Host (DeH), you can continue
+to use your server software licenses used before the migration. That is, you can use the Bring Your Own
+License (BYOL) feature on the DeH to reduce costs and independently manage your ECSs.
+*
+FunctionGraph hosts and computes functions in a serverless context. It automatically scales to suit fluctuations
+in resource demands during peaks and spikes while requiring no reservation of dedicated servers or capacities.
+*
+With FunctionGraph, you will be billed based on actual usage.
 *
 Cloud Container Instance (CCI) provides a serverless container engine, eliminating the need to manage clusters
 or servers.
-- can i have serverless container
-- do you have serverless service
-- what is cloud container
-
+*
+Cloud Container Instance (CCI) delivers container agility and high performance with only three steps. CCI allows you to create
+stateless workloads (Deployments). CCI enhances container security isolation, fast workload deployment, elastic
+load balancing, auto scaling, and blue-green deployment based on the Kubernetes workload model.
+*
+ServiceStage is a one-stop PaaS service that provides cloud-based application hosting, simplifying application
+lifecycle management, from deployment, monitoring, O&M, to governance. It provides a microservice framework
+compatible with mainstream open-source ecosystems and enables quick building of distributed applications.
 *
 Distributed Message Service (DMS) is a message middleware service based on distributed, high-availability
-clustering technology.
-- do you have queue service
-- can i have messaging service
-- what service can i use for message queue
-
+clustering technology. It provides reliable, scalable, fully managed queues for storing messages.
+*
+Distributed Message Service (DMS) enables you to create message queues for transmitting messages among
+application components. With DMS, application components that send messages and components that receive
+messages do not have to be available at the same time.
 *
 Simple Message Notification (SMN) is a reliable and flexible large-scale message notification service.
-- how can i send email message
-- do you have a service to send emails
-- can i send message to phone number
-- do you have notification service
-
+It enables you to efficiently send messages to email addresses, phone numbers, and HTTP/HTTPS servers
+and connect cloud services through notifications, reducing system complexity.
 *
 Cloud Service Engine (CSE) provides enterprises with a high-performance microservice framework, including
 a microservice software development kit (SDK) and service registration, configuration, and governance centers.
-- do you have microservice registration
-- i need service registration for my microservices
-
+*
+Cloud Service Engine (CSE) helps you construct microservices quickly and monitor them in real time, and
+guarantees their high availability (HA).
+*
+Cloud Service Engine (CSE) is also compatible with mainstream open-source ecosystems,
+is not bound to specific development frameworks or platforms, and supports service code access to CSE
+without any modification.
 *
 Huawei Application Performance Management (APM) is a cloud service that monitors and manages cloud application
 performance and faults in real time.
-- how can i monitor my application performance
-- how can i get real-time application performance
-
+*
+Huawei Application Performance Management (APM) provides professional distributed application performance analysis
+capabilities to help O&M personnel quickly resolve problems such as error assessments and removal of
+performance bottlenecks in the distributed architecture and ensure user experience.
 *
 Application Operations Management (AOM) is a one-stop, three-dimensional O&M management platform for cloud
-applications. It monitors your applications and related cloud resources in real time, collects and associates
-the data of resource metrics, logs, and events to analyze application health statuses, and provides flexible
-alarms and abundant data visualization functions. This helps you detect faults timely and master the real-time
-running statuses of applications, resources, and services.
-- how do i manage my cloud application
-- i need to monitor my cloud application
+applications.
+*
+Application Operations Management (AOM) monitors your applications and related cloud resources in real time,
+collects and associates the data of resource metrics, logs, and events to analyze application health statuses,
+and provides flexible alarms and abundant data visualization functions.
+*
+Application Operations Management (AOM) helps you detect faults timely and master the real-time running statuses
+of applications, resources, and services.
+*
+You can use Application Operations Management (AOM) to comprehensively monitor and uniformly manage servers,
+storage devices, networks, web containers, and applications hosted in Docker and Kubernetes. This effectively
+prevents problems and helps O&M personnel locate faults in minutes, reducing O&M costs.

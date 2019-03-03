@@ -18,7 +18,11 @@ docs = ['Well done!',
         'Could have done better.',
         'very good',
         'very bad',
-        'very nice']
+        'very nice',
+        '20 jan 2018',
+        '2018 01 20',
+        'this may happen',
+        'open on may 5']
 
 embeddings = elmo(
     docs,
@@ -30,5 +34,5 @@ with tf.Session() as sess:
     message_embeddings = sess.run(embeddings)
 
 
-print(message_embeddings)
+print(message_embeddings[-2:])
 

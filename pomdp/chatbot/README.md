@@ -72,6 +72,14 @@ After starting ngrok
         - Event Subscription
         - Interactive Components
 
+### add new policy
+create a file with the policy object
+add to utils.py in rasa core
+ 
+add to the __init.__.py in rasa core policies folder
+add the policy to the policy_config.yml 
+
+
 #### Keras Policy
     
 add to policy_config.yml
