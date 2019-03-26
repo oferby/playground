@@ -34,7 +34,8 @@ Cloud Container Engine (CCE) is a highly reliable and high-performance service t
 containerized applications. With support for Kubernetes-native applications and tools, CCE makes it simple to set
 up an environment for running containers on the cloud.
 *
-Cloud Container Engine (CCE) provides one-stop application deployment and O&M, customizable DevOps continuous delivery, and auto scaling.
+Cloud Container Engine (CCE) provides one-stop application deployment and O&M, customizable DevOps continuous delivery,
+and auto scaling.
 *
 A Bare Metal Server (BMS) is a physical server dedicated for individual tenants. It provides remarkable
 computing performance and stability for running key applications.
