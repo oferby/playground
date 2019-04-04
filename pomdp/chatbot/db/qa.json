@@ -1,0 +1,986 @@
+{
+  "data": [
+    {
+      "paragraph": "Log Tank Service (LTS) collects, analyzes, and stores log data. It allows you to effectively manage and maintain devices, analyze customer service trends, and perform security monitoring and audit.",
+      "questions": []
+    },
+    {
+      "paragraph": "Currently, Automatic Speech Recognition (ASR) provides the Sentence Recognition and Long Speech Recognition functions. Audio recordings with a shorter duration can be recognized at a faster speed by Sentence Recognition. For audio recordings with a longer duration, recognition by Long Speech Recognition delivers better effect.",
+      "questions": []
+    },
+    {
+      "paragraph": "Text To Speech (TTS) is offered by open Application Programming Interfaces (APIs). You can obtain the voice synthesis result by real-time access and API calling. Text To Speech (TTS) provides speech services with customizable timbres, volumes, and speeds for enterprises and individuals.",
+      "questions": [
+        "What is the pricing model ?"
+      ]
+    },
+    {
+      "paragraph": "CloudTable Service (CloudTable for short) is a fully managed NoSQL data storage service based on Apache HBase. It offers strong consistency and single-digit millisecond latency, making it a great fit for storing massive amounts of structured, semi-structured, time series, and spatiotemporal data.",
+      "questions": [
+        "what is cloud table service?"
+      ]
+    },
+    {
+      "paragraph": "CloudTable Service (CloudTable for short) can be widely used in Internet of Things (IoT), Internet of Vehicles (IoV), finance, smart city, meteorology, and other industries.",
+      "questions": []
+    },
+    {
+      "paragraph": "Data Lake Factory (DLF) is a Big Data platform designed specifically for HUAWEI CLOUD. It manages diverse Big Data services and provides a one-stop Big Data development environment and full-hosting Big Data scheduling capabilities.",
+      "questions": []
+    },
+    {
+      "paragraph": "Data Lake Factory (DLF) enables a variety of operations such as data modeling, data integration, script development, workflow orchestration, and operation monitoring, facilitating the data analysis and processing procedure.",
+      "questions": []
+    },
+    {
+      "paragraph": "Data Lake Insight (DLI) is a fully hosted big data processing and analysis service. It frees you from managing any server. DLI supports standard SQL and is compatible with SparkSQL.",
+      "questions": []
+    },
+    {
+      "paragraph": "Data Lake Insight (DLI) supports multiple access modes, and is compatible with mainstream data formats. Data does not need to be extracted, transformed, or loaded. You can use SQL or Spark programs to explore heterogeneous data such as CloudTable, RDS, and DWS on HUAWEI CLOUD.",
+      "questions": []
+    },
+    {
+      "paragraph": "Cloud Search Service (CSS) is a fully managed, distributed search service. It is fully compatible with open-source Elasticsearch and provides users with structured and unstructured data search, statistics, and report capabilities.",
+      "questions": [
+        "I need a search engine"
+      ]
+    },
+    {
+      "paragraph": "Cloud Search Service (CSS) can be automatically deployed, where you can quickly create clusters. It provides the search engine optimization practices with zero O&M. Additionally, it has a robust monitoring system to present you key metrics, including clusters and query performance so that you can focus on business logics.",
+      "questions": []
+    },
+    {
+      "paragraph": "ModelArts is a one-stop development platform for AI developers. With data preprocessing, semi-automated data labeling, distributed training, automated model building, and model deployment on the device, edge, and cloud, ModelArts helps AI developers build models quickly and manage the lifecycle of AI development.",
+      "questions": []
+    },
+    {
+      "paragraph": "A software development kit (SDK) contains code and examples that you use to create cloud applications in the language of your choice.",
+      "questions": []
+    },
+    {
+      "paragraph": "Vulnerability Scan Service (VSS) is designed to protect your servers and websites by scanning vulnerabilities. It provides services such as web vulnerability detection, vulnerability lifecycle management, and scan customization.",
+      "questions": []
+    },
+    {
+      "paragraph": "Host Security Service (HSS) reduces intrusion risks with such functions as intrusion detection, vulnerability management, baseline inspection, and asset management to enhance overall security for hosts.",
+      "questions": []
+    },
+    {
+      "paragraph": "Database Security Service (DBSS) provides data anonymization, database audit, sensitive data discovery, database data reduction, and anti-injection attacks based on the reverse proxy and machine learning mechanism to ensure the security of databases on the cloud.",
+      "questions": []
+    },
+    {
+      "paragraph": "Data Encryption Workshop (DEW) is a full-stack data encryption service in the cloud. It covers Key Management Service (KMS), Key Pair Service (KPS), and Dedicated Hardware Security Module (Dedicated HSM). DEW uses HSMs to protect the security of your keys, and can be integrated with other HUAWEI CLOUD services to meet even the most demanding scenarios. Additionally, DEW enables you to develop customized encryption applications.",
+      "questions": []
+    },
+    {
+      "paragraph": "Key Management Service (KMS) is a secure, reliable, and easy-to-use service designed to manage and protect your keys.",
+      "questions": []
+    },
+    {
+      "paragraph": "An Elastic Cloud Server (ECS) is a computing server consisting of vCPUs, memory, image, and Elastic Volume Service (EVS) disks that allow on-demand allocation and elastic scaling.",
+      "questions": []
+    },
+    {
+      "paragraph": "ECSs integrate Virtual Private Cloud (VPC), virtual firewalls, and multi-data-copy capabilities to create an efficient, reliable, and secure computing environment. This ensures stable and uninterrupted operation of services.",
+      "questions": []
+    },
+    {
+      "paragraph": "After creating an ECS, you can use it like using your local computer or physical server.",
+      "questions": []
+    },
+    {
+      "paragraph": "ECSs support self-service creation, modification, and operation. You can create ECSs by specifying the vCPU, memory, image specifications, and login authentication.",
+      "questions": []
+    },
+    {
+      "paragraph": "After creating an ECS, you can modify its specifications as required.",
+      "questions": []
+    },
+    {
+      "paragraph": "ECS works with other products and services to provide computing, storage, network, and image installation functions.",
+      "questions": []
+    },
+    {
+      "paragraph": "ECSs are deployed in multiple availability zones (AZs) connected with each other through an internal network.",
+      "questions": []
+    },
+    {
+      "paragraph": "If an AZ becomes faulty, other AZs in the same region will not be affected.",
+      "questions": []
+    },
+    {
+      "paragraph": "With the Virtual Private Cloud (VPC) service, you can build a dedicated network, set the subnet and security group, and allow the VPC to communicate with the external network through an EIP (bandwidth support required).",
+      "questions": []
+    },
+    {
+      "paragraph": "With the Image Management Service (IMS), you can install images on ECSs, or create ECSs using private images and deploy services quickly.",
+      "questions": []
+    },
+    {
+      "paragraph": "The Elastic Volume Service (EVS) provides storage and Volume Backup Service (VBS) provides data backup and recovery functions.",
+      "questions": [
+        "What are possible recovery functions?"
+      ]
+    },
+    {
+      "paragraph": "Cloud Container Engine (CCE) is a highly reliable and high-performance service that allows enterprises to manage containerized applications. With support for Kubernetes-native applications and tools, CCE makes it simple to set up an environment for running containers on the cloud.",
+      "questions": []
+    },
+    {
+      "paragraph": "Cloud Container Engine (CCE) provides one-stop application deployment and O&M, customizable DevOps continuous delivery, and auto scaling.",
+      "questions": [
+        "I need something like managed k8s"
+      ]
+    },
+    {
+      "paragraph": "A Bare Metal Server (BMS) is a physical server dedicated for individual tenants. It provides remarkable computing performance and stability for running key applications.",
+      "questions": []
+    },
+    {
+      "paragraph": "The Bare Metal Server (BMS) service can be used in conjunction with other cloud services, such as Virtual Private Cloud (VPC), so that you can enjoy consistent and stable performance of server hosting as well as the high scalability of cloud resources.",
+      "questions": []
+    },
+    {
+      "paragraph": "Auto Scaling (AS) is a service that automatically adjusts resources based on your service requirements and configured AS policies.",
+      "questions": []
+    },
+    {
+      "paragraph": "You can specify Auto Scaling (AS) configurations and policies based on service requirements. These configurations and policies free you from having to repeatedly adjust resources to keep up with service changes and demand spikes, helping you reduce the resources and manpower required.",
+      "questions": []
+    },
+    {
+      "paragraph": "An image is an Elastic Cloud Server (ECS) or a Bare Metal Server (BMS) template that contains an operating system (OS) or service data, necessary applications, such as database software, and some private software.",
+      "questions": []
+    },
+    {
+      "paragraph": "Dedicated Host (DeH) is a service that provides dedicated physical hosts. You can create ECSs on a DeH to enhance isolation, security, and performance of your ECSs.",
+      "questions": []
+    },
+    {
+      "paragraph": "When you migrate services to a Dedicated Host (DeH), you can continue to use your server software licenses used before the migration. That is, you can use the Bring Your Own License (BYOL) feature on the DeH to reduce costs and independently manage your ECSs.",
+      "questions": []
+    },
+    {
+      "paragraph": "FunctionGraph hosts and computes functions in a serverless context. It automatically scales to suit fluctuations in resource demands during peaks and spikes while requiring no reservation of dedicated servers or capacities.",
+      "questions": []
+    },
+    {
+      "paragraph": "With FunctionGraph, you will be billed based on actual usage.",
+      "questions": []
+    },
+    {
+      "paragraph": "Cloud Container Instance (CCI) provides a serverless container engine, eliminating the need to manage clusters or servers.",
+      "questions": []
+    },
+    {
+      "paragraph": "Cloud Container Instance (CCI) delivers container agility and high performance with only three steps. CCI allows you to create stateless workloads (Deployments). CCI enhances container security isolation, fast workload deployment, elastic load balancing, auto scaling, and blue-green deployment based on the Kubernetes workload model.",
+      "questions": []
+    },
+    {
+      "paragraph": "ServiceStage is a one-stop PaaS service that provides cloud-based application hosting, simplifying application lifecycle management, from deployment, monitoring, O&M, to governance. It provides a microservice framework compatible with mainstream open-source ecosystems and enables quick building of distributed applications.",
+      "questions": []
+    },
+    {
+      "paragraph": "Distributed Message Service (DMS) is a message middleware service based on distributed, high-availability clustering technology. It provides reliable, scalable, fully managed queues for storing messages.",
+      "questions": []
+    },
+    {
+      "paragraph": "Distributed Message Service (DMS) enables you to create message queues for transmitting messages among application components. With DMS, application components that send messages and components that receive messages do not have to be available at the same time.",
+      "questions": []
+    },
+    {
+      "paragraph": "Simple Message Notification (SMN) is a reliable and flexible large-scale message notification service. It enables you to efficiently send messages to email addresses, phone numbers, and HTTP/HTTPS servers and connect cloud services through notifications, reducing system complexity.",
+      "questions": [
+        "can you help me with notifications to mobile phones?"
+      ]
+    },
+    {
+      "paragraph": "Cloud Service Engine (CSE) provides enterprises with a high-performance microservice framework, including a microservice software development kit (SDK) and service registration, configuration, and governance centers.",
+      "questions": []
+    },
+    {
+      "paragraph": "Cloud Service Engine (CSE) helps you construct microservices quickly and monitor them in real time, and guarantees their high availability (HA).",
+      "questions": []
+    },
+    {
+      "paragraph": "Cloud Service Engine (CSE) is compatible with mainstream open-source ecosystems, is not bound to specific development frameworks or platforms, and supports service code access to CSE without any modification.",
+      "questions": []
+    },
+    {
+      "paragraph": "Huawei Application Performance Management (APM) is a cloud service that monitors and manages cloud application performance and faults in real time.",
+      "questions": []
+    },
+    {
+      "paragraph": "Huawei Application Performance Management (APM) provides professional distributed application performance analysis capabilities to help O&M personnel quickly resolve problems such as error assessments and removal of performance bottlenecks in the distributed architecture and ensure user experience.",
+      "questions": []
+    },
+    {
+      "paragraph": "Application Operations Management (AOM) is a one-stop, three-dimensional O&M management platform for cloud applications.",
+      "questions": []
+    },
+    {
+      "paragraph": "Application Operations Management (AOM) monitors your applications and related cloud resources in real time, collects and associates the data of resource metrics, logs, and events to analyze application health statuses, and provides flexible alarms and abundant data visualization functions.",
+      "questions": []
+    },
+    {
+      "paragraph": "Application Operations Management (AOM) helps you detect faults timely and master the real-time running statuses of applications, resources, and services.",
+      "questions": []
+    },
+    {
+      "paragraph": "You can use Application Operations Management (AOM) to comprehensively monitor and uniformly manage servers, storage devices, networks, web containers, and applications hosted in Docker and Kubernetes. This effectively prevents problems and helps O&M personnel locate faults in minutes, reducing O&M costs. Application Operations Management (AOM) provides unified APIs to support interconnection with Huawei-developed monitoring systems or report systems.",
+      "questions": []
+    },
+    {
+      "paragraph": "Unlike traditional monitoring systems, Application Operations Management (AOM) monitors applications to reflect service statuses. This meets enterprise requirements for efficiency and fast iteration, helping enterprises effectively support services through IT, better achieve strategic objectives, and protect and optimize IT assets.",
+      "questions": []
+    },
+    {
+      "paragraph": "API Gateway is a high-performance, high-availability, and high-security API hosting service that helps enterprises to build, manage, and deploy APIs at any scale. With just a few clicks, you can implement system integration, microservice aggregation, and serverless architectures while minimizing costs and risks.",
+      "questions": [
+        "what is api gateway?"
+      ]
+    },
+    {
+      "paragraph": "API Gateway is suitable for diversified API opening scenarios. In addition to opening cloud service capabilities of HUAWEI CLOUD, API Gateway enables you to enjoy secure, convenient, and efficient API services. Furthermore, API Gateway provides full API hosting services, such as publishing, maintaining, and monitoring APIs, so that you can focus on service development and quickly commercialize IT capabilities.",
+      "questions": []
+    },
+    {
+      "paragraph": "Using templates to describe and orchestrate applications and related cloud services, Application Orchestration Service (AOS) facilitates automatic application deployment, cloud service creation, and E2E application lifecycle management.",
+      "questions": []
+    },
+    {
+      "paragraph": "A template is a text file that complies with AOS syntax. It defines application attributes, cloud service configurations, and dependencies between applications and cloud services. Like code, templates can be managed by users. Code management tools such as Git and SVN can also be used to manage templates of different versions.",
+      "questions": []
+    },
+    {
+      "paragraph": "Template-based management of applications and cloud services simplifies the design of deploying application systems on the cloud and facilitates replication and set-up of development, testing, and production environments. This makes application systems configurable, evolvable, and traceable.",
+      "questions": []
+    },
+    {
+      "paragraph": "A stack is a collection of applications and cloud service resources. The applications and cloud services in a stack are treated as a whole when they are being created, upgraded, or deleted.",
+      "questions": []
+    },
+    {
+      "paragraph": "HUAWEI CLOUD Blockchain Service (BCS) offers a highly available and secure blockchain platform with superb performance to enterprises and developers. It helps them efficiently create, deploy, and manage blockchain applications and business smart contracts on HUAWEI CLOUD at a low cost.",
+      "questions": [
+        "what service do you have to handle blockchain?"
+      ]
+    },
+    {
+      "paragraph": "Dedicated Computing Cluster (DCC) provides dedicated, physically isolated computing resource pools on HUAWEI CLOUD, allowing you to use physical computing devices and resources exclusively.",
+      "questions": []
+    },
+    {
+      "paragraph": "Dedicated Distributed Storage Service (DSS) provides you with dedicated storage pools which are physically isolated from other pools to ensure high security.",
+      "questions": []
+    },
+    {
+      "paragraph": "With data redundancy and cache acceleration technologies, Dedicated Distributed Storage Service (DSS) can deliver highly reliable, durable, low-latency, and stable storage resources. By flexibly interconnecting with various computing services, such as Dedicated Computing Cluster (DCC), Elastic Cloud Server (ECS), and Bare Metal Server (BMS), DSS is perfect for different scenarios, such as high performance computing (HPC), online analytical processing (OLAP), and hybrid loads.",
+      "questions": []
+    },
+    {
+      "paragraph": "Cloud Server Backup Service (CSBS) offers the backup protection service for Elastic Cloud Servers (ECSs) and Bare Metal Servers (BMSs) (ECSs and BMSs are referred to as servers in the following content). It works based on the consistent snapshot technology for disks. With CSBS, you can use backup data to restore server data.",
+      "questions": [
+        "restart"
+      ]
+    },
+    {
+      "paragraph": "CSBS enhances data integrity and service continuity. For example, if a server is faulty or a misoperation causes data loss, you can use data backups to restore data quickly.",
+      "questions": []
+    },
+    {
+      "paragraph": "By default, CSBS executes a full backup for a server that has not been backed up using CSBS, and performs incremental backups subsequently. Both full backup and incremental backup can restore a server to the state at the backup point in time.",
+      "questions": []
+    },
+    {
+      "paragraph": "Elastic Volume Service (EVS) offers scalable block storage for servers. With high reliability, high performance, and rich specifications, EVS disks can be used for distributed file systems, development and testing environments, data warehouse applications, and high-performance computing (HPC) scenarios to meet diverse service requirements.",
+      "questions": []
+    },
+    {
+      "paragraph": "Servers that Elastic Volume Service (EVS) supports include Elastic Cloud Servers (ECSs) and Bare Metal Servers (BMSs).",
+      "questions": []
+    },
+    {
+      "paragraph": "Volume Backup Service (VBS) provides snapshot-based data protection for Elastic Volume Service (EVS) disks.",
+      "questions": [
+        "I want to backup my elastic volumes"
+      ]
+    },
+    {
+      "paragraph": "Volume Backup Service (VBS) secures your data, even if an EVS disk is faulty or encounters a logical error (for example, mis-deletion, hacker attacks, and virus infection). It allows you to effortlessly create backups of your data, and these data backups can be used to restore data quickly.",
+      "questions": []
+    },
+    {
+      "paragraph": "Volume Backup Service (VBS) supports both full and incremental backup modes. By default, the system performs a full backup initially, and then performs incremental backups. You can use a data backup generated in either backup mode to restore the source EVS disk to the state the EVS disk was in when the backup was created.",
+      "questions": [
+        "I need to backup my data"
+      ]
+    },
+    {
+      "paragraph": "Volume Backup Service (VBS) allows one-click backup and restoration for the EVS disks on servers all through its easy-to-use platform. These servers are Elastic Cloud Servers (ECSs) or Bare Metal Servers (BMSs).",
+      "questions": []
+    },
+    {
+      "paragraph": "Object Storage Service (OBS) is a stable, secure, efficient, and easy-to-use cloud storage service. With Representational State Transfer (REST) Application Programming Interfaces (APIs), OBS is able to store unstructured data of any amount and format at the 99.999999999% (11 nines) reliability.",
+      "questions": []
+    },
+    {
+      "paragraph": "As a web service, Object Storage Service (OBS) supports APIs over Hypertext Transfer Protocol (HTTP) and Hypertext Transfer Protocol Secure (HTTPS).",
+      "questions": [
+        "how can I communicate with obs?"
+      ]
+    },
+    {
+      "paragraph": "With either Object Storage Service (OBS) Console or OBS clients, you can access and manage data stored in OBS from any computer connected to the Internet anytime, anywhere. OBS supports REST APIs. It enables users to easily manage data stored in OBS and develop upper-layer service applications as needed.",
+      "questions": []
+    },
+    {
+      "paragraph": "Storage Disaster Recovery Service (SDRS) provides disaster recovery (DR) services for many public cloud services, such as Elastic Cloud Server (ECS), Dedicated Distributed Storage Service (DSS), and Elastic Volume Service (EVS). SDRS uses multiple technologies, such as storage replication, data redundancy, and cache acceleration, to provide high data reliability and service continuity for users.",
+      "questions": []
+    },
+    {
+      "paragraph": "Storage Disaster Recovery Service (SDRS) protects service applications by replicating server data and specifications in a target AZ.",
+      "questions": []
+    },
+    {
+      "paragraph": "Storage Disaster Recovery Service (SDRS) allows service applications to start in the target AZ in the event that servers in the source AZ stop. This improves service availability and continuity.",
+      "questions": []
+    },
+    {
+      "paragraph": "Content Delivery Network (CDN) is an intelligent virtual network constructed on existing Internet infrastructures. It delivers network content from origin servers to CDN nodes, enabling end users to obtain desired content from the nearest node.",
+      "questions": []
+    },
+    {
+      "paragraph": "Content Delivery Network (CDN) speeds up website response and raises website content availability, breaking through the bottlenecks caused by low bandwidth, heavy user access traffic, and uneven distribution of network nodes.",
+      "questions": []
+    },
+    {
+      "paragraph": "HUAWEI CLOUD Live Streaming Accelerator (LSA) combines the technologies of streaming media and content delivery. Using an intelligent load balancing system, it distributes user's live content access to the optimal node, achieving the fastest access and avoiding network congestion. Featuring low-latency and a smooth live acceleration experience, LSA is the first stop for your streaming needs.",
+      "questions": []
+    },
+    {
+      "paragraph": "Scalable File Service (SFS) enables high-performance file storage that can be expanded and shrunk on demand. It provides file sharing services for multiple Elastic Cloud Servers (ECSs).",
+      "questions": []
+    },
+    {
+      "paragraph": "Data Express Service (DES) is a TB or PB-scale data transmission service. It uses physical storage media (such as Teleport devices, external USB hard disks, SATA disks, and SAS disks) to transmit a large amount of data to HUAWEI CLOUD. DES provides a data transfer speed at 1000 Mbit/s, 20 times faster than Internet transfer but at only one fifth of the cost. It helps to address issues facing massive data transfer such as high network costs and long transfer time.",
+      "questions": []
+    },
+    {
+      "paragraph": "Data Express Service (DES) does not occupy public network bandwidth of users or compete with main services for bandwidth resources.",
+      "questions": []
+    },
+    {
+      "paragraph": "Dedicated Enterprise Storage Service (DESS) provides dedicated HUAWEI CLOUD-based storage services to enterprises. Optimized for enterprises' mission critical applications such as Oracle RAC and SAP HANA TDI, DESS provides the same superb performance and reliability as enterprise private cloud and simplifies service deployment on public cloud for enterprise users.",
+      "questions": []
+    },
+    {
+      "paragraph": "Cloud Eye is a multi-dimensional resource monitoring platform. It can monitor the use of service resources, track the running status of cloud services, configure alarm rules and notifications, and quickly respond to resource changes. Figure 1 shows the Cloud Eye architecture.",
+      "questions": []
+    },
+    {
+      "paragraph": "Identity and Access Management (IAM) is a service that helps you securely control access to resources and other services in the public cloud system (HUAWEI CLOUD). You use IAM to control who is authenticated (signed in) and authorized (has permissions) to use the resources and services.",
+      "questions": []
+    },
+    {
+      "paragraph": "The log audit module is a core component necessary for information security audit and an important information system providing security risk management and control for enterprises and public institutions. As the information system is migrating to the cloud, information and data security management departments around the world, including Standardization Administration of the People's Republic of China/Technical Committee (SAC/TC), have released multiple standards, such as ISO IEC27000, GB/T 20945-2013, COSO, COBIT, ITIL, and NISTSP800.",
+      "questions": []
+    },
+    {
+      "paragraph": "Cloud Trace Service (CTS) is a log audit service that is available for cloud security. It allows you to collect, store, and query resource operation records. You can use these records to perform security analyses, track resource changes, audit compliance, and locate faults.",
+      "questions": []
+    },
+    {
+      "paragraph": "Tag Management Service (TMS) is a visualized service for fast and unified cross-region tagging and categorization of cloud services.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edc9",
+      "paragraph": "Resource Template Service (RTS) makes it easier for you to simplify your cloud computing resource management and automatic O&M. Based on the template specifications defined in the RTS service, you can compile a template file and define a collection of cloud computing resources, dependencies between resources, and resource configurations. Then you can automatically create and configure all resources in the template by using the orchestration engine so as to implement automatic deployment and simplify O&M.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edca",
+      "paragraph": "The Resource Template Service (RTS) service supports most native OpenStack Heat APIs and templates in the Heat Orchestration Template (HOT) format.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edcd",
+      "paragraph": "Cloud Migration Center (CMC) serves as a unified management platform where you can centrally track the progress of all resource and application migrations. CMC also offers varied tools and methods that facilitate migrations of services to HUAWEI CLOUD.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edce",
+      "paragraph": "Server Migration Service (SMS) provides P2V and V2V migration services to help you migrate applications and data from on-premises x86 physical servers or VMs on private or public clouds to HUAWEI CLOUD Elastic Cloud Servers (ECSs).",
+      "questions": [
+        "what is sms?",
+        "how do I migrate my existing application to the cloud?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edcf",
+      "paragraph": "You only need to install the migration Agent on the source server. The migration Agent on the source server registers its connection status with Server Migration Service (SMS) and completes the migration feasibility evaluation. After confirming that the source server can be migrated, you can create a migration task.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edd0",
+      "paragraph": "Server Migration Service (SMS) migrates OSs, applications, and files of the source servers to ECSs on HUAWEI CLOUD.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edd1",
+      "paragraph": "The Object Storage Migration Service helps you migrate object data from object storage on other cloud vendors online to OBS on HUAWEI CLOUD.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edd2",
+      "paragraph": "Cloud Data Migration (CDM) implements data mobility by enabling batch data migration among homogeneous and heterogeneous data sources.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edd3",
+      "paragraph": "Cloud Data Migration (CDM) supports on-premises and public-cloud-based file systems, relational databases, data warehouses, NoSQL, big data, and object storage.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edd4",
+      "paragraph": "Based on the distributed computing framework and the concurrent processing technology, Cloud Data Migration (CDM) helps you migrate massive sets of data stably and efficiently. You can migrate data online and quickly construct a desired data structure.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edd5",
+      "paragraph": "You can migrate data by configuring data sources and migration jobs on the GUI and Cloud Data Migration (CDM) will manage and maintain the data sources and migration jobs for you. In other words, you only need to focus on the data migration logic without worrying about the environment, which greatly reduces development and maintenance costs.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edd6",
+      "paragraph": "Based on the distributed computing framework, Cloud Data Migration (CDM) jobs are split into independent sub-jobs and executed concurrently, which drastically improves data migration efficiency. In addition, efficient data import interfaces are used to import data from Hive, HBase, MySQL databases, and Data Warehouse Service (DWS).",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edd7",
+      "paragraph": "Cloud Data Migration (CDM) helps you easily cope with various data migration scenarios, including data migration to the cloud, data exchange on the cloud, and data migration to on-premises service systems, regardless of whether the data is stored on on-premises IDCs, third-party clouds, HUAWEI CLOUD services, or self-built databases or file systems using ECSs.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edd8",
+      "paragraph": "The Virtual Private Cloud (VPC) service enables you to provision logically isolated, configurable, and manageable virtual networks for Elastic Cloud Servers (ECSs), improving the security of resources in the cloud system and simplifying network deployment.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edd9",
+      "paragraph": "You can create security groups and VPNs, configure IP address ranges, and specify bandwidth sizes in your Virtual Private Cloud (VPC). A VPC facilitates internal network management and configuration, and allows you to implement secure and quick network changes. You can also customize the ECS access rules within a security group and between security groups to improve ECS security.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edda",
+      "paragraph": "Elastic Load Balance (ELB) distributes incoming traffic across multiple Elastic Cloud Servers (ECSs) in accordance with the forwarding policies. This improves the fault tolerance and increases the availability of your applications.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048eddb",
+      "paragraph": "You can create a load balancer, configure a listening protocol and port, and add backend ECSs to a load balancer. You can also check the running state of backend ECSs to ensure that requests are sent only to healthy ECSs.",
+      "questions": [
+        "what configuration do I need to do with load balancer?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048eddc",
+      "paragraph": "The NAT Gateway service offers the network address translation (NAT) function for servers, such as Elastic Cloud Servers (ECSs), Bare Metal Servers (BMSs), and Workspace desktops, in a Virtual Private Cloud (VPC) or servers that connect to a VPC through Direct Connect or Virtual Private Network (VPN) in local data centers, allowing these servers to access the Internet using elastic IP addresses (EIPs) or to provide services for the Internet.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edde",
+      "paragraph": "A Virtual Private Network (VPN) establishes an encrypted communications tunnel between a user and a Virtual Private Cloud (VPC). With VPN, you can connect to a VPC and access service resources in it.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048eddf",
+      "paragraph": "By default, ECSs in a VPC cannot communicate with your data center or private network. To enable communication between them, use a VPN connection.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ede0",
+      "paragraph": "Domain Name Service (DNS) provides highly available and scalable authoritative DNS services and domain name management services. It translates domain names or application resources into IP addresses required for network connection. By doing so, visitors' access requests are directed to the desired resources.",
+      "questions": [
+        "what service can I use to manage my domains?",
+        "do you have a dns service?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ede1",
+      "paragraph": "Cloud Connect (CC) allows you to quickly build high-speed, high-quality, and stable networks between VPCs across regions and between Virtual Private Clouds (VPCs) on the cloud and data centers off the cloud. Through CC, you can build a global cloud network with enterprise-class scale and communication capabilities.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ede2",
+      "paragraph": "After purchasing a cloud connection, you can load network instances in different regions to the cloud connection to implement network interworking among those network instances. The network instance herein can be your purchased VPCs, VGW instances you created and can be accessed by the local data center, or VPCs authenticated by other users.",
+      "questions": [
+        "How can I use network instances ?",
+        "can I connect cloud connection to my vpc?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ede3",
+      "paragraph": "You need to configure the bandwidth between network instances to obtain global network interworking services.",
+      "questions": [
+        "what do I need to configure between network instances?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ede4",
+      "paragraph": "VPC Endpoint (VPCEP) has two types of resources, respectively VPC endpoints and VPC endpoint services.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ede6",
+      "paragraph": "VPC Endpoints provide secure and private channels to connect to VPC endpoint services (the platform services or users' services), providing the flexibility in networking without having to use EIPs.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ede7",
+      "paragraph": "There are two types of VPC endpoints: interface VPC endpoints and gateway VPC endpoints.",
+      "questions": [
+        "what types of vpcs are there?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ede8",
+      "paragraph": "An interface VPC endpoint is an elastic network interface that has a private IP address and can be used to communicate with the supported VPC endpoint services.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ede9",
+      "paragraph": "A gateway VPC endpoint is a gateway, on which a router is configured to distribute traffic to cloud services.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edea",
+      "paragraph": "Data Ingestion Service (DIS) addresses the challenge of transmitting data from outside the cloud to inside the cloud. DIS builds data intake streams for custom applications capable of processing or analyzing streaming data. DIS continuously captures, transmits, and stores terabytes of data from hundreds of thousands of sources every hour, such as logs, Internet of Things (IoT) data, social media feeds, website clickstreams, and location-tracking events.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edeb",
+      "paragraph": "MapReduce Service (MRS), one of basic services on the public cloud, is used for managing and analyzing massive data.",
+      "questions": [
+        "what can I use to handle big data?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edec",
+      "paragraph": "MapReduce Service (MRS) builds a reliable, secure, and easy-to-use operation and maintenance (O&M) platform. The platform provides analysis and computing capabilities for massive data and can address enterprises' demands on data storage and processing.",
+      "questions": [
+        "what service do you have to handle ops and maintenance of my system?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048eded",
+      "paragraph": "Users can independently apply for and use the hosted Hadoop, Spark, HBase, and Hive components to quickly create clusters on a host, which provides batch data analysis and computing capabilities for massive data that does not have demanding requirements on real-time processing.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edef",
+      "paragraph": "Cloud Stream Service (CS) is fully compatible with Apache Flink 1.5.3 and Apache Spark 2.2.1 APIs.",
+      "questions": [
+        "How to write application using Cs?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edf0",
+      "paragraph": "Promoted in the IT field, Cloud Stream Service (CS) delivers distributed real-time stream computing with low latency (millisecond-level latency), high throughput, and high reliability. Powered on Flink, CS integrates enhanced features and security, and supports both stream processing and batch processing methods. It provides mandatory Stream SQL features for data processing, and will add algorithms of machine learning and graph computing to Stream SQL in the future.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edf2",
+      "paragraph": "Data Warehouse Service (DWS) database kernel uses Huawei GAUSS200 OLAP, which is a self-developed database kernel engine based on PostgreSQL 9.2.4. With the database kernel engine, DWS databases are developed from a single OLTP database to an enterprise-class MPP-based OLAP distributed database.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edf3",
+      "paragraph": "Machine Learning Service (MLS) is an analysis platform service that helps you find patterns in data to construct a machine learning model. You can use this model to process new data and make predictions about service application.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edf5",
+      "paragraph": "Machine Learning Service (MLS) seamlessly integrates data analysis with prediction applications, simplifying life cycle management for machine learning models. It offers an easy-to-use platform featuring high performance for your data mining and analysis needs.",
+      "questions": [
+        "what service can I use for data mining?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edf6",
+      "paragraph": "Graph Engine Service (GES) facilitates querying and analysis of graph-structure data based on various relationships. It is specifically suited for scenarios requiring analysis of rich relationship data, including social relationship analysis, recommendations, precision marketing, public opinions and social listening, information communication, and anti-fraud.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edf7",
+      "paragraph": "Optical Character Recognition (OCR) allows you to detect and recognize printed characters in images and convert such characters into editable text.",
+      "questions": [
+        "what can I do with the ocr service?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edf8",
+      "paragraph": "Optical Character Recognition (OCR) provides services through open Application Programming Interfaces (APIs). You can obtain the inference result by accessing and invoking APIs in real time. It helps you collect key data automatically and build an intelligent service system, thereby improving service efficiency.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edf9",
+      "paragraph": "Intelligent Logistics adopts multiple optimization algorithms to optimize storage, packing, and transportation during logistics to improve logistics efficiency.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edfa",
+      "paragraph": "Intelligent Logistics provides services through open Application Programming Interfaces (APIs). You can obtain the inference result by accessing and invoking APIs in real time. It helps you collect key data automatically and build an intelligent service system, and improves service efficiency.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edfb",
+      "paragraph": "Malicious information, such as pornographic, violent, and politically sensitive information bursts with the rapid development and information explosion of the Internet. Products with such information may annoy users and even lose user confidence.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edfc",
+      "paragraph": "Content Moderation automatically identifies pornography- and terrorism-related content and politically sensitive information in images, text, and videos, checks whether the uploaded images are clear enough, and corrects distorted form images for upload.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edfd",
+      "paragraph": "Content Moderation provides services through open application programming interfaces (APIs). You can obtain the inference result by accessing and calling APIs in real time. It helps you collect key data automatically and build an intelligent service system, and improves service efficiency.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edfe",
+      "paragraph": "Currently, Content Moderation includes Moderation (Image), Moderation (Text), and Moderation (Video). Six sub-services are provided, including Image Anti-Porn Moderation, Image Clarity Detect, Distortion Correction, Text Moderation, Image Moderation, and Moderation (Video).",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edff",
+      "paragraph": "Image Recognition is a technology that uses computers to process, analyze, and understand images to identify objects in different modes. It can also improve the image quality with the support of enhancement and reconstruction technologies.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee00",
+      "paragraph": "Image Recognition provides services through open Application Programming Interfaces (APIs). You can obtain the inference result by accessing and calling APIs in real time. It helps you collect key data automatically and build an intelligent business system, thereby improving service efficiency.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee01",
+      "paragraph": "Image Tagging can recognize more than 3,000 objects and 20,000 scenarios and tags in natural images, which have extensive semantic meanings because one image contains a wide variety of tags. It can intelligently and precisely understand image content and make intelligent album management, picture retrieval and classification, and scenario- or object-based advertising more intuitive.",
+      "questions": [
+        "How many objects can image tagging recognize?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee02",
+      "paragraph": "Deep Learning Service (DLS) is a one-stop deep learning platform based on the high-performance computing capabilities of HUAWEI CLOUD. With various optimized neural network models, DLS allows you to easily implement model training and validation with the flexibility of on-demand scheduling.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee03",
+      "paragraph": "Face Recognition is an intelligent service that uses computers to process, analyze, and understand facial images based on human facial features. It provides services through open Application Programming Interfaces (APIs). You can obtain the face recognition results by accessing and calling APIs in real time. It recognizes and compares faces automatically and provides you with the similarity degrees, thereby improving service efficiency.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee04",
+      "paragraph": "Automatic Speech Recognition (ASR) allows you to convert audio recordings into text.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee05",
+      "paragraph": "Automatic Speech Recognition (ASR) is offered by open Application Programming Interfaces (APIs). You can obtain the speech recognition result by real-time access and API calling.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee07",
+      "paragraph": "Text To Speech (TTS) converts text into lifelike voices.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee13",
+      "paragraph": "Data Lake Visualization (DLV) is a one-stop data visualization platform that adapts to various data sources in the cloud or on-premises. By dragging and dropping 2D and 3D visual components on DLV, you can quickly customize and create a data screen of your own.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee14",
+      "paragraph": "Video Analysis Service (VAS) performs intelligent analysis on audio and videos by using AI technology, and provides a wide array of functions, such as video preprocessing, video content moderation, video content analysis, video editing, video search, and video fingerprinting.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee15",
+      "paragraph": "Video Analysis Service (VAS) delivers the detection, tracking, attribute identification, behavior identification, content moderation, abstract, and tagging capabilities of objects in videos, and analyzes videos in an efficient and effective manner.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee17",
+      "paragraph": "Currently, the SDK supports Java, Go and Python languages. If one of the following SDKs do not support your language or examples, you can use the APIs or any other known SDKs.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee18",
+      "paragraph": "The command-line interface (CLI) employs the OpenStackClient tool. This tool provides a command line client. You can access cloud services simply by running commands that make calls to the service APIs.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee19",
+      "paragraph": "The OpenStackClient project is provided with a unified CLI client, so that you can make calls to desired OpenStack project APIs by running commands. Most OpenStack projects have an individual CLI client for each service. For example, the compute service is provided with the Nova CLI client.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee1a",
+      "paragraph": "HUAWEI CLOUD Relational Database Service (RDS) is a cloud-based web service that is reliable, scalable, easy to manage, and ready for immediate use.",
+      "questions": [
+        "I need to a managed database"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee1b",
+      "paragraph": "HUAWEI CLOUD Relational Database Service (RDS) provides a comprehensive performance monitoring system, multi-level security protection measures, and a professional database management platform, allowing you to easily set up and scale a relational database.",
+      "questions": [
+        "what service can I use for a relational database?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee1c",
+      "paragraph": "On the Relational Database Service (RDS) console, you can perform almost all necessary tasks and no programming is required. The console simplifies operation procedures and reduces routine O&M workloads, so that you can focus on your application and service development.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee1d",
+      "paragraph": "MySQL is one of the world's most popular open-source relational databases. It works with the Linux, Apache, and Perl/PHP/Python (LAMP) model to provide efficient web solutions. RDS for MySQL is reliable, scalable, inexpensive, easy to manage, and immediately ready for use.",
+      "questions": [
+        "what is mysql?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee1e",
+      "paragraph": "PostgreSQL is an open-source object-relational database management system with an emphasis on extensibility and standards compliance. It is known as the most advanced open-source database. It applies to business-oriented online transaction processing (OLTP) scenarios and supports NoSQL (JSON, XML, or hstore) and geographic information system (GIS) data types. It has earned a reputation for reliability and data integrity, and applies to Internet websites, location-based applications, and complex data object processing.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee1f",
+      "paragraph": "Microsoft SQL Server is a well established commercial database with mature enterprise-class architecture. It supports one-stop deployment, ensuring key O&M services and lowering labor costs. With RDS for SQL Server, you can build a safe and stable database operation environment according to Huawei international security standards.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee20",
+      "paragraph": "Document Database Service (DDS) is compatible with MongoDB and is secure, highly available, reliable, scalable, and easy to use. It provides DB instance creation, scaling, redundancy, backup, restoration, monitoring, and alarm reporting functions with just a few clicks on the DDS console.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee21",
+      "paragraph": "Distributed Cache Service (DCS) is an online, distributed, in-memory cache service compatible with Redis, Memcached, and in-memory data grid (IMDG). It is reliable, scalable, usable out of the box, and easy to manage.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee22",
+      "paragraph": "Distributed Database Middleware (DDM) is designed to solve distributed expansion issues of databases. It breaks the capacity and performance bottlenecks of traditional databases to achieve high concurrent access to mass data.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee23",
+      "paragraph": "Distributed Database Middleware (DDM) uses the Huawei Relational Database Service (RDS) as the storage engine and provides full-lifecycle O&M management capabilities, such as automatic deployment, sharding, flexible scaling, and high availability.",
+      "questions": [
+        "what service can I use for rds sharding?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee24",
+      "paragraph": "Data Replication Service (DRS) is a stable, efficient, and easy-to-use cloud service for database online migration and synchronization. It simplifies data migration processes and reduces migration costs. You can use DRS to quickly transmit data between databases in various scenarios.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee25",
+      "paragraph": "Data Admin Service (DAS) enables you to manage DB instances on a web-based console, simplifying database management and improving working efficiency.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee26",
+      "paragraph": "The Anti-DDoS traffic cleaning service (Anti-DDoS) defends resources (Elastic Cloud Servers (ECSs), Elastic Load Balance (ELB) instances, and Bare Metal Servers (BMSs)) on HUAWEI CLOUD against network- and application-layer distributed denial of service (DDoS) attacks and sends alarms immediately when detecting an attack. In addition, Anti-DDoS improves the utilization of bandwidth and ensures the stable running of users' services.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee27",
+      "paragraph": "Anti-DDoS monitors the service traffic from the Internet to ECSs, ELB instances, and BMSs to detect attack traffic in real time. It then cleans abnormal traffic according to user-configured defense policies without affecting service running. In addition, monitoring reports are generated, presenting users with clear network security evaluations.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee28",
+      "paragraph": "Based on anti-DDoS cleaning devices and a big data operation platform, Advanced Anti-DDoS (AAD) is an advanced anti-DDoS service that hides and protects users' origin servers by traffic forwarding.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee2a",
+      "paragraph": "After you create a scan job, you can manually start it to detect vulnerabilities in the website and obtain recommended actions.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee2f",
+      "paragraph": "Key Management Service (KMS) uses HSMs to protect Customer Master Keys (CMKs), helping you create and control CMKs with ease. All CMKs are protected by root keys in HSMs to avoid key leakage. KMS controls access to CMKs and records all operations on CMKs with traceable logs. In addition, it provides use records of all CMKs, meeting your audit and regulatory compliance requirements.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee30",
+      "paragraph": "Key Pair Service (KPS) is a secure, reliable, and easy-to-use service designed to manage and protect your key pairs.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee31",
+      "paragraph": "Key Pair Service (KPS) uses HSMs to generate true random numbers which are then used to produce key pairs. In addition, it adopts a complete and reliable key pair management solution to help users create, import, and manage key pairs with ease. The public key of a generated key pair is stored in HUAWEI CLOUD while the private key can be downloaded and saved by the user. This helps ensure the privacy and security of the key pair.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee32",
+      "paragraph": "Dedicated HSM provides you with Dedicated HSM instances that are certified by China State Cryptography Administration (SCA), helping you protect data security and privacy on Elastic Cloud Servers (ECSs) and meet regulatory compliance requirements. Dedicated HSM offers you a secure and reliable management for the keys generated by your instances, and uses multiple algorithms to encrypt and decrypt data.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee34",
+      "paragraph": "A risk score is the comprehensive evaluation of your assets, reflecting the security level of your assets within a period of time. This score, for your reference, helps you fully grasp the security situation of your assets.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee35",
+      "paragraph": "In a broad sense, threat events refer to incidents that, due to natural, human, software, or hardware reasons, cause detriment to information systems or bring adverse influence on the society. In SA, threat events are security incidents detected through big data analysis that contain threats to users' asset security.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee36",
+      "paragraph": "SSL Certificate Manager (SCM) is a Secure Sockets Layer (SSL) certificate management platform. The platform works with world's leading digital Certificate Authorities (CAs) to help you to purchase SSL certificates, upload local (external) SSL certificates, and centrally manage internal and external SSL certificates.",
+      "questions": [
+        "what is the scm service?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee37",
+      "paragraph": "SSL Certificate Manager (SCM) provides six types of SSL certificates: Organization Validation (OV), Organization Validation Professional (OV Pro), Extended Validation (EV), Extended Validation Professional (EV Pro), Domain Validation (DV), and Testing DV. Optional certificate authorities (CAs) are: Symantec, GeoTrust, Globalsign, and CFCA.",
+      "questions": [
+        "I need a certificate management solution"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee38",
+      "paragraph": "Security Expert Service (SES) is an all-round security service provided jointly by Huawei and third-party information security authorities. It prevents harm to your hosts, sites, or systems by monitoring them to identify security risks and provides solutions, suggested corrective measures, and reports. In the event of an attack, SES quickly repairs the system to minimize loss. Besides, SES provides graded protection.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee39",
+      "paragraph": "Web Application Firewall (WAF) is designed to keep web services stable and secure. It examines all HTTP and HTTPS requests to detect and block the following attacks: Structure Query Language (SQL) injections, cross-site scripting (XSS), webshells, command and code injections, file inclusion, sensitive file access, third-party vulnerability exploits, CC attacks, malicious crawlers, and cross-site request forgery (CSRF).",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee3a",
+      "paragraph": "Security Orchestration (SO) provides a central console for you to automatically and rapidly deliver protection policies when your assets are attacked, simplifying security operations and improving operation efficiency. SO also can identify possible threats to your assets and provide recommendations on security services.",
+      "questions": []
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edb3",
+      "paragraph": "Object Storage Service (OBS) provides highly scalable storage capacity that can store all file types and is suitable for websites, enterprises, developers, and common subscribers.",
+      "questions": [
+        "what service should I use for object storage?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048eddd",
+      "paragraph": "Direct Connect is a high-speed, low-latency, stable, and secure dedicated network connection that connects your local data center to a Virtual Private Cloud (VPC) on a cloud.",
+      "questions": [
+        "what is direct connect?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edcc",
+      "paragraph": "The Resource Template Service (RTS) console is a visualized user interface provided for RTS. With the RTS console, you can use templates to automatically deploy resources.",
+      "questions": [
+        "what resources available ?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edc8",
+      "paragraph": "Tags are used to identify cloud resources. When you have many cloud resources of the same type, you can use tags to classify cloud resources by dimension (for example, use, owner, or environment).",
+      "questions": [
+        "Do you support tags ?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edee",
+      "paragraph": "Cloud Stream Service (CS) is a real-time big data stream analysis service running on the public cloud. Computing clusters are fully managed by CS, allowing you to focus on Stream SQL services.",
+      "questions": [
+        "What CS means ?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edc2",
+      "paragraph": "With Identity and Access Management (IAM), you can register a public cloud account by yourself, create and manage user accounts (for example, employee, system, or application accounts) under your public cloud account, and grant permissions to the user accounts, helping you manage your resources efficiently. IAM ensures the security of these user accounts and reduces information security risks by allowing you to set security policies.",
+      "questions": [
+        "Do you have something like AWS cognito ?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edc3",
+      "paragraph": "Identity and Access Management (IAM) is free of charge, so you only need to pay for the resources in your account.",
+      "questions": [
+        "do I have to pay for the iam service?",
+        "What is the minimum payment?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee33",
+      "paragraph": "Situational Awareness (SA) is a visualized threat detection and analysis platform that can detect over 20 types of cloud security risks, including DDoS attacks, brute force attacks, web attacks,Trojans, vulnerability exploits, zombies, abnormal behaviors, and commands and control (C&C). Based on big data technologies, it analyzes attacks, threats, and attack sources to provide you with global security and attack trends.",
+      "questions": [
+        "do you have a visual threat detection service?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edcb",
+      "paragraph": "You can use Resource Template Service (RTS) by calling RTS Application Programming Interface (API) or using the RTS console.",
+      "questions": [
+        "How can I use rts service?",
+        "how can I use the resource template service?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edf1",
+      "paragraph": "Data Warehouse Service (DWS) is an online data processing database that uses the public cloud infrastructure and platform to help you mine and analyze massive volumes of data.",
+      "questions": [
+        "what is the data warehouse service?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ee10",
+      "paragraph": "Cloud Search Service (CSS) works in the similar way as a database.",
+      "questions": [
+        "how does cloud search service works?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ed9f",
+      "paragraph": "Application Orchestration Service (AOS) allows you to deploy your applications on HUAWEI CLOUD with a few clicks, simplifying cloud service management.",
+      "questions": [
+        "what is your alternative to openshift?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048edf4",
+      "paragraph": "Machine Learning Service (MLS) provides a visualized operation interface that allows you to orchestrate training, evaluation, and prediction processes of machine learning models.",
+      "questions": [
+        "do you have tools for ML?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048ede5",
+      "paragraph": "The VPC Endpoint (VPCEP) service enables you to access resources across VPCs using a dedicated gateway, without exposing network information of servers.",
+      "questions": [
+        "how can I connect to a vm that runs in a different vpc?"
+      ]
+    },
+    {
+      "id": "5c5303c51ac8c02a1048eda4",
+      "paragraph": "SoftWare Repository for Container (SWR) provides full lifecycle easy-to-use, secure, and reliable management of container images to help users quickly deploy containerized services.",
+      "questions": [
+        "I need something like docker registry"
+      ]
+    }
+  ]
+}

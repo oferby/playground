@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.huawei.vca.chat";
+option java_outer_classname = "ChatProto";
+
+package chat;
+
+service ChatService {
+    rpc getChatResponse(ChatRequest) returns (ChatResponse) {
+    }
+}
+
+message ChatRequest {
+    string text = 1;
+}
+
+message ChatResponse {
+    string text = 1;
+}

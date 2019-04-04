@@ -9,7 +9,7 @@ uninterrupted operation of services.
 After creating an ECS, you can use it like using your local
 computer or physical server.
 *
-ECSs support self-service creation, modification, and operation. You can create ECSs by specifying
+ECS support self-service creation, modification, and operation. You can create ECSs by specifying
 the vCPU, memory, image specifications, and login authentication.
 *
 After creating an ECS, you
