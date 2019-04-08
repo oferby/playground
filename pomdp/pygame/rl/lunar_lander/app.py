@@ -17,7 +17,7 @@ KERAS_MODEL_WEIGHTS = 'keras_model_weights.h5'
 
 
 class Agent:
-    def __init__(self, input_shape, action_shape):
+    def __init__(self, observation_shape, action_shape):
 
         self.epsilon = 1.0
         self.epsilon_decay = .995
@@ -26,9 +26,23 @@ class Agent:
         self.session = tf.Session()
         K.set_session(self.session)
 
-        self.actor_input, self.actor = self.create_actor(input_shape, action_shape[0])
+        self.actor_input, self.actor = self.create_actor(observation_shape, action_shape[0])
+        _, self.target_actor = self.create_actor(observation_shape, action_shape[0])
 
-        self.action_input, self.state_input, self.critic = self.create_critic(input_shape, action_shape)
+        # actor
+        self.actor_critic_grad = tf.placeholder(tf.float32, [None, action_shape[0]])
+        actor_weights = self.actor.trainable_weights
+        self.actor_grads = tf.gradients(self.actor.output, actor_weights, -self.actor_critic_grad)
+        grads = zip(self.actor_grads, actor_weights)
+        self.optimize = tf.train.AdamOptimizer(learning_rate=0.001).apply_gradients(grads)
+
+        # critic
+        self.critic_action_input, self.critic_state_input, self.critic = self.create_critic(observation_shape, action_shape)
+        _, _, self.target_critic = self.create_critic(observation_shape, action_shape)
+
+        self.critic_grads = tf.gradients(self.critic.output, self.critic_action_input)
+
+        self.session.run(tf.initialize_all_variables())
 
         self.memory = collections.deque(maxlen=2000)
 
