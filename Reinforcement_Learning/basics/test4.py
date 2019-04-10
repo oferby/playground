@@ -17,16 +17,16 @@ class Environment:
         self.pits = None
         self.wins = [0, 99]
 
-    def reset(self):
-
         self.pits = []
         for i in range(4):
             self.pits.append(np.random.randint(1, 99))
 
+    def reset(self):
+
         ok = False
         while not ok:
             s = np.random.randint(100)
-            if s not in self.pits:
+            if s not in self.pits and s not in self.wins:
                 ok = True
                 self.state = s
 
@@ -35,19 +35,21 @@ class Environment:
         return self.state
 
     def is_valid_state(self, state):
-        if state < 0 or state > self.states:
+
+        if state < 0 or state > self.states - 1:
             return False
 
         board_size = np.sqrt(self.states)
 
         if state // board_size == self.state // board_size:
             # same raw
-            if state % board_size == (self.state % board_size) + 1 or state % board_size == (self.state % board_size) - 1:
+            if state % board_size == (self.state % board_size) + 1 or state % board_size == (
+                    self.state % board_size) - 1:
                 return True
             else:
                 return False
 
-        if state % board_size == (self.state % board_size):
+        if state % board_size == self.state % board_size:
             return True
 
         return False
@@ -117,39 +119,81 @@ class RandomAgent(AbstractAgent):
         return np.random.randint(0, self.actions - 1)
 
     def remember(self, state, action, new_state, reward, done):
-        print('state: {}, action: {}, new_state: {}, reward: {}, done: {}'.format(state, action, new_state, reward, done))
+        print(
+            'state: {}, action: {}, new_state: {}, reward: {}, done: {}'.format(state, action, new_state, reward, done))
         print('\n\n\n')
 
 
 class SimpleAgent(AbstractAgent):
 
     def __init__(self, action_space, state_space):
-        super(SimpleAgent).__init__(action_space, state_space)
-        self.world = []
+        super(SimpleAgent, self).__init__(action_space, state_space)
+        self.world = np.zeros((state_space, action_space))
+        self.epsilon = 1
+        self.decay = .995
 
     def get_action(self, state):
-        pass
+        if np.random.random() < self.epsilon:
+            self.epsilon *= self.decay
+            return np.random.randint(0, self.actions - 1)
 
-    def remember(self, state, action, new_state, reward, done):
-        pass
+        return np.argmax(self.world[state])
 
+    def remember(self, state, action, new_state, reward, done, print_result=False):
+        if done:
+            self.world[state, action] = reward
+        else:
+            self.world[state, action] = reward + max(self.world[new_state])
+        if print_result:
+            print(
+                'state: {}, action: {}, new_state: {}, reward: {}, calc reward: {}, done: {}'.format(state, action,
+                                                                                                     new_state, reward,
+                                                                                                     self.world[
+                                                                                                         state, action],
+                                                                                                     done))
+            print('\n\n\n')
 
 
 def main():
+    render = False
+
     env = Environment()
-    agent = RandomAgent(env.actions, env.states)
+    agent = SimpleAgent(env.actions, env.states)
 
-    state = env.reset()
-    env.render()
+    max_loose = 0
 
-    done = False
-    while not done:
-        action = agent.get_action(state)
-        new_state, reward, done = env.step(action)
-        agent.remember(state, action, new_state, reward, done)
-        env.render()
+    for n in range(2000):
 
-        state = new_state
+        tries = 0
+
+        if render:
+            print('starting session {}'.format(n))
+
+        state = env.reset()
+        if render:
+            env.render()
+
+        done = False
+        while not done:
+            tries+=1
+            action = agent.get_action(state)
+            new_state, reward, done = env.step(action)
+            agent.remember(state, action, new_state, reward, done)
+            if render:
+                env.render()
+
+            state = new_state
+
+        if reward == 100:
+            if render:
+                print('win')
+        else:
+            if render:
+                print("loose")
+            if tries > max_loose:
+                max_loose = tries
+
+    print('max loose: {}'.format(max_loose))
 
 
 if __name__ == '__main__':
