@@ -1,6 +1,9 @@
-import abc
-
+import sys
 import numpy as np
+
+sys.path.insert(0, "./")
+
+import agents
 
 LEFT = 0
 RIGHT = 1
@@ -17,9 +20,9 @@ class Environment:
         self.pits = None
         self.wins = [0, 99]
 
-        self.pits = []
-        for i in range(4):
-            self.pits.append(np.random.randint(1, 99))
+        self.pits = [11, 24, 48, 66]
+        # for i in range(4):
+        #     self.pits.append(np.random.randint(1, 99))
 
     def reset(self):
 
@@ -98,100 +101,42 @@ class Environment:
             print(i)
 
 
-class AbstractAgent:
-
-    def __init__(self, action_space, state_space):
-        self.actions = action_space
-        self.states = state_space
-
-    @abc.abstractmethod
-    def get_action(self, state):
-        pass
-
-    @abc.abstractmethod
-    def remember(self, state, action, new_state, reward, done):
-        pass
-
-
-class RandomAgent(AbstractAgent):
-
-    def get_action(self, state):
-        return np.random.randint(0, self.actions - 1)
-
-    def remember(self, state, action, new_state, reward, done):
-        print(
-            'state: {}, action: {}, new_state: {}, reward: {}, done: {}'.format(state, action, new_state, reward, done))
-        print('\n\n\n')
-
-
-class SimpleAgent(AbstractAgent):
-
-    def __init__(self, action_space, state_space):
-        super(SimpleAgent, self).__init__(action_space, state_space)
-        self.world = np.zeros((state_space, action_space))
-        self.epsilon = 1
-        self.decay = .995
-
-    def get_action(self, state):
-        if np.random.random() < self.epsilon:
-            self.epsilon *= self.decay
-            return np.random.randint(0, self.actions - 1)
-
-        return np.argmax(self.world[state])
-
-    def remember(self, state, action, new_state, reward, done, print_result=False):
-        if done:
-            self.world[state, action] = reward
-        else:
-            self.world[state, action] = reward + max(self.world[new_state])
-        if print_result:
-            print(
-                'state: {}, action: {}, new_state: {}, reward: {}, calc reward: {}, done: {}'.format(state, action,
-                                                                                                     new_state, reward,
-                                                                                                     self.world[
-                                                                                                         state, action],
-                                                                                                     done))
-            print('\n\n\n')
-
-
 def main():
     render = False
 
     env = Environment()
-    agent = SimpleAgent(env.actions, env.states)
-
+    # agent = agents.SimpleAgent(env.actions, env.states)
+    agent = agents.SimpleRL(env.actions, env.states)
     max_loose = 0
 
-    for n in range(2000):
-
-        tries = 0
-
-        if render:
-            print('starting session {}'.format(n))
-
+    for n in range(100):
+        print('starting session {}'.format(n))
         state = env.reset()
         if render:
             env.render()
 
         done = False
         while not done:
-            tries+=1
             action = agent.get_action(state)
             new_state, reward, done = env.step(action)
             agent.remember(state, action, new_state, reward, done)
+
             if render:
+                print(
+                    'state: {}, action: {}, new_state: {}, reward: {}, done: {}'.format(state, action,
+                                                                                        new_state,
+                                                                                        reward,
+                                                                                        done))
+                print('\n\n')
                 env.render()
 
             state = new_state
 
         if reward == 100:
-            if render:
-                print('win')
+            print('win')
         else:
-            if render:
-                print("loose")
-            if tries > max_loose:
-                max_loose = tries
+            print("loose")
+            max_loose = n
 
     print('max loose: {}'.format(max_loose))
 
