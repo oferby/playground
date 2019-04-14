@@ -109,7 +109,7 @@ def main():
     agent = agents.SimpleRL(env.actions, env.states)
     max_loose = 0
 
-    for n in range(100):
+    for n in range(5000):
         print('starting session {}'.format(n))
         state = env.reset()
         if render:

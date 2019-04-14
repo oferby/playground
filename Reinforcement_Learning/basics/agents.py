@@ -3,6 +3,7 @@ import numpy as np
 import random
 import os
 
+
 class AbstractAgent:
 
     def __init__(self, action_space, state_space):
@@ -51,8 +52,6 @@ class SimpleAgent(AbstractAgent):
             self.world[state, action] = reward + max(self.world[new_state])
 
 
-
-
 class SimpleRL(AbstractAgent):
 
     def __init__(self, action_space, state_space):
@@ -65,7 +64,7 @@ class SimpleRL(AbstractAgent):
         from tensorflow.contrib.keras.api.keras.utils import to_categorical
 
         self.epsilon = 1
-        self.epsilon_decay = .997
+        self.epsilon_decay = .9997
         self.steps = 0
         self.gamma = .9
 
@@ -80,7 +79,6 @@ class SimpleRL(AbstractAgent):
 
     def _get_model(self):
 
-        import tensorflow as tf
         from tensorflow.contrib.keras.api.keras.layers import Dense, Input
         from tensorflow.contrib.keras.api.keras.models import Model
         from tensorflow.train import AdamOptimizer
@@ -98,6 +96,7 @@ class SimpleRL(AbstractAgent):
         if os.path.isfile(self.MODEL_WEIGHTS):
             print('loading weights from file')
             model.load_weights(self.MODEL_WEIGHTS)
+            self.epsilon = 0.01
 
         print(model.summary())
 
@@ -105,16 +104,11 @@ class SimpleRL(AbstractAgent):
 
     def get_action(self, state):
 
-        # if self.epsilon > np.random.random():
-        #     if self.epsilon > 0.01:
-        #         self.epsilon *= self.epsilon_decay
-        #     print('using random')
-        #     return np.random.randint(0, self.actions - 1)
-        #
-        if 0.01 > np.random.random():
-            r = np.random.randint(0, self.actions - 1)
-            print('state: {},  taking random: {}'.format(state, r))
-            return r
+        if self.epsilon > np.random.random():
+            if self.epsilon > 0.01:
+                self.epsilon *= self.epsilon_decay
+            print('using random')
+            return np.random.randint(0, self.actions - 1)
 
         actions = self._get_action_values(state, self.model)
         taking_action = np.argmax(actions)
@@ -132,11 +126,11 @@ class SimpleRL(AbstractAgent):
 
         self.memory.append([state, action, new_state, reward, done])
         self.steps += 1
-        if self.steps > 40:
+        if self.steps % 100 == 0:
             self._train()
 
     def _train(self):
-        self.steps = 0
+        # self.steps = 0
         training_states = []
         training_values = []
         batch_size = 32
@@ -146,11 +140,7 @@ class SimpleRL(AbstractAgent):
             state, action, new_state, reward, done = sample
 
             values = self._get_action_values(state, self.model)
-            # print("sample: {}\nbefore: {}".format(sample,values))
 
-            # if state==new_state:
-            #     reward+=-1
-            #
             if not done:
                 new_state_values = self._get_action_values(new_state, self.target_model)
                 reward = reward + self.gamma * max(new_state_values)
@@ -166,10 +156,8 @@ class SimpleRL(AbstractAgent):
         self.model.fit(x, y, epochs=3, verbose=0)
         self.model.save_weights(self.MODEL_WEIGHTS)
 
-        self.training_steps+=1
+        # we update the Target network once every 10 training step of the active network
+        self.training_steps += 1
         if self.training_steps > 10:
             self.target_model.set_weights(self.model.get_weights())
             self.training_steps = 0
-
-
-
