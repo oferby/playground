@@ -54,9 +54,9 @@ class SimpleAgent(AbstractAgent):
 
 class SimpleRL(AbstractAgent):
 
-    def __init__(self, action_space, state_space):
+    def __init__(self, action_space, state_space, name='SimpleRL'):
 
-        self.MODEL_WEIGHTS = 'model.h5'
+        self.MODEL_WEIGHTS = name+'_model_weights.h5'
 
         super(SimpleRL, self).__init__(action_space, state_space)
 
