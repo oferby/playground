@@ -2,8 +2,10 @@ from collections import deque
 import random
 import os
 import abc
+import sys
 
 import numpy as np
+import pygame
 
 import tensorflow as tf
 from keras.models import Model, model_from_json, Sequential
@@ -324,7 +326,7 @@ class ActorAgent(AbstractAgent):
         self.epsilon = 1.
         # self.epsilon = .001
         self.epsilon_decay = .995
-        self.epsilon_min = .01
+        self.epsilon_min = .1
         self.gamma = .95
         self.step = 0
         self.batch_size = 128
@@ -407,3 +409,161 @@ class ActorAgent(AbstractAgent):
 
     def save(self):
         self.actor.save_weights(self.__class__.__name__ + '_' + ACTOR_MODEL_WEIGHTS)
+
+
+class ActorAgent1(AbstractAgent):
+
+    def __init__(self, env):
+        super(ActorAgent1, self).__init__(env)
+
+        self.learning_rate = 0.001
+        self.epsilon = 1.
+        # self.epsilon = .001
+        self.epsilon_decay = .995
+        self.epsilon_min = .1
+        self.gamma = .95
+        self.step = 0
+        self.batch_size = 128
+        self.trajectory = 0
+        self.memory = deque(maxlen=20000)
+
+        self.actor_input, self.actor = self.create_actor()
+        _, self.actor_target = self.create_actor()
+
+    def create_actor(self):
+        new_shape = self.env.observation_space.shape[0] + 1
+        new_shape = (new_shape, )
+        state_input = Input(shape=new_shape)
+        h = Dense(24, activation='relu')(state_input)
+        h = Dense(48, activation='relu')(h)
+        h = Dense(24, activation='relu')(h)
+        output = Dense(self.env.action_space.n)(h)
+
+        model = Model(input=state_input, output=output)
+        adam = Adam(lr=self.learning_rate)
+        model.compile(loss='mse', optimizer=adam)
+
+        if os.path.isfile(self.__class__.__name__ + '_' + ACTOR_MODEL_WEIGHTS):
+            print('loading weights from file')
+            model.load_weights(self.__class__.__name__ + '_' + ACTOR_MODEL_WEIGHTS)
+
+        return state_input, model
+
+    def remember(self, state, action, new_state, reward, done):
+
+        state = np.concatenate((state, [self.trajectory]))
+        state = np.reshape(state, (1, self.env.observation_space.shape[0] + 1))
+
+        new_state = np.concatenate((new_state, [self.trajectory + 1]))
+        new_state = np.reshape(new_state, (1, self.env.observation_space.shape[0] + 1))
+
+        self.memory.append([state, action, new_state, reward, done])
+
+        if done:
+            self.trajectory = 0
+
+    def get_action(self, state):
+
+        self.trajectory += 1
+
+        r = random.random()
+        if r < self.epsilon:
+            if self.epsilon > self.epsilon_min:
+                self.epsilon *= self.epsilon_decay
+            # print('random')
+            return self.env.action_space.sample()
+
+        # print('greedy')
+        state = np.concatenate((state, [self.trajectory]))
+        state = state.reshape((1, self.env.observation_space.shape[0] + 1))
+        action = self.actor.predict(state)
+        return np.argmax(action[0])
+
+    def train(self):
+
+        if len(self.memory) < self.batch_size:
+            return
+
+        states = []
+        q_states = []
+
+        _, _, _, reward, _ = self.memory[-1]
+        if reward == 100:
+            samples = random.sample(self.memory, self.batch_size - 1)
+            samples.append(self.memory[-1])
+        else:
+            samples = random.sample(self.memory, self.batch_size)
+
+        for sample in samples:
+            state, action, new_state, reward, done = sample
+
+            if not done:
+                future_reward = self.actor_target.predict(new_state)[0]
+                double_dqn_fix = self.actor.predict(new_state)[0]
+                reward += self.gamma * future_reward[np.argmax(double_dqn_fix)]
+                # reward += self.gamma * np.average(future_reward)
+
+            q_state = self.actor.predict(state)[0]
+            q_state[action] = reward
+            q_state = np.reshape(q_state, (1, self.env.action_space.n))
+            states.append(state)
+            q_states.append(q_state)
+        q_states = np.reshape(q_states, (self.batch_size, self.env.action_space.n))
+        states = np.reshape(states, (self.batch_size, self.env.observation_space.shape[0] + 1))
+        self.actor.fit(states, q_states, verbose=0, epochs=1)
+
+        self.save()
+        self.step += 1
+
+        if self.step > 20:
+            self.actor_target.set_weights(self.actor.get_weights())
+            self.step = 0
+
+    def save(self):
+        self.actor.save_weights(self.__class__.__name__ + '_' + ACTOR_MODEL_WEIGHTS)
+
+
+class KeyboardAgent(AbstractAgent):
+
+    def __init__(self, env):
+        pygame.init()
+        BLACK = (0, 0, 0)
+        WIDTH = 100
+        HEIGHT = 100
+        windowSurface = pygame.display.set_mode((WIDTH, HEIGHT), 0, 32)
+
+
+
+        self.key_value = 0
+
+    def remember(self, state, action, new_state, reward, done):
+        pass
+
+    def get_action(self, obs):
+
+        for event in pygame.event.get():
+            # print('event:', event)
+            if event.type == pygame.QUIT:
+                sys.exit()
+            elif event.type == pygame.KEYUP:
+                self.key_value = 0
+
+            elif event.type == pygame.KEYDOWN:
+                k = event.key
+                # up
+                if k == 273:
+                    self.key_value = 2
+                # down
+                elif k == 274:
+                    self.key_value = 0
+                # right
+                elif k == 275:
+                    self.key_value = 3
+                # left
+                elif k == 276:
+                    self.key_value = 1
+
+        return self.key_value
+
+    def train(self):
+        pass

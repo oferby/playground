@@ -12,6 +12,7 @@ def main():
     env = gym.make('LunarLander-v2')
 
     agent = agents.ActorAgent(env)
+    # agent = agents.KeyboardAgent(env)
     i = 0
     while True:
     # while i < 1000:
@@ -21,7 +22,7 @@ def main():
         steps = 0
         while not done:
             steps += 1
-            # env.render()
+            env.render()
 
             action = agent.get_action(current_state)
             observation, reward, done, info = env.step(action)
