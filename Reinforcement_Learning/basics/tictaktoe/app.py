@@ -9,11 +9,12 @@ def main():
     env = envs.make()
 
     agent1 = agents.RandomAgent(env.get_state_space(), env.get_action_space(), name='r1')
-    agent2 = agents.RandomAgent(env.get_state_space(), env.get_action_space(), name='r2')
+    # agent2 = agents.RandomAgent(env.get_state_space(), env.get_action_space(), name='r2')
+    agent2 = agents.MCTS(env.get_state_space(), env.get_action_space())
     is_agent1_player = True
     i = 0
 
-    render = True
+    render = False
 
     while True:
         i += 1
@@ -26,15 +27,17 @@ def main():
             env.render()
 
         agent = None
+        other_agent = None
+
         while not done:
             steps += 1
 
             if is_agent1_player:
                 agent = agent1
+                other_agent = agent2
             else:
                 agent = agent2
-
-
+                other_agent = agent1
 
             is_valid = False
             while not is_valid:
@@ -45,13 +48,10 @@ def main():
             if render:
                 env.render()
 
-            agent.observe(observation, reward, done)
+            other_agent.observe(observation, reward, done)
 
             if done:
-                if is_agent1_player:
-                    agent2.observe(observation, -reward, done)
-                else:
-                    agent1.observe(observation, -reward, done)
+                agent.observe(observation, -reward, done)
 
             current_state = observation
             is_agent1_player = not is_agent1_player
