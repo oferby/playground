@@ -48,6 +48,7 @@ class Action:
     def __init__(self, action):
         self.action = action
         self.edges = []
+        self.selected = 1
 
 
 class MCTS(AbstractAgent):
@@ -83,17 +84,13 @@ class MCTS(AbstractAgent):
 
     def select_action(self, node):
 
-        actions = np.zeros((self.action_space))
+        actions = {}
         for edge in node.edges:
-            actions[edge.child.action] = 1
+            actions[edge.child.action] = edge.child
 
         random_action = np.random.randint(0, self.action_space)
-        if actions[random_action] == 0:
-            action_node = Action(random_action)
-            edge = Edge(node, action_node)
-            node.edges.append(edge)
-
         return random_action
+
 
     def observe(self, observation, reward, done):
 
@@ -101,9 +98,19 @@ class MCTS(AbstractAgent):
             return
 
         observation = self.decode(observation)
+
         self.memory.append([self.last_state, self.last_action, observation, reward, done])
 
         node = self.mc_tree[self.last_state]
+
+        actions = {}
+        for edge in node.edges:
+            actions[edge.child.action] = edge.child
+
+        if self.last_action not in actions:
+            action_node = Action(self.last_action)
+            edge = Edge(node, action_node)
+            node.edges.append(edge)
 
         if observation not in self.mc_tree:
             new_node = Node(observation, done)
@@ -135,5 +142,6 @@ class MCTS(AbstractAgent):
             for edge in node.edges:
                 if edge.child.action == action:
                     edge.value = (edge.value + future_reward) / 2
+                    edge.child.selected += 1
 
         self.memory.clear()

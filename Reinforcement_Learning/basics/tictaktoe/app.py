@@ -44,6 +44,8 @@ def main():
                 action = agent.get_action(current_state)
                 observation, reward, done, info = env.step(action)
                 is_valid = 'valid' in info
+                if not is_valid:
+                    pass
 
             if render:
                 env.render()
