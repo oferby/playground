@@ -84,13 +84,39 @@ class MCTS(AbstractAgent):
 
     def select_action(self, node):
 
+        self.last_action = self._get_default_action(node)
+
+        return self.last_action
+
+    def _get_default_action(self, node):
+
+        actions = []
+        for edge in node.edges:
+            actions.append(edge.child.action)
+
+        #     remove
+        if len(actions) == self.action_space:
+            return np.random.randint(0, self.action_space)
+
+        all_actions = range(self.action_space)
+        not_visited = np.setdiff1d(all_actions, actions)
+
+        random_action_index = np.random.randint(0, len(not_visited))
+        action = not_visited[random_action_index]
+        self._add_action_to_tree(node, action)
+        return action
+
+    def _add_action_to_tree(self, node, action):
+
+        self.last_action = action
         actions = {}
         for edge in node.edges:
             actions[edge.child.action] = edge.child
 
-        random_action = np.random.randint(0, self.action_space)
-        return random_action
-
+        if self.last_action not in actions:
+            action_node = Action(self.last_action)
+            edge = Edge(node, action_node)
+            node.edges.append(edge)
 
     def observe(self, observation, reward, done):
 
@@ -102,15 +128,6 @@ class MCTS(AbstractAgent):
         self.memory.append([self.last_state, self.last_action, observation, reward, done])
 
         node = self.mc_tree[self.last_state]
-
-        actions = {}
-        for edge in node.edges:
-            actions[edge.child.action] = edge.child
-
-        if self.last_action not in actions:
-            action_node = Action(self.last_action)
-            edge = Edge(node, action_node)
-            node.edges.append(edge)
 
         if observation not in self.mc_tree:
             new_node = Node(observation, done)

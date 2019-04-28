@@ -13,8 +13,9 @@ def main():
     agent2 = agents.MCTS(env.get_state_space(), env.get_action_space())
     is_agent1_player = True
     i = 0
-
-    render = False
+    agent1_wins = 0
+    agent2_wins = 0
+    render = True
 
     while True:
         i += 1
@@ -54,11 +55,15 @@ def main():
 
             if done:
                 agent.observe(observation, -reward, done)
+                if agent == agent1:
+                    agent2_wins += 1
+                else:
+                    agent1_wins += 1
 
             current_state = observation
             is_agent1_player = not is_agent1_player
 
-        print('end session {}, steps: {}, reward: {}, '.format(i, steps, reward))
+        print('end session {}, steps: {}, reward: {}, agent1 wins: {}, agent2 wins: {}'.format(i, steps, reward, agent1_wins, agent2_wins))
 
 
 if __name__ == '__main__':
