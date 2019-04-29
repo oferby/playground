@@ -48,7 +48,7 @@ class Action:
     def __init__(self, action):
         self.action = action
         self.edges = []
-        self.selected = 1
+        self.selected = 0
 
 
 class MCTS(AbstractAgent):
@@ -58,8 +58,8 @@ class MCTS(AbstractAgent):
         super(MCTS, self).__init__(state_space, action_space, name=name)
 
         self.mc_tree = {}
-        # UCT constant
-        self.C = 0.1
+        # UCT constant - big C, more exploration
+        self.C = 1 / 2
 
         self.memory = []
         self.step = 0
@@ -98,13 +98,19 @@ class MCTS(AbstractAgent):
     def _select_action(self, node):
         # calculate UCB1
         actions = [None] * self.action_space
+        values = [None] * self.action_space
         for edge in node.edges:
-            value = edge.value + np.sqrt((2 * np.log(node.visited)) / edge.child.selected)
-            actions[edge.child.action] = value
+            if edge.value == -sys.maxsize:
+                # fix divide by zero
+                edge.child.selected = 1
+            value = edge.value / edge.child.selected
+            values[edge.child.action] = value
+            uct = value + self.C * np.sqrt((2 * np.log(self.step)) / edge.child.selected)
+            actions[edge.child.action] = uct
 
         action =  np.argmax(actions)
         print('visited: {}, action: {}, actions: {}'.format(node.visited, action, actions))
-
+        print('uct: {}'.format(values))
         max_value = actions[action]
 
         indexes = [i for i, x in enumerate(actions) if x == max_value]
@@ -171,7 +177,7 @@ class MCTS(AbstractAgent):
                     break
 
         if done:
-            print('MCTS: my reward: {}'.format(reward))
+            print('{}: my reward: {}'.format(self.name, reward))
             self.calc_values()
 
     def calc_values(self):
@@ -186,13 +192,8 @@ class MCTS(AbstractAgent):
             node.visited += 1
             for edge in node.edges:
                 if edge.child.action == action:
-                    if done:
-                        edge.value = reward
-                    else:
-                        edge.child.selected += 1
-                        edge.value = edge.value * (
-                                edge.child.selected - 1) / edge.child.selected + reward * 1 / edge.child.selected
-
+                    edge.child.selected += 1
+                    edge.value = edge.value + reward
                     break
 
         self.memory.clear()
