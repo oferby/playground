@@ -77,9 +77,6 @@ class Simple(AbstractEnv):
 
         done = 0 not in self.board
 
-        if not done:
-            return done, 0
-
         val = turn * 3
         for i in range(3):
             if sum(self.board[i, :]) == val:
@@ -99,6 +96,9 @@ class Simple(AbstractEnv):
         s = np.sum(self.board * i)
         if s == val:
             return True, 1
+
+        if not done:
+            return done, 0
 
         return True, 0
 

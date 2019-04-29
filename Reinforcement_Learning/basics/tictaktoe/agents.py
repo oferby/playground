@@ -84,9 +84,22 @@ class MCTS(AbstractAgent):
 
     def select_action(self, node):
 
-        self.last_action = self._get_default_action(node)
+        # check if all actions visited
+        if len(node.edges) != self.action_space:
+            self.last_action = self._get_default_action(node)
+        else:
+            self.last_action = self._select_action(node)
 
         return self.last_action
+
+    def _select_action(self, node):
+        # calculate UCB1
+        actions = [None] * self.action_space
+        for edge in node.edges:
+            actions[edge.child.action] = edge.value + np.sqrt(
+                            (2 * np.log(node.visited)) / edge.child.selected)
+
+        return np.argmax(actions)
 
     def _get_default_action(self, node):
 
@@ -135,6 +148,7 @@ class MCTS(AbstractAgent):
             for edge in node.edges:
                 action_node = edge.child
                 if action_node.action == self.last_action:
+                    edge.value = 0
                     e = Edge(action_node, new_node)
                     action_node.edges.append(e)
 
@@ -145,20 +159,21 @@ class MCTS(AbstractAgent):
     def calc_values(self):
 
         i = 0
+        state, action, observation, reward, done = self.memory[-1]
         for _ in range(len(self.memory)):
             i += 1
-            state, action, observation, reward, done = self.memory[-i]
-
-            if done:
-                future_reward = reward
-            else:
-                future_reward = reward + 0.95 * future_reward
+            state, action, observation, _, done = self.memory[-i]
 
             node = self.mc_tree[state]
             node.visited += 1
             for edge in node.edges:
                 if edge.child.action == action:
-                    edge.value = (edge.value + future_reward) / 2
-                    edge.child.selected += 1
+                    if done:
+                        edge.value = reward
+                    else:
+                        edge.child.selected += 1
+                        edge.value = edge.value * (
+                                edge.child.selected - 1) / edge.child.selected + reward * 1 / edge.child.selected
+
 
         self.memory.clear()
