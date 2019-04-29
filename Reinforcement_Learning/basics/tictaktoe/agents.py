@@ -58,6 +58,8 @@ class MCTS(AbstractAgent):
         super(MCTS, self).__init__(state_space, action_space, name=name)
 
         self.mc_tree = {}
+        # UCT constant
+        self.C = 0.1
 
         self.memory = []
         self.step = 0
@@ -90,16 +92,28 @@ class MCTS(AbstractAgent):
         else:
             self.last_action = self._select_action(node)
 
+        self._add_action_to_tree(node, self.last_action)
         return self.last_action
 
     def _select_action(self, node):
         # calculate UCB1
         actions = [None] * self.action_space
         for edge in node.edges:
-            actions[edge.child.action] = edge.value + np.sqrt(
-                            (2 * np.log(node.visited)) / edge.child.selected)
+            value = edge.value + np.sqrt((2 * np.log(node.visited)) / edge.child.selected)
+            actions[edge.child.action] = value
 
-        return np.argmax(actions)
+        action =  np.argmax(actions)
+        print('visited: {}, action: {}, actions: {}'.format(node.visited, action, actions))
+
+        max_value = actions[action]
+
+        indexes = [i for i, x in enumerate(actions) if x == max_value]
+
+        if len(indexes) > 1:
+            r = np.random.randint(0, len(indexes))
+            return indexes[r]
+
+        return action
 
     def _get_default_action(self, node):
 
@@ -116,7 +130,7 @@ class MCTS(AbstractAgent):
 
         random_action_index = np.random.randint(0, len(not_visited))
         action = not_visited[random_action_index]
-        self._add_action_to_tree(node, action)
+
         return action
 
     def _add_action_to_tree(self, node, action):
@@ -142,15 +156,19 @@ class MCTS(AbstractAgent):
 
         node = self.mc_tree[self.last_state]
 
+        for edge in node.edges:
+            if edge.value == -sys.maxsize and edge.child.action == self.last_action:
+                edge.value = 0
+
         if observation not in self.mc_tree:
             new_node = Node(observation, done)
             self.mc_tree[observation] = new_node
             for edge in node.edges:
                 action_node = edge.child
                 if action_node.action == self.last_action:
-                    edge.value = 0
                     e = Edge(action_node, new_node)
                     action_node.edges.append(e)
+                    break
 
         if done:
             print('MCTS: my reward: {}'.format(reward))
@@ -175,5 +193,6 @@ class MCTS(AbstractAgent):
                         edge.value = edge.value * (
                                 edge.child.selected - 1) / edge.child.selected + reward * 1 / edge.child.selected
 
+                    break
 
         self.memory.clear()

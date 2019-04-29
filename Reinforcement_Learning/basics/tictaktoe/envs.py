@@ -44,6 +44,7 @@ class Simple(AbstractEnv):
 
     def reset(self):
         self.board = np.zeros((3, 3))
+        self.x_turn = True
         return self._get_state()
 
     def _get_state(self):

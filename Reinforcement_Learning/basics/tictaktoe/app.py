@@ -51,14 +51,17 @@ def main():
             if render:
                 env.render()
 
-            other_agent.observe(observation, reward, done)
+
 
             if done:
-                agent.observe(observation, -reward, done)
+                agent.observe(observation, reward, done)
+                other_agent.observe(observation, -reward, done)
                 if agent == agent1:
-                    agent2_wins += 1
-                else:
                     agent1_wins += 1
+                else:
+                    agent2_wins += 1
+            else:
+                other_agent.observe(observation, reward, done)
 
             current_state = observation
             is_agent1_player = not is_agent1_player
