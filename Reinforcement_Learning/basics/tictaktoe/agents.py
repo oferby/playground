@@ -109,8 +109,8 @@ class MCTS(AbstractAgent):
             actions[edge.child.action] = uct
 
         action =  np.argmax(actions)
-        print('visited: {}, action: {}, actions: {}'.format(node.visited, action, actions))
-        print('uct: {}'.format(values))
+        print('visited: {}, action: {} \nUCT: {}'.format(node.visited, action, actions))
+        print('values: {}'.format(values))
         max_value = actions[action]
 
         indexes = [i for i, x in enumerate(actions) if x == max_value]

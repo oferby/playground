@@ -8,8 +8,8 @@ import envs
 def main():
     env = envs.make()
 
-    agent1 = agents.RandomAgent(env.get_state_space(), env.get_action_space(), name='r1')
-    # agent1 = agents.MCTS(env.get_state_space(), env.get_action_space(), name='Agent1')
+    # agent1 = agents.RandomAgent(env.get_state_space(), env.get_action_space(), name='r1')
+    agent1 = agents.MCTS(env.get_state_space(), env.get_action_space(), name='Agent1')
     agent2 = agents.MCTS(env.get_state_space(), env.get_action_space(), name='Agent2')
     i = 0
     agent1_wins = 0
