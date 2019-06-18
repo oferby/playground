@@ -1,0 +1,291 @@
+{
+  "q": [
+    {
+      "type": "what-is",
+      "topic": "rds",
+      "text": "HUAWEI CLOUD Relational Database Service (RDS) is a cloud-based web service that is reliable,scalable, easy to manage, and immediately ready for use.HUAWEI CLOUD RDS provides a comprehensive performance monitoring system, multi-level security protection measures, and a professional database management platform, allowing you to easily set up and scale a relational database. On the RDS console, you can perform almost all necessary tasks and no programming is required. The console simplifies operation procedures and reduces routine O&M workloads, so that you can focus on your application and service development."
+    },
+    {
+      "type": "what-is",
+      "topic": "mysql",
+      "text": "MySQL is one of the world's most popular open-source relational databases. It works with the Linux, Apache, and Perl/PHP/Python (LAMP) model to provide efficient web solutions. RDS for MySQL is reliable, scalable, inexpensive, easy to manage, and immediately ready for use. RDS for MySQL uses mature architecture and applies to various web applications. It is cost-effective and suitable for small- and medium-sized enterprises. Visualized and controllable: The console provides comprehensive monitoring information and is easy to use. You can flexibly adjust the required resources based on your service requirements and pay for only what you use. For details about the versions supported by RDS for MySQL, see section DB Engines and Versions."
+    },
+    {
+      "type": "what-is",
+      "topic": "postgres",
+      "text": "PostgreSQL is an open-source object-relational database management system with an emphasis on extensibility and standards compliance. It is known as the most advanced open-source database. It applies to business-oriented online transaction processing (OLTP) scenarios and supports NoSQL (JSON, XML, or hstore) and geographic information system (GIS) data types. It has earned a reputation for reliability and data integrity, and applies to Internet websites, location-based applications, and complex data object processing. The postgis plugin is supported. Its space application is excellent and meets the international standards. PostgreSQL offers functions similar to those of Oracle database systems, but is less expensive. PostgreSQL applies to various scenarios and is cost-effective. You can flexibly scale resources based on your service requirements and pay for only what you use."
+    },
+    {
+      "type": "what-is",
+      "topic": "obs",
+      "text": "Object Storage Service (OBS) is a stable, secure, efficient, and easy-to-use cloud storage service. With Representational State Transfer Application Programming Interfaces (REST APIs), OBS is able to store unstructured data of any amount and form at 99.999999999% reliability (11 nines)."
+    },
+    {
+      "type": "what-is",
+      "topic": "ecs",
+      "text": "An Elastic Cloud Server (ECS) is a computing server consisting of vCPUs, memory, image, and Elastic Volume Service (EVS) disks that allow on-demand allocation and elastic scaling."
+    },
+    {
+      "type": "what-is",
+      "topic": "gpu",
+      "text": "GPU-accelerated Cloud Server (GACS) provides outstanding floating-point computing capabilities. They are suitable for scenarios that require real-time, highly concurrent massive computing, such as deep learning, scientific computing, CAE, 3D animation rendering, and CAD."
+    },
+    {
+      "type": "what-is",
+      "topic": "fpga",
+      "text": "FPGA-accelerated Cloud Server (FACS) provides tools and environment for you to develop and use FPGAs. With the FACSs, you can easily develop FPGA accelerators, deploy FPGA-based services, and provide simple-to-use, cost-effective, agile, secure FPGA cloud services."
+    },
+    {
+      "type": "what-is",
+      "topic": "bms",
+      "text": "Bare Metal Server (BMS) provides dedicated physical servers in single-tenant environments. It provides excellent computing performance and data security for core databases, key application systems, and high performance computing. It also offers the high scalability of a cloud-based service. You can buy BMSs directly or in a DeC as you need."
+    },
+    {
+      "type": "what-is",
+      "topic": "deh",
+      "text": "Dedicated Host (DeH) provides dedicated physical hosts on which you can deploy ECSs for your exclusive use, enhancing both computing isolation and performance."
+    },
+    {
+      "type": "what-is",
+      "topic": "autoscale",
+      "text": "Auto Scaling (AS) automatically adjusts computing resources based on service requirements and configured policies to ensure stability and optimize costs."
+    },
+    {
+      "type": "what-is",
+      "topic": "ims",
+      "text": "Image Management Service (IMS) allows you to easily manage images. An image is a template for you to create ECSs or BMSs. You can create a system disk image from an ECS, BMS, or external image file. A data disk or external image file can be used to create data disk images, and an ECS or CSBS backup can be used to create full-ECS images with data disks."
+    },
+    {
+      "type": "what-is",
+      "topic": "cce",
+      "text": "Cloud Container Engine (CCE) is a high-performance, high-reliability service through which enterprises can manage containerized applications. CCE supports native Kubernetes applications and tools, allowing you to easily set up a container runtime environment on the cloud."
+    },
+    {
+      "type": "what-is",
+      "topic": "cci",
+      "text": "The Cloud Container Instance (CCI) service provides a serverless container engine based on Kubernetes. This engine is compatible with the native Kubernetes and Docker interfaces, so you can quickly create container loads in 3 steps without clusters or servers."
+    },
+    {
+      "type": "what-is",
+      "topic": "functiongraph",
+      "text": "FunctionGraph hosts and computes event-driven functions in a serverless context while ensuring high availability, high scalability, and zero maintenance. All you need to do is write your code and set the conditions. You pay only for what you use and you are not charged when your code is not running."
+    },
+    {
+      "type": "what-is",
+      "topic": "evs",
+      "text": "Elastic Volume Service (EVS) provides persistent block storage for services such as Elastic Cloud Server (ECS) and Bare Metal Server (BMS). With advanced data redundancy and cache acceleration capabilities, EVS offers high availability and durability with an extremely low latency."
+    },
+    {
+      "type": "what-is",
+      "topic": "vbs",
+      "text": "Volume Backup Service (VBS) provides online backup for Elastic Volume Service (EVS) disks and allows data restoration from backups, offering protection against virus attacks and software and hardware faults."
+    },
+    {
+      "type": "what-is",
+      "topic": "csbs",
+      "text": "Cloud Server Backup Service (CSBS) backs up Elastic Volume Service (EVS) disks consistently on Elastic Cloud Servers (ECSs) without interrupting services. Leveraging state-of-the-art protection from virus attacks and software and hardware faults, CSBS allows you to restore data from any backup point in time."
+    },
+    {
+      "type": "what-is",
+      "topic": "cdn",
+      "text": "Content Delivery Network (CDN) delivers content from origin servers to edge node servers so that users can quickly obtain content from nodes nearest to them. CDN speeds up website response, ensures content availability, and prevents network traffic bottlenecks."
+    }
+  ],
+  "ecs": [{
+    "slots": {
+      "billing-mode": {
+        "utter": "What charging mode would you like?",
+        "options": [
+          {
+            "year_month": {
+              "name": "Yearly/Monthly",
+              "explain": "explanation on what yearly/monthly is"
+            }
+          },
+          {
+            "pay-per-use": {
+              "name": "Pay Per-Use",
+              "explain": "explanation on what pay-per-use is."
+            }
+          }
+        ],
+        "default": "year_month"
+      },
+      "region": {
+        "utter": "In what region would you like you server?",
+        "options": [
+          {
+            "id": "cn-north-beijing1",
+            "name": "CN North-Beijing 1"
+          },
+          {
+            "id": "cn-east-shanghai2",
+            "name": "CN East Shanghai 2"
+          },
+          {
+            "id": "cn-south-guangzhou",
+            "name": "CN South Guangzhou"
+          }
+        ],
+        "default": "random"
+      },
+      "az": {
+        "utter": "In what Availability Zone would you like me to put you server?",
+        "options": [
+          {
+            "id": "az1",
+            "name": "AZ1"
+          },
+          {
+            "id": "az2",
+            "name": "AZ2"
+          },
+          {
+            "id": "az3",
+            "Name": "AZ3"
+          }
+        ],
+        "default": "az1"
+      },
+      "flavor": {
+        "utter": "What flavor of hardware would you like?",
+        "options": [
+          {
+            "s2_small_1": {
+              "id": "s2.small.1",
+              "vcpu": "1",
+              "memory": "1 GB",
+              "assured_max_bandwidth": "0.1/0.5 Gbit/s",
+              "pps": "50,000 pps"
+            }
+          },
+          {
+            "s2_medium_2": {
+              "id": "s2.medium.2",
+              "vcpu": "1",
+              "memory": "2 GB",
+              "assured_max_bandwidth": "0.1/0.5 Gbit/s",
+              "pps": "50,000 pps"
+            }
+          },
+          {
+            "s2_large_2": {
+              "id": "s2.large.2",
+              "vcpu": "2",
+              "memory": "4 GB",
+              "assured_max_bandwidth": "0.2/0.8 Gbit/s",
+              "pps": "100,000 pps"
+            }
+          },
+          {
+            "s2_xlarge_2": {
+              "id": "s2.xlarge.2",
+              "vcpu": "4",
+              "memory": "8 GB",
+              "assured_max_bandwidth": "0.4/1.5 Gbit/s",
+              "pps": "150,000 pps"
+            }
+          }
+        ],
+        "default": "s2.small.1"
+      },
+      "image": {
+        "utter": "What image would you like for your server?",
+        "options": [
+          {
+            "name": "CoreOS",
+            "category": "public",
+            "versions": [
+              {
+                "id": "coreos-10-10-5",
+                "name": "CoreOS 10.10.5 64bit",
+                "version": "10.10.5:64"
+              }
+            ]
+          },
+          {
+            "name": "Debian",
+            "category": "public",
+            "versions": [
+              {
+                "id": "debian-9",
+                "name": "Debian 9.0 64bit",
+                "version": "9.0"
+              },
+              {
+                "id": "debian8.8",
+                "name": "Debian 8.8 64bit",
+                "version": "8.8"
+              },
+              {
+                "id": "debian8.2",
+                "name": "Debian 8.2 64bit",
+                "version": "8.2"
+              },
+              {
+                "id": "debian7.5",
+                "name": "Debian 7.5 64bit",
+                "version": "7.5"
+              }
+            ]
+          },
+          {
+            "name": "Fedora",
+            "category": "public",
+            "versions": [
+              {
+                "id": "fedora-25",
+                "name": "Fedora 25 64bit",
+                "version": "25"
+              },
+              {
+                "id": "fedora24",
+                "name": "Fedora 24 64bit",
+                "version": "24"
+              }
+            ]
+          }
+        ]
+      },
+      "disk-type": {
+        "types": [
+          {
+            "id": "common",
+            "name": "Common I/O"
+          },
+          {
+            "id": "high",
+            "name": "High I/O"
+          },
+          {
+            "id": "ultra",
+            "name": "Ultra-High I/O"
+          }
+        ],
+        "default": "common"
+      },
+      "disk-size": {
+        "default": "40",
+        "min": "10"
+      },
+      "eip": {
+        "types": [
+          {
+            "id": "auto",
+            "name": "Automatically assign"
+          },
+          {
+            "id": "existing",
+            "name": "Use existing"
+          },
+          {
+            "id": "none",
+            "name": "Not required"
+          }
+        ],
+        "default": "auto"
+      }
+    }
+  }]
+}
+

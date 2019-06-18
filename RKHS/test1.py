@@ -39,9 +39,11 @@ print('kernel 2:', gaussian_RBF_kernel(mm, x_[1]))
 
 
 def covariance(x, y):
-    X = np.matrix(x)
-    Y = np.matrix(y)
-    return 1 / len(y) * X * H * Y
+    return 1 / len(y) * x * H * y
 
+Xm = np.matrix(X)
+Ym = np.matrix(Y)
+Cxy = covariance(Xm, Ym)
+print('Cxy:\n',Cxy)
 
-print(covariance(X, Y))
+print('\n',X * Cxy)
