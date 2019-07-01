@@ -5,13 +5,14 @@ import world as W
 import agents as A
 
 
-def draw():
-    world.draw()
+def draw(args):
+    world.draw(args)
 
 
 done = False
 world = W.World()
-agent = A.SimpleAgent()
+# agent = A.SimpleAgent()
+agent = A.StatisticalAgent(world.targets)
 
 while 1:
     world.reset()
@@ -21,7 +22,7 @@ while 1:
 
 
     while 1:
-        draw()
+        draw(agent.get_state_prob())
         action = agent.get_action(obs)
         if action is not None:
             # print('action:', action)
@@ -33,7 +34,3 @@ while 1:
                 agent.get_observation(obs, action, reward, done)
         if done:
             break
-
-
-
-

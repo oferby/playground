@@ -10,12 +10,15 @@ GREY = (20, 20, 20)
 BLACK = (0, 0, 0)
 PURPLE = (100, 0, 100)
 RED = (255, 0, 0)
+GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 WHITE_INT = 16777215
 BLACK_INT = 0
 
 WORLD_SIZE = (700, 500)
 ROBOT_SIZE = 50
+VERTICAL_LINE = 501
+INFO_TEXT = VERTICAL_LINE + 9
 
 screen = pygame.display.set_mode(WORLD_SIZE)
 screen.fill(WHITE)
@@ -29,7 +32,7 @@ class World:
 
     def __init__(self):
 
-        self.draw_line(501, 0, 1, 500, BLACK)
+        self.draw_line(VERTICAL_LINE, 0, 1, 500, BLACK)
         self.background = np.copy(self.get_surface())
         self.state = self.background
         self.targets = []
@@ -62,12 +65,16 @@ class World:
         nn = np.random.choice(10, 10, p=[.1, .15, .05, .1, .2, .1, .2, .01, .07, .02])
 
         for n in nn:
-            targets = []
-            targets.append([n, 1])
+            targets = [[n, 1]]
 
             next = n
             for i in range(9):
                 next = math.floor(np.random.normal(next, 1))
+                if next < 0:
+                    next = 0
+                elif next > 9:
+                    next = 9
+
                 targets.append([next + 10 + i * 10, 1])
 
             self.targets.append(targets)
@@ -86,25 +93,28 @@ class World:
 
         return [x, y, location[1]]
 
-    def draw(self):
+    def draw(self, prob=None):
 
         pygame.surfarray.blit_array(pygame.display.get_surface(), self.background)
+
+        if prob is not None:
+            self.draw_prob(prob, 10)
 
         for target in self.target:
             position = self.get_location_vector(target)
 
             pygame.draw.rect(screen, self.colors[position[2]], (position[0], position[1], ROBOT_SIZE, ROBOT_SIZE))
 
-        line = 10
-        self.draw_text('Selected: {}'.format(self.selected_target), (510, line), RED)
-        line+=20
-        self.draw_text('Turn: {}'.format(self.turn), (510, line), RED)
-        line+=20
-        self.draw_text('Position: {}'.format(self.position), (510, line), RED)
+        line = 150
+        self.draw_text('Selected: {}'.format(self.selected_target), (INFO_TEXT, line), RED)
+        line += 20
+        self.draw_text('Turn: {}'.format(self.turn), (INFO_TEXT, line), RED)
+        line += 20
+        self.draw_text('Position: {}'.format(self.position), (INFO_TEXT, line), RED)
 
         for a in self.actions:
             line += 20
-            self.draw_text('action: {}'.format(a), (510, line), BLUE)
+            self.draw_text('action: {}'.format(a), (INFO_TEXT, line), BLUE)
 
         pygame.display.flip()
 
@@ -117,6 +127,14 @@ class World:
     def draw_text(self, text, position, color):
         txt = self.font.render(text, True, color)
         screen.blit(txt, position)
+
+    def draw_prob(self, prob, y):
+
+        x = INFO_TEXT
+        for i in range(len(prob)):
+            p = prob[i] * 200
+            self.draw_line(x, y, 10, p, GREEN)
+            x += 15
 
     @staticmethod
     def update_display():

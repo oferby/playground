@@ -1,6 +1,8 @@
 import sys
 from abc import abstractmethod
 import numpy as np
+import pandas as pd
+
 import pygame
 
 SENSOR_NOISE = 20.0
@@ -63,3 +65,20 @@ class SimpleAgent(Agent):
 
     def get_action(self, obs):
         return kb_action()
+
+
+class StatisticalAgent(Agent):
+
+    def __init__(self, map):
+        self.state = self.calc_probabilities(map)
+        self.policy = None
+        self.obs = None
+
+    def calc_probabilities(self, map):
+        return np.ones(10) * .2
+
+    def get_action(self, obs):
+        return kb_action()
+
+    def get_state_prob(self):
+        return self.state
