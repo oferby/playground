@@ -19,6 +19,7 @@ WORLD_SIZE = (700, 500)
 ROBOT_SIZE = 50
 VERTICAL_LINE = 501
 INFO_TEXT = VERTICAL_LINE + 9
+MAX_ACTIONS = 20
 
 screen = pygame.display.set_mode(WORLD_SIZE)
 screen.fill(WHITE)
@@ -59,6 +60,7 @@ class World:
     def load_targets(self):
 
         if os.path.exists(FILE):
+            print('target loaded from file')
             self.targets = np.load(FILE)
             return
 
@@ -100,21 +102,21 @@ class World:
         if prob is not None:
             self.draw_prob(prob, 10)
 
+
         for target in self.target:
             position = self.get_location_vector(target)
 
             pygame.draw.rect(screen, self.colors[position[2]], (position[0], position[1], ROBOT_SIZE, ROBOT_SIZE))
 
         line = 150
-        self.draw_text('Selected: {}'.format(self.selected_target), (INFO_TEXT, line), RED)
+        self.draw_text('Goal Selected: {}'.format(self.selected_target), (INFO_TEXT, line), RED)
         line += 20
         self.draw_text('Turn: {}'.format(self.turn), (INFO_TEXT, line), RED)
         line += 20
         self.draw_text('Position: {}'.format(self.position), (INFO_TEXT, line), RED)
-
-        for a in self.actions:
-            line += 20
-            self.draw_text('action: {}'.format(a), (INFO_TEXT, line), BLUE)
+        line += 20
+        if len(self.actions) > 0:
+            self.draw_text('action: {}'.format(self.actions[-1]), (INFO_TEXT, line), BLUE)
 
         pygame.display.flip()
 
@@ -131,10 +133,20 @@ class World:
     def draw_prob(self, prob, y):
 
         x = INFO_TEXT
-        for i in range(len(prob)):
-            p = prob[i] * 200
+
+        pr = prob[0]
+        for i in range(len(pr)):
+            p = pr[i] * 200
             self.draw_line(x, y, 10, p, GREEN)
             x += 15
+
+        x = INFO_TEXT
+        y = y + 220
+        pr = prob[1]
+        for i in range(len(pr)):
+            p = pr[i] * 200
+            self.draw_line(x, y, 2, p, GREEN)
+            x+=2
 
     @staticmethod
     def update_display():
@@ -142,7 +154,7 @@ class World:
 
     def take_action(self, action):
 
-        if self.turn == 10:
+        if self.turn == MAX_ACTIONS:
             return 0, 0, True
 
         self.actions.append(action)

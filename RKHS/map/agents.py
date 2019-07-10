@@ -69,16 +69,90 @@ class SimpleAgent(Agent):
 
 class StatisticalAgent(Agent):
 
-    def __init__(self, map):
-        self.state = self.calc_probabilities(map)
+    def __init__(self, targets):
+        self.action_size = targets.shape[0] * targets.shape[1]
+        self.turn_size = targets.shape[1]
         self.policy = None
         self.obs = None
+        self.reset(targets)
 
-    def calc_probabilities(self, map):
-        return np.ones(10) * .2
+    def reset(self, targets):
+        self.turn = 0
+        self.prior = None
+        self.state = None
+        self.action_prob = None
+        self.joint_probability = None
+        self.action_given_turn = None
+        self.action_joint_turn = None
+        self.calc_probabilities(targets)
+
+    def calc_probabilities(self, targets):
+        size = targets.shape[0]
+
+        # state priors
+        goals = np.zeros(size)
+
+        action_prob = np.zeros(self.action_size)
+        joint_prob = np.zeros((size, self.action_size))
+
+        action_given_turn = np.zeros((self.turn_size, self.action_size))
+
+        for target in targets:
+
+            g = target[-1][0] - 90
+            goals[g] += 1
+
+            for i, action in enumerate(target):
+                a = action[0]
+                action_prob[a] += 1
+                joint_prob[g][a] += 1
+                action_given_turn[i][a] += 1
+
+        for i in range(action_given_turn.shape[0]):
+            s = sum(action_given_turn[i])
+            for j in range(action_given_turn.shape[1]):
+                action_given_turn[i][j] = action_given_turn[i][j] / s
+
+        prior = [x / size for x in goals]
+        print('Goal Prior: {}'.format(prior))
+
+        action_prob = [x / size for x in action_prob]
+        print('Action Probability: {}'.format(action_prob))
+
+        self.prior = prior
+        self.state = prior
+        self.action_prob = action_prob
+        self.joint_probability = joint_prob
+        self.action_given_turn = action_given_turn
+
+        # checking joint prob between turn and action
+        self.action_joint_turn = self.calc_joint_prob()
 
     def get_action(self, obs):
-        return kb_action()
+
+        action = kb_action()
+        return action
+
+    def calc_joint_prob(self):
+        turn = np.zeros(self.turn_size)
+        turn[self.turn] = 1
+        turn = np.matrix(turn)
+        action_joint_turn = np.matrix(turn) * self.action_given_turn
+        # print(action_joint_turn)
+        return action_joint_turn
 
     def get_state_prob(self):
-        return self.state
+        pr = np.squeeze(np.asarray(self.action_joint_turn))
+        return (self.state, pr)
+
+    def get_observation(self, obs, action, reward, done):
+
+        if reward == 1:
+            self.turn += 1
+            self.action_joint_turn = self.calc_joint_prob()
+
+        super().get_observation(obs, action, reward, done)
+
+        if done:
+            self.reset()
+            return
