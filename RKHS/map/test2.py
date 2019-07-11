@@ -6,6 +6,32 @@ t = [[0, 2, 3, 8], [0, 4, 5, 7], [0, 1, 2, 5], [0, 2, 5, 8], [0, 1, 2, 7]]
 # T (s` | s, a )
 # Z ( o | s )
 
+def flatten(m):
+    return np.squeeze(np.asarray(m))
+
+
+def normalize(X):
+    if X.ndim == 1:
+        s = sum(X)
+        if s == 0:
+            return X
+        X = [x / s for x in X]
+        return X
+
+    for i, r in enumerate(X):
+        s = sum(r)
+        if s > 0:
+            X[i] = [x / s for x in r]
+    return X
+
+
+def fprint(X):
+    for r in X:
+        for c in r:
+            print('{:.2f} '.format(c), end='')
+        print()
+
+
 class State:
     def __init__(self, id):
         self.id = id
@@ -27,7 +53,7 @@ for i, r in enumerate(t):
         for t_ in priv.transit_to:
             if t_.obs == c:
                 priv = t_
-                print(' --> [{}, {}]'.format(t_.id,t_.obs), end='')
+                print(' --> [{}, {}]'.format(t_.id, t_.obs), end='')
                 continue
 
         id += 1
@@ -39,7 +65,7 @@ for i, r in enumerate(t):
         priv = s
     print()
 
-print('\nThere are {} states'.format(id + 1))
+# print('\nThere are {} states'.format(id + 1))
 
 T = np.zeros((id + 1, id + 1))
 Z = np.zeros((9, id + 1))
@@ -51,38 +77,15 @@ for k in keys:
     for t_ in s.transit_to:
         T[s.id][t_.id] += 1
 
-
-def normalize(X):
-
-
-    if X.ndim == 1:
-        s = sum(X)
-        X = [x / s for x in X]
-        return X
-
-    for i, r in enumerate(X):
-        s = sum(r)
-        if s > 0:
-            X[i] = [x / s for x in r]
-    return X
-
-
-def fprint(X):
-    for r in X:
-        for c in r:
-            print('{:.2f} '.format(c), end='')
-        print()
-
-
 T = normalize(T)
 
 Z = normalize(Z)
 
-print('\nT: {}'.format(T.shape))
-fprint(T)
-
-print('\nZ: {}'.format(Z.shape))
-fprint(Z)
+# print('\nT: {}'.format(T.shape))
+# fprint(T)
+#
+# print('\nZ: {}'.format(Z.shape))
+# fprint(Z)
 
 Zm = np.matrix(Z)
 Tm = np.matrix(T)
@@ -100,21 +103,35 @@ def get_obs_vector(o):
     return np.matrix(z)
 
 
-Pm = get_state_vector(0)
-
-p1 = Pm * Tm
-print('\np ( s` | s=0 ) {}\n {} \n'.format(p1.shape, p1))
-
-Zm = get_obs_vector(4)
-
-z1 = Zm * Z
-print('\np ( s | o=4 ): {}\n {}\n'.format(z1.shape, z1))
+# get P (s` | s )
+def get_pT_for_vec(s):
+    p1 = s * Tm
+    s_ = np.argmax(s)
+    print('\nT: p ( s` | s={} ) {}\n {} \n'.format(s_, p1.shape, flatten(p1)))
+    return p1
 
 
-def flatten(m):
-    return np.squeeze(np.asarray(m))
+def get_pT_for_id(s):
+    Pm = get_state_vector(s)
+    return get_pT_for_vec(Pm)
 
 
-conf = flatten(p1) * flatten(z1)
-print('\nconfidence:\n{}\n'.format(normalize(conf)))
+def get_pZ(o):
+    Zm = get_obs_vector(o)
+    z1 = Zm * Z
+    print('\nZ: p ( s | o={} ): {}\n {}\n'.format(o, z1.shape, flatten(z1)))
+    return z1
 
+
+pT = get_pT_for_id(0)
+pZ = get_pZ(2)
+
+p_joint = flatten(pT) * flatten(pZ)
+pT = normalize(flatten(get_pT_for_vec(p_joint)))
+print('{}'.format(pT))
+
+pZ = get_pZ(3)
+
+p_joint = flatten(pT) * flatten(pZ)
+pT = normalize(flatten(get_pT_for_vec(p_joint)))
+print('{}'.format(pT))
