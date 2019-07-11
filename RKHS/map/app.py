@@ -28,6 +28,7 @@ while 1:
             # print('action:', action)
             if action == 99:
                 world.reset()
+                agent.reset()
                 break
             else:
                 obs, reward, done = world.take_action(action)

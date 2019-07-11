@@ -74,9 +74,11 @@ class StatisticalAgent(Agent):
         self.turn_size = targets.shape[1]
         self.policy = None
         self.obs = None
-        self.reset(targets)
 
-    def reset(self, targets):
+        self.targets = targets
+        self.reset()
+
+    def reset(self):
         self.turn = 0
         self.prior = None
         self.state = None
@@ -84,7 +86,7 @@ class StatisticalAgent(Agent):
         self.joint_probability = None
         self.action_given_turn = None
         self.action_joint_turn = None
-        self.calc_probabilities(targets)
+        self.calc_probabilities(self.targets)
 
     def calc_probabilities(self, targets):
         size = targets.shape[0]
@@ -114,10 +116,10 @@ class StatisticalAgent(Agent):
                 action_given_turn[i][j] = action_given_turn[i][j] / s
 
         prior = [x / size for x in goals]
-        print('Goal Prior: {}'.format(prior))
+        # print('Goal Prior: {}'.format(prior))
 
         action_prob = [x / size for x in action_prob]
-        print('Action Probability: {}'.format(action_prob))
+        # print('Action Probability: {}'.format(action_prob))
 
         self.prior = prior
         self.state = prior
@@ -143,16 +145,17 @@ class StatisticalAgent(Agent):
 
     def get_state_prob(self):
         pr = np.squeeze(np.asarray(self.action_joint_turn))
-        return (self.state, pr)
+        slice = self.turn * 10
+        return (self.state, pr[slice:slice+10])
 
     def get_observation(self, obs, action, reward, done):
-
-        if reward == 1:
-            self.turn += 1
-            self.action_joint_turn = self.calc_joint_prob()
 
         super().get_observation(obs, action, reward, done)
 
         if done:
             self.reset()
             return
+
+        if reward == 1:
+            self.turn += 1
+            self.action_joint_turn = self.calc_joint_prob()

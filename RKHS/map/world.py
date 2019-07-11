@@ -15,11 +15,12 @@ BLUE = (0, 0, 255)
 WHITE_INT = 16777215
 BLACK_INT = 0
 
-WORLD_SIZE = (700, 500)
+WORLD_SIZE = (720, 500)
 ROBOT_SIZE = 50
 VERTICAL_LINE = 501
 INFO_TEXT = VERTICAL_LINE + 9
 MAX_ACTIONS = 20
+MAX_TURNS = 10
 
 screen = pygame.display.set_mode(WORLD_SIZE)
 screen.fill(WHITE)
@@ -64,7 +65,7 @@ class World:
             self.targets = np.load(FILE)
             return
 
-        nn = np.random.choice(10, 10, p=[.1, .15, .05, .1, .2, .1, .2, .01, .07, .02])
+        nn = np.random.choice(10, MAX_TURNS, p=[.1, .15, .05, .1, .2, .1, .2, .01, .07, .02])
 
         for n in nn:
             targets = [[n, 1]]
@@ -145,8 +146,8 @@ class World:
         pr = prob[1]
         for i in range(len(pr)):
             p = pr[i] * 200
-            self.draw_line(x, y, 2, p, GREEN)
-            x+=2
+            self.draw_line(x, y, 10, p, GREEN)
+            x+=15
 
     @staticmethod
     def update_display():
@@ -154,7 +155,7 @@ class World:
 
     def take_action(self, action):
 
-        if self.turn == MAX_ACTIONS:
+        if self.turn == MAX_ACTIONS or self.turn == MAX_TURNS:
             return 0, 0, True
 
         self.actions.append(action)
