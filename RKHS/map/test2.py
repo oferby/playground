@@ -1,10 +1,6 @@
 import numpy as np
 
-t = [[0, 2, 3, 8], [0, 4, 5, 7], [0, 1, 2, 5], [0, 2, 5, 8], [0, 1, 2, 7]]
 
-
-# T (s` | s, a )
-# Z ( o | s )
 
 def flatten(m):
     return np.squeeze(np.asarray(m))
@@ -36,13 +32,16 @@ class State:
     def __init__(self, id):
         self.id = id
         self.obs = 0
+        self.visited = 1
         self.transit_to = []
 
 
+t = [[0, 2, 3, 8], [0, 4, 5, 7], [0, 1, 2, 5], [0, 2, 5, 8], [0, 1, 2, 7]]
+print('history: {}\n'.format(t))
+
 id = 0
 root = State(0)
-state_map = {}
-state_map[0] = root
+state_map = {0: root}
 
 for i, r in enumerate(t):
     priv = root
@@ -52,6 +51,7 @@ for i, r in enumerate(t):
             continue
         for t_ in priv.transit_to:
             if t_.obs == c:
+                t_.visited += 1
                 priv = t_
                 print(' --> [{}, {}]'.format(t_.id, t_.obs), end='')
                 continue
@@ -67,6 +67,9 @@ for i, r in enumerate(t):
 
 # print('\nThere are {} states'.format(id + 1))
 
+# T (s` | s, a )
+# Z ( o | s )
+
 T = np.zeros((id + 1, id + 1))
 Z = np.zeros((9, id + 1))
 keys = state_map.keys()
@@ -75,10 +78,12 @@ for k in keys:
     s = state_map[k]
     Z[s.obs][s.id] += 1
     for t_ in s.transit_to:
-        T[s.id][t_.id] += 1
+        T[s.id][t_.id] += t_.visited
+
+# print('\nT: {}'.format(T.shape))
+# fprint(T)
 
 T = normalize(T)
-
 Z = normalize(Z)
 
 # print('\nT: {}'.format(T.shape))
@@ -123,15 +128,24 @@ def get_pZ(o):
     return z1
 
 
+def get_posterior(pT, pZ):
+    p_joint = flatten(pT) * flatten(pZ)
+    return normalize(p_joint)
+
+
 pT = get_pT_for_id(0)
 pZ = get_pZ(2)
 
-p_joint = flatten(pT) * flatten(pZ)
+p_joint = get_posterior(pT, pZ)
+print('P(s): {}'.format(p_joint))
+
+# next state
 pT = normalize(flatten(get_pT_for_vec(p_joint)))
-print('{}'.format(pT))
 
 pZ = get_pZ(3)
 
-p_joint = flatten(pT) * flatten(pZ)
+p_joint = get_posterior(pT, pZ)
+print('P(s): {}'.format(p_joint))
+
 pT = normalize(flatten(get_pT_for_vec(p_joint)))
 print('{}'.format(pT))

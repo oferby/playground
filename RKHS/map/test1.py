@@ -15,7 +15,7 @@ for r in t:
 
 for i, r in enumerate(T):
     s = sum(r)
-    if s > 0 :
+    if s > 0:
         T[i] = [x / s for x in r]
 
 
