@@ -1,7 +1,6 @@
 import numpy as np
 
 
-
 def flatten(m):
     return np.squeeze(np.asarray(m))
 
@@ -49,13 +48,16 @@ for i, r in enumerate(t):
     for j, c in enumerate(r):
         if c == 0:
             continue
+        found = False
         for t_ in priv.transit_to:
             if t_.obs == c:
                 t_.visited += 1
                 priv = t_
                 print(' --> [{}, {}]'.format(t_.id, t_.obs), end='')
-                continue
-
+                found = True
+                break
+        if found:
+            continue
         id += 1
         s = State(id)
         s.obs = c
@@ -118,7 +120,7 @@ def get_pT_for_vec(s):
 
 def get_pT_for_id(s):
     Pm = get_state_vector(s)
-    return get_pT_for_vec(Pm)
+    return flatten(get_pT_for_vec(Pm))
 
 
 def get_pZ(o):
@@ -134,18 +136,17 @@ def get_posterior(pT, pZ):
 
 
 pT = get_pT_for_id(0)
-pZ = get_pZ(2)
+pZ = get_pZ(1)
 
 p_joint = get_posterior(pT, pZ)
 print('P(s): {}'.format(p_joint))
 
 # next state
-pT = normalize(flatten(get_pT_for_vec(p_joint)))
-
-pZ = get_pZ(3)
-
+pT = get_pT_for_vec(p_joint)
+pZ = get_pZ(2)
 p_joint = get_posterior(pT, pZ)
 print('P(s): {}'.format(p_joint))
 
-pT = normalize(flatten(get_pT_for_vec(p_joint)))
-print('{}'.format(pT))
+# next state
+pT = get_pT_for_vec(p_joint)
+
