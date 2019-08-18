@@ -131,22 +131,21 @@ def get_pZ(o):
 
 
 def get_posterior(pT, pZ):
-    p_joint = flatten(pT) * flatten(pZ)
-    return normalize(p_joint)
+    p_joint = normalize(flatten(pT) * flatten(pZ))
+    print('P(s): {}'.format(p_joint))
+    return get_pT_for_vec(p_joint)
 
 
 pT = get_pT_for_id(0)
 pZ = get_pZ(1)
 
 p_joint = get_posterior(pT, pZ)
-print('P(s): {}'.format(p_joint))
 
-# next state
-pT = get_pT_for_vec(p_joint)
+# next state - posterior became prior
+pT = p_joint
 pZ = get_pZ(2)
 p_joint = get_posterior(pT, pZ)
-print('P(s): {}'.format(p_joint))
 
-# next state
-pT = get_pT_for_vec(p_joint)
+# next state - posterior became prior
+pT = p_joint
 
