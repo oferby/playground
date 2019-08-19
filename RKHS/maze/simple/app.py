@@ -24,6 +24,8 @@ while 1:
             # print('action:', action)
             if action == 99:
                 break
+            elif action == 98:
+                world.toggle_show_agent()
             else:
                 obs, reward, done = world.take_action(action)
                 agent.get_observation(obs, action, reward, done)
