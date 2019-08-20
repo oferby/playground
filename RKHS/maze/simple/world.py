@@ -1,3 +1,4 @@
+import os
 import random
 
 import numpy as np
@@ -29,17 +30,26 @@ BLACK_INT = 0
 WORLD_SIZE = (500, 500)
 ROBOT_SIZE = 50
 
+DIM = int(500 / 50)
+OPERATIONS = 4  # left, up, right, down
+OBSERVATIONS = 10  # 0-9
+
 screen = pygame.display.set_mode(WORLD_SIZE)
 
 pygame.display.set_caption("Simple Maze")
+
+MAP_FILE = 'map.npy'
+STATES_FILE = 'stats.npy'
 
 
 class World:
 
     def __init__(self):
-        screen.fill(WHITE)
-        self.agent_location = np.zeros((10, 10))
-        self.obstacles = np.zeros((10, 10))
+
+        self.agent_location = np.zeros((DIM, DIM))
+        self.obstacles = np.zeros((DIM, DIM))
+        self.T = np.zeros((DIM * DIM, DIM * DIM))
+        self.Z = np.zeros((OBSERVATIONS, DIM * DIM))
         self.init_target_location()
         self.background = np.copy(self.get_surface())
         self.agent_location = self.init_agent_location()
@@ -48,35 +58,33 @@ class World:
         pygame.font.init()
         self.font = pygame.font.SysFont('David', 20)
 
-    def reset(self):
-        self.agent_location = self.init_agent_location()
-        self.init_target_location()
-
     def toggle_show_agent(self):
         self.show_agent = not self.show_agent
 
     def init_agent_location(self):
-        x = random.randint(0, 9)
-        y = random.randint(0, 9)
+        x = random.randint(0, DIM - 1)
+        y = random.randint(0, DIM - 1)
         return [x, y]
 
     def init_target_location(self):
 
-        for i in range(10):
-            for j in range(10):
-                self.obstacles[i][j] = random.randint(0, 9)
+        if os.path.exists(MAP_FILE):
+            self.obstacles = np.load(MAP_FILE)
+        else:
+            for i in range(DIM):
+                for j in range(DIM):
+                    self.obstacles[i][j] = random.randint(0, DIM - 1)
+            np.save(MAP_FILE, self.obstacles)
 
-    @staticmethod
-    def get_surface():
-        return pygame.surfarray.pixels2d(screen)
+        if os.path.exists(STATES_FILE):
+            stats = np.load(STATES_FILE)
+        else:
+            self.calc_states()
 
-    def draw(self):
-        pygame.surfarray.blit_array(pygame.display.get_surface(), self.background)
+        screen.fill(WHITE)
 
-
-
-        for i in range(10):
-            for j in range(10):
+        for i in range(DIM):
+            for j in range(DIM):
                 position = self.get_location_vector([i, j])
                 color_num = self.obstacles[i][j]
                 if color_num == 0:
@@ -101,6 +109,39 @@ class World:
                     color = COLOR9
 
                 pygame.draw.rect(screen, color, (position[0], position[1], ROBOT_SIZE, ROBOT_SIZE))
+
+    def calc_states(self):
+        for i in range(DIM * DIM):
+            for j in range(DIM * DIM):
+                if i == j or i - DIM == j or i + DIM == j or i == j - 1 or i == j + 1:
+                    self.T[i, j] += 1
+
+        for i in range(DIM * DIM):
+            s = sum(self.T[i, 0:DIM * DIM])
+            for j in range(DIM * DIM):
+                if self.T[i, j] > 0:
+                    self.T[i, j] = self.T[i, j] / s
+
+        #     calc Z
+
+        for i in range(DIM):
+            for j in range(DIM):
+                obs = int(self.obstacles[i, j])
+                self.Z[obs, i * DIM + j] += 1
+
+        #     normalize Z
+        for i in range(OBSERVATIONS):
+            s = sum(self.Z[i])
+            for j in range(DIM * DIM):
+                self.Z[i][j] = self.Z[i][j] / s
+
+    @staticmethod
+    def get_surface():
+        return pygame.surfarray.pixels2d(screen)
+
+    def draw(self):
+
+        pygame.surfarray.blit_array(pygame.display.get_surface(), self.background)
 
         if self.show_agent:
             position = self.get_location_vector(self.agent_location)
@@ -147,8 +188,7 @@ class World:
 
     def is_move_valid(self, position):
 
-        if position[0] > 9 or position[0] < 0 or position[1] > 9 or position[1] < 0:
+        if position[0] > DIM - 1 or position[0] < 0 or position[1] > DIM - 1 or position[1] < 0:
             return False
 
         return True
-
