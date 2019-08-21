@@ -1,5 +1,6 @@
 import sys
 from abc import abstractmethod
+
 import numpy as np
 import pygame
 
@@ -19,13 +20,13 @@ def kb_action():
                 sys.exit()
 
             if k == 273:
-                return 0
+                return 0  # up
             elif k == 274:
-                return 2
+                return 2  # down
             elif k == 275:
-                return 1
+                return 1  # right
             elif k == 276:
-                return 3
+                return 3  # left
             # r
             elif k == 114:
                 return 99
@@ -51,3 +52,38 @@ class SimpleAgent(Agent):
 
     def get_action(self, obs):
         return kb_action()
+
+
+class BayesAgent(Agent):
+
+    def __init__(self, world):
+        self.Tm = np.matrix(world.T)
+        self.Zm = np.matrix(world.Z)
+        self.observations = len(world.Z)
+        self.prior = world.prior
+
+        self.obstacles = world.obstacles
+
+    def flatten(self, a):
+        return np.squeeze(np.asarray(a))
+
+    def get_action(self, obs):
+
+        action = kb_action()
+        return action
+
+    def get_observation(self, obs, action, reward, done):
+
+        super().get_observation(obs,action, reward, done)
+
+        pZ = self.get_obs_vector(int(obs))
+        posterior = self.flatten(pZ * self.Zm)  # * self.flatten(self.prior)
+        self.prior = posterior
+        print('real: {}'.format(self.obstacles[0]))
+        print('state: {}'.format(posterior[0:10]))
+
+
+    def get_obs_vector(self, obs):
+        z = np.zeros(self.observations)
+        z[obs] = 1
+        return np.matrix(z)

@@ -15,7 +15,8 @@ while 1:
     world = W.World()
     done = False
     reward = 0
-    agent = A.SimpleAgent()
+    # agent = A.SimpleAgent()
+    agent = A.BayesAgent(world)
     obs = None
     draw()
     while 1:
@@ -26,6 +27,8 @@ while 1:
                 break
             elif action == 98:
                 world.toggle_show_agent()
+            elif action == 97:
+                world.toggle_show_prior()
             else:
                 obs, reward, done = world.take_action(action)
                 agent.get_observation(obs, action, reward, done)

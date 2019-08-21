@@ -13,7 +13,7 @@ PURPLE = (100, 0, 100)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 
-COLOR0 = (0, 0, 0)
+COLOR0 = (70, 70, 70)
 COLOR1 = (50, 100, 200)
 COLOR2 = (100, 200, 100)
 COLOR3 = (150, 100, 100)
@@ -38,8 +38,8 @@ screen = pygame.display.set_mode(WORLD_SIZE)
 
 pygame.display.set_caption("Simple Maze")
 
-MAP_FILE = 'map.npy'
-STATES_FILE = 'stats.npy'
+MAP_FILE = 'data\map.npy'
+STATES_FILE = 'data\stats.npy'
 
 
 class World:
@@ -48,8 +48,14 @@ class World:
 
         self.agent_location = np.zeros((DIM, DIM))
         self.obstacles = np.zeros((DIM, DIM))
+
         self.T = np.zeros((DIM * DIM, DIM * DIM))
         self.Z = np.zeros((OBSERVATIONS, DIM * DIM))
+        self.A = np.zeros((4, DIM * DIM))
+
+        self.prior = np.ones(DIM * DIM) * (1 / (DIM * DIM))
+        self.show_prior = False
+
         self.init_target_location()
         self.background = np.copy(self.get_surface())
         self.agent_location = self.init_agent_location()
@@ -60,6 +66,9 @@ class World:
 
     def toggle_show_agent(self):
         self.show_agent = not self.show_agent
+
+    def toggle_show_prior(self):
+        self.show_prior = not self.show_prior
 
     def init_agent_location(self):
         x = random.randint(0, DIM - 1)
@@ -123,17 +132,22 @@ class World:
                     self.T[i, j] = self.T[i, j] / s
 
         #     calc Z
-
         for i in range(DIM):
             for j in range(DIM):
                 obs = int(self.obstacles[i, j])
                 self.Z[obs, i * DIM + j] += 1
 
+        # print('real: {}'.format(self.obstacles[0]))
+        # print('Z: {}'.format(self.Z[:, 0:DIM]))
+
         #     normalize Z
-        for i in range(OBSERVATIONS):
-            s = sum(self.Z[i])
-            for j in range(DIM * DIM):
-                self.Z[i][j] = self.Z[i][j] / s
+        # for i in range(OBSERVATIONS):
+        #     s = sum(self.Z[i])
+        #     for j in range(DIM * DIM):
+        #         self.Z[i][j] = self.Z[i][j] / s
+        #
+        # print('Znorm: {}'.format(self.Z[:, 0:DIM]))
+
 
     @staticmethod
     def get_surface():
@@ -147,11 +161,26 @@ class World:
             position = self.get_location_vector(self.agent_location)
             pygame.draw.rect(screen, RED, (position[0], position[1], 10, 10))
 
+        if self.show_prior:
+            for i in range(DIM):
+                for j in range(DIM):
+                    p = self.prior[i * DIM + j]
+                    if p < 0.2:
+                        size = 5
+                    elif p < 0.4:
+                        size = 10
+                    elif p < 0.6:
+                        size = 15
+                    else:
+                        size = 20
+                    position = self.get_location_vector([j, i])
+                    pygame.draw.rect(screen, BLACK, (position[0] + ROBOT_SIZE - size, position[1], size, size))
+
         pygame.display.flip()
 
     def get_location_vector(self, location):
-        x = location[0] * ROBOT_SIZE
-        y = location[1] * ROBOT_SIZE
+        x = location[1] * ROBOT_SIZE
+        y = location[0] * ROBOT_SIZE
         return [x, y]
 
     def draw_rec(self, x, y, size, color):
@@ -170,13 +199,13 @@ class World:
         new_position = self.agent_location.copy()
 
         if action == 0:
-            new_position[1] -= 1
-        elif action == 1:
-            new_position[0] += 1
-        elif action == 2:
-            new_position[1] += 1
-        elif action == 3:
             new_position[0] -= 1
+        elif action == 1:
+            new_position[1] += 1
+        elif action == 2:
+            new_position[0] += 1
+        elif action == 3:
+            new_position[1] -= 1
 
         if self.is_move_valid(new_position):
             self.agent_location = new_position
