@@ -84,33 +84,42 @@ class BayesAgent(Agent):
         zz = np.matrix(np.zeros(dim))
         if action == 0:
             p_ = prior[1:, :]
+            if p_.sum() == 0:
+                return
             prior = np.vstack([p_, zz])
         elif action == 1:
             p_ = prior[:, 0:-1]
+            if p_.sum() == 0:
+                return
             prior = np.hstack([zz.transpose(), p_])
         elif action == 2:
             p_ = prior[0:-1, :]
+            if p_.sum() == 0:
+                return
             prior = np.vstack([zz, p_])
         else:
             p_ = prior[:, 1:]
+            if p_.sum() == 0:
+                return
             prior = np.hstack([p_, zz.transpose()])
 
         prior = self.normalize(prior)
         self.prior = self.flatten(prior)
 
-    def update_observation(self):
-        pass
+    def update_observation(self, obs):
+        pZ = self.get_obs_vector(int(obs))
+        prior = self.flatten(pZ * self.Zm) * self.prior
+        prior = self.normalize(prior)
+        self.prior = prior
 
     def get_observation(self, obs, action, reward, done):
         super().get_observation(obs, action, reward, done)
 
         self.update_move(action)
+        self.update_observation(obs)
 
-        pZ = self.get_obs_vector(int(obs))
-        posterior = self.flatten(pZ * self.Zm)  # * self.flatten(self.prior)
-        # self.prior = posterior
         # print('real: {}'.format(self.obstacles[0]))
-        print('state: {}'.format(self.prior[0:10]))
+        # print('state: {}'.format(self.prior[0:10]))
 
     def get_obs_vector(self, obs):
         z = np.zeros(self.observations)
