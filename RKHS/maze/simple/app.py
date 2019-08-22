@@ -5,8 +5,8 @@ import world as W
 import agents as A
 
 
-def draw():
-    world.draw()
+def draw(prior):
+    world.draw(prior)
 
 
 done = False
@@ -18,7 +18,7 @@ while 1:
     # agent = A.SimpleAgent()
     agent = A.BayesAgent(world)
     obs = None
-    draw()
+    draw(agent.prior)
     while 1:
         action = agent.get_action(obs)
         if action is not None:
@@ -32,7 +32,7 @@ while 1:
             else:
                 obs, reward, done = world.take_action(action)
                 agent.get_observation(obs, action, reward, done)
-            draw()
+            draw(agent.prior)
         if done:
             break
 

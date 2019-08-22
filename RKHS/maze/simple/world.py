@@ -141,19 +141,19 @@ class World:
         # print('Z: {}'.format(self.Z[:, 0:DIM]))
 
         #     normalize Z
-        # for i in range(OBSERVATIONS):
-        #     s = sum(self.Z[i])
-        #     for j in range(DIM * DIM):
-        #         self.Z[i][j] = self.Z[i][j] / s
-        #
-        # print('Znorm: {}'.format(self.Z[:, 0:DIM]))
+        for i in range(OBSERVATIONS):
+            s = sum(self.Z[i])
+            for j in range(DIM * DIM):
+                self.Z[i][j] = self.Z[i][j] / s
+
+        # print('Znorm: {}'.format(self.Z[0, 0:DIM]))
 
 
     @staticmethod
     def get_surface():
         return pygame.surfarray.pixels2d(screen)
 
-    def draw(self):
+    def draw(self, prior):
 
         pygame.surfarray.blit_array(pygame.display.get_surface(), self.background)
 
@@ -164,16 +164,16 @@ class World:
         if self.show_prior:
             for i in range(DIM):
                 for j in range(DIM):
-                    p = self.prior[i * DIM + j]
-                    if p < 0.2:
+                    p = prior[i * DIM + j]
+                    if p < 0.1:
                         size = 5
-                    elif p < 0.4:
+                    elif p < 0.2:
                         size = 10
-                    elif p < 0.6:
+                    elif p < 0.3:
                         size = 15
                     else:
                         size = 20
-                    position = self.get_location_vector([j, i])
+                    position = self.get_location_vector([i, j])
                     pygame.draw.rect(screen, BLACK, (position[0] + ROBOT_SIZE - size, position[1], size, size))
 
         pygame.display.flip()
