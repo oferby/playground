@@ -107,7 +107,9 @@ class BayesAgent(Agent):
         self.prior = self.flatten(prior)
 
     def update_observation(self, obs):
-        pZ = self.get_obs_vector(int(obs))
+        # pZ = self.get_obs_vector(int(obs))
+        pZ = obs
+
         prior = self.flatten(pZ * self.Zm) * self.prior
         prior = self.normalize(prior)
         self.prior = prior

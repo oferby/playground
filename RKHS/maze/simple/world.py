@@ -54,7 +54,7 @@ class World:
         self.A = np.zeros((4, DIM * DIM))
 
         self.prior = np.ones(DIM * DIM) * (1 / (DIM * DIM))
-        self.show_prior = False
+        self.show_prior = True
 
         self.init_target_location()
         self.background = np.copy(self.get_surface())
@@ -148,7 +148,6 @@ class World:
 
         # print('Znorm: {}'.format(self.Z[0, 0:DIM]))
 
-
     @staticmethod
     def get_surface():
         return pygame.surfarray.pixels2d(screen)
@@ -211,9 +210,30 @@ class World:
             self.agent_location = new_position
 
         # obs, reward, done
-        obs = self.obstacles[self.agent_location[0], self.agent_location[1]]
+        # obs = self.obstacles[self.agent_location[0], self.agent_location[1]]
+        obs = self.get_obs_distribution()
         print(self.agent_location)
         return obs, 0, False
+
+    def get_obs_distribution(self):
+        obs = np.zeros(OBSERVATIONS)
+        obs[int(self.obstacles[self.agent_location[0], self.agent_location[1]])] = 1
+
+        if self.agent_location[0] > 0:
+            obs[int(self.obstacles[self.agent_location[0] - 1, self.agent_location[1]])] = 1
+        if self.agent_location[0] < DIM - 1:
+            obs[int(self.obstacles[self.agent_location[0] + 1, self.agent_location[1]])] = 1
+        if self.agent_location[1] > 0:
+            obs[int(self.obstacles[self.agent_location[0], self.agent_location[1] - 1])] = 1
+        if self.agent_location[1] < DIM - 1:
+            obs[int(self.obstacles[self.agent_location[0], self.agent_location[1] + 1])] = 1
+
+        # normalize
+        s = sum(obs)
+        for i in range(DIM):
+            obs[i] /= s
+
+        return obs
 
     def is_move_valid(self, position):
 
