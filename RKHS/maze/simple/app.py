@@ -13,6 +13,7 @@ done = False
 while 1:
 
     world = W.World()
+    world.add_noise = True
     done = False
     reward = 0
     # agent = A.SimpleAgent()

@@ -27,10 +27,10 @@ COLOR9 = (65, 90, 10)
 WHITE_INT = 16777215
 BLACK_INT = 0
 
-WORLD_SIZE = (500, 500)
+WORLD_SIZE = (1000, 1000)
 ROBOT_SIZE = 50
 
-DIM = int(500 / 50)
+DIM = int(1000 / 50)
 OPERATIONS = 4  # left, up, right, down
 OBSERVATIONS = 10  # 0-9
 
@@ -60,6 +60,7 @@ class World:
         self.background = np.copy(self.get_surface())
         self.agent_location = self.init_agent_location()
         self.show_agent = False
+        self.add_noise = False
 
         pygame.font.init()
         self.font = pygame.font.SysFont('David', 20)
@@ -82,7 +83,7 @@ class World:
         else:
             for i in range(DIM):
                 for j in range(DIM):
-                    self.obstacles[i][j] = random.randint(0, DIM - 1)
+                    self.obstacles[i][j] = random.randint(0, OBSERVATIONS - 1)
             np.save(MAP_FILE, self.obstacles)
 
         if os.path.exists(STATES_FILE):
@@ -219,19 +220,31 @@ class World:
         obs = np.zeros(OBSERVATIONS)
         obs[int(self.obstacles[self.agent_location[0], self.agent_location[1]])] = 1
 
-        if self.agent_location[0] > 0:
-            obs[int(self.obstacles[self.agent_location[0] - 1, self.agent_location[1]])] = 1
-        if self.agent_location[0] < DIM - 1:
-            obs[int(self.obstacles[self.agent_location[0] + 1, self.agent_location[1]])] = 1
-        if self.agent_location[1] > 0:
-            obs[int(self.obstacles[self.agent_location[0], self.agent_location[1] - 1])] = 1
-        if self.agent_location[1] < DIM - 1:
-            obs[int(self.obstacles[self.agent_location[0], self.agent_location[1] + 1])] = 1
+        if self.add_noise:
+            if self.agent_location[0] > 0:
+                obs[int(self.obstacles[self.agent_location[0] - 1, self.agent_location[1]])] = .9
+                if self.agent_location[1] > 0:
+                    obs[int(self.obstacles[self.agent_location[0] - 1, self.agent_location[1] - 1])] = .8
+                if self.agent_location[1] < DIM - 1:
+                    obs[int(self.obstacles[self.agent_location[0] - 1, self.agent_location[1] + 1])] = .8
 
-        # normalize
-        s = sum(obs)
-        for i in range(DIM):
-            obs[i] /= s
+            if self.agent_location[0] < DIM - 1:
+                obs[int(self.obstacles[self.agent_location[0] + 1, self.agent_location[1]])] = .7
+                if self.agent_location[1] > 0:
+                    obs[int(self.obstacles[self.agent_location[0] + 1, self.agent_location[1] - 1])] = .8
+                if self.agent_location[1] < DIM - 1:
+                    obs[int(self.obstacles[self.agent_location[0] + 1, self.agent_location[1] + 1])] = .8
+
+            if self.agent_location[1] > 0:
+                obs[int(self.obstacles[self.agent_location[0], self.agent_location[1] - 1])] = .9
+
+            if self.agent_location[1] < DIM - 1:
+                obs[int(self.obstacles[self.agent_location[0], self.agent_location[1] + 1])] = .6
+
+            # normalize
+            s = sum(obs)
+            for i in range(OBSERVATIONS):
+                obs[i] /= s
 
         return obs
 
