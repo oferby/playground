@@ -88,12 +88,15 @@ class World:
 
         if os.path.exists(STATES_FILE):
             npzfile = np.load(STATES_FILE)
-            self.T = npzfile[npzfile.files[0]]
-            self.Z = npzfile[npzfile.files[1]]
-            self.A = npzfile[npzfile.files[2]]
+            self.T = npzfile['T']
+            self.Z = npzfile['Z']
+            self.A = npzfile['A']
         else:
             self.calc_states()
-            np.savez(STATES_FILE, self.T, self.Z,  self.A)
+            T = self.T
+            Z = self.Z
+            A = self.A
+            np.savez(STATES_FILE, T=T, Z=Z, A=A)
 
         screen.fill(WHITE)
 
@@ -142,16 +145,11 @@ class World:
                 obs = int(self.obstacles[i, j])
                 self.Z[obs, i * DIM + j] += 1
 
-        # print('real: {}'.format(self.obstacles[0]))
-        # print('Z: {}'.format(self.Z[:, 0:DIM]))
-
         #     normalize Z
         for i in range(OBSERVATIONS):
             s = sum(self.Z[i])
             for j in range(DIM * DIM):
                 self.Z[i][j] = self.Z[i][j] / s
-
-        # print('Znorm: {}'.format(self.Z[0, 0:DIM]))
 
     @staticmethod
     def get_surface():
@@ -169,8 +167,8 @@ class World:
             for i in range(DIM):
                 for j in range(DIM):
                     p = prior[i * DIM + j]
-                    if p < 0.1:
-                        size = 5
+                    if p < 0.01:
+                        size = 2
                     else:
                         size = int(p * ROBOT_SIZE)
                     position = self.get_location_vector([i, j])
@@ -222,7 +220,7 @@ class World:
         if self.add_noise:
 
             for i in range(OBSERVATIONS):
-                obs[i] = np.random.normal(0.5, 0.1)
+                obs[i] = np.random.normal(0.5, 0.01)
 
             obs[int(self.obstacles[self.agent_location[0], self.agent_location[1]])] = np.random.normal(0.7, 0.1)
 

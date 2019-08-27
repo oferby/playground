@@ -17,7 +17,8 @@ while 1:
     done = False
     reward = 0
     # agent = A.SimpleAgent()
-    agent = A.BayesAgent(world)
+    # agent = A.BayesAgent(world)
+    agent = A.RKHS_Agent(world)
     obs = None
     draw(agent.prior)
     while 1:

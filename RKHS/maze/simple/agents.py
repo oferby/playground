@@ -107,7 +107,7 @@ class BayesAgent(Agent):
         self.prior = self.flatten(prior)
 
     def update_observation(self, obs):
-        # pZ = self.get_obs_vector(int(obs))
+
         pZ = obs
 
         prior = self.flatten(pZ * self.Zm) * self.prior
@@ -120,10 +120,22 @@ class BayesAgent(Agent):
         self.update_move(action)
         self.update_observation(obs)
 
-        # print('real: {}'.format(self.obstacles[0]))
-        # print('state: {}'.format(self.prior[0:10]))
-
     def get_obs_vector(self, obs):
         z = np.zeros(self.observations)
         z[obs] = 1
         return np.matrix(z)
+
+
+class RKHS_Agent(BayesAgent):
+    def __init__(self, world):
+        super().__init__(world)
+
+    def calc_kernels(self):
+        MUs = self.get_kernel_vector(self.prior)
+
+
+
+    def get_kernel_vector(self, X):
+        std = np.std(X)
+
+
