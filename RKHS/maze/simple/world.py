@@ -39,7 +39,7 @@ screen = pygame.display.set_mode(WORLD_SIZE)
 pygame.display.set_caption("Simple Maze")
 
 MAP_FILE = 'data\map.npy'
-STATES_FILE = 'data\stats.npy'
+STATES_FILE = 'data\stats.npz'
 
 
 class World:
@@ -87,9 +87,13 @@ class World:
             np.save(MAP_FILE, self.obstacles)
 
         if os.path.exists(STATES_FILE):
-            stats = np.load(STATES_FILE)
+            npzfile = np.load(STATES_FILE)
+            self.T = npzfile[npzfile.files[0]]
+            self.Z = npzfile[npzfile.files[1]]
+            self.A = npzfile[npzfile.files[2]]
         else:
             self.calc_states()
+            np.savez(STATES_FILE, self.T, self.Z,  self.A)
 
         screen.fill(WHITE)
 
@@ -167,14 +171,10 @@ class World:
                     p = prior[i * DIM + j]
                     if p < 0.1:
                         size = 5
-                    elif p < 0.2:
-                        size = 10
-                    elif p < 0.3:
-                        size = 15
                     else:
-                        size = 20
+                        size = int(p * ROBOT_SIZE)
                     position = self.get_location_vector([i, j])
-                    pygame.draw.rect(screen, BLACK, (position[0] + ROBOT_SIZE - size, position[1], size, size))
+                    pygame.draw.rect(screen, BLACK, (position[0] + ROBOT_SIZE - 5, position[1], 5, size))
 
         pygame.display.flip()
 
@@ -218,33 +218,21 @@ class World:
 
     def get_obs_distribution(self):
         obs = np.zeros(OBSERVATIONS)
-        obs[int(self.obstacles[self.agent_location[0], self.agent_location[1]])] = 1
 
         if self.add_noise:
-            if self.agent_location[0] > 0:
-                obs[int(self.obstacles[self.agent_location[0] - 1, self.agent_location[1]])] = .9
-                if self.agent_location[1] > 0:
-                    obs[int(self.obstacles[self.agent_location[0] - 1, self.agent_location[1] - 1])] = .8
-                if self.agent_location[1] < DIM - 1:
-                    obs[int(self.obstacles[self.agent_location[0] - 1, self.agent_location[1] + 1])] = .8
 
-            if self.agent_location[0] < DIM - 1:
-                obs[int(self.obstacles[self.agent_location[0] + 1, self.agent_location[1]])] = .7
-                if self.agent_location[1] > 0:
-                    obs[int(self.obstacles[self.agent_location[0] + 1, self.agent_location[1] - 1])] = .8
-                if self.agent_location[1] < DIM - 1:
-                    obs[int(self.obstacles[self.agent_location[0] + 1, self.agent_location[1] + 1])] = .8
+            for i in range(OBSERVATIONS):
+                obs[i] = np.random.normal(0.5, 0.1)
 
-            if self.agent_location[1] > 0:
-                obs[int(self.obstacles[self.agent_location[0], self.agent_location[1] - 1])] = .9
-
-            if self.agent_location[1] < DIM - 1:
-                obs[int(self.obstacles[self.agent_location[0], self.agent_location[1] + 1])] = .6
+            obs[int(self.obstacles[self.agent_location[0], self.agent_location[1]])] = np.random.normal(0.7, 0.1)
 
             # normalize
             s = sum(obs)
             for i in range(OBSERVATIONS):
                 obs[i] /= s
+
+        else:
+            obs[int(self.obstacles[self.agent_location[0], self.agent_location[1]])] = 1
 
         return obs
 
