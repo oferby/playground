@@ -27,7 +27,7 @@ https://arxiv.org/pdf/2011.11850.pdf
 import gym
 import sys
 
-sys.path.insert(0, "./")
+sys.path.insert(0, "/")
 import agents
 
 env = gym.make('LunarLander-v2')
