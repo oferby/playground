@@ -19,17 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55b54417-4324-4a5f-b9c5-e4000a65c849" name="Default Changelist" comment="rl with openai gym">
-      <change afterPath="$PROJECT_DIR$/Reinforcement_Learning/Gym/Freeway/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reinforcement_Learning/Gym/Lander/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reinforcement_Learning/Gym/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Reinforcement_Learning/TicTacToe/test.py" afterDir="false" />
+    <list default="true" id="55b54417-4324-4a5f-b9c5-e4000a65c849" name="Default Changelist" comment="add math dir">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gym/Freeway/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reinforcement_Learning/Gym/Freeway/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gym/Lander/agents.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reinforcement_Learning/Gym/Lander/agents.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gym/Lander/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reinforcement_Learning/Gym/Lander/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gym/get_envs.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reinforcement_Learning/Gym/get_envs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gym/test_gym.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reinforcement_Learning/Gym/test_gym.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/.ipynb_checkpoints/SGT2-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/graph/.ipynb_checkpoints/SGT2-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph/SGT2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/graph/SGT2.ipynb" afterDir="false" />
     </list>
     <list id="95dd61eb-09c3-4bff-a79d-8284781339e0" name="not to commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +53,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../gym" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -71,8 +64,8 @@
       <recent name="$PROJECT_DIR$/tensorflow" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.test">
-    <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.app">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="playground" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -93,7 +86,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="check_gpu" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="playground" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -101,11 +94,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Reinforcement_Learning/gym/lunar_lander" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tensorflow" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Reinforcement_Learning/gym/lunar_lander/app.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tensorflow/check_gpu.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -114,7 +107,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="numba_jit" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="playground" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -122,11 +115,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Gym/Freeway" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/general" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Gym/Freeway/app.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/general/numba_jit.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -135,7 +128,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test_gym (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="playground" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -143,11 +136,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Gym/Lander" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Reinforcement_Learning/Gym" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Gym/Lander/app.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Reinforcement_Learning/Gym/test_gym.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -156,7 +149,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pits_and_goals" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="test_gym" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="playground" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -164,32 +157,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Reinforcement_Learning/basics" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Gym" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Reinforcement_Learning/basics/pits_and_goals.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="playground" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Reinforcement_Learning/TicTacToe" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Reinforcement_Learning/TicTacToe/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Gym/test_gym.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -200,11 +172,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.app (1)" />
         <item itemvalue="Python.app" />
-        <item itemvalue="Python.pits_and_goals" />
-        <item itemvalue="Python.app (2)" />
+        <item itemvalue="Python.test_gym (1)" />
+        <item itemvalue="Python.numba_jit" />
+        <item itemvalue="Python.check_gpu" />
+        <item itemvalue="Python.test_gym" />
       </list>
     </recent_temporary>
   </component>
@@ -228,14 +200,7 @@
       <option name="project" value="LOCAL" />
       <updated>1606401454468</updated>
     </task>
-    <task id="LOCAL-00002" summary="rl with openai gym">
-      <created>1624286750658</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1624286750658</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -253,8 +218,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="add math dir" />
-    <MESSAGE value="rl with openai gym" />
-    <option name="LAST_COMMIT_MESSAGE" value="rl with openai gym" />
+    <option name="LAST_COMMIT_MESSAGE" value="add math dir" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -278,16 +242,6 @@
           <url>file://$PROJECT_DIR$/math/linear.py</url>
           <line>2</line>
           <option name="timeStamp" value="10" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Reinforcement_Learning/Gym/test_gym.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/Reinforcement_Learning/Gym/Freeway/app.py</url>
-          <line>19</line>
-          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
