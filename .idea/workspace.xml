@@ -22,11 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55b54417-4324-4a5f-b9c5-e4000a65c849" name="Default Changelist" comment="service cluster">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph/SGT2.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/graph/SGT2.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph/test1.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/graph/test1.ipynb" afterDir="false" />
-    </list>
+    <list default="true" id="55b54417-4324-4a5f-b9c5-e4000a65c849" name="Default Changelist" comment="service cluster" />
     <list id="95dd61eb-09c3-4bff-a79d-8284781339e0" name="not to commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629013381442</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="service cluster">
+      <created>1629095040911</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1629095040911</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
