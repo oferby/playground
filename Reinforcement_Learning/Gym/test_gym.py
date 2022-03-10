@@ -4,7 +4,7 @@
 
 import gym
 
-env = gym.make('Freeway-v4')
+env = gym.make('LunarLander-v2')
 env.reset()
 for _ in range(1000):
     env.render()

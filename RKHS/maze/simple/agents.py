@@ -14,7 +14,7 @@ def kb_action():
 
         elif event.type == pygame.KEYUP:
             k = event.key
-            # print('key:', k)
+            print('key:', k)
             # q
             if k == 113:
                 sys.exit()
