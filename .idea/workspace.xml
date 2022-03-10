@@ -22,51 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55b54417-4324-4a5f-b9c5-e4000a65c849" name="Default Changelist" comment="service cluster">
-      <change afterPath="$PROJECT_DIR$/RKHS/map/prob.npy" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/Bob.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/Bright_Brothers.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/Masters_of_Stones.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/Not_Known.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/The_Greens.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/The_Kings.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/The_Lannisters.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/The_Ollivers.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/The_Overlords.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/The_Starks.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/Wood_Priests.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/house_prices.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/data/missing.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/house_price/predict.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/log_loss/data/_test.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/log_loss/data/_train.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/log_loss/data/event_type.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/log_loss/data/log_feature.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/log_loss/data/resource_type.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/log_loss/data/sample_submission.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/log_loss/data/severity_type.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/machine_learning/techgig/log_loss/engineering/data_store.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/advance-zip.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/demofile1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/file1.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/file1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/file2.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/file3.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/read-class.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/read-from-zip.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/read-text-file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/sample.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/sort-file.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/write-text.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/write-zip.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/playground.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/playground.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RKHS/maze/simple/agents.py" beforeDir="false" afterPath="$PROJECT_DIR$/RKHS/maze/simple/agents.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Reinforcement_Learning/Gym/test_gym.py" beforeDir="false" afterPath="$PROJECT_DIR$/Reinforcement_Learning/Gym/test_gym.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tensorflow/check_gpu.py" beforeDir="false" afterPath="$PROJECT_DIR$/tensorflow/check_gpu.py" afterDir="false" />
-    </list>
+    <list default="true" id="55b54417-4324-4a5f-b9c5-e4000a65c849" name="Default Changelist" comment="text and prediction" />
     <list id="95dd61eb-09c3-4bff-a79d-8284781339e0" name="not to commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -295,7 +251,19 @@
       <option name="presentableId" value="LOCAL‎00007" />
       <updated>1630433303128</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL‎00008" summary="text and prediction">
+      <created>1646910383425</created>
+      <option name="number" value="LOCAL‎00008" />
+      <option name="presentableId" value="LOCAL‎00008" />
+      <updated>1646910383425</updated>
+    </task>
+    <task id="LOCAL‎00009" summary="text and prediction">
+      <created>1646910481751</created>
+      <option name="number" value="LOCAL‎00009" />
+      <option name="presentableId" value="LOCAL‎00009" />
+      <updated>1646910481751</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -314,7 +282,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="add math dir" />
     <MESSAGE value="service cluster" />
-    <option name="LAST_COMMIT_MESSAGE" value="service cluster" />
+    <MESSAGE value="text and prediction" />
+    <option name="LAST_COMMIT_MESSAGE" value="text and prediction" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
