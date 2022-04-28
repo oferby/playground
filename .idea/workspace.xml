@@ -22,7 +22,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="55b54417-4324-4a5f-b9c5-e4000a65c849" name="Default Changelist" comment="text and prediction" />
+    <list default="true" id="26165843-f29b-4f28-9220-e71cf0e31613" name="interviews" comment="interviews">
+      <change afterPath="$PROJECT_DIR$/interview/q2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview/q3.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview/q4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview/q5.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview/q6.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview/q7.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview/q8.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/interview/q9.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interview/q1/answer.py" beforeDir="false" afterPath="$PROJECT_DIR$/interview/q1.py" afterDir="false" />
+    </list>
+    <list id="55b54417-4324-4a5f-b9c5-e4000a65c849" name="Default Changelist" comment="text and prediction" />
     <list id="95dd61eb-09c3-4bff-a79d-8284781339e0" name="not to commit" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,6 +72,7 @@
     <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="All Places" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../dev/TF-playgound" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
@@ -69,14 +82,15 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\oferb\PycharmProjects\playground\interview" />
       <recent name="C:\Users\oferb\PycharmProjects\playground\machine_learning\techgig\house_price\data" />
       <recent name="C:\Users\oferb\PycharmProjects\playground\machine_learning\techgig\log_loss\data" />
       <recent name="$PROJECT_DIR$/general" />
       <recent name="$PROJECT_DIR$/tensorflow" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.predict">
-    <configuration name="advance-zip" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.q8">
+    <configuration name="q4" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="playground" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -84,11 +98,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/interview" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/advance-zip.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interview/q4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -97,7 +111,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="data_store" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="q5" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="playground" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -105,11 +119,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/machine_learning/techgig/log_loss/engineering" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/interview" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/machine_learning/techgig/log_loss/engineering/data_store.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interview/q5.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -118,7 +132,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="predict" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="q6" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="playground" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -126,11 +140,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/machine_learning/techgig/house_price" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/interview" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/machine_learning/techgig/house_price/predict.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interview/q6.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,7 +153,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="read-text-file" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="q7" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="playground" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -147,11 +161,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/interview" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/read-text-file.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interview/q7.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -160,7 +174,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="sort-file" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="q8" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="playground" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -168,11 +182,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/interview" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/sort-file.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interview/q8.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -183,11 +197,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.predict" />
-        <item itemvalue="Python.data_store" />
-        <item itemvalue="Python.advance-zip" />
-        <item itemvalue="Python.sort-file" />
-        <item itemvalue="Python.read-text-file" />
+        <item itemvalue="Python.q8" />
+        <item itemvalue="Python.q7" />
+        <item itemvalue="Python.q6" />
+        <item itemvalue="Python.q5" />
+        <item itemvalue="Python.q4" />
       </list>
     </recent_temporary>
   </component>
@@ -199,6 +213,7 @@
     <task active="true" id="Default" summary="Default task">
       <changelist id="55b54417-4324-4a5f-b9c5-e4000a65c849" name="Default Changelist" comment="" />
       <changelist id="95dd61eb-09c3-4bff-a79d-8284781339e0" name="not to commit" comment="" />
+      <changelist id="26165843-f29b-4f28-9220-e71cf0e31613" name="interviews" comment="" />
       <created>1589885372125</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -263,7 +278,19 @@
       <option name="presentableId" value="LOCAL‎00009" />
       <updated>1646910481751</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL‎00010" summary="text and prediction">
+      <created>1646910514871</created>
+      <option name="number" value="LOCAL‎00010" />
+      <option name="presentableId" value="LOCAL‎00010" />
+      <updated>1646910514871</updated>
+    </task>
+    <task id="LOCAL‎00011" summary="interviews">
+      <created>1646910605436</created>
+      <option name="number" value="LOCAL‎00011" />
+      <option name="presentableId" value="LOCAL‎00011" />
+      <updated>1646910605436</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -283,7 +310,8 @@
     <MESSAGE value="add math dir" />
     <MESSAGE value="service cluster" />
     <MESSAGE value="text and prediction" />
-    <option name="LAST_COMMIT_MESSAGE" value="text and prediction" />
+    <MESSAGE value="interviews" />
+    <option name="LAST_COMMIT_MESSAGE" value="interviews" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -312,6 +340,31 @@
           <url>file://$PROJECT_DIR$/machine_learning/techgig/house_price/predict.py</url>
           <line>223</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/interview/q2.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/interview/q3.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/interview/q6.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/interview/q7.py</url>
+          <line>21</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/interview/q8.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
